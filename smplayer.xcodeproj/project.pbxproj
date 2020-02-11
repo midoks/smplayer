@@ -14,6 +14,10 @@
 		8266EFA523F18CC1005CD2B6 /* smplayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8266EFA423F18CC1005CD2B6 /* smplayerTests.m */; };
 		8266EFB023F18CC2005CD2B6 /* smplayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8266EFAF23F18CC2005CD2B6 /* smplayerUITests.m */; };
 		8266EFC923F1D73F005CD2B6 /* SDragView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8266EFC723F1D73E005CD2B6 /* SDragView.m */; };
+		8266EFD023F2DBCD005CD2B6 /* PlayerUIView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8266EFCF23F2DBCD005CD2B6 /* PlayerUIView.m */; };
+		8266EFD323F2F108005CD2B6 /* SToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8266EFD223F2F108005CD2B6 /* SToolView.m */; };
+		8266EFD723F2FBB7005CD2B6 /* goto.png in Resources */ = {isa = PBXBuildFile; fileRef = 8266EFD523F2FBB6005CD2B6 /* goto.png */; };
+		8266EFD823F2FBB7005CD2B6 /* goto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8266EFD623F2FBB6005CD2B6 /* goto@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +54,12 @@
 		8266EFB123F18CC2005CD2B6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8266EFC723F1D73E005CD2B6 /* SDragView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SDragView.m; sourceTree = "<group>"; };
 		8266EFC823F1D73E005CD2B6 /* SDragView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SDragView.h; sourceTree = "<group>"; };
+		8266EFCE23F2DBCD005CD2B6 /* PlayerUIView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PlayerUIView.h; sourceTree = "<group>"; };
+		8266EFCF23F2DBCD005CD2B6 /* PlayerUIView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PlayerUIView.m; sourceTree = "<group>"; };
+		8266EFD123F2F108005CD2B6 /* SToolView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SToolView.h; sourceTree = "<group>"; };
+		8266EFD223F2F108005CD2B6 /* SToolView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SToolView.m; sourceTree = "<group>"; };
+		8266EFD523F2FBB6005CD2B6 /* goto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goto.png; sourceTree = "<group>"; };
+		8266EFD623F2FBB6005CD2B6 /* goto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "goto@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +110,8 @@
 		8266EF8F23F18CBB005CD2B6 /* smplayer */ = {
 			isa = PBXGroup;
 			children = (
+				8266EFD423F2FBB6005CD2B6 /* Resources */,
+				8266EFCA23F2CEA1005CD2B6 /* PlayerUI */,
 				8266EFC623F1D73E005CD2B6 /* Util */,
 				8266EF9023F18CBB005CD2B6 /* AppDelegate.h */,
 				8266EF9123F18CBB005CD2B6 /* AppDelegate.m */,
@@ -137,6 +149,26 @@
 				8266EFC823F1D73E005CD2B6 /* SDragView.h */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		8266EFCA23F2CEA1005CD2B6 /* PlayerUI */ = {
+			isa = PBXGroup;
+			children = (
+				8266EFCE23F2DBCD005CD2B6 /* PlayerUIView.h */,
+				8266EFCF23F2DBCD005CD2B6 /* PlayerUIView.m */,
+				8266EFD123F2F108005CD2B6 /* SToolView.h */,
+				8266EFD223F2F108005CD2B6 /* SToolView.m */,
+			);
+			path = PlayerUI;
+			sourceTree = "<group>";
+		};
+		8266EFD423F2FBB6005CD2B6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				8266EFD523F2FBB6005CD2B6 /* goto.png */,
+				8266EFD623F2FBB6005CD2B6 /* goto@2x.png */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -243,7 +275,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				8266EF9423F18CC1005CD2B6 /* Assets.xcassets in Resources */,
+				8266EFD823F2FBB7005CD2B6 /* goto@2x.png in Resources */,
 				8266EF9723F18CC1005CD2B6 /* MainMenu.xib in Resources */,
+				8266EFD723F2FBB7005CD2B6 /* goto.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,6 +302,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8266EFD023F2DBCD005CD2B6 /* PlayerUIView.m in Sources */,
+				8266EFD323F2F108005CD2B6 /* SToolView.m in Sources */,
 				8266EF9A23F18CC1005CD2B6 /* main.m in Sources */,
 				8266EFC923F1D73F005CD2B6 /* SDragView.m in Sources */,
 				8266EF9223F18CBB005CD2B6 /* AppDelegate.m in Sources */,

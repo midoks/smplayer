@@ -161,7 +161,7 @@
 
 //鼠标按住左键进行拖拽
 - (void)mouseDragged:(NSEvent *)event {
-//    NSLog(@"mouseDragged ======== ");
+    NSLog(@"mouseDragged ======== ");
 }
 
 //鼠标按住右键进行拖拽
