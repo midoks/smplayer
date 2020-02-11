@@ -1,0 +1,2 @@
+# smplayer
+Mac simple player
