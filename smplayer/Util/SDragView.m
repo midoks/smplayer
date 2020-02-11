@@ -114,8 +114,9 @@
 -(void)mouseDown:(NSEvent *)event {
     //event.clickCount 不是累计数。双击时调用mouseDown两次，clickCount第一次=1，第二次 = 2.
     if ([event clickCount] > 1) {
-        //双击相关处理
-        NSLog(@"%@",@"双击.....!");
+        if (self.delegate) {
+            [self.delegate mouseDoubleClick:event];
+        }
     }
     
 //    NSLog(@"mouseDown ==== clickCount: %ld  buttonNumber: %ld",event.clickCount,event.buttonNumber);
@@ -123,8 +124,8 @@
     self.layer.backgroundColor = [NSColor redColor].CGColor;
     
     //获取鼠标点击位置坐标：先获取event发生的window中的坐标，在转换成view视图坐标系坐标。
-    NSPoint eventLocation = [event locationInWindow];
-    NSPoint center = [self convertPoint:eventLocation fromView:nil];
+//    NSPoint eventLocation = [event locationInWindow];
+//    NSPoint center = [self convertPoint:eventLocation fromView:nil];
     
 //    NSLog(@"center: %@",NSStringFromPoint(center));
     

@@ -38,9 +38,16 @@
 }
 
 // 接收到多个文件
-- (void)receivedFileUrlList:(NSArray< NSURL *> *)fileUrls{
-    NSLog(@"%@", fileUrls);
+//- (void)receivedFileUrlList:(NSArray< NSURL *> *)fileUrls{
+//    NSLog(@"%@", fileUrls);
+//}
+
+// 鼠标双击事件
+-(void)mouseDoubleClick:(NSEvent *)event{
+    NSLog(@"%@",@"双击.....!");
+    [self.window performZoom:nil];
 }
+
 
 #pragma mark - URL Schemes
 - (void)application:(NSApplication *)application openURLs:(NSArray<NSURL *> *)urls{
