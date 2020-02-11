@@ -121,7 +121,7 @@
     
 //    NSLog(@"mouseDown ==== clickCount: %ld  buttonNumber: %ld",event.clickCount,event.buttonNumber);
     
-    self.layer.backgroundColor = [NSColor redColor].CGColor;
+//    self.layer.backgroundColor = [NSColor redColor].CGColor;
     
     //获取鼠标点击位置坐标：先获取event发生的window中的坐标，在转换成view视图坐标系坐标。
 //    NSPoint eventLocation = [event locationInWindow];
@@ -130,20 +130,18 @@
 //    NSLog(@"center: %@",NSStringFromPoint(center));
     
     //判断是否按下了Command键
-    if ([event modifierFlags] & NSEventModifierFlagCommand) {
-        [self setFrameRotation:[self frameRotation] + 90.0];
-        [self setNeedsDisplay:YES];
-        
+//    if ([event modifierFlags] & NSEventModifierFlagCommand) {
+//        [self setFrameRotation:[self frameRotation] + 90.0];
+//        [self setNeedsDisplay:YES];
 //        NSLog(@"按下了Command键 ---- ");
-    }
+//    }
     
 }
 
 //鼠标左键起来
 -(void)mouseUp:(NSEvent *)event {
 //    NSLog(@"mouseUp ======");
-    
-    self.layer.backgroundColor = [NSColor greenColor].CGColor;
+//    self.layer.backgroundColor = [NSColor greenColor].CGColor;
 }
 
 //鼠标右键按下
