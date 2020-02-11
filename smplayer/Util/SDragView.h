@@ -11,9 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol SDragViewDelegate <NSObject>
-///接收单个文件
+// 接收单个文件
 - (void)receivedFileUrl:(NSURL *)fileUrl;
-///接收到多个文件
+// 接收到多个文件
 - (void)receivedFileUrlList:(NSArray< NSURL *> *)fileUrls;
 @end
 

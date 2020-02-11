@@ -78,6 +78,96 @@
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
+    
+    [self addTrackingArea:[[NSTrackingArea alloc] initWithRect:dirtyRect options:NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved |
+                           NSTrackingCursorUpdate |
+                           NSTrackingActiveWhenFirstResponder |
+                           NSTrackingActiveInKeyWindow |
+                           NSTrackingActiveInActiveApp |
+                           NSTrackingActiveAlways |
+                           NSTrackingAssumeInside |
+                           NSTrackingInVisibleRect |
+                           NSTrackingEnabledDuringMouseDrag
+                        owner:self userInfo:nil]];
+    
+    [self becomeFirstResponder];
+}
+
+//鼠标进入追踪区域
+-(void)mouseEntered:(NSEvent *)event {
+//    NSLog(@"mouseEntered =========");
+}
+
+//mouserEntered之后调用
+-(void)cursorUpdate:(NSEvent *)event {
+//    NSLog(@"cursorUpdate ==========");
+    //更改鼠标光标样式
+    [[NSCursor pointingHandCursor] set];
+}
+
+//鼠标退出追踪区域
+-(void)mouseExited:(NSEvent *)event {
+//    NSLog(@"mouseExited ========");
+}
+
+//鼠标左键按下
+-(void)mouseDown:(NSEvent *)event {
+    //event.clickCount 不是累计数。双击时调用mouseDown两次，clickCount第一次=1，第二次 = 2.
+    if ([event clickCount] > 1) {
+        //双击相关处理
+        NSLog(@"%@",@"双击.....!");
+    }
+    
+//    NSLog(@"mouseDown ==== clickCount: %ld  buttonNumber: %ld",event.clickCount,event.buttonNumber);
+    
+    self.layer.backgroundColor = [NSColor redColor].CGColor;
+    
+    //获取鼠标点击位置坐标：先获取event发生的window中的坐标，在转换成view视图坐标系坐标。
+    NSPoint eventLocation = [event locationInWindow];
+    NSPoint center = [self convertPoint:eventLocation fromView:nil];
+    
+//    NSLog(@"center: %@",NSStringFromPoint(center));
+    
+    //判断是否按下了Command键
+    if ([event modifierFlags] & NSEventModifierFlagCommand) {
+        [self setFrameRotation:[self frameRotation] + 90.0];
+        [self setNeedsDisplay:YES];
+        
+//        NSLog(@"按下了Command键 ---- ");
+    }
+    
+}
+
+//鼠标左键起来
+-(void)mouseUp:(NSEvent *)event {
+//    NSLog(@"mouseUp ======");
+    
+    self.layer.backgroundColor = [NSColor greenColor].CGColor;
+}
+
+//鼠标右键按下
+- (void)rightMouseDown:(NSEvent *)event {
+//    NSLog(@"rightMouseDown =======");
+}
+
+//鼠标右键起来
+- (void)rightMouseUp:(NSEvent *)event {
+//    NSLog(@"rightMouseUp ======= ");
+}
+
+//鼠标移动
+- (void)mouseMoved:(NSEvent *)event {
+//    NSLog(@"mouseMoved ========= ");
+}
+
+//鼠标按住左键进行拖拽
+- (void)mouseDragged:(NSEvent *)event {
+//    NSLog(@"mouseDragged ======== ");
+}
+
+//鼠标按住右键进行拖拽
+- (void)rightMouseDragged:(NSEvent *)event {
+//    NSLog(@"rightMouseDragged ======= ");
 }
 
 @end
