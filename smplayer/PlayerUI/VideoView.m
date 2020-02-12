@@ -10,6 +10,16 @@
 
 @implementation VideoView
 
+- (id)initWithFrame:(NSRect)frame{
+    self.frame = frame;
+    self = [super initWithFrame:frame];
+    if (self) {
+        self.wantsLayer = true;
+        self.layer.backgroundColor = [NSColor brownColor].CGColor;
+    }
+    return self;
+}
+
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
