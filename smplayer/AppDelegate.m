@@ -12,20 +12,20 @@
 @interface AppDelegate ()
 
 @property (weak) IBOutlet NSWindow *window;
+@property (nonatomic, strong) PlayerUIView *player;
 @end
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-
-    SDragView *sd = [[PlayerUIView alloc] initWithFrame:self.window.frame];
-//    sd.wantsLayer = true;
-//    sd.layer.backgroundColor = [NSColor redColor].CGColor;
-    sd.delegate = self;
-    self.window.contentView = sd;
     
     // 窗口可以拖拽
     self.window.movableByWindowBackground = YES;
+    
+    self.player = [[PlayerUIView alloc] initWithFrame:self.window.frame];
+    self.player.delegate = self;
+    self.window.contentView = self.player;
+    
     
     NSButton *b = [[NSButton alloc] initWithFrame:NSMakeRect(self.window.frame.size.width-40, 0, 25, 20)];
     [b setBezelStyle:NSBezelStyleDisclosure];
@@ -73,7 +73,6 @@
 //    self.window.titleVisibility = NSWindowTitleHidden;
     
     [self.window toggleFullScreen:event];
-
 }
 
 

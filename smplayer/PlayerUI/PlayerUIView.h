@@ -11,6 +11,9 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface PlayerUIView : SDragView
+{
+    NSRect frame;
+}
 
 @end
 

@@ -8,12 +8,18 @@
 
 #import "PlayerUIView.h"
 #import "SToolView.h"
+@interface PlayerUIView ()
+@property (nonatomic, strong) SToolView *tool;
+@end
 
 @implementation PlayerUIView
 
 - (id)initWithFrame:(NSRect)frame{
+    self.frame = frame;
     self = [super initWithFrame:frame];
     if (self) {
+        self.wantsLayer = true;
+//        self.layer.backgroundColor = [NSColor redColor].CGColor;
         [self initView:frame];
     }
     return self;
@@ -21,19 +27,14 @@
 - (void) initView:(NSRect)frame{
     
     // 控制栏
-    SToolView *stool = [[SToolView alloc] initWithFrame:CGRectMake(0, 0, frame.size.width, 50)];
-//    stool.wantsLayer = true;
-//    stool.layer.backgroundColor = [NSColor blueColor].CGColor;
-    [self addSubview:stool];
+    self.tool = [[SToolView alloc] initWithFrame:CGRectMake(10, 0, self.frame.size.width-20, 50)];
+    [self addSubview:self.tool];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
-//    [self superview].frame;
-    NSLog(@"ddddddd----");
-    [self initView:[self superview].frame];
-    // Drawing code here.
+    self.tool.frame = CGRectMake(10, 0, self.frame.size.width-20, 50);
 }
 
 @end

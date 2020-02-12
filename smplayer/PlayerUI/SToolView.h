@@ -10,7 +10,10 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SToolView : SDragView
+@interface SToolView : SDragView {
+    NSProgressIndicator *progress;
+    NSRect frame;
+}
 
 @end
 

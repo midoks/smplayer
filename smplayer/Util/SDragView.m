@@ -16,7 +16,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         // 注册文件拖动事件
-        [self registerForDraggedTypes:[NSArray arrayWithObjects:NSPasteboardTypeFileURL, nil]];
+//        [self registerForDraggedTypes:[NSArray arrayWithObjects:NSPasteboardTypeFileURL, nil]];
     }
     return self;
 }
