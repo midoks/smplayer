@@ -18,7 +18,6 @@
 		8266EFD323F2F108005CD2B6 /* SToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8266EFD223F2F108005CD2B6 /* SToolView.m */; };
 		8266EFD723F2FBB7005CD2B6 /* goto.png in Resources */ = {isa = PBXBuildFile; fileRef = 8266EFD523F2FBB6005CD2B6 /* goto.png */; };
 		8266EFD823F2FBB7005CD2B6 /* goto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8266EFD623F2FBB6005CD2B6 /* goto@2x.png */; };
-		8266EFDD23F41999005CD2B6 /* VideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8266EFDC23F4198E005CD2B6 /* VideoView.m */; };
 		8266F0E523F44F11005CD2B6 /* libavutil.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8266F0DD23F44F10005CD2B6 /* libavutil.a */; };
 		8266F0E623F44F11005CD2B6 /* libavfilter.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8266F0DE23F44F10005CD2B6 /* libavfilter.a */; };
 		8266F0E723F44F11005CD2B6 /* libavcodec.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8266F0DF23F44F10005CD2B6 /* libavcodec.a */; };
@@ -27,6 +26,8 @@
 		8266F0EA23F44F11005CD2B6 /* libavdevice.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8266F0E223F44F10005CD2B6 /* libavdevice.a */; };
 		8266F0EB23F44F11005CD2B6 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8266F0E323F44F10005CD2B6 /* libswresample.a */; };
 		8266F0EC23F44F11005CD2B6 /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8266F0E423F44F10005CD2B6 /* libswscale.a */; };
+		8266F0EF23F45019005CD2B6 /* demo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8266F0EE23F45019005CD2B6 /* demo.mp4 */; };
+		8266F0F123F450CE005CD2B6 /* VideoView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8266F0F023F450CD005CD2B6 /* VideoView.mm */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,7 +71,6 @@
 		8266EFD523F2FBB6005CD2B6 /* goto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goto.png; sourceTree = "<group>"; };
 		8266EFD623F2FBB6005CD2B6 /* goto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "goto@2x.png"; sourceTree = "<group>"; };
 		8266EFDB23F4198E005CD2B6 /* VideoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoView.h; sourceTree = "<group>"; };
-		8266EFDC23F4198E005CD2B6 /* VideoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoView.m; sourceTree = "<group>"; };
 		8266F06423F44F10005CD2B6 /* version.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version.h; sourceTree = "<group>"; };
 		8266F06523F44F10005CD2B6 /* buffersrc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffersrc.h; sourceTree = "<group>"; };
 		8266F06623F44F10005CD2B6 /* buffersink.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = buffersink.h; sourceTree = "<group>"; };
@@ -192,6 +192,8 @@
 		8266F0E223F44F10005CD2B6 /* libavdevice.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libavdevice.a; sourceTree = "<group>"; };
 		8266F0E323F44F10005CD2B6 /* libswresample.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswresample.a; sourceTree = "<group>"; };
 		8266F0E423F44F10005CD2B6 /* libswscale.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswscale.a; sourceTree = "<group>"; };
+		8266F0EE23F45019005CD2B6 /* demo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demo.mp4; sourceTree = "<group>"; };
+		8266F0F023F450CD005CD2B6 /* VideoView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VideoView.mm; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -250,6 +252,7 @@
 		8266EF8F23F18CBB005CD2B6 /* smplayer */ = {
 			isa = PBXGroup;
 			children = (
+				8266F0ED23F45019005CD2B6 /* Test */,
 				8266F06123F44F10005CD2B6 /* Ffmpeg */,
 				8266EFD423F2FBB6005CD2B6 /* Resources */,
 				8266EFCA23F2CEA1005CD2B6 /* PlayerUI */,
@@ -300,7 +303,7 @@
 				8266EFD123F2F108005CD2B6 /* SToolView.h */,
 				8266EFD223F2F108005CD2B6 /* SToolView.m */,
 				8266EFDB23F4198E005CD2B6 /* VideoView.h */,
-				8266EFDC23F4198E005CD2B6 /* VideoView.m */,
+				8266F0F023F450CD005CD2B6 /* VideoView.mm */,
 			);
 			path = PlayerUI;
 			sourceTree = "<group>";
@@ -522,6 +525,14 @@
 			path = lib;
 			sourceTree = "<group>";
 		};
+		8266F0ED23F45019005CD2B6 /* Test */ = {
+			isa = PBXGroup;
+			children = (
+				8266F0EE23F45019005CD2B6 /* demo.mp4 */,
+			);
+			path = Test;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -628,6 +639,7 @@
 				8266EF9423F18CC1005CD2B6 /* Assets.xcassets in Resources */,
 				8266EFD823F2FBB7005CD2B6 /* goto@2x.png in Resources */,
 				8266EF9723F18CC1005CD2B6 /* MainMenu.xib in Resources */,
+				8266F0EF23F45019005CD2B6 /* demo.mp4 in Resources */,
 				8266EFD723F2FBB7005CD2B6 /* goto.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -657,7 +669,7 @@
 				8266EFD323F2F108005CD2B6 /* SToolView.m in Sources */,
 				8266EF9A23F18CC1005CD2B6 /* main.m in Sources */,
 				8266EFC923F1D73F005CD2B6 /* SDragView.m in Sources */,
-				8266EFDD23F41999005CD2B6 /* VideoView.m in Sources */,
+				8266F0F123F450CE005CD2B6 /* VideoView.mm in Sources */,
 				8266EF9223F18CBB005CD2B6 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -821,6 +833,7 @@
 				CODE_SIGN_ENTITLEMENTS = smplayer/smplayer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/smplayer/Ffmpeg/include";
 				INFOPLIST_FILE = smplayer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -833,6 +846,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.midoks.player.smplayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				f = v;
 			};
 			name = Debug;
 		};
@@ -843,6 +857,7 @@
 				CODE_SIGN_ENTITLEMENTS = smplayer/smplayer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/smplayer/Ffmpeg/include";
 				INFOPLIST_FILE = smplayer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -855,6 +870,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
 				PRODUCT_BUNDLE_IDENTIFIER = com.midoks.player.smplayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				f = v;
 			};
 			name = Release;
 		};

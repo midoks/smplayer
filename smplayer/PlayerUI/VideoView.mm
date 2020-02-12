@@ -6,6 +6,15 @@
 //  Copyright © 2020 midoks. All rights reserved.
 //
 
+extern "C" {
+#include <libavcodec/avcodec.h>
+#include <libavformat/avformat.h>
+#include <libavfilter/avfilter.h>
+#include <libavfilter/buffersrc.h>
+#include <libavfilter/buffersink.h>
+#include <libavutil/opt.h>
+};
+
 #import "VideoView.h"
 
 @implementation VideoView
@@ -20,10 +29,14 @@
     return self;
 }
 
+-(void)initVideo{
+    
+}
+
+
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
-    // Drawing code here.
 }
 
 @end
