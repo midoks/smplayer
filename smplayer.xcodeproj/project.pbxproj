@@ -28,6 +28,17 @@
 		8266F0EC23F44F11005CD2B6 /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8266F0E423F44F10005CD2B6 /* libswscale.a */; };
 		8266F0EF23F45019005CD2B6 /* demo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 8266F0EE23F45019005CD2B6 /* demo.mp4 */; };
 		8266F0F123F450CE005CD2B6 /* VideoView.mm in Sources */ = {isa = PBXBuildFile; fileRef = 8266F0F023F450CD005CD2B6 /* VideoView.mm */; };
+		8266F0F523F45435005CD2B6 /* CoreImage.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8266F0F423F45435005CD2B6 /* CoreImage.framework */; };
+		8266F0F623F4543C005CD2B6 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8266F0F323F4541F005CD2B6 /* libz.tbd */; };
+		8266F0F823F4544E005CD2B6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8266F0F723F4544E005CD2B6 /* AudioToolbox.framework */; };
+		8266F0FA23F45459005CD2B6 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8266F0F923F45458005CD2B6 /* AVFoundation.framework */; };
+		8266F0FD23F454C6005CD2B6 /* libiconv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8266F0FC23F454BF005CD2B6 /* libiconv.tbd */; };
+		8266F0FE23F454CF005CD2B6 /* libbz2.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8266F0FB23F454B6005CD2B6 /* libbz2.tbd */; };
+		8266F10023F456AA005CD2B6 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8266F0FF23F456AA005CD2B6 /* CoreMedia.framework */; };
+		8266F10223F456B9005CD2B6 /* VideoToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8266F10123F456B9005CD2B6 /* VideoToolbox.framework */; };
+		8266F10423F4572C005CD2B6 /* liblzma.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8266F10323F45724005CD2B6 /* liblzma.tbd */; };
+		8266F10723F45D81005CD2B6 /* PlayESView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8266F10623F45D81005CD2B6 /* PlayESView.m */; };
+		8266F10923F45EE7005CD2B6 /* Metal.metal in Sources */ = {isa = PBXBuildFile; fileRef = 8266F10823F45EE6005CD2B6 /* Metal.metal */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -194,6 +205,18 @@
 		8266F0E423F44F10005CD2B6 /* libswscale.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswscale.a; sourceTree = "<group>"; };
 		8266F0EE23F45019005CD2B6 /* demo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demo.mp4; sourceTree = "<group>"; };
 		8266F0F023F450CD005CD2B6 /* VideoView.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = VideoView.mm; sourceTree = "<group>"; };
+		8266F0F323F4541F005CD2B6 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		8266F0F423F45435005CD2B6 /* CoreImage.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreImage.framework; path = System/Library/Frameworks/CoreImage.framework; sourceTree = SDKROOT; };
+		8266F0F723F4544E005CD2B6 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		8266F0F923F45458005CD2B6 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		8266F0FB23F454B6005CD2B6 /* libbz2.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libbz2.tbd; path = usr/lib/libbz2.tbd; sourceTree = SDKROOT; };
+		8266F0FC23F454BF005CD2B6 /* libiconv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libiconv.tbd; path = usr/lib/libiconv.tbd; sourceTree = SDKROOT; };
+		8266F0FF23F456AA005CD2B6 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		8266F10123F456B9005CD2B6 /* VideoToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = VideoToolbox.framework; path = System/Library/Frameworks/VideoToolbox.framework; sourceTree = SDKROOT; };
+		8266F10323F45724005CD2B6 /* liblzma.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = liblzma.tbd; path = usr/lib/liblzma.tbd; sourceTree = SDKROOT; };
+		8266F10523F45D81005CD2B6 /* PlayESView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PlayESView.h; sourceTree = "<group>"; };
+		8266F10623F45D81005CD2B6 /* PlayESView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PlayESView.m; sourceTree = "<group>"; };
+		8266F10823F45EE6005CD2B6 /* Metal.metal */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.metal; path = Metal.metal; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,14 +224,23 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8266F10223F456B9005CD2B6 /* VideoToolbox.framework in Frameworks */,
 				8266F0E623F44F11005CD2B6 /* libavfilter.a in Frameworks */,
+				8266F0FE23F454CF005CD2B6 /* libbz2.tbd in Frameworks */,
 				8266F0E823F44F11005CD2B6 /* libavresample.a in Frameworks */,
+				8266F0F523F45435005CD2B6 /* CoreImage.framework in Frameworks */,
+				8266F0F823F4544E005CD2B6 /* AudioToolbox.framework in Frameworks */,
 				8266F0E523F44F11005CD2B6 /* libavutil.a in Frameworks */,
+				8266F10423F4572C005CD2B6 /* liblzma.tbd in Frameworks */,
 				8266F0E923F44F11005CD2B6 /* libavformat.a in Frameworks */,
 				8266F0EC23F44F11005CD2B6 /* libswscale.a in Frameworks */,
 				8266F0EA23F44F11005CD2B6 /* libavdevice.a in Frameworks */,
+				8266F10023F456AA005CD2B6 /* CoreMedia.framework in Frameworks */,
+				8266F0FA23F45459005CD2B6 /* AVFoundation.framework in Frameworks */,
+				8266F0FD23F454C6005CD2B6 /* libiconv.tbd in Frameworks */,
 				8266F0EB23F44F11005CD2B6 /* libswresample.a in Frameworks */,
 				8266F0E723F44F11005CD2B6 /* libavcodec.a in Frameworks */,
+				8266F0F623F4543C005CD2B6 /* libz.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,6 +268,7 @@
 				8266EFA323F18CC1005CD2B6 /* smplayerTests */,
 				8266EFAE23F18CC2005CD2B6 /* smplayerUITests */,
 				8266EF8E23F18CBB005CD2B6 /* Products */,
+				8266F0F223F4541F005CD2B6 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -298,6 +331,9 @@
 		8266EFCA23F2CEA1005CD2B6 /* PlayerUI */ = {
 			isa = PBXGroup;
 			children = (
+				8266F10823F45EE6005CD2B6 /* Metal.metal */,
+				8266F10523F45D81005CD2B6 /* PlayESView.h */,
+				8266F10623F45D81005CD2B6 /* PlayESView.m */,
 				8266EFCE23F2DBCD005CD2B6 /* PlayerUIView.h */,
 				8266EFCF23F2DBCD005CD2B6 /* PlayerUIView.m */,
 				8266EFD123F2F108005CD2B6 /* SToolView.h */,
@@ -533,6 +569,22 @@
 			path = Test;
 			sourceTree = "<group>";
 		};
+		8266F0F223F4541F005CD2B6 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8266F10323F45724005CD2B6 /* liblzma.tbd */,
+				8266F10123F456B9005CD2B6 /* VideoToolbox.framework */,
+				8266F0FF23F456AA005CD2B6 /* CoreMedia.framework */,
+				8266F0FC23F454BF005CD2B6 /* libiconv.tbd */,
+				8266F0FB23F454B6005CD2B6 /* libbz2.tbd */,
+				8266F0F923F45458005CD2B6 /* AVFoundation.framework */,
+				8266F0F723F4544E005CD2B6 /* AudioToolbox.framework */,
+				8266F0F423F45435005CD2B6 /* CoreImage.framework */,
+				8266F0F323F4541F005CD2B6 /* libz.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -665,12 +717,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8266F10723F45D81005CD2B6 /* PlayESView.m in Sources */,
 				8266EFD023F2DBCD005CD2B6 /* PlayerUIView.m in Sources */,
 				8266EFD323F2F108005CD2B6 /* SToolView.m in Sources */,
 				8266EF9A23F18CC1005CD2B6 /* main.m in Sources */,
 				8266EFC923F1D73F005CD2B6 /* SDragView.m in Sources */,
 				8266F0F123F450CE005CD2B6 /* VideoView.mm in Sources */,
 				8266EF9223F18CBB005CD2B6 /* AppDelegate.m in Sources */,
+				8266F10923F45EE7005CD2B6 /* Metal.metal in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -830,6 +884,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_LINK_OBJC_RUNTIME = NO;
 				CODE_SIGN_ENTITLEMENTS = smplayer/smplayer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -844,6 +901,7 @@
 					"$(PROJECT_DIR)/smplayer/Ffmpeg/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.midoks.player.smplayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				f = v;
@@ -854,6 +912,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_LINK_OBJC_RUNTIME = NO;
 				CODE_SIGN_ENTITLEMENTS = smplayer/smplayer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
@@ -868,6 +929,7 @@
 					"$(PROJECT_DIR)/smplayer/Ffmpeg/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = com.midoks.player.smplayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				f = v;

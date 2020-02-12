@@ -36,7 +36,7 @@
     
     // 控制栏
     self.tool = [[SToolView alloc] initWithFrame:CGRectMake(10, 0, self.frame.size.width-20, 50)];
-    [self addSubview:self.tool];
+//    [self addSubview:self.tool];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {

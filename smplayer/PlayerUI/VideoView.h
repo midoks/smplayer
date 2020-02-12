@@ -7,10 +7,11 @@
 //
 
 #import "SDragView.h"
+#import <MetalKit/MetalKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface VideoView : SDragView
+@interface VideoView : MTKView
 
 @end
 
