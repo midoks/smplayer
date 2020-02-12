@@ -15,7 +15,7 @@
 - (id)initWithFrame:(NSRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        //注册文件拖动事件
+        // 注册文件拖动事件
         [self registerForDraggedTypes:[NSArray arrayWithObjects:NSPasteboardTypeFileURL, nil]];
     }
     return self;
@@ -23,7 +23,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    //注册文件拖动事件
+    // 注册文件拖动事件
     [self registerForDraggedTypes:[NSArray arrayWithObjects:NSPasteboardTypeFileURL, nil]];
 }
 
@@ -31,8 +31,8 @@
     [self unregisterDraggedTypes];
 }
 
-//MARK: - private methods
-//当文件被拖动到界面触发
+// MARK: - private methods
+// 当文件被拖动到界面触发
 - (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender {
 //    NSPasteboard *pboard;
 //    NSDragOperation sourceDragMask;
@@ -113,10 +113,11 @@
 //鼠标左键按下
 -(void)mouseDown:(NSEvent *)event {
     //event.clickCount 不是累计数。双击时调用mouseDown两次，clickCount第一次=1，第二次 = 2.
-    if ([event clickCount] > 1) {
+    if ([event clickCount] == 2) {
         if (self.delegate) {
             [self.delegate mouseDoubleClick:event];
         }
+//        [[NSApp mainWindow] toggleFullScreen:event];
     }
     
 //    NSLog(@"mouseDown ==== clickCount: %ld  buttonNumber: %ld",event.clickCount,event.buttonNumber);
@@ -161,7 +162,7 @@
 
 //鼠标按住左键进行拖拽
 - (void)mouseDragged:(NSEvent *)event {
-    NSLog(@"mouseDragged ======== ");
+//    NSLog(@"mouseDragged ======== ");
 }
 
 //鼠标按住右键进行拖拽

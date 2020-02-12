@@ -18,6 +18,7 @@
 		8266EFD323F2F108005CD2B6 /* SToolView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8266EFD223F2F108005CD2B6 /* SToolView.m */; };
 		8266EFD723F2FBB7005CD2B6 /* goto.png in Resources */ = {isa = PBXBuildFile; fileRef = 8266EFD523F2FBB6005CD2B6 /* goto.png */; };
 		8266EFD823F2FBB7005CD2B6 /* goto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8266EFD623F2FBB6005CD2B6 /* goto@2x.png */; };
+		8266EFDD23F41999005CD2B6 /* VideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 8266EFDC23F4198E005CD2B6 /* VideoView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,8 @@
 		8266EFD223F2F108005CD2B6 /* SToolView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SToolView.m; sourceTree = "<group>"; };
 		8266EFD523F2FBB6005CD2B6 /* goto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goto.png; sourceTree = "<group>"; };
 		8266EFD623F2FBB6005CD2B6 /* goto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "goto@2x.png"; sourceTree = "<group>"; };
+		8266EFDB23F4198E005CD2B6 /* VideoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VideoView.h; sourceTree = "<group>"; };
+		8266EFDC23F4198E005CD2B6 /* VideoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VideoView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -158,6 +161,8 @@
 				8266EFCF23F2DBCD005CD2B6 /* PlayerUIView.m */,
 				8266EFD123F2F108005CD2B6 /* SToolView.h */,
 				8266EFD223F2F108005CD2B6 /* SToolView.m */,
+				8266EFDB23F4198E005CD2B6 /* VideoView.h */,
+				8266EFDC23F4198E005CD2B6 /* VideoView.m */,
 			);
 			path = PlayerUI;
 			sourceTree = "<group>";
@@ -306,6 +311,7 @@
 				8266EFD323F2F108005CD2B6 /* SToolView.m in Sources */,
 				8266EF9A23F18CC1005CD2B6 /* main.m in Sources */,
 				8266EFC923F1D73F005CD2B6 /* SDragView.m in Sources */,
+				8266EFDD23F41999005CD2B6 /* VideoView.m in Sources */,
 				8266EF9223F18CBB005CD2B6 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

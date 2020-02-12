@@ -13,8 +13,14 @@
 - (id)initWithFrame:(NSRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
+        [self initView:frame];
     }
     return self;
+}
+
+- (void) initView:(NSRect)frame{
+    self.wantsLayer = true;
+    self.layer.backgroundColor = [NSColor blueColor].CGColor;
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
