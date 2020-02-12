@@ -1496,10 +1496,10 @@ struct AVCodecInternal;
 enum AVFieldOrder {
     AV_FIELD_UNKNOWN,
     AV_FIELD_PROGRESSIVE,
-    AV_FIELD_TT,          //< Top coded_first, top displayed first
-    AV_FIELD_BB,          //< Bottom coded first, bottom displayed first
-    AV_FIELD_TB,          //< Top coded first, bottom displayed first
-    AV_FIELD_BT,          //< Bottom coded first, top displayed first
+    AV_FIELD_TT,          ///< Top coded_first, top displayed first
+    AV_FIELD_BB,          ///< Bottom coded first, bottom displayed first
+    AV_FIELD_TB,          ////< Top coded first, bottom displayed first
+    AV_FIELD_BT,          ////< Bottom coded first, top displayed first
 };
 
 /**
@@ -3788,7 +3788,7 @@ typedef struct AVHWAccel {
  *
  * Up to four components can be stored into it, the last component is
  * alpha.
- * @deprecated use AVFrame or imgutils functions instead
+ * @\deprecated use AVFrame or imgutils functions instead
  */
 typedef struct AVPicture {
     attribute_deprecated
@@ -4109,7 +4109,7 @@ void avcodec_free_context(AVCodecContext **avctx);
 
 #if FF_API_GET_CONTEXT_DEFAULTS
 /**
- * @deprecated This function should not be used, as closing and opening a codec
+ * @\deprecated This function should not be used, as closing and opening a codec
  * context multiple time is not supported. A new codec context should be
  * allocated for each new use.
  */
@@ -5023,10 +5023,10 @@ int avcodec_get_hw_frames_parameters(AVCodecContext *avctx,
  */
 
 enum AVPictureStructure {
-    AV_PICTURE_STRUCTURE_UNKNOWN,      //< unknown
-    AV_PICTURE_STRUCTURE_TOP_FIELD,    //< coded as top field
-    AV_PICTURE_STRUCTURE_BOTTOM_FIELD, //< coded as bottom field
-    AV_PICTURE_STRUCTURE_FRAME,        //< coded as frame
+    AV_PICTURE_STRUCTURE_UNKNOWN,      ///< unknown
+    AV_PICTURE_STRUCTURE_TOP_FIELD,    ///< coded as top field
+    AV_PICTURE_STRUCTURE_BOTTOM_FIELD, ///< coded as bottom field
+    AV_PICTURE_STRUCTURE_FRAME,        ///< coded as frame
 };
 
 typedef struct AVCodecParserContext {
@@ -5269,7 +5269,7 @@ int av_parser_parse2(AVCodecParserContext *s,
 
 /**
  * @return 0 if the output buffer is a subset of the input, 1 if it is allocated and must be freed
- * @deprecated use AVBitStreamFilter
+ * @\deprecated use AVBitStreamFilter
  */
 int av_parser_change(AVCodecParserContext *s,
                      AVCodecContext *avctx,
@@ -5492,7 +5492,7 @@ void avcodec_get_chroma_sub_sample(enum AVPixelFormat pix_fmt, int *h_shift, int
 unsigned int avcodec_pix_fmt_to_codec_tag(enum AVPixelFormat pix_fmt);
 
 /**
- * @deprecated see av_get_pix_fmt_loss()
+ * @\deprecated see av_get_pix_fmt_loss()
  */
 int avcodec_get_pix_fmt_loss(enum AVPixelFormat dst_pix_fmt, enum AVPixelFormat src_pix_fmt,
                              int has_alpha);
@@ -5519,7 +5519,7 @@ enum AVPixelFormat avcodec_find_best_pix_fmt_of_list(const enum AVPixelFormat *p
                                             int has_alpha, int *loss_ptr);
 
 /**
- * @deprecated see av_find_best_pix_fmt_of_2()
+ * @\deprecated see av_find_best_pix_fmt_of_2()
  */
 enum AVPixelFormat avcodec_find_best_pix_fmt_of_2(enum AVPixelFormat dst_pix_fmt1, enum AVPixelFormat dst_pix_fmt2,
                                             enum AVPixelFormat src_pix_fmt, int has_alpha, int *loss_ptr);
@@ -5987,7 +5987,7 @@ int av_bsf_list_parse_str(const char *str, AVBSFContext **bsf);
  *
  * @param[out] bsf Pointer to be set to new instance of pass-through bitstream filter
  *
- * @return
+ * @return void
  */
 int av_bsf_get_null_filter(AVBSFContext **bsf);
 
@@ -6042,7 +6042,7 @@ AVHWAccel *av_hwaccel_next(const AVHWAccel *hwaccel);
 /**
  * Lock operation used by lockmgr
  *
- * @deprecated Deprecated together with av_lockmgr_register().
+ * @\deprecated Deprecated together with av_lockmgr_register().
  */
 enum AVLockOp {
   AV_LOCK_CREATE,  ///< Create a mutex

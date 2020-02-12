@@ -248,7 +248,7 @@ const char *av_hwdevice_get_type_name(enum AVHWDeviceType type);
 /**
  * Iterate over supported device types.
  *
- * @param type AV_HWDEVICE_TYPE_NONE initially, then the previous type
+ * param type AV_HWDEVICE_TYPE_NONE initially, then the previous type
  *             returned by this function in subsequent iterations.
  * @return The next usable device type from enum AVHWDeviceType, or
  *         AV_HWDEVICE_TYPE_NONE if there are no more.

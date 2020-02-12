@@ -538,7 +538,7 @@ enum {
  * @param obj a struct whose first element is a pointer to AVClass.
  * @param o an option for which the string is to be evaluated.
  * @param val string to be evaluated.
- * @param *_out value of the string will be written here.
+ * param *_out value of the string will be written here.
  *
  * @return 0 on success, a negative number on failure.
  */
