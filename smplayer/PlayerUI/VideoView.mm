@@ -60,7 +60,7 @@ extern "C" {
         self.layer.backgroundColor = [NSColor brownColor].CGColor;
         self->imageView = [[NSImageView alloc] initWithFrame:frame];
         [self registerForDraggedTypes:[NSArray arrayWithObjects:NSPasteboardTypeFileURL, nil]];
-        [self initK];
+        [self initMTL];
         
         NSString * videoPath = [[NSBundle mainBundle] pathForResource:@"demo" ofType:@"mp4"];
         [self initVideo:videoPath];
@@ -76,11 +76,11 @@ extern "C" {
     [self initDecoder:videoPath];  //初始化解码器
     [self initFilters];  //初始化过滤器
 
-    self.frame = NSRectFromCGRect(CGRectMake(0, 0, pCodecCtx->width, pCodecCtx->height));
+//    self.frame = NSRectFromCGRect(CGRectMake(0, 0, pCodecCtx->width, pCodecCtx->height));
 
     NSLog(@"获取-widht:%d, height:%d", pCodecCtx->width, pCodecCtx->height);
     
-    timer = [NSTimer timerWithTimeInterval:1/fps repeats:YES block:^(NSTimer * _Nonnull timer) { //根据视频的fps解码渲染视频
+    timer = [NSTimer timerWithTimeInterval:0.9/fps repeats:YES block:^(NSTimer * _Nonnull timer) { //根据视频的fps解码渲染视频
         [self decodeVideo];  //解码视频并渲染
         [self setNeedsLayout:YES];  //刷新界面防止画面撕裂
     }];
@@ -314,7 +314,7 @@ extern "C" {
     });
 }
 
-- (void)initK{
+- (void)initMTL{
     id<MTLDevice> device = MTLCreateSystemDefaultDevice();
     _commandQueue = [device newCommandQueue];
     id<MTLLibrary> library  = [device newDefaultLibrary];

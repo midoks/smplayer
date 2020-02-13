@@ -18,8 +18,8 @@
     self.frame = frame;
     self = [super initWithFrame:frame];
     if (self) {
-        progress = [[NSProgressIndicator alloc] initWithFrame:NSMakeRect(0, frame.size.height-10, frame.size.width, 10)];
-        [self addSubview:progress];
+        
+        
         [self initView:frame];
     }
     return self;
@@ -29,22 +29,54 @@
     
     // 设置颜色
     self.wantsLayer = true;
-    self.layer.backgroundColor = [NSColor yellowColor].CGColor;
+    self.layer.backgroundColor = [NSColor grayColor].CGColor;
+    self.layer.opacity = 0.6;
+    self.layer.cornerRadius = 3;
     
+    NSButton *player = [[NSButton alloc] initWithFrame:NSMakeRect(10, 10, 60, 20)];
+//    [player setButtonType:NSButtonTypeMomentaryChange];
+    [player setBezelStyle:NSBezelStyleTexturedSquare];
+    [player setTitle:@"播放"];
+    [self addSubview:player];
+    
+    NSTextField *info = [[NSTextField alloc] initWithFrame:NSMakeRect(80, 10, 120, 20)];
+//    [info setBackgroundColor:[NSColor redColor]];
+    [info setEditable:false];
+    [info setBordered:false];
+    [info setStringValue:@"01:30:10/02:00:00"];
+    [self addSubview:info];
+    
+    NSButton *speed = [[NSButton alloc] initWithFrame:NSMakeRect(220, 10, 30, 20)];
+    [speed setTitle:@"1.0X"];
+    [self addSubview:speed];
+    
+    NSButton *list = [[NSButton alloc] initWithFrame:NSMakeRect(260, 10, 30, 20)];
+    [list setTitle:@"列表"];
+    [self addSubview:list];
+    
+    NSButton *voice = [[NSButton alloc] initWithFrame:NSMakeRect(300, 10, 30, 20)];
+    [voice setTitle:@"声音"];
+    [self addSubview:voice];
+    
+    NSButton *toggleFullScreen = [[NSButton alloc] initWithFrame:NSMakeRect(340, 10, 70, 20)];
+    [toggleFullScreen setTitle:@"放大|缩小"];
+    [self addSubview:toggleFullScreen];
+    
+    progress = [[NSProgressIndicator alloc] initWithFrame:NSMakeRect(0, frame.size.height-10, frame.size.width, 10)];
     // 添加进度条
-    
     progress.wantsLayer = true;
     progress.minValue = 0.0;
     progress.maxValue = 100.0;
     [progress setDoubleValue:30];
-//    [progress.layer setBackgroundColor:[NSColor blueColor].CGColor];
+    //    [progress.layer setBackgroundColor:[NSColor blueColor].CGColor];
+    [self addSubview:progress];
     
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
-     progress.frame = NSMakeRect(0, self.frame.size.height-10, self.frame.size.width, 10);
+    progress.frame = NSMakeRect(0, self.frame.size.height-10, self.frame.size.width, 10);
 }
 
 @end
