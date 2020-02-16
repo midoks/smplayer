@@ -33,11 +33,19 @@
     self.layer.opacity = 0.6;
     self.layer.cornerRadius = 3;
     
-    NSButton *player = [[NSButton alloc] initWithFrame:NSMakeRect(10, 10, 60, 20)];
-//    [player setButtonType:NSButtonTypeMomentaryChange];
-    [player setBezelStyle:NSBezelStyleTexturedSquare];
-    [player setTitle:@"播放"];
+    NSButton *player = [[NSButton alloc] initWithFrame:NSMakeRect(10, 10, 30, 30)];
+    [player setButtonType:NSButtonTypeMomentaryChange];
+    [player setBezelStyle:NSBezelStyleRegularSquare];
+    [player setImage:[NSImage imageNamed:NSImageNameGoForwardTemplate]];
+    [player.layer setCornerRadius:10];
+    [player setBordered:YES];
+    [player.layer setMasksToBounds:YES];
     [self addSubview:player];
+    
+    //NSImageNameTouchBarPauseTemplate 暂停
+    //NSImageNameGoForwardTemplate 开始
+    
+    
     
     NSTextField *info = [[NSTextField alloc] initWithFrame:NSMakeRect(80, 10, 120, 20)];
 //    [info setBackgroundColor:[NSColor redColor]];
