@@ -26,6 +26,7 @@
 		82E9A53024030C20000DB7F3 /* goto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 82E9A52C24030C20000DB7F3 /* goto@2x.png */; };
 		82E9A53124030C20000DB7F3 /* demo.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 82E9A52D24030C20000DB7F3 /* demo.mp4 */; };
 		82E9A53224030C20000DB7F3 /* for.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 82E9A52E24030C20000DB7F3 /* for.mp4 */; };
+		82E9A53624030E81000DB7F3 /* SMVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E9A53524030E81000DB7F3 /* SMVideoView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -192,6 +193,8 @@
 		82E9A52C24030C20000DB7F3 /* goto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "goto@2x.png"; sourceTree = "<group>"; };
 		82E9A52D24030C20000DB7F3 /* demo.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = demo.mp4; sourceTree = "<group>"; };
 		82E9A52E24030C20000DB7F3 /* for.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = for.mp4; sourceTree = "<group>"; };
+		82E9A53424030E81000DB7F3 /* SMVideoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMVideoView.h; sourceTree = "<group>"; };
+		82E9A53524030E81000DB7F3 /* SMVideoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMVideoView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -253,6 +256,7 @@
 			children = (
 				82E9A52A24030C1F000DB7F3 /* Assets */,
 				82E9A49524030B51000DB7F3 /* Deps */,
+				82E9A53324030DCF000DB7F3 /* View */,
 				82E9A46824030AEA000DB7F3 /* AppDelegate.h */,
 				82E9A46924030AEA000DB7F3 /* AppDelegate.m */,
 				82E9A46B24030AEE000DB7F3 /* Assets.xcassets */,
@@ -516,6 +520,15 @@
 			path = Assets;
 			sourceTree = "<group>";
 		};
+		82E9A53324030DCF000DB7F3 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				82E9A53424030E81000DB7F3 /* SMVideoView.h */,
+				82E9A53524030E81000DB7F3 /* SMVideoView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -650,6 +663,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82E9A47224030AEE000DB7F3 /* main.m in Sources */,
+				82E9A53624030E81000DB7F3 /* SMVideoView.m in Sources */,
 				82E9A46A24030AEA000DB7F3 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
