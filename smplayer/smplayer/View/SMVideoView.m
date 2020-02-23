@@ -47,16 +47,32 @@ static inline void check_error(int status)
         self.wantsLayer =YES;
         self.layer.backgroundColor = [NSColor brownColor].CGColor;
         
-        NSString *filename = [[NSBundle mainBundle] pathForResource:@"demo" ofType:@"mp4"];
-        [self initVideo:filename];
+//        NSString *filename = [[NSBundle mainBundle] pathForResource:@"demo" ofType:@"mp4"];
+//        [self initVideo:filename];
         // 注册文件拖动事件
 //        [self registerForDraggedTypes:[NSArray arrayWithObjects:NSPasteboardTypeFileURL, nil]];
     }
+    [self initControl];
     return self;
+}
+
+-(void)initControl{
+    NSLog(@"initControl");
+    [self.fragVolumeView setFrame:NSMakeRect(10, 10, 200, 10)];
+    [self.fragVolumeView removeFromSuperview];
+    
+    self.fragVolumeView.wantsLayer =YES;
+    self.fragVolumeView.layer.backgroundColor = [NSColor brownColor].CGColor;
+    [self addSubview:self.fragVolumeView];
+    
+//    [self setAccessibilityAlternateUIVisible:YES];
+//    [self setVisibilityPriority:NSStackViewVisibilityPriorityDetachOnlyIfNecessary forView:self.fragVolumeView];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
+    
+    [self.fragVolumeView setFrame:NSMakeRect(10, 10, 200, 10)];
 
 }
 
@@ -150,8 +166,9 @@ static inline void check_error(int status)
     dispatch_async(queue, ^{
         while (self->mpv) {
             mpv_event *event = mpv_wait_event(self->mpv, 0);
-            if (event->event_id == MPV_EVENT_NONE)
+            if (event->event_id == MPV_EVENT_NONE){
                 break;
+            }
             [self handleEvent:event];
         }
     });

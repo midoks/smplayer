@@ -12,6 +12,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SMVideoView : NSView
 
+
+@property (weak) IBOutlet NSView *fragVolumeView;
+
 @end
 
 NS_ASSUME_NONNULL_END

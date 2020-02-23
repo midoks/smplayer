@@ -18,6 +18,11 @@
             </connections>
         </customObject>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <customObject id="8cn-P8-fPc" customClass="SMVideoView">
+            <connections>
+                <outlet property="fragVolumeView" destination="nCl-TM-aGV" id="xgx-St-jCW"/>
+            </connections>
+        </customObject>
         <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
             <items>
                 <menuItem title="smplayer" id="1Xt-HY-uBw">
@@ -689,7 +694,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="480" height="360"/>
                 <autoresizingMask key="autoresizingMask"/>
             </view>
-            <point key="canvasLocation" x="140" y="-120"/>
+            <point key="canvasLocation" x="156" y="-144"/>
         </window>
         <customView id="nCl-TM-aGV" userLabel="Frag Volume View">
             <rect key="frame" x="0.0" y="0.0" width="345" height="36"/>
