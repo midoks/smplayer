@@ -1,8 +1,0 @@
-platform :osx, '10.15'
-
-target 'smplayer' do
-  
-  use_frameworks!
-  pod 'LibFfmpeg'
-
-end
