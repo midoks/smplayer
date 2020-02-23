@@ -1,0 +1,689 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		27D0F143C3C82A51E96F915B /* Pods_smplayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4EEE97B5E2E2487AEE3BB459 /* Pods_smplayer.framework */; };
+		82E6EA462402E8B900A07DAE /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E6EA452402E8B900A07DAE /* AppDelegate.m */; };
+		82E6EA482402E8C000A07DAE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82E6EA472402E8C000A07DAE /* Assets.xcassets */; };
+		82E6EA4B2402E8C000A07DAE /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82E6EA492402E8C000A07DAE /* MainMenu.xib */; };
+		82E6EA4E2402E8C000A07DAE /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E6EA4D2402E8C000A07DAE /* main.m */; };
+		82E6EA592402E8C000A07DAE /* smplayerTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E6EA582402E8C000A07DAE /* smplayerTests.m */; };
+		82E6EA642402E8C000A07DAE /* smplayerUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E6EA632402E8C000A07DAE /* smplayerUITests.m */; };
+		82E6EA8E2402F44800A07DAE /* libmpv.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E6EA8D2402F44800A07DAE /* libmpv.1.dylib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		82E6EA552402E8C000A07DAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 82E6EA392402E8B900A07DAE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 82E6EA402402E8B900A07DAE;
+			remoteInfo = smplayer;
+		};
+		82E6EA602402E8C000A07DAE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 82E6EA392402E8B900A07DAE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 82E6EA402402E8B900A07DAE;
+			remoteInfo = smplayer;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		4EEE97B5E2E2487AEE3BB459 /* Pods_smplayer.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_smplayer.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		53FB0447DAF11DC731040C67 /* Pods-smplayer.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smplayer.debug.xcconfig"; path = "Target Support Files/Pods-smplayer/Pods-smplayer.debug.xcconfig"; sourceTree = "<group>"; };
+		82E6EA412402E8B900A07DAE /* smplayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smplayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		82E6EA442402E8B900A07DAE /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		82E6EA452402E8B900A07DAE /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		82E6EA472402E8C000A07DAE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		82E6EA4A2402E8C000A07DAE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		82E6EA4C2402E8C000A07DAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82E6EA4D2402E8C000A07DAE /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		82E6EA4F2402E8C000A07DAE /* smplayer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = smplayer.entitlements; sourceTree = "<group>"; };
+		82E6EA542402E8C000A07DAE /* smplayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = smplayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		82E6EA582402E8C000A07DAE /* smplayerTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = smplayerTests.m; sourceTree = "<group>"; };
+		82E6EA5A2402E8C000A07DAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82E6EA5F2402E8C000A07DAE /* smplayerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = smplayerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		82E6EA632402E8C000A07DAE /* smplayerUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = smplayerUITests.m; sourceTree = "<group>"; };
+		82E6EA652402E8C000A07DAE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		82E6EA862402F44800A07DAE /* client.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = client.h; sourceTree = "<group>"; };
+		82E6EA872402F44800A07DAE /* stream_cb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stream_cb.h; sourceTree = "<group>"; };
+		82E6EA882402F44800A07DAE /* render_gl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = render_gl.h; sourceTree = "<group>"; };
+		82E6EA892402F44800A07DAE /* qthelper.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = qthelper.hpp; sourceTree = "<group>"; };
+		82E6EA8A2402F44800A07DAE /* opengl_cb.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = opengl_cb.h; sourceTree = "<group>"; };
+		82E6EA8B2402F44800A07DAE /* render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = render.h; sourceTree = "<group>"; };
+		82E6EA8D2402F44800A07DAE /* libmpv.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; path = libmpv.1.dylib; sourceTree = "<group>"; };
+		978B5A29244A0457E590C337 /* Pods-smplayer.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-smplayer.release.xcconfig"; path = "Target Support Files/Pods-smplayer/Pods-smplayer.release.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		82E6EA3E2402E8B900A07DAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				27D0F143C3C82A51E96F915B /* Pods_smplayer.framework in Frameworks */,
+				82E6EA8E2402F44800A07DAE /* libmpv.1.dylib in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82E6EA512402E8C000A07DAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82E6EA5C2402E8C000A07DAE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4BD6ED1DD0AB55312D4F9132 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4EEE97B5E2E2487AEE3BB459 /* Pods_smplayer.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		82E6EA382402E8B900A07DAE = {
+			isa = PBXGroup;
+			children = (
+				82E6EA432402E8B900A07DAE /* smplayer */,
+				82E6EA572402E8C000A07DAE /* smplayerTests */,
+				82E6EA622402E8C000A07DAE /* smplayerUITests */,
+				82E6EA422402E8B900A07DAE /* Products */,
+				F2CC59A7897DA48F419693A3 /* Pods */,
+				4BD6ED1DD0AB55312D4F9132 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		82E6EA422402E8B900A07DAE /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				82E6EA412402E8B900A07DAE /* smplayer.app */,
+				82E6EA542402E8C000A07DAE /* smplayerTests.xctest */,
+				82E6EA5F2402E8C000A07DAE /* smplayerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		82E6EA432402E8B900A07DAE /* smplayer */ = {
+			isa = PBXGroup;
+			children = (
+				82E6EA832402F44800A07DAE /* Deps */,
+				82E6EA442402E8B900A07DAE /* AppDelegate.h */,
+				82E6EA452402E8B900A07DAE /* AppDelegate.m */,
+				82E6EA472402E8C000A07DAE /* Assets.xcassets */,
+				82E6EA492402E8C000A07DAE /* MainMenu.xib */,
+				82E6EA4C2402E8C000A07DAE /* Info.plist */,
+				82E6EA4D2402E8C000A07DAE /* main.m */,
+				82E6EA4F2402E8C000A07DAE /* smplayer.entitlements */,
+			);
+			path = smplayer;
+			sourceTree = "<group>";
+		};
+		82E6EA572402E8C000A07DAE /* smplayerTests */ = {
+			isa = PBXGroup;
+			children = (
+				82E6EA582402E8C000A07DAE /* smplayerTests.m */,
+				82E6EA5A2402E8C000A07DAE /* Info.plist */,
+			);
+			path = smplayerTests;
+			sourceTree = "<group>";
+		};
+		82E6EA622402E8C000A07DAE /* smplayerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				82E6EA632402E8C000A07DAE /* smplayerUITests.m */,
+				82E6EA652402E8C000A07DAE /* Info.plist */,
+			);
+			path = smplayerUITests;
+			sourceTree = "<group>";
+		};
+		82E6EA832402F44800A07DAE /* Deps */ = {
+			isa = PBXGroup;
+			children = (
+				82E6EA842402F44800A07DAE /* include */,
+				82E6EA8C2402F44800A07DAE /* lib */,
+			);
+			path = Deps;
+			sourceTree = "<group>";
+		};
+		82E6EA842402F44800A07DAE /* include */ = {
+			isa = PBXGroup;
+			children = (
+				82E6EA852402F44800A07DAE /* mpv */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		82E6EA852402F44800A07DAE /* mpv */ = {
+			isa = PBXGroup;
+			children = (
+				82E6EA862402F44800A07DAE /* client.h */,
+				82E6EA872402F44800A07DAE /* stream_cb.h */,
+				82E6EA882402F44800A07DAE /* render_gl.h */,
+				82E6EA892402F44800A07DAE /* qthelper.hpp */,
+				82E6EA8A2402F44800A07DAE /* opengl_cb.h */,
+				82E6EA8B2402F44800A07DAE /* render.h */,
+			);
+			path = mpv;
+			sourceTree = "<group>";
+		};
+		82E6EA8C2402F44800A07DAE /* lib */ = {
+			isa = PBXGroup;
+			children = (
+				82E6EA8D2402F44800A07DAE /* libmpv.1.dylib */,
+			);
+			path = lib;
+			sourceTree = "<group>";
+		};
+		F2CC59A7897DA48F419693A3 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				53FB0447DAF11DC731040C67 /* Pods-smplayer.debug.xcconfig */,
+				978B5A29244A0457E590C337 /* Pods-smplayer.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		82E6EA402402E8B900A07DAE /* smplayer */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 82E6EA682402E8C000A07DAE /* Build configuration list for PBXNativeTarget "smplayer" */;
+			buildPhases = (
+				FE3A1C6223E92DD045843E71 /* [CP] Check Pods Manifest.lock */,
+				82E6EA3D2402E8B900A07DAE /* Sources */,
+				82E6EA3E2402E8B900A07DAE /* Frameworks */,
+				82E6EA3F2402E8B900A07DAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = smplayer;
+			productName = smplayer;
+			productReference = 82E6EA412402E8B900A07DAE /* smplayer.app */;
+			productType = "com.apple.product-type.application";
+		};
+		82E6EA532402E8C000A07DAE /* smplayerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 82E6EA6B2402E8C000A07DAE /* Build configuration list for PBXNativeTarget "smplayerTests" */;
+			buildPhases = (
+				82E6EA502402E8C000A07DAE /* Sources */,
+				82E6EA512402E8C000A07DAE /* Frameworks */,
+				82E6EA522402E8C000A07DAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				82E6EA562402E8C000A07DAE /* PBXTargetDependency */,
+			);
+			name = smplayerTests;
+			productName = smplayerTests;
+			productReference = 82E6EA542402E8C000A07DAE /* smplayerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		82E6EA5E2402E8C000A07DAE /* smplayerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 82E6EA6E2402E8C000A07DAE /* Build configuration list for PBXNativeTarget "smplayerUITests" */;
+			buildPhases = (
+				82E6EA5B2402E8C000A07DAE /* Sources */,
+				82E6EA5C2402E8C000A07DAE /* Frameworks */,
+				82E6EA5D2402E8C000A07DAE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				82E6EA612402E8C000A07DAE /* PBXTargetDependency */,
+			);
+			name = smplayerUITests;
+			productName = smplayerUITests;
+			productReference = 82E6EA5F2402E8C000A07DAE /* smplayerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		82E6EA392402E8B900A07DAE /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 1130;
+				ORGANIZATIONNAME = midoks;
+				TargetAttributes = {
+					82E6EA402402E8B900A07DAE = {
+						CreatedOnToolsVersion = 11.3.1;
+					};
+					82E6EA532402E8C000A07DAE = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 82E6EA402402E8B900A07DAE;
+					};
+					82E6EA5E2402E8C000A07DAE = {
+						CreatedOnToolsVersion = 11.3.1;
+						TestTargetID = 82E6EA402402E8B900A07DAE;
+					};
+				};
+			};
+			buildConfigurationList = 82E6EA3C2402E8B900A07DAE /* Build configuration list for PBXProject "smplayer" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 82E6EA382402E8B900A07DAE;
+			productRefGroup = 82E6EA422402E8B900A07DAE /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				82E6EA402402E8B900A07DAE /* smplayer */,
+				82E6EA532402E8C000A07DAE /* smplayerTests */,
+				82E6EA5E2402E8C000A07DAE /* smplayerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		82E6EA3F2402E8B900A07DAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82E6EA482402E8C000A07DAE /* Assets.xcassets in Resources */,
+				82E6EA4B2402E8C000A07DAE /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82E6EA522402E8C000A07DAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82E6EA5D2402E8C000A07DAE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		FE3A1C6223E92DD045843E71 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-smplayer-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		82E6EA3D2402E8B900A07DAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82E6EA4E2402E8C000A07DAE /* main.m in Sources */,
+				82E6EA462402E8B900A07DAE /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82E6EA502402E8C000A07DAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82E6EA592402E8C000A07DAE /* smplayerTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		82E6EA5B2402E8C000A07DAE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				82E6EA642402E8C000A07DAE /* smplayerUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		82E6EA562402E8C000A07DAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 82E6EA402402E8B900A07DAE /* smplayer */;
+			targetProxy = 82E6EA552402E8C000A07DAE /* PBXContainerItemProxy */;
+		};
+		82E6EA612402E8C000A07DAE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 82E6EA402402E8B900A07DAE /* smplayer */;
+			targetProxy = 82E6EA602402E8C000A07DAE /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		82E6EA492402E8C000A07DAE /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				82E6EA4A2402E8C000A07DAE /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		82E6EA662402E8C000A07DAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		82E6EA672402E8C000A07DAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		82E6EA692402E8C000A07DAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 53FB0447DAF11DC731040C67 /* Pods-smplayer.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = smplayer/smplayer.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/LibFfmpeg\"",
+					"$(PROJECT_DIR)/smplayer/Deps/include",
+				);
+				INFOPLIST_FILE = smplayer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/smplayer/Deps/lib",
+					"$(PROJECT_DIR)/smplayer/Deps/lib",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.midoks.smplayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		82E6EA6A2402E8C000A07DAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 978B5A29244A0457E590C337 /* Pods-smplayer.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = smplayer/smplayer.entitlements;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_ASSET_PATHS = "";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Headers/Public\"",
+					"\"${PODS_ROOT}/Headers/Public/LibFfmpeg\"",
+					"$(PROJECT_DIR)/smplayer/Deps/include",
+				);
+				INFOPLIST_FILE = smplayer/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(SRCROOT)/smplayer/Deps/lib",
+					"$(PROJECT_DIR)/smplayer/Deps/lib",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.midoks.smplayer;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		82E6EA6C2402E8C000A07DAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = smplayerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.midoks.smplayerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/smplayer.app/Contents/MacOS/smplayer";
+			};
+			name = Debug;
+		};
+		82E6EA6D2402E8C000A07DAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = smplayerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.15;
+				PRODUCT_BUNDLE_IDENTIFIER = com.midoks.smplayerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/smplayer.app/Contents/MacOS/smplayer";
+			};
+			name = Release;
+		};
+		82E6EA6F2402E8C000A07DAE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = smplayerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.midoks.smplayerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = smplayer;
+			};
+			name = Debug;
+		};
+		82E6EA702402E8C000A07DAE /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = smplayerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.midoks.smplayerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = smplayer;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		82E6EA3C2402E8B900A07DAE /* Build configuration list for PBXProject "smplayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82E6EA662402E8C000A07DAE /* Debug */,
+				82E6EA672402E8C000A07DAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		82E6EA682402E8C000A07DAE /* Build configuration list for PBXNativeTarget "smplayer" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82E6EA692402E8C000A07DAE /* Debug */,
+				82E6EA6A2402E8C000A07DAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		82E6EA6B2402E8C000A07DAE /* Build configuration list for PBXNativeTarget "smplayerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82E6EA6C2402E8C000A07DAE /* Debug */,
+				82E6EA6D2402E8C000A07DAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		82E6EA6E2402E8C000A07DAE /* Build configuration list for PBXNativeTarget "smplayerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				82E6EA6F2402E8C000A07DAE /* Debug */,
+				82E6EA702402E8C000A07DAE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 82E6EA392402E8B900A07DAE /* Project object */;
+}
