@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="Player">
+            <connections>
+                <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="196" y="240" width="382" height="216"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+            <view key="contentView" id="se5-gp-TjO">
+                <rect key="frame" x="0.0" y="0.0" width="382" height="216"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="30" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tXL-34-neM">
+                        <rect key="frame" x="191" y="20" width="0.0" height="50"/>
+                    </stackView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="tXL-34-neM" secondAttribute="bottom" constant="20" symbolic="YES" id="Br5-Gs-jnI"/>
+                    <constraint firstItem="tXL-34-neM" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="Jg6-rW-nbJ"/>
+                    <constraint firstItem="tXL-34-neM" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="146" id="MuO-4p-XRD"/>
+                </constraints>
+            </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
+            </connections>
+            <point key="canvasLocation" x="20" y="-48"/>
+        </window>
+        <customView id="qaV-zr-t9f" userLabel="Frag Volume View">
+            <rect key="frame" x="0.0" y="0.0" width="150" height="25"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button translatesAutoresizingMaskIntoConstraints="NO" id="IvJ-7I-dDB" userLabel="Mute Button">
+                    <rect key="frame" x="0.0" y="0.0" width="32" height="25"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarAudioOutputVolumeHighTemplate" imagePosition="only" alignment="center" alternateImage="NSTouchBarAudioOutputMuteTemplate" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="zlS-4R-zGl">
+                        <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+                <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FEj-C2-Iop" userLabel="Volume Slider">
+                    <rect key="frame" x="30" y="-2" width="116" height="29"/>
+                    <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="I2o-DR-Rw3"/>
+                </slider>
+            </subviews>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="FEj-C2-Iop" secondAttribute="bottom" id="JT7-fa-gby"/>
+                <constraint firstAttribute="trailing" secondItem="FEj-C2-Iop" secondAttribute="trailing" constant="6" id="Mnd-9I-eom"/>
+                <constraint firstItem="IvJ-7I-dDB" firstAttribute="leading" secondItem="qaV-zr-t9f" secondAttribute="leading" id="TAY-P1-IlW"/>
+                <constraint firstItem="FEj-C2-Iop" firstAttribute="leading" secondItem="IvJ-7I-dDB" secondAttribute="trailing" id="bFj-Gl-rht"/>
+                <constraint firstAttribute="bottom" secondItem="IvJ-7I-dDB" secondAttribute="bottom" id="cL3-vR-bAF"/>
+                <constraint firstItem="IvJ-7I-dDB" firstAttribute="centerY" secondItem="FEj-C2-Iop" secondAttribute="centerY" id="fZt-Cm-yN2"/>
+                <constraint firstItem="FEj-C2-Iop" firstAttribute="top" secondItem="qaV-zr-t9f" secondAttribute="top" id="h4D-GQ-64p"/>
+            </constraints>
+            <point key="canvasLocation" x="-108" y="139"/>
+        </customView>
+    </objects>
+    <resources>
+        <image name="NSTouchBarAudioOutputMuteTemplate" width="26" height="30"/>
+        <image name="NSTouchBarAudioOutputVolumeHighTemplate" width="23" height="30"/>
+    </resources>
+</document>

@@ -8,23 +8,28 @@
 
 
 #import "AppDelegate.h"
-#import "SMVideoView.h"
 
 @interface AppDelegate ()
-@property (weak) IBOutlet NSWindow *window;
+@property NSWindowController *player;
 @end
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    int mask = NSWindowStyleMaskTitled|NSWindowStyleMaskClosable|
-    NSWindowStyleMaskMiniaturizable|NSWindowStyleMaskResizable;
-    [self.window setStyleMask:mask];
+//    int mask = NSWindowStyleMaskTitled|NSWindowStyleMaskClosable|
+//    NSWindowStyleMaskMiniaturizable|NSWindowStyleMaskResizable;
+//    [self.window setStyleMask:mask];
+//
+//    SMVideoView *player = [[SMVideoView alloc] initWithFrame:self.window.contentView.frame];
+//    self.window.contentView = player;
+//    [self.window makeKeyWindow];
     
-    SMVideoView *player = [[SMVideoView alloc] initWithFrame:self.window.contentView.frame];
-    self.window.contentView = player;
+    self.player =[[NSWindowController alloc] initWithWindowNibName:@"Player"];
     
-    [self.window makeKeyWindow];
+    [self.player loadWindow];
+    [self.player.window makeKeyWindow];
+    [self.player.window makeMainWindow];
+    [self.player.window center];
 }
 
 

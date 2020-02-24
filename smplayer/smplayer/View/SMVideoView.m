@@ -44,15 +44,17 @@ static inline void check_error(int status)
     self = [super initWithFrame:frame];
     if (self) {
         
+        NSLog(@"ddddddddd---");
+        
         self.wantsLayer =YES;
         self.layer.backgroundColor = [NSColor brownColor].CGColor;
         
-//        NSString *filename = [[NSBundle mainBundle] pathForResource:@"demo" ofType:@"mp4"];
-//        [self initVideo:filename];
+        NSString *filename = [[NSBundle mainBundle] pathForResource:@"demo" ofType:@"mp4"];
+        [self initVideo:filename];
         // 注册文件拖动事件
 //        [self registerForDraggedTypes:[NSArray arrayWithObjects:NSPasteboardTypeFileURL, nil]];
     }
-    [self initControl];
+//    [self initControl];
     return self;
 }
 
@@ -76,20 +78,36 @@ static inline void check_error(int status)
 
 }
 
+- (void) mpv_stop
+{
+    if (mpv) {
+        const char *args[] = {"stop", NULL};
+        mpv_command(mpv, args);
+    }
+}
+
+- (void) mpv_quit
+{
+    if (mpv) {
+        const char *args[] = {"quit", NULL};
+        mpv_command(mpv, args);
+    }
+}
+
 -(void) initMenu{
     NSMenu *m = [[NSMenu alloc] initWithTitle:@"AMainMenu"];
     NSMenuItem *item = [m addItemWithTitle:@"Apple" action:nil keyEquivalent:@""];
     NSMenu *sm = [[NSMenu alloc] initWithTitle:@"Apple"];
     [m setSubmenu:sm forItem:item];
-    [sm addItemWithTitle: @"mpv_command('stop')" action:@selector(mpv_stop) keyEquivalent:@""];
-    [sm addItemWithTitle: @"mpv_command('quit')" action:@selector(mpv_quit) keyEquivalent:@""];
+    [sm addItemWithTitle: @"mpv_command('stop')" action:@selector(mpv_stop) keyEquivalent:@"s"];
+    [sm addItemWithTitle: @"mpv_command('quit')" action:@selector(mpv_quit) keyEquivalent:@"r"];
     [sm addItemWithTitle: @"quit" action:@selector(terminate:) keyEquivalent:@"q"];
     [NSApp setMenu:m];
     [NSApp activateIgnoringOtherApps:YES];
 }
 
 -(void) initVideo:(NSString *)path{
-
+    [self initMenu];
     wrapper = [[NSView alloc] initWithFrame:self.frame];
     [wrapper setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     [self addSubview:wrapper];
@@ -179,21 +197,7 @@ static void wakeup(void *context) {
     [a readEvents];
 }
 
-- (void) mpv_stop
-{
-    if (mpv) {
-        const char *args[] = {"stop", NULL};
-        mpv_command(mpv, args);
-    }
-}
 
-- (void) mpv_quit
-{
-    if (mpv) {
-        const char *args[] = {"quit", NULL};
-        mpv_command(mpv, args);
-    }
-}
 
 
 @end
