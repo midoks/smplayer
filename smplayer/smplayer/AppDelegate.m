@@ -29,7 +29,6 @@
     
     player =[[Player alloc] initWithWindowNibName:@"Player"];
     
-    [player loadWindow];
     [player.window makeKeyWindow];
     [player.window makeMainWindow];
     [player.window center];

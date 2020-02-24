@@ -11,9 +11,10 @@
 @implementation ControlView
 
 -(void)awakeFromNib{
-    self.layer.cornerRadius = 6;
+    
     self.wantsLayer = YES;
-    self.layer.backgroundColor = [NSColor yellowColor].CGColor;
+    self.layer.cornerRadius = 6;
+//    self.layer.backgroundColor = [NSColor yellowColor].CGColor;
 }
 
 -(void)mouseEntered:(NSEvent *)event{

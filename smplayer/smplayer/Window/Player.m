@@ -35,6 +35,7 @@
 - (id)initWithWindow:(NSWindow *)window
 {
     if (self = [super initWithWindow:window]) {
+        [self loadWindow];
     }
 //    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:self.window];
     return self;
@@ -43,18 +44,27 @@
 - (void)windowDidLoad {
     [super windowDidLoad];
     
+    
+    NSLog(@"ddddddddddddddddd----------------start!");
+    
 //    [NSStackView r];
-//    [_oscTopView removeView:_oscTopView];
+//    [_oscTopView removeView:_oscTopView.views];
 //    [_fragVolumeView removeFromSuperview];
     [_oscTopView addView:_fragVolumeView inGravity:NSStackViewGravityLeading];
-    
+    _oscTopView.wantsLayer = YES;
+    _oscTopView.layer.backgroundColor = [NSColor blueColor].CGColor;
     [_oscTopView setVisibilityPriority:NSStackViewVisibilityPriorityDetachOnlyIfNecessary forView:_fragVolumeView];
     
-    _oscTopView.hidden = NO;
-    _oscTopView.alphaValue = 1;
+//    _oscTopView.hidden = NO;
+//    _oscTopView.alphaValue = 1;
     
-    _fragVolumeView.hidden = NO;
-    _fragVolumeView.alphaValue = 1;
+//    NSLog(@"%@", _fragVolumeView);
+//    NSLog(@"%@", _fragVolumeView.subviews);
+//    _fragVolumeView.subviews[0].hidden = NO;
+//    _fragVolumeView.subviews[0].alphaValue = 1;
+    
+//    _fragVolumeView.hidden = NO;
+//    _fragVolumeView.alphaValue = 1;
     
 //    _controlView.frame = NSMakeRect(0, 0, 400, 100);
 //    _controlView.wantsLayer = YES;
