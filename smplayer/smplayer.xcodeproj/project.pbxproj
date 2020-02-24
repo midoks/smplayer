@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		826AB833240416D400B87C63 /* ControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AB832240416D400B87C63 /* ControlView.m */; };
 		82E9A46A24030AEA000DB7F3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E9A46924030AEA000DB7F3 /* AppDelegate.m */; };
 		82E9A46C24030AEE000DB7F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82E9A46B24030AEE000DB7F3 /* Assets.xcassets */; };
 		82E9A46F24030AEE000DB7F3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82E9A46D24030AEE000DB7F3 /* MainMenu.xib */; };
@@ -49,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		826AB831240416D400B87C63 /* ControlView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ControlView.h; sourceTree = "<group>"; };
+		826AB832240416D400B87C63 /* ControlView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ControlView.m; sourceTree = "<group>"; };
 		82E9A46524030AEA000DB7F3 /* smplayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smplayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82E9A46824030AEA000DB7F3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		82E9A46924030AEA000DB7F3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -531,6 +534,8 @@
 			children = (
 				82E9A53424030E81000DB7F3 /* SMVideoView.h */,
 				82E9A53524030E81000DB7F3 /* SMVideoView.m */,
+				826AB831240416D400B87C63 /* ControlView.h */,
+				826AB832240416D400B87C63 /* ControlView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -680,6 +685,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				82E9A5462403947E000DB7F3 /* Player.m in Sources */,
+				826AB833240416D400B87C63 /* ControlView.m in Sources */,
 				82E9A47224030AEE000DB7F3 /* main.m in Sources */,
 				82E9A53624030E81000DB7F3 /* SMVideoView.m in Sources */,
 				82E9A46A24030AEA000DB7F3 /* AppDelegate.m in Sources */,

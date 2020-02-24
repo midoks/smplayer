@@ -8,9 +8,12 @@
 
 
 #import "AppDelegate.h"
+#import "Player.h"
 
-@interface AppDelegate ()
-@property NSWindowController *player;
+@interface AppDelegate (){
+    Player *player;
+}
+//@property (weak)
 @end
 
 @implementation AppDelegate
@@ -24,17 +27,16 @@
 //    self.window.contentView = player;
 //    [self.window makeKeyWindow];
     
-    self.player =[[NSWindowController alloc] initWithWindowNibName:@"Player"];
+    player =[[Player alloc] initWithWindowNibName:@"Player"];
     
-    [self.player loadWindow];
-    [self.player.window makeKeyWindow];
-    [self.player.window makeMainWindow];
-    [self.player.window center];
+    [player loadWindow];
+    [player.window makeKeyWindow];
+    [player.window makeMainWindow];
+    [player.window center];
 }
 
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
-    // Insert code here to tear down your application
 }
 
 

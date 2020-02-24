@@ -1,5 +1,5 @@
 //
-//  Player.h
+//  ControlView.h
 //  smplayer
 //
 //  Created by midoks on 2020/2/24.
@@ -10,8 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Player : NSWindowController
-
+@interface ControlView : NSStackView
 
 @end
 
