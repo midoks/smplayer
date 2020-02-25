@@ -11,10 +11,9 @@
 @implementation ControlView
 
 -(void)awakeFromNib{
-    
+
     self.wantsLayer = YES;
     self.layer.cornerRadius = 6;
-    self.layer.opacity = 2;
     self.translatesAutoresizingMaskIntoConstraints = NO;
 }
 

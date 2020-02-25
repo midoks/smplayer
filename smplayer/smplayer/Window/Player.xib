@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -76,7 +77,7 @@
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                     <connections>
-                        <action selector="VoiceSwitch:" target="-2" id="N0m-R8-mAT"/>
+                        <action selector="voiceSwitchAction:" target="-2" id="yjV-uh-x2Z"/>
                     </connections>
                 </button>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FEj-C2-Iop" userLabel="Volume Slider">
@@ -108,10 +109,13 @@
                         <constraint firstAttribute="height" constant="24" id="WMs-eU-nm9"/>
                         <constraint firstAttribute="width" constant="24" id="l3r-mK-awE"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarPauseTemplate" imagePosition="overlaps" alignment="center" alternateImage="NSTouchBarPlayTemplate" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" inset="2" id="aI5-td-Kxz">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarPauseTemplate" imagePosition="overlaps" alignment="center" alternateImage="NSTouchBarPlayTemplate" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="aI5-td-Kxz">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="playAction:" target="-2" id="h93-be-O8l"/>
+                    </connections>
                 </button>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="f6T-u4-THP" userLabel="Right Button">
                     <rect key="frame" x="90" y="7" width="24" height="24"/>
@@ -119,7 +123,7 @@
                         <constraint firstAttribute="width" constant="24" id="00b-Rd-o7f"/>
                         <constraint firstAttribute="height" constant="24" id="EZr-4v-quz"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarFastForwardTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" inset="2" maxAcceleratorLevel="2" id="Dva-fa-Dhu">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarFastForwardTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" imageScaling="proportionallyUpOrDown" inset="2" maxAcceleratorLevel="2" id="Dva-fa-Dhu">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES" multiLevelAccelerator="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -130,7 +134,7 @@
                         <constraint firstAttribute="height" constant="24" id="9Pr-ZP-1iv"/>
                         <constraint firstAttribute="width" constant="24" id="ZvA-lb-3KT"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarRewindTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" inset="2" maxAcceleratorLevel="2" id="Iwl-id-P8F">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarRewindTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" maxAcceleratorLevel="2" id="Iwl-id-P8F">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES" multiLevelAccelerator="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>

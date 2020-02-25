@@ -13,14 +13,11 @@
 @interface AppDelegate (){
     Player *player;
 }
-//@property (weak)
 @end
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-
-    
     player =[[Player alloc] initWithWindowNibName:@"Player"];
     
     [player.window makeKeyWindow];
@@ -28,9 +25,21 @@
     [player.window center];
 }
 
-
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
 }
 
+
+#pragma mark - URL Schemes
+- (void)application:(NSApplication *)application openURLs:(NSArray<NSURL *> *)urls{
+
+    [player openVideo:[urls[0] path]];
+//    NSAlert *alert = [[NSAlert alloc] init];
+//    [alert setInformativeText:[NSString stringWithFormat:@"%@", [urls[0] path] ]];
+//    [alert beginSheetModalForWindow:player.window
+//                  completionHandler:^(NSModalResponse returnCode){
+//        //用户点击告警上面的按钮后的回调
+//        NSLog(@"returnCode : %ld",(long)returnCode);
+//    }];
+}
 
 @end

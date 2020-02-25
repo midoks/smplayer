@@ -12,7 +12,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SMVideoView : NSView
 
--(void)stopVoice;
+-(void) openVideo:(NSString *)path;
+-(void)toggleVoice;
+-(void)stop;
+-(void)start;
 @end
 
 NS_ASSUME_NONNULL_END

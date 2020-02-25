@@ -19,10 +19,7 @@
 #import "ControlView.h"
 #import "SMVideoView.h"
 
-@interface Player (){
-    SMVideoView *player;
-}
-
+@interface Player ()
 
 //控制器
 @property (weak) IBOutlet ControlView *controlView;
@@ -47,36 +44,47 @@
     return self;
 }
 
+-(void)windowWillLoad{
+//    NSLog(@"windowWillLoad:%@", NSStringFromRect(self.window.contentView.frame));
+}
+
 - (void)windowDidLoad {
     [super windowDidLoad];
     
-    [self initVideo];
+    NSLog(@"windowDidLoad:%@", NSStringFromRect(self.window.contentView.frame));
     
-//    NSTouchBarTextListTemplate
-    NSButton *list = [[NSButton alloc] initWithFrame:CGRectMake(0, 0, 48, 24)];
+    // 窗口可以拖拽
+    self.window.movableByWindowBackground = YES;
+    [self regEvent];
+    [self initVideoView];
+    
+    // NSTouchBarTextListTemplate
+    NSButton *list = [[NSButton alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
     [list setBezelStyle:NSBezelStyleRegularSquare];
     [list setImage:[NSImage imageNamed:NSImageNameTouchBarAddTemplate]];
     [list setBordered:NO];
     [list setTransparent:YES];
     [_fragToolbarView addView:list inGravity:NSStackViewGravityLeading];
     
-    NSButton *list2 = [[NSButton alloc] initWithFrame:CGRectMake(0, 0, 48, 24)];
-    [list2 setBezelStyle:NSBezelStyleRegularSquare];
-    [list2 setImage:[NSImage imageNamed:NSImageNameTouchBarAddTemplate]];
-    [list2 setBordered:NO];
-    [list2 setTransparent:YES];
-    [_fragToolbarView addView:list2 inGravity:NSStackViewGravityCenter];
+    [self initControlView];
     
-    NSButton *list3 = [[NSButton alloc] initWithFrame:CGRectMake(0, 0, 48, 24)];
-    [list3 setBezelStyle:NSBezelStyleRegularSquare];
-    [list3 setImage:[NSImage imageNamed:NSImageNameTouchBarAddTemplate]];
-    [list3 setBordered:NO];
-//    [list3 setsca];
-    [list3 setTransparent:YES];
-    [_fragToolbarView addView:list3 inGravity:NSStackViewGravityTrailing];
-    
-//    _fragToolbarView.frame= CGRectMake(0, 0, 200, 24);
-//    _fragVolumeView.frame = CGRectMake(0, 0, 120, 24);
+}
+
+-(void)regEvent{
+    // 注册文件拖动事件
+    [self.window registerForDraggedTypes:[NSArray arrayWithObjects:NSPasteboardTypeFileURL, nil]];
+}
+
+-(void)initVideoView {
+    player = [[SMVideoView alloc] initWithFrame:self.window.contentView.frame];
+    //    self.window.contentView = player;
+    //    [player setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.window.contentView addSubview:player positioned:NSWindowBelow relativeTo:nil];
+}
+
+-(void)initControlView {
+    //    _fragToolbarView.frame= CGRectMake(0, 0, 200, 24);
+    //    _fragVolumeView.frame = CGRectMake(0, 0, 120, 24);
     // 控制视图
     [_oscTopView addView:_fragVolumeView inGravity:NSStackViewGravityLeading];
     [_oscTopView setVisibilityPriority:NSStackViewVisibilityPriorityDetachOnlyIfNecessary forView:_fragVolumeView];
@@ -87,33 +95,48 @@
     [_oscTopView addView:_fragToolbarView inGravity:NSStackViewGravityTrailing];
     [_oscTopView setVisibilityPriority:NSStackViewVisibilityPriorityDetachOnlyIfNecessary forView:_fragToolbarView];
     
-//    _fragVolumeView.hidden = YES;
-    
     // 时间线
     NSRect newFrame = NSMakeRect(_flagTimelineView.frame.origin.x, _flagTimelineView.frame.origin.y, _timeControlView.frame.size.width, _flagTimelineView.frame.size.height);
     
     _flagTimelineView.frame =newFrame;
     [_timeControlView addSubview:_flagTimelineView];
-    
 }
 
--(void)initVideo{
-    
-    NSLog(@"%@", NSStringFromRect(self.window.contentView.frame) );
-    player = [[SMVideoView alloc] initWithFrame:self.window.contentView.frame];
-    //    self.window.contentView = player;
-    //    [player setTranslatesAutoresizingMaskIntoConstraints:NO];
-    [self.window.contentView addSubview:player positioned:NSWindowBelow relativeTo:nil];
-    
-    
-    //    for (NSLayoutConstraint *v in self.window.contentView.constraints) {
-    //        NSLog(@"%@",v);
-    //    }
-    
+
+#pragma mark - 功能
+
+/// 声音关闭开启按钮
+- (IBAction)voiceSwitchAction:(id)sender {
+    [player toggleVoice];
 }
 
-- (IBAction)VoiceSwitch:(id)sender {    
-    [player stopVoice];
+/// 播放暂停按钮
+- (IBAction)playAction:(id)sender{
+    NSButton *p = (NSButton*)sender;
+    if (p.state == NSControlStateValueOff){
+        [player stop];
+    } else if (p.state == NSControlStateValueOn){
+        [player start];
+    }
+}
+
+#pragma mark - 外部文件拖拽功能
+// 当文件被拖动到界面触发
+- (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender {
+    return NSDragOperationCopy;
+}
+
+//当文件在界面中放手
+-(BOOL)prepareForDragOperation:(id<NSDraggingInfo>)sender {
+    NSPasteboard *zPasteboard = [sender draggingPasteboard];
+    NSArray *files = [zPasteboard propertyListForType:NSFilenamesPboardType];
+    [player openVideo:files[0]];
+    return YES;
+}
+
+#pragma mark - AppDelegate
+-(void)openVideo:(NSString *)path {
+    [player openVideo:path];
 }
 
 @end
