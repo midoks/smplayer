@@ -32,7 +32,7 @@
                         <rect key="frame" x="7" y="10" width="440" height="67"/>
                         <subviews>
                             <stackView orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XtT-TH-TbO" userLabel="Osc Top View">
-                                <rect key="frame" x="5" y="38" width="430" height="24"/>
+                                <rect key="frame" x="12" y="38" width="416" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="ZGj-m5-9I1"/>
                                 </constraints>
@@ -51,8 +51,8 @@
                             <constraint firstAttribute="width" constant="440" id="Q9k-MS-sCM"/>
                             <constraint firstAttribute="height" constant="67" id="QaM-8t-9u1"/>
                             <constraint firstItem="362-61-0Gb" firstAttribute="top" secondItem="XtT-TH-TbO" secondAttribute="bottom" constant="4.5" id="Rxb-p2-W2g"/>
-                            <constraint firstItem="XtT-TH-TbO" firstAttribute="leading" secondItem="yrm-bz-zb6" secondAttribute="leading" constant="5" id="Z4t-gf-9in"/>
-                            <constraint firstAttribute="trailing" secondItem="XtT-TH-TbO" secondAttribute="trailing" constant="5" id="qMT-bu-Hxw"/>
+                            <constraint firstItem="XtT-TH-TbO" firstAttribute="leading" secondItem="yrm-bz-zb6" secondAttribute="leading" constant="12" id="Z4t-gf-9in"/>
+                            <constraint firstAttribute="trailing" secondItem="XtT-TH-TbO" secondAttribute="trailing" constant="12" id="qMT-bu-Hxw"/>
                         </constraints>
                     </visualEffectView>
                 </subviews>
@@ -67,10 +67,10 @@
             <point key="canvasLocation" x="-1095.5" y="124.5"/>
         </window>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="qaV-zr-t9f" userLabel="Frag Volume View">
-            <rect key="frame" x="0.0" y="0.0" width="107" height="20"/>
+            <rect key="frame" x="0.0" y="0.0" width="100" height="20"/>
             <subviews>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="IvJ-7I-dDB" userLabel="Voice Control">
-                    <rect key="frame" x="0.0" y="0.0" width="32" height="20"/>
+                    <rect key="frame" x="0.0" y="0.0" width="34" height="20"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarAudioOutputVolumeHighTemplate" imagePosition="overlaps" alignment="center" alternateImage="NSTouchBarAudioOutputMuteTemplate" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="zlS-4R-zGl">
                         <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
@@ -80,8 +80,11 @@
                     </connections>
                 </button>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FEj-C2-Iop" userLabel="Volume Slider">
-                    <rect key="frame" x="30" y="-2" width="73" height="24"/>
-                    <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="40.816326530612244" tickMarkPosition="above" sliderType="linear" id="I2o-DR-Rw3"/>
+                    <rect key="frame" x="32" y="-2" width="64" height="24"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="2kn-fS-wYb"/>
+                    </constraints>
+                    <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="I2o-DR-Rw3"/>
                 </slider>
             </subviews>
             <constraints>
@@ -105,7 +108,7 @@
                         <constraint firstAttribute="height" constant="24" id="WMs-eU-nm9"/>
                         <constraint firstAttribute="width" constant="24" id="l3r-mK-awE"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarPauseTemplate" imagePosition="overlaps" alignment="center" alternateImage="NSTouchBarPlayTemplate" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="aI5-td-Kxz">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarPauseTemplate" imagePosition="overlaps" alignment="center" alternateImage="NSTouchBarPlayTemplate" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" inset="2" id="aI5-td-Kxz">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -116,7 +119,7 @@
                         <constraint firstAttribute="width" constant="24" id="00b-Rd-o7f"/>
                         <constraint firstAttribute="height" constant="24" id="EZr-4v-quz"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarFastForwardTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" maxAcceleratorLevel="2" id="Dva-fa-Dhu">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarFastForwardTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" inset="2" maxAcceleratorLevel="2" id="Dva-fa-Dhu">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES" multiLevelAccelerator="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -127,7 +130,7 @@
                         <constraint firstAttribute="height" constant="24" id="9Pr-ZP-1iv"/>
                         <constraint firstAttribute="width" constant="24" id="ZvA-lb-3KT"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarRewindTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" maxAcceleratorLevel="2" id="Iwl-id-P8F">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarRewindTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" inset="2" maxAcceleratorLevel="2" id="Iwl-id-P8F">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES" multiLevelAccelerator="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -192,6 +195,21 @@
             </constraints>
             <point key="canvasLocation" x="-1099" y="453.5"/>
         </customView>
+        <customView id="IfZ-Q1-ZVT">
+            <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xcF-D6-xw4">
+                    <rect key="frame" x="47" y="19" width="69" height="60"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSTouchBarTextListTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="np4-QI-BgW">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="128.5" y="396"/>
+        </customView>
     </objects>
     <resources>
         <image name="NSTouchBarAudioOutputMuteTemplate" width="26" height="30"/>
@@ -200,5 +218,6 @@
         <image name="NSTouchBarPauseTemplate" width="11" height="30"/>
         <image name="NSTouchBarPlayTemplate" width="14" height="30"/>
         <image name="NSTouchBarRewindTemplate" width="22" height="30"/>
+        <image name="NSTouchBarTextListTemplate" width="18" height="30"/>
     </resources>
 </document>
