@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ControlView : NSStackView
+@interface ControlView : NSVisualEffectView
 
 @end
 

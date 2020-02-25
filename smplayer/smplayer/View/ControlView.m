@@ -14,7 +14,8 @@
     
     self.wantsLayer = YES;
     self.layer.cornerRadius = 6;
-//    self.layer.backgroundColor = [NSColor yellowColor].CGColor;
+    self.layer.opacity = 2;
+    self.translatesAutoresizingMaskIntoConstraints = NO;
 }
 
 -(void)mouseEntered:(NSEvent *)event{

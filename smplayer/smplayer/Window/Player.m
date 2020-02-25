@@ -17,15 +17,20 @@
 
 #import "Player.h"
 #import "ControlView.h"
+#import "SMVideoView.h"
 
-@interface Player ()
+@interface Player (){
+    SMVideoView *player;
+}
 
 
 //控制器
 @property (weak) IBOutlet ControlView *controlView;
 @property (weak) IBOutlet NSStackView *oscTopView;
 
-@property (weak) IBOutlet NSView * fragVolumeView;
+@property (weak) IBOutlet NSView *fragVolumeView;
+@property (weak) IBOutlet NSView *fragControlView;
+@property (strong) IBOutlet NSStackView *fragToolbarView;
 
 @end
 
@@ -37,44 +42,49 @@
     if (self = [super initWithWindow:window]) {
         [self loadWindow];
     }
-//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(windowWillClose:) name:NSWindowWillCloseNotification object:self.window];
     return self;
 }
 
 - (void)windowDidLoad {
     [super windowDidLoad];
+    //    int mask = NSWindowStyleMaskTitled|NSWindowStyleMaskClosable|
+    //    NSWindowStyleMaskMiniaturizable|NSWindowStyleMaskResizable;
+    //    [self.window setStyleMask:mask];
     
+    [self initVideo];
     
-    NSLog(@"ddddddddddddddddd----------------start!");
-    
-//    [NSStackView r];
-//    [_oscTopView removeView:_oscTopView.views];
-//    [_fragVolumeView removeFromSuperview];
     [_oscTopView addView:_fragVolumeView inGravity:NSStackViewGravityLeading];
-    _oscTopView.wantsLayer = YES;
-    _oscTopView.layer.backgroundColor = [NSColor blueColor].CGColor;
     [_oscTopView setVisibilityPriority:NSStackViewVisibilityPriorityDetachOnlyIfNecessary forView:_fragVolumeView];
     
-//    _oscTopView.hidden = NO;
-//    _oscTopView.alphaValue = 1;
+    [_oscTopView addView:_fragControlView inGravity:NSStackViewGravityLeading];
+    [_oscTopView setVisibilityPriority:NSStackViewVisibilityPriorityDetachOnlyIfNecessary forView:_fragControlView];
     
-//    NSLog(@"%@", _fragVolumeView);
-//    NSLog(@"%@", _fragVolumeView.subviews);
-//    _fragVolumeView.subviews[0].hidden = NO;
-//    _fragVolumeView.subviews[0].alphaValue = 1;
+    [_oscTopView addView:_fragToolbarView inGravity:NSStackViewGravityLeading];
+    [_oscTopView setVisibilityPriority:NSStackViewVisibilityPriorityDetachOnlyIfNecessary forView:_fragToolbarView];
     
-//    _fragVolumeView.hidden = NO;
-//    _fragVolumeView.alphaValue = 1;
+    [self.window.contentView addSubview:_controlView];
     
-//    _controlView.frame = NSMakeRect(0, 0, 400, 100);
-//    _controlView.wantsLayer = YES;
-//    _controlView.layer.backgroundColor=[NSColor redColor].CGColor;
-//
-//    [self.window.contentView addSubview:_controlView];
+}
+
+-(void)initVideo{
+    
+    NSLog(@"%@", NSStringFromRect(self.window.contentView.frame) );
+    player = [[SMVideoView alloc] initWithFrame:self.window.contentView.frame];
+    //    self.window.contentView = player;
+//    [player setTranslatesAutoresizingMaskIntoConstraints:NO];
+    [self.window.contentView addSubview:player positioned:NSWindowBelow relativeTo:nil];
     
     
+//    for (NSLayoutConstraint *v in self.window.contentView.constraints) {
+//        NSLog(@"%@",v);
+//    }
     
+}
+
+- (IBAction)VoiceSwitch:(id)sender {
+    NSLog(@"ss");
     
+    [player stopVoice];
 }
 
 @end

@@ -27,8 +27,6 @@ static inline void check_error(int status)
 }
 
 
-
-
 #import "SMVideoView.h"
 
 @interface SMVideoView (){
@@ -43,8 +41,7 @@ static inline void check_error(int status)
 - (id)initWithFrame:(NSRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        
-        NSLog(@"ddddddddd---");
+    
         
         self.wantsLayer =YES;
         self.layer.backgroundColor = [NSColor brownColor].CGColor;
@@ -59,23 +56,12 @@ static inline void check_error(int status)
 }
 
 -(void)initControl{
-    NSLog(@"initControl");
-    [self.fragVolumeView setFrame:NSMakeRect(10, 10, 200, 10)];
-    [self.fragVolumeView removeFromSuperview];
-    
-    self.fragVolumeView.wantsLayer =YES;
-    self.fragVolumeView.layer.backgroundColor = [NSColor brownColor].CGColor;
-    [self addSubview:self.fragVolumeView];
-    
-//    [self setAccessibilityAlternateUIVisible:YES];
-//    [self setVisibilityPriority:NSStackViewVisibilityPriorityDetachOnlyIfNecessary forView:self.fragVolumeView];
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
     
-    [self.fragVolumeView setFrame:NSMakeRect(10, 10, 200, 10)];
-
+    NSLog(@"%@", NSStringFromRect([NSApp mainWindow].contentView.frame));
 }
 
 - (void) mpv_stop
@@ -124,19 +110,6 @@ static inline void check_error(int status)
         
         int64_t wid = (intptr_t) self->wrapper;
         check_error(mpv_set_option(self->mpv, "wid", MPV_FORMAT_INT64, &wid));
-        
-        // Maybe set some options here, like default key bindings.
-        // NOTE: Interaction with the window seems to be broken for now.
-        //        check_error(mpv_set_option_string(self->mpv, "input-default-bindings", "yes"));
-        
-        //        // for testing!
-        //        check_error(mpv_set_option_string(self->mpv, "input-media-keys", "yes"));
-        //        check_error(mpv_set_option_string(self->mpv, "input-cursor", "no"));
-        //        check_error(mpv_set_option_string(self->mpv, "input-vo-keyboard", "yes"));
-        
-        // request important errors
-        //        check_error(mpv_request_log_messages(self->mpv, "warn"));
-        
         check_error(mpv_initialize(self->mpv));
         
         // Register to be woken up whenever mpv generates new events.
@@ -197,6 +170,16 @@ static void wakeup(void *context) {
     [a readEvents];
 }
 
+# pragma - Public Methods
+-(void)stopVoice{
+    if (mpv) {
+//        const char *args[] = {"mute", NULL};
+//        mpv_command(mpv, args);
+        
+        int data = 1;
+        mpv_set_property(mpv, "mute", MPV_FORMAT_FLAG, &data);
+    }
+}
 
 
 

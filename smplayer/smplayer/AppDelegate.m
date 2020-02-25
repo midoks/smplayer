@@ -19,13 +19,7 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-//    int mask = NSWindowStyleMaskTitled|NSWindowStyleMaskClosable|
-//    NSWindowStyleMaskMiniaturizable|NSWindowStyleMaskResizable;
-//    [self.window setStyleMask:mask];
-//
-//    SMVideoView *player = [[SMVideoView alloc] initWithFrame:self.window.contentView.frame];
-//    self.window.contentView = player;
-//    [self.window makeKeyWindow];
+
     
     player =[[Player alloc] initWithWindowNibName:@"Player"];
     
