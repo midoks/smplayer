@@ -27,10 +27,12 @@
 //控制器
 @property (weak) IBOutlet ControlView *controlView;
 @property (weak) IBOutlet NSStackView *oscTopView;
+@property (weak) IBOutlet NSView *timeControlView;
 
 @property (weak) IBOutlet NSView *fragVolumeView;
 @property (weak) IBOutlet NSView *fragControlView;
 @property (strong) IBOutlet NSStackView *fragToolbarView;
+@property (strong) IBOutlet NSView *flagTimelineView;
 
 @end
 
@@ -47,12 +49,10 @@
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-    //    int mask = NSWindowStyleMaskTitled|NSWindowStyleMaskClosable|
-    //    NSWindowStyleMaskMiniaturizable|NSWindowStyleMaskResizable;
-    //    [self.window setStyleMask:mask];
     
     [self initVideo];
     
+    // 控制视图
     [_oscTopView addView:_fragVolumeView inGravity:NSStackViewGravityLeading];
     [_oscTopView setVisibilityPriority:NSStackViewVisibilityPriorityDetachOnlyIfNecessary forView:_fragVolumeView];
     
@@ -62,7 +62,12 @@
     [_oscTopView addView:_fragToolbarView inGravity:NSStackViewGravityLeading];
     [_oscTopView setVisibilityPriority:NSStackViewVisibilityPriorityDetachOnlyIfNecessary forView:_fragToolbarView];
     
-    [self.window.contentView addSubview:_controlView];
+    
+    // 时间线
+    NSRect newFrame = NSMakeRect(_flagTimelineView.frame.origin.x, _flagTimelineView.frame.origin.y, _timeControlView.frame.size.width, _flagTimelineView.frame.size.height);
+    
+    _flagTimelineView.frame =newFrame;
+    [_timeControlView addSubview:_flagTimelineView];
     
 }
 
@@ -81,9 +86,7 @@
     
 }
 
-- (IBAction)VoiceSwitch:(id)sender {
-    NSLog(@"ss");
-    
+- (IBAction)VoiceSwitch:(id)sender {    
     [player stopVoice];
 }
 

@@ -8,10 +8,12 @@
         <customObject id="-2" userLabel="File's Owner" customClass="Player" customModule="smplayer" customModuleProvider="target">
             <connections>
                 <outlet property="controlView" destination="yrm-bz-zb6" id="LZb-Jc-euS"/>
+                <outlet property="flagTimelineView" destination="rlb-ly-BpB" id="eQz-cI-6Ww"/>
                 <outlet property="fragControlView" destination="4UG-18-z1k" id="CZE-fE-4Qd"/>
                 <outlet property="fragToolbarView" destination="5GU-o6-Sdc" id="GzK-Dg-0ij"/>
                 <outlet property="fragVolumeView" destination="qaV-zr-t9f" id="YKA-Qb-0be"/>
                 <outlet property="oscTopView" destination="XtT-TH-TbO" id="dD1-Gf-huQ"/>
+                <outlet property="timeControlView" destination="362-61-0Gb" id="MX3-Ji-Mqy"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="vu8-Ih-cWc"/>
             </connections>
         </customObject>
@@ -20,23 +22,23 @@
         <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="608" y="330" width="355" height="235"/>
+            <rect key="contentRect" x="608" y="330" width="453" height="271"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="se5-gp-TjO" userLabel="View">
-                <rect key="frame" x="0.0" y="0.0" width="355" height="235"/>
+                <rect key="frame" x="0.0" y="0.0" width="453" height="271"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <visualEffectView blendingMode="withinWindow" material="popover" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="yrm-bz-zb6" customClass="ControlView">
-                        <rect key="frame" x="13" y="10" width="330" height="67"/>
+                    <visualEffectView blendingMode="behindWindow" material="popover" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="yrm-bz-zb6" customClass="ControlView">
+                        <rect key="frame" x="7" y="10" width="440" height="67"/>
                         <subviews>
                             <stackView orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XtT-TH-TbO" userLabel="Osc Top View">
-                                <rect key="frame" x="5" y="38" width="320" height="24"/>
+                                <rect key="frame" x="5" y="38" width="430" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="ZGj-m5-9I1"/>
                                 </constraints>
                             </stackView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="362-61-0Gb" userLabel="Time Control View">
-                                <rect key="frame" x="5" y="10" width="320" height="24"/>
+                                <rect key="frame" x="5" y="10" width="430" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="xxS-Gr-v3Q"/>
                                 </constraints>
@@ -46,7 +48,7 @@
                             <constraint firstItem="362-61-0Gb" firstAttribute="leading" secondItem="yrm-bz-zb6" secondAttribute="leading" constant="5" id="3s7-Y1-rTC"/>
                             <constraint firstAttribute="trailing" secondItem="362-61-0Gb" secondAttribute="trailing" constant="5" id="83Q-3e-B1B"/>
                             <constraint firstItem="XtT-TH-TbO" firstAttribute="top" secondItem="yrm-bz-zb6" secondAttribute="top" constant="5" id="DTV-sW-41N"/>
-                            <constraint firstAttribute="width" constant="330" id="Q9k-MS-sCM"/>
+                            <constraint firstAttribute="width" constant="440" id="Q9k-MS-sCM"/>
                             <constraint firstAttribute="height" constant="67" id="QaM-8t-9u1"/>
                             <constraint firstItem="362-61-0Gb" firstAttribute="top" secondItem="XtT-TH-TbO" secondAttribute="bottom" constant="4.5" id="Rxb-p2-W2g"/>
                             <constraint firstItem="XtT-TH-TbO" firstAttribute="leading" secondItem="yrm-bz-zb6" secondAttribute="leading" constant="5" id="Z4t-gf-9in"/>
@@ -62,14 +64,14 @@
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="-1144.5" y="106.5"/>
+            <point key="canvasLocation" x="-1095.5" y="124.5"/>
         </window>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="qaV-zr-t9f" userLabel="Frag Volume View">
             <rect key="frame" x="0.0" y="0.0" width="107" height="20"/>
             <subviews>
                 <button translatesAutoresizingMaskIntoConstraints="NO" id="IvJ-7I-dDB" userLabel="Voice Control">
-                    <rect key="frame" x="0.0" y="0.0" width="26" height="20"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarAudioOutputVolumeHighTemplate" imagePosition="overlaps" alignment="center" alternateImage="NSTouchBarAudioOutputMuteTemplate" transparent="YES" imageScaling="proportionallyDown" inset="2" id="zlS-4R-zGl">
+                    <rect key="frame" x="0.0" y="0.0" width="32" height="20"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarAudioOutputVolumeHighTemplate" imagePosition="overlaps" alignment="center" alternateImage="NSTouchBarAudioOutputMuteTemplate" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="zlS-4R-zGl">
                         <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -78,7 +80,7 @@
                     </connections>
                 </button>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FEj-C2-Iop" userLabel="Volume Slider">
-                    <rect key="frame" x="24" y="-2" width="79" height="24"/>
+                    <rect key="frame" x="30" y="-2" width="73" height="24"/>
                     <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="40.816326530612244" tickMarkPosition="above" sliderType="linear" id="I2o-DR-Rw3"/>
                 </slider>
             </subviews>
@@ -103,8 +105,8 @@
                         <constraint firstAttribute="height" constant="24" id="WMs-eU-nm9"/>
                         <constraint firstAttribute="width" constant="24" id="l3r-mK-awE"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarPauseTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" transparent="YES" imageScaling="proportionallyDown" inset="2" maxAcceleratorLevel="2" id="aI5-td-Kxz">
-                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES" multiLevelAccelerator="YES"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarPauseTemplate" imagePosition="overlaps" alignment="center" alternateImage="NSTouchBarPlayTemplate" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="aI5-td-Kxz">
+                        <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
                 </button>
@@ -114,7 +116,7 @@
                         <constraint firstAttribute="width" constant="24" id="00b-Rd-o7f"/>
                         <constraint firstAttribute="height" constant="24" id="EZr-4v-quz"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarFastForwardTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" transparent="YES" imageScaling="proportionallyDown" inset="2" maxAcceleratorLevel="2" id="Dva-fa-Dhu">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarFastForwardTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" maxAcceleratorLevel="2" id="Dva-fa-Dhu">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES" multiLevelAccelerator="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -125,7 +127,7 @@
                         <constraint firstAttribute="height" constant="24" id="9Pr-ZP-1iv"/>
                         <constraint firstAttribute="width" constant="24" id="ZvA-lb-3KT"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarRewindTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" transparent="YES" imageScaling="proportionallyDown" inset="2" maxAcceleratorLevel="2" id="Iwl-id-P8F">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarRewindTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" maxAcceleratorLevel="2" id="Iwl-id-P8F">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES" multiLevelAccelerator="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -145,15 +147,58 @@
         <stackView orientation="horizontal" alignment="top" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" id="5GU-o6-Sdc" userLabel="Frag Toolbar View">
             <rect key="frame" x="0.0" y="0.0" width="175" height="30"/>
             <autoresizingMask key="autoresizingMask"/>
-            <nil name="visibilityPriorities"/>
             <point key="canvasLocation" x="16.5" y="-25"/>
         </stackView>
+        <customView id="rlb-ly-BpB" userLabel="Frag Timeline View">
+            <rect key="frame" x="0.0" y="0.0" width="306" height="24"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RMK-Xi-um2" userLabel="Player Slider">
+                    <rect key="frame" x="48" y="3" width="210" height="19"/>
+                    <sliderCell key="cell" lineBreakMode="charWrapping" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="wml-C8-VAO"/>
+                </slider>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FV6-gj-LeZ" userLabel="RLabel">
+                    <rect key="frame" x="256" y="4" width="50" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="--:--" id="4Uf-Kn-K6c">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pbd-pY-WcV" userLabel="LLabel">
+                    <rect key="frame" x="0.0" y="4" width="50" height="16"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="46" id="ixc-Hc-csA"/>
+                    </constraints>
+                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="--:--" id="S2o-ea-K31">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="RMK-Xi-um2" firstAttribute="centerY" secondItem="rlb-ly-BpB" secondAttribute="centerY" id="3c9-by-atl"/>
+                <constraint firstItem="FV6-gj-LeZ" firstAttribute="leading" secondItem="RMK-Xi-um2" secondAttribute="trailing" constant="2" id="8Mh-X7-RMr"/>
+                <constraint firstItem="RMK-Xi-um2" firstAttribute="centerX" secondItem="rlb-ly-BpB" secondAttribute="centerX" id="CfY-8C-arS"/>
+                <constraint firstItem="Pbd-pY-WcV" firstAttribute="leading" secondItem="rlb-ly-BpB" secondAttribute="leading" constant="2" id="Kty-gO-E8z"/>
+                <constraint firstAttribute="trailing" secondItem="FV6-gj-LeZ" secondAttribute="trailing" constant="2" id="RZS-CN-vHM"/>
+                <constraint firstItem="FV6-gj-LeZ" firstAttribute="centerY" secondItem="rlb-ly-BpB" secondAttribute="centerY" id="Wkw-fH-DTr"/>
+                <constraint firstAttribute="bottom" secondItem="RMK-Xi-um2" secondAttribute="bottom" constant="4.5" id="aRc-Bf-8eh"/>
+                <constraint firstItem="RMK-Xi-um2" firstAttribute="leading" secondItem="Pbd-pY-WcV" secondAttribute="trailing" constant="2" id="d0c-6x-WqJ"/>
+                <constraint firstItem="RMK-Xi-um2" firstAttribute="top" secondItem="rlb-ly-BpB" secondAttribute="top" constant="4.5" id="d5O-Af-DvS"/>
+                <constraint firstItem="RMK-Xi-um2" firstAttribute="centerY" secondItem="rlb-ly-BpB" secondAttribute="centerY" id="eHQ-9Q-Vpq"/>
+                <constraint firstItem="Pbd-pY-WcV" firstAttribute="centerY" secondItem="rlb-ly-BpB" secondAttribute="centerY" id="idU-vb-6dW"/>
+            </constraints>
+            <point key="canvasLocation" x="-1099" y="453.5"/>
+        </customView>
     </objects>
     <resources>
         <image name="NSTouchBarAudioOutputMuteTemplate" width="26" height="30"/>
         <image name="NSTouchBarAudioOutputVolumeHighTemplate" width="23" height="30"/>
         <image name="NSTouchBarFastForwardTemplate" width="22" height="30"/>
         <image name="NSTouchBarPauseTemplate" width="11" height="30"/>
+        <image name="NSTouchBarPlayTemplate" width="14" height="30"/>
         <image name="NSTouchBarRewindTemplate" width="22" height="30"/>
     </resources>
 </document>
