@@ -45,21 +45,26 @@ static void wakeup(void *context) {
     [video readEvents];
 }
 
+static SMVideoView *_instance = nil;
+static dispatch_once_t _instance_once;
++ (id)Instance:(NSRect)frame {
+    dispatch_once(&_instance_once, ^{
+        _instance = [[SMVideoView alloc] initWithFrame:frame];
+    });
+    return _instance;
+}
+
 - (id)initWithFrame:(NSRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        self.wantsLayer =YES;
-        self.layer.backgroundColor = [NSColor brownColor].CGColor;
         _switchVoice = 0;
-        [self initUI];
+        [self setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
     }
     return self;
 }
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    
-    NSLog(@"%@", NSStringFromRect([NSApp mainWindow].contentView.frame));
     
     //监听鼠标事件
     [self addTrackingArea:[[NSTrackingArea alloc] initWithRect:dirtyRect options:NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved |
@@ -76,74 +81,53 @@ static void wakeup(void *context) {
     [self becomeFirstResponder];
 }
 
-
-
-- (void) mpv_stop
-{
-    if (mpv) {
-        const char *args[] = {"stop", NULL};
-        mpv_command(mpv, args);
-    }
-}
-
-- (void) mpv_quit
-{
-    if (mpv) {
-        const char *args[] = {"quit", NULL};
-        mpv_command(mpv, args);
-    }
-}
-
--(void) initUI{
-    wrapper = [[NSView alloc] initWithFrame:self.frame];
-    [wrapper setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
-    [self addSubview:wrapper];
-    self->mpv = mpv_create();
-    if (!self->mpv) {
+-(void) initVideo {
+//    wrapper = [[NSView alloc] initWithFrame:self.frame];
+//    [wrapper setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
+//    [self addSubview:wrapper];
+//    int64_t wid = (intptr_t) self->wrapper;
+    
+    mpv = mpv_create();
+    if (!mpv) {
         NSLog(@"%@", @"failed creating context");
         exit(-1);
     }
     
-    int64_t wid = (intptr_t) self->wrapper;
-    check_error(mpv_set_option(self->mpv, "wid", MPV_FORMAT_INT64, &wid));
-    check_error(mpv_initialize(self->mpv));
+    check_error(mpv_initialize(mpv));
+    
+    //libmpv,gpu
+//    mpv_set_property_string(mpv, "vo", "libmpv");
+//    mpv_set_property_string(mpv, "keepaspect", "no");
+//    mpv_set_property_string(mpv, "gpu-hwdec-interop", "auto");
+    mpv_request_log_messages(mpv, "warn");
+
+    int64_t wid = (intptr_t) _instance;
+    check_error(mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &wid));
+    
+    
 }
 
--(void) initMenu{
-    NSMenu *m = [[NSMenu alloc] initWithTitle:@"AMainMenu"];
-    NSMenuItem *item = [m addItemWithTitle:@"Apple" action:nil keyEquivalent:@""];
-    NSMenu *sm = [[NSMenu alloc] initWithTitle:@"Apple"];
-    [m setSubmenu:sm forItem:item];
-    [sm addItemWithTitle: @"mpv_command('stop')" action:@selector(mpv_stop) keyEquivalent:@"s"];
-    [sm addItemWithTitle: @"mpv_command('quit')" action:@selector(mpv_quit) keyEquivalent:@"r"];
-    [sm addItemWithTitle: @"quit" action:@selector(terminate:) keyEquivalent:@"q"];
-    [NSApp setMenu:m];
-    [NSApp activateIgnoringOtherApps:YES];
-}
-
--(void) openVideo:(NSString *)path{
-    //    [self initMenu];
+-(void)openVideo:(NSString *)path{
     
     // Deal with MPV in the background.
     queue = dispatch_queue_create("mpv", DISPATCH_QUEUE_SERIAL);
     dispatch_async(queue, ^{
-        
         // Register to be woken up whenever mpv generates new events.
         mpv_set_wakeup_callback(self->mpv, wakeup, (__bridge void *) self);
-        
-        // Load the indicated file
-        const char *cmd[] = {"loadfile", path.UTF8String, NULL};
-        check_error(mpv_command(self->mpv, cmd));
     });
+    
+    // Load the indicated file
+    const char *cmd[] = {"loadfile", path.UTF8String, NULL};
+    check_error(mpv_command(self->mpv, cmd));
 }
 
-- (void) handleEvent:(mpv_event *)event
+- (void)handleEvent:(mpv_event *)event
 {
     switch (event->event_id) {
         case MPV_EVENT_SHUTDOWN: {
             mpv_detach_destroy(mpv);
             mpv = NULL;
-            printf("event: shutdown\n");
+            NSLog(@"event: shutdown");
             break;
         }
             
@@ -154,17 +138,17 @@ static void wakeup(void *context) {
             
         case MPV_EVENT_VIDEO_RECONFIG: {
             dispatch_async(dispatch_get_main_queue(), ^{
-                NSArray *subviews = [self->wrapper subviews];
-                if ([subviews count] > 0) {
+//                NSArray *subviews = [self->wrapper subviews];
+//                if ([subviews count] > 0) {
                     // mpv's events view
-                    //                    NSView *eview = [self->wrapper subviews][0];
-                    //                    [self->_window makeFirstResponder:eview];
-                }
+                    // NSView *eview = [self->wrapper subviews][0];
+                    // [self->_window makeFirstResponder:eview];
+//                }
             });
         }
-            
-        default:
-            printf("event: %s\n", mpv_event_name(event->event_id));
+        default:{
+            NSLog(@"event: %s\n", mpv_event_name(event->event_id));
+        }
     }
 }
 
@@ -180,7 +164,6 @@ static void wakeup(void *context) {
         }
     });
 }
-
 
 
 #pragma mark - 鼠标事件坚挺
@@ -203,31 +186,9 @@ static void wakeup(void *context) {
 
 //鼠标左键按下
 -(void)mouseDown:(NSEvent *)event {
-    //event.clickCount 不是累计数。双击时调用mouseDown两次，clickCount第一次=1，第二次 = 2.
     if ([event clickCount] == 2) {
-//        if (self.delegate) {
-//            [self.delegate mouseDoubleClick:event];
-//        }
         [[NSApp mainWindow] toggleFullScreen:event];
     }
-    
-//    NSLog(@"mouseDown ==== clickCount: %ld  buttonNumber: %ld",event.clickCount,event.buttonNumber);
-    
-//    self.layer.backgroundColor = [NSColor redColor].CGColor;
-    
-    //获取鼠标点击位置坐标：先获取event发生的window中的坐标，在转换成view视图坐标系坐标。
-//    NSPoint eventLocation = [event locationInWindow];
-//    NSPoint center = [self convertPoint:eventLocation fromView:nil];
-    
-//    NSLog(@"center: %@",NSStringFromPoint(center));
-    
-    //判断是否按下了Command键
-//    if ([event modifierFlags] & NSEventModifierFlagCommand) {
-//        [self setFrameRotation:[self frameRotation] + 90.0];
-//        [self setNeedsDisplay:YES];
-//        NSLog(@"按下了Command键 ---- ");
-//    }
-    
 }
 
 //鼠标左键起来
@@ -270,6 +231,13 @@ static void wakeup(void *context) {
     }
 }
 
+-(void)setVoice:(double)value{
+    if (mpv) {
+        double data = value;
+        mpv_set_property_async(mpv, 0, "volume", MPV_FORMAT_DOUBLE, &data);
+    }
+}
+
 -(void)stop{
     if (mpv) {
         int data = 1;
@@ -283,6 +251,15 @@ static void wakeup(void *context) {
         mpv_set_property(mpv, "pause", MPV_FORMAT_FLAG, &data);
     }
 }
+
+-(void)quit{
+    if (mpv) {
+        const char *args[] = {"quit", NULL};
+        mpv_command(mpv, args);
+    }
+}
+
+
 
 
 

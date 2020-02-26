@@ -10,6 +10,7 @@
             <connections>
                 <outlet property="controlView" destination="yrm-bz-zb6" id="LZb-Jc-euS"/>
                 <outlet property="flagTimelineView" destination="rlb-ly-BpB" id="eQz-cI-6Ww"/>
+                <outlet property="flagVolumeSliderView" destination="FEj-C2-Iop" id="B4y-H1-dMp"/>
                 <outlet property="fragControlView" destination="4UG-18-z1k" id="CZE-fE-4Qd"/>
                 <outlet property="fragToolbarView" destination="5GU-o6-Sdc" id="GzK-Dg-0ij"/>
                 <outlet property="fragVolumeView" destination="qaV-zr-t9f" id="YKA-Qb-0be"/>
@@ -81,11 +82,14 @@
                     </connections>
                 </button>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FEj-C2-Iop" userLabel="Volume Slider">
-                    <rect key="frame" x="32" y="-2" width="64" height="24"/>
+                    <rect key="frame" x="34" y="-1" width="60" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="2kn-fS-wYb"/>
                     </constraints>
-                    <sliderCell key="cell" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="I2o-DR-Rw3"/>
+                    <sliderCell key="cell" controlSize="mini" continuous="YES" refusesFirstResponder="YES" state="on" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="I2o-DR-Rw3"/>
+                    <connections>
+                        <action selector="voiceChangeAction:" target="-2" id="JQB-U3-W2e"/>
+                    </connections>
                 </slider>
             </subviews>
             <constraints>
@@ -109,7 +113,7 @@
                         <constraint firstAttribute="height" constant="24" id="WMs-eU-nm9"/>
                         <constraint firstAttribute="width" constant="24" id="l3r-mK-awE"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarPauseTemplate" imagePosition="overlaps" alignment="center" alternateImage="NSTouchBarPlayTemplate" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="aI5-td-Kxz">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarPauseTemplate" imagePosition="overlaps" alignment="center" alternateImage="NSTouchBarPlayTemplate" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" inset="2" id="aI5-td-Kxz">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -123,7 +127,7 @@
                         <constraint firstAttribute="width" constant="24" id="00b-Rd-o7f"/>
                         <constraint firstAttribute="height" constant="24" id="EZr-4v-quz"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarFastForwardTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" imageScaling="proportionallyUpOrDown" inset="2" maxAcceleratorLevel="2" id="Dva-fa-Dhu">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarFastForwardTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" inset="2" maxAcceleratorLevel="2" id="Dva-fa-Dhu">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES" multiLevelAccelerator="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -134,7 +138,7 @@
                         <constraint firstAttribute="height" constant="24" id="9Pr-ZP-1iv"/>
                         <constraint firstAttribute="width" constant="24" id="ZvA-lb-3KT"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarRewindTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" maxAcceleratorLevel="2" id="Iwl-id-P8F">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarRewindTemplate" imagePosition="above" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" transparent="YES" inset="2" maxAcceleratorLevel="2" id="Iwl-id-P8F">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES" multiLevelAccelerator="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -157,15 +161,15 @@
             <point key="canvasLocation" x="16.5" y="-25"/>
         </stackView>
         <customView id="rlb-ly-BpB" userLabel="Frag Timeline View">
-            <rect key="frame" x="0.0" y="0.0" width="306" height="24"/>
+            <rect key="frame" x="0.0" y="0.0" width="306" height="22"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RMK-Xi-um2" userLabel="Player Slider">
-                    <rect key="frame" x="48" y="3" width="210" height="19"/>
-                    <sliderCell key="cell" lineBreakMode="charWrapping" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="wml-C8-VAO"/>
+                    <rect key="frame" x="50" y="4" width="206" height="15"/>
+                    <sliderCell key="cell" controlSize="small" lineBreakMode="charWrapping" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="wml-C8-VAO"/>
                 </slider>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FV6-gj-LeZ" userLabel="RLabel">
-                    <rect key="frame" x="256" y="4" width="50" height="16"/>
+                    <rect key="frame" x="256" y="3" width="50" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="--:--" id="4Uf-Kn-K6c">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -173,7 +177,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pbd-pY-WcV" userLabel="LLabel">
-                    <rect key="frame" x="0.0" y="4" width="50" height="16"/>
+                    <rect key="frame" x="0.0" y="3" width="50" height="16"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="46" id="ixc-Hc-csA"/>
                     </constraints>
@@ -206,9 +210,9 @@
                 <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xcF-D6-xw4">
                     <rect key="frame" x="47" y="19" width="69" height="60"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSTouchBarTextListTemplate" imagePosition="only" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyUpOrDown" inset="2" id="np4-QI-BgW">
+                    <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSTouchBarNewFolderTemplate" imagePosition="only" alignment="center" controlSize="mini" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="np4-QI-BgW">
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" metaFont="menu" size="9"/>
                     </buttonCell>
                 </button>
             </subviews>
@@ -219,9 +223,9 @@
         <image name="NSTouchBarAudioOutputMuteTemplate" width="26" height="30"/>
         <image name="NSTouchBarAudioOutputVolumeHighTemplate" width="23" height="30"/>
         <image name="NSTouchBarFastForwardTemplate" width="22" height="30"/>
+        <image name="NSTouchBarNewFolderTemplate" width="28" height="30"/>
         <image name="NSTouchBarPauseTemplate" width="11" height="30"/>
         <image name="NSTouchBarPlayTemplate" width="14" height="30"/>
         <image name="NSTouchBarRewindTemplate" width="22" height="30"/>
-        <image name="NSTouchBarTextListTemplate" width="18" height="30"/>
     </resources>
 </document>
