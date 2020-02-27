@@ -12,7 +12,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 //NSWindowController
-@interface Player : NSWindowController
+@interface Player : NSWindowController<NSWindowDelegate>
 {
     SMVideoView *player;
 }

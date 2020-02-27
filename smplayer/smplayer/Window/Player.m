@@ -42,7 +42,7 @@
 @implementation Player
 
 
-- (id)initWithWindow:(NSWindow *)window
+-(id)initWithWindow:(NSWindow *)window
 {
     if (self = [super initWithWindow:window]) {
         [self loadWindow];
@@ -50,21 +50,19 @@
     return self;
 }
 
+
 -(void)windowWillLoad{
-    //    NSLog(@"windowWillLoad:%@", NSStringFromRect(self.window.contentView.frame));
 }
 
-- (void)windowDidLoad {
+-(void)windowDidLoad {
     [super windowDidLoad];
-    
-    NSLog(@"windowDidLoad:%@", NSStringFromRect(self.window.contentView.frame));
+//    NSLog(@"windowDidLoad:%@", NSStringFromRect(self.window.contentView.frame));
     
     // 窗口可以拖拽
     self.window.movableByWindowBackground = YES;
+    
     [self regEvent];
     [self initVideoView];
-    
-
     [self initControlView];
 }
 
@@ -81,15 +79,16 @@
 
 -(void)initFragToolbarView{
     // NSImageNameTouchBarTextListTemplate,NSImageNameTouchBarFolderTemplate
-    NSButton *list = [[NSButton alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
-    [list setBezelStyle:NSBezelStyleRegularSquare];
-    [list setImageScaling:NSImageScaleProportionallyDown];
-    [list setImage:[NSImage imageNamed:NSImageNameTouchBarTextListTemplate]];
-    [list setBordered:YES];
-    [list setTransparent:YES];
     
-    [_fragToolbarView addView:list inGravity:NSStackViewGravityTrailing];
-    
+//    NSButton *list = [[NSButton alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
+//    [list setBezelStyle:NSBezelStyleRegularSquare];
+//    [list setImageScaling:NSImageScaleProportionallyDown];
+//    [list setImage:[NSImage imageNamed:NSImageNameTouchBarTextListTemplate]];
+//    [list setBordered:YES];
+//    [list setTransparent:YES];
+//
+//    [_fragToolbarView addView:list inGravity:NSStackViewGravityTrailing];
+//
     NSButton *dir = [[NSButton alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
     [dir setBezelStyle:NSBezelStyleRegularSquare];
     [dir setImage:[NSImage imageNamed:NSImageNameTouchBarFolderTemplate]];
@@ -118,7 +117,7 @@
     // 时间线
     NSRect newFrame = NSMakeRect(_flagTimelineView.frame.origin.x, _flagTimelineView.frame.origin.y, _timeControlView.frame.size.width, _flagTimelineView.frame.size.height);
     
-    _flagTimelineView.frame =newFrame;
+    _flagTimelineView.frame = newFrame;
     [_timeControlView addSubview:_flagTimelineView];
 }
 
@@ -165,7 +164,7 @@
 }
 
 /// 播放暂停按钮
-- (IBAction)playAction:(id)sender{
+- (IBAction)playAction:(id)sender {
     NSButton *p = (NSButton*)sender;
     if (p.state == NSControlStateValueOff){
         [player stop];
@@ -185,7 +184,7 @@
 -(BOOL)prepareForDragOperation:(id<NSDraggingInfo>)sender {
     NSPasteboard *zPasteboard = [sender draggingPasteboard];
     NSArray *files = [zPasteboard propertyListForType:NSFilenamesPboardType];
-    [player openVideo:files[0]];
+    [player openVideo:[files objectAtIndex:0]];
     return YES;
 }
 
@@ -193,5 +192,24 @@
 -(void)openVideo:(NSString *)path {
     [player openVideo:path];
 }
+
+#pragma mark - NSWindowDelegate
+//-(NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize
+//{
+//    NSLog(@"frameSize:%@", NSStringFromSize(frameSize));
+//    NSLog(@"NSStringFromRect:%@", NSStringFromRect(sender.frame));
+//    return NSMakeSize(sender.frame.size.width+1, sender.frame.size.height+1);
+//    return sender.aspectRatio;
+//}
+
+//-(void)mouseEntered:(NSEvent *)event{
+//
+//    NSLog(@"%@", event);
+//}
+//
+//-(void)mouseMoved:(NSEvent *)event{
+//
+//    NSLog(@"%@", event);
+//}
 
 @end

@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SMVideoView : NSView
+@interface SMVideoView : NSOpenGLView
 
 + (id)Instance:(NSRect)frame;
 
