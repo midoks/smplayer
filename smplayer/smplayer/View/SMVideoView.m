@@ -95,11 +95,12 @@ static dispatch_once_t _instance_once;
     
     check_error(mpv_initialize(mpv));
     
-    //libmpv,gpu
-//    mpv_set_property_string(mpv, "vo", "libmpv");
+    //libmpv,gpu,opengl
+    mpv_set_property_string(mpv, "vo", "opengl");
 //    mpv_set_property_string(mpv, "keepaspect", "no");
 //    mpv_set_property_string(mpv, "gpu-hwdec-interop", "auto");
     mpv_request_log_messages(mpv, "warn");
+//    mpv_set_option_string(mpv, "input-default-bindings", "yes");
 
     int64_t wid = (intptr_t) _instance;
     check_error(mpv_set_option(mpv, "wid", MPV_FORMAT_INT64, &wid));

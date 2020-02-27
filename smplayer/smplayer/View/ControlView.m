@@ -15,6 +15,9 @@
     self.wantsLayer = YES;
     self.layer.cornerRadius = 6;
     self.translatesAutoresizingMaskIntoConstraints = NO;
+    
+    self.material = NSVisualEffectMaterialUltraDark;
+    self.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
 }
 
 -(void)mouseEntered:(NSEvent *)event{
