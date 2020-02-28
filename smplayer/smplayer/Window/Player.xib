@@ -9,6 +9,9 @@
         <customObject id="-2" userLabel="File's Owner" customClass="Player" customModule="smplayer" customModuleProvider="target">
             <connections>
                 <outlet property="controlView" destination="yrm-bz-zb6" id="LZb-Jc-euS"/>
+                <outlet property="flagTimelineLeftView" destination="Pbd-pY-WcV" id="2nn-Kn-KLi"/>
+                <outlet property="flagTimelineRightView" destination="FV6-gj-LeZ" id="bWE-9u-zYS"/>
+                <outlet property="flagTimelineSliderView" destination="RMK-Xi-um2" id="iNw-Fk-tjj"/>
                 <outlet property="flagTimelineView" destination="rlb-ly-BpB" id="eQz-cI-6Ww"/>
                 <outlet property="flagVolumeSliderView" destination="FEj-C2-Iop" id="B4y-H1-dMp"/>
                 <outlet property="fragControlView" destination="4UG-18-z1k" id="CZE-fE-4Qd"/>
@@ -166,7 +169,10 @@
             <subviews>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RMK-Xi-um2" userLabel="Player Slider">
                     <rect key="frame" x="50" y="4" width="206" height="15"/>
-                    <sliderCell key="cell" controlSize="small" lineBreakMode="charWrapping" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="wml-C8-VAO"/>
+                    <sliderCell key="cell" controlSize="small" lineBreakMode="charWrapping" refusesFirstResponder="YES" alignment="left" maxValue="100" doubleValue="50" tickMarkPosition="above" sliderType="linear" id="wml-C8-VAO"/>
+                    <connections>
+                        <action selector="videoChangeAction:" target="-2" id="MYn-2l-HYD"/>
+                    </connections>
                 </slider>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FV6-gj-LeZ" userLabel="RLabel">
                     <rect key="frame" x="256" y="3" width="50" height="16"/>

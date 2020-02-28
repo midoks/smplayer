@@ -8,9 +8,22 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "SMVideoTime.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol SMVideoViewDelegate <NSObject>
+@optional
+
+-(void)videoStart:(SMVideoTime *)duration;
+-(void)videoPos:(SMVideoTime *)pos;
+
+@end
+
+
 @interface SMVideoView : NSOpenGLView
+
+@property (weak, nonatomic) id <SMVideoViewDelegate> delegate;
 
 + (id)Instance:(NSRect)frame;
 
@@ -21,6 +34,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)stop;
 -(void)start;
 -(void)quit;
+-(void)seek:(const char *)second;
 @end
 
 NS_ASSUME_NONNULL_END

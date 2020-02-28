@@ -10,6 +10,7 @@
 		826AB833240416D400B87C63 /* ControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AB832240416D400B87C63 /* ControlView.m */; };
 		826AB8372406C12600B87C63 /* SMCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AB8362406C12500B87C63 /* SMCommon.m */; };
 		826AB8392407C0DF00B87C63 /* input.conf in Resources */ = {isa = PBXBuildFile; fileRef = 826AB8382407C0DE00B87C63 /* input.conf */; };
+		82C2C5082409191400485064 /* SMVideoTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C2C5072409191400485064 /* SMVideoTime.m */; };
 		82E9A46A24030AEA000DB7F3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E9A46924030AEA000DB7F3 /* AppDelegate.m */; };
 		82E9A46C24030AEE000DB7F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82E9A46B24030AEE000DB7F3 /* Assets.xcassets */; };
 		82E9A46F24030AEE000DB7F3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82E9A46D24030AEE000DB7F3 /* MainMenu.xib */; };
@@ -54,6 +55,8 @@
 		826AB8362406C12500B87C63 /* SMCommon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMCommon.m; sourceTree = "<group>"; };
 		826AB8382407C0DE00B87C63 /* input.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = input.conf; sourceTree = "<group>"; };
 		826AB83B2408229000B87C63 /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
+		82C2C5062409191400485064 /* SMVideoTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMVideoTime.h; sourceTree = "<group>"; };
+		82C2C5072409191400485064 /* SMVideoTime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMVideoTime.m; sourceTree = "<group>"; };
 		82E9A46524030AEA000DB7F3 /* smplayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smplayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82E9A46824030AEA000DB7F3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		82E9A46924030AEA000DB7F3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -242,6 +245,8 @@
 			children = (
 				826AB8352406C12500B87C63 /* SMCommon.h */,
 				826AB8362406C12500B87C63 /* SMCommon.m */,
+				82C2C5062409191400485064 /* SMVideoTime.h */,
+				82C2C5072409191400485064 /* SMVideoTime.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -695,6 +700,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82C2C5082409191400485064 /* SMVideoTime.m in Sources */,
 				82E9A5462403947E000DB7F3 /* Player.m in Sources */,
 				826AB833240416D400B87C63 /* ControlView.m in Sources */,
 				826AB8372406C12600B87C63 /* SMCommon.m in Sources */,

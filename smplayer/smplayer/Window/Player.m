@@ -36,6 +36,10 @@
 @property (weak) IBOutlet NSStackView *fragToolbarView;
 @property (weak) IBOutlet NSView *flagTimelineView;
 
+//timeline
+@property (weak) IBOutlet NSTextField *flagTimelineLeftView;
+@property (weak) IBOutlet NSTextField *flagTimelineRightView;
+@property (weak) IBOutlet NSSlider *flagTimelineSliderView;
 
 @end
 
@@ -48,10 +52,6 @@
         [self loadWindow];
     }
     return self;
-}
-
-
--(void)windowWillLoad{
 }
 
 -(void)windowDidLoad {
@@ -72,8 +72,9 @@
 }
 
 -(void)initVideoView {
-    player = [SMVideoView Instance:self.window.contentView.frame];
-    [player initVideo];
+    self->player = [SMVideoView Instance:self.window.contentView.frame];
+    [self->player initVideo];
+    self->player.delegate = self;
     [self.window.contentView addSubview:player positioned:NSWindowBelow relativeTo:nil];
 }
 
@@ -164,13 +165,19 @@
 }
 
 /// 播放暂停按钮
-- (IBAction)playAction:(id)sender {
-    NSButton *p = (NSButton*)sender;
-    if (p.state == NSControlStateValueOff){
-        [player stop];
-    } else if (p.state == NSControlStateValueOn){
+- (IBAction)playAction:(NSButton *)sender {
+    if (sender.state == NSControlStateValueOff){
         [player start];
+    } else if (sender.state == NSControlStateValueOn){
+        [player stop];
     }
+}
+
+- (IBAction)videoChangeAction:(id)sender {
+    NSString *sliderValue = [self.flagTimelineSliderView stringValue];
+    NSLog(@"slider:%@", sliderValue);
+    [player seek:sliderValue.UTF8String];
+    
 }
 
 
@@ -202,14 +209,16 @@
 //    return sender.aspectRatio;
 //}
 
-//-(void)mouseEntered:(NSEvent *)event{
-//
-//    NSLog(@"%@", event);
-//}
-//
-//-(void)mouseMoved:(NSEvent *)event{
-//
-//    NSLog(@"%@", event);
-//}
+#pragma mark - SMVideoViewDelegate
+-(void)videoStart:(SMVideoTime *)duration{
+    
+    [self.flagTimelineSliderView setMaxValue:[duration doubleValue]];
+    [self.flagTimelineRightView setStringValue:[duration getString]];
+}
+
+-(void)videoPos:(SMVideoTime *)pos{
+    [self.flagTimelineSliderView setDoubleValue:[pos doubleValue]];
+    [self.flagTimelineLeftView setStringValue:[pos getString]];
+}
 
 @end

@@ -14,8 +14,11 @@
 #import <OpenGL/gl.h>
 #import <Cocoa/Cocoa.h>
 
-static void wakeup(void *);
+#import "SMVideoTime.h"
+#import "SMVideoView.h"
 
+static void wakeup(void *);
+static void glupdate(void *ctx);
 
 static inline void check_error(int status)
 {
@@ -29,15 +32,8 @@ static void *get_proc_address(void *ctx, const char *name)
 {
     CFStringRef symbolName = CFStringCreateWithCString(kCFAllocatorDefault, name, kCFStringEncodingASCII);
     void *addr = CFBundleGetFunctionPointerForName(CFBundleGetBundleWithIdentifier(CFSTR("com.apple.opengl")), symbolName);
-    CFRelease(symbolName);
     return addr;
 }
-
-static void glupdate(void *ctx);
-
-
-
-#import "SMVideoView.h"
 
 @interface SMVideoView (){
     mpv_handle *mpv;
@@ -45,8 +41,9 @@ static void glupdate(void *ctx);
     NSView *wrapper;
     mpv_render_context *mpvGL;
 }
-@property NSTimer *syncPlayerTimer;
+@property (nonatomic, weak) NSTimer *asyncPlayerTimer;
 @property int switchVoice;
+@property double videoDuration;
 @end
 
 @implementation SMVideoView
@@ -62,13 +59,10 @@ static dispatch_once_t _instance_once;
 }
 
 - (id)initWithFrame:(NSRect)frame{
-    //    self = [super initWithFrame:frame];
     self = [self initMpvGL:frame];
     if (self) {
         _switchVoice = 0;
-        
-        //        self.movableByWindowBackground = YES;
-        //        [self setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
+        [self setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
         
     }
     return self;
@@ -80,15 +74,14 @@ static dispatch_once_t _instance_once;
         0
     };
     self = [super initWithFrame:frame pixelFormat:[[NSOpenGLPixelFormat alloc] initWithAttributes:attributes]];
-    
     if (self) {
-        [self setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
         // swap on vsyncs
-        GLint swapInt = 1;
+        GLint swapInt = 0;
         [[self openGLContext] setValues:&swapInt forParameter:NSOpenGLCPSwapInterval];
         [[self openGLContext] makeCurrentContext];
         self->mpvGL = nil;
     }
+    
     return self;
 }
 
@@ -98,24 +91,18 @@ static dispatch_once_t _instance_once;
     glClear(GL_COLOR_BUFFER_BIT);
 }
 
--(void) drawRect{
+-(void) drawRectGL {
     if (self->mpvGL) {
         mpv_render_param params[] = {
-            // Specify the default framebuffer (0) as target. This will
-            // render onto the entire screen. If you want to show the video
-            // in a smaller rectangle or apply fancy transformations, you'll
-            // need to render into a separate FBO and draw it manually.
             {MPV_RENDER_PARAM_OPENGL_FBO, &(mpv_opengl_fbo){
                 .fbo = 0,
                 .w = self.bounds.size.width,
                 .h = self.bounds.size.height,
             }},
-            // Flip rendering (needed due to flipped GL coordinate system).
             {MPV_RENDER_PARAM_FLIP_Y, &(int){1}},
             {0}
         };
-        // See render_gl.h on what OpenGL environment mpv expects, and
-        // other API details.
+        
         mpv_render_context_render(self->mpvGL, params);
     } else{
         [self fillBlack];
@@ -126,22 +113,7 @@ static dispatch_once_t _instance_once;
 
 
 - (void)drawRect:(NSRect)dirtyRect {
-    //    [super drawRect:dirtyRect];
-    //    [self drawRect];
-    
-    //监听鼠标事件
-    //    [self addTrackingArea:[[NSTrackingArea alloc] initWithRect:dirtyRect options:NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved |
-    //                           NSTrackingActiveWhenFirstResponder |
-    //                           NSTrackingActiveInKeyWindow |
-    //                           NSTrackingActiveInActiveApp |
-    //                           NSTrackingActiveAlways |
-    //                           NSTrackingAssumeInside |
-    //                           NSTrackingInVisibleRect |
-    //                           NSTrackingEnabledDuringMouseDrag
-    //                        owner:self userInfo:nil]];
-    //
-    //    [self becomeFirstResponder];
-    
+    [self drawRectGL];
 }
 
 -(void) initVideo {
@@ -169,7 +141,7 @@ static dispatch_once_t _instance_once;
     // pass the mpvGL context to our view
     self->mpvGL = mpvGL;
     
-    mpv_render_context_set_update_callback(mpvGL, glupdate, (__bridge void *)self);
+    mpv_render_context_set_update_callback(self->mpvGL, glupdate, (__bridge void *)self);
     
     //libmpv,gpu,opengl
     mpv_set_property_string(mpv, "vo", "libmpv");
@@ -192,11 +164,8 @@ static dispatch_once_t _instance_once;
 }
 
 -(void)openVideo:(NSString *)path{
-    
     // Deal with MPV in the background.
-    
     dispatch_async(queue, ^{
-        // Register to be woken up whenever mpv generates new events.
         mpv_set_wakeup_callback(self->mpv, wakeup, (__bridge void *) self);
     });
     
@@ -228,7 +197,7 @@ static void glupdate(void *ctx)
     SMVideoView *video = (__bridge SMVideoView *)ctx;
     // I'm still not sure what the best way to handle this is, but this works.
     dispatch_async(dispatch_get_main_queue(), ^{
-        [video drawRect];
+        [video drawRectGL];
     });
 }
 
@@ -243,14 +212,7 @@ static void glupdate(void *ctx)
             break;
         }
         case MPV_EVENT_FILE_LOADED:{
-            double width = [self mpvGetDouble:@"width"];
-            double height = [self mpvGetDouble:@"height"];
-            
-            
-            dispatch_async(dispatch_get_main_queue(), ^{
-                [[NSApp mainWindow] setFrame:NSMakeRect(0, 0, width, height) display:YES];
-            });
-            
+            [self fileLoad];
             break;
         }
         case MPV_EVENT_LOG_MESSAGE: {
@@ -260,12 +222,12 @@ static void glupdate(void *ctx)
         }
         case MPV_EVENT_VIDEO_RECONFIG: {
             dispatch_async(dispatch_get_main_queue(), ^{
-                //                NSArray *subviews = [self->wrapper subviews];
-                //                if ([subviews count] > 0) {
+                // NSArray *subviews = [self->wrapper subviews];
+                // if ([subviews count] > 0) {
                 // mpv's events view
-                // NSView *eview = [self->wrapper subviews][0];
-                // [self->_window makeFirstResponder:eview];
-                //                }
+                //      NSView *eview = [self->wrapper subviews][0];
+                //     [self->_window makeFirstResponder:eview];
+                // }
             });
         }
         default:{
@@ -274,61 +236,40 @@ static void glupdate(void *ctx)
     }
 }
 
-
-#pragma mark - 鼠标事件监听
-//鼠标进入追踪区域
--(void)mouseEntered:(NSEvent *)event {
-    //    NSLog(@"mouseEntered =========");
+#pragma mark - MPV Event Methods
+-(void)fileLoad{
+    
+    NSLog(@"MPV Event Methods - fileLoad start!");
+    
+    double width = [self mpvGetDouble:@"width"];
+    double height = [self mpvGetDouble:@"height"];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [[NSApp mainWindow] setFrame:NSMakeRect(100, 100, width, height) display:YES];
+    });
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSTimer *timer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(videoDurationAction) userInfo:nil repeats:YES];
+        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+        self.asyncPlayerTimer  = timer;
+    });
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (self.delegate) {
+            self->_videoDuration = [self mpvGetDouble:@"duration"];
+            [self.delegate videoStart:[[SMVideoTime alloc] initTime:self->_videoDuration]];
+        }
+    });
 }
 
-//mouserEntered之后调用
--(void)cursorUpdate:(NSEvent *)event {
-    //    NSLog(@"cursorUpdate ==========");
-    //更改鼠标光标样式
-    //    [[NSCursor pointingHandCursor] set];
-}
-
-//鼠标退出追踪区域
--(void)mouseExited:(NSEvent *)event {
-    //    NSLog(@"mouseExited ========");
-}
-
-//鼠标左键按下
--(void)mouseDown:(NSEvent *)event {
-    if ([event clickCount] == 2) {
-        [[NSApp mainWindow] toggleFullScreen:event];
+-(void)videoDurationAction{
+    if (self.delegate) {
+        double pos = [self mpvGetDouble:@"time-pos"];
+        if (pos>_videoDuration){
+            pos = _videoDuration;
+        }
+        [self.delegate videoPos:[[SMVideoTime alloc] initTime:pos]];
     }
-}
-
-//鼠标左键起来
--(void)mouseUp:(NSEvent *)event {
-    //    NSLog(@"mouseUp ======");
-    //    self.layer.backgroundColor = [NSColor greenColor].CGColor;
-}
-
-//鼠标右键按下
-- (void)rightMouseDown:(NSEvent *)event {
-    //    NSLog(@"rightMouseDown =======");
-}
-
-//鼠标右键起来
-- (void)rightMouseUp:(NSEvent *)event {
-    //    NSLog(@"rightMouseUp ======= ");
-}
-
-//鼠标移动
-- (void)mouseMoved:(NSEvent *)event {
-    NSLog(@"mouseMoved ========= ");
-}
-
-//鼠标按住左键进行拖拽
-- (void)mouseDragged:(NSEvent *)event {
-    //    NSLog(@"mouseDragged ======== ");
-}
-
-//鼠标按住右键进行拖拽
-- (void)rightMouseDragged:(NSEvent *)event {
-    //    NSLog(@"rightMouseDragged ======= ");
 }
 
 #pragma mark - MPV Private Methods
@@ -342,6 +283,9 @@ static void glupdate(void *ctx)
     int64_t data;
     mpv_get_property(mpv, name.UTF8String, MPV_FORMAT_INT64, &data);
     return (double)data;
+}
+-(void)mpvCmd{
+    
 }
 
 #pragma mark - Public Methods -
@@ -382,8 +326,14 @@ static void glupdate(void *ctx)
     }
 }
 
-
-
-
+-(void)seek:(const char *)second {
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (self->mpv) {
+            const char *args[] = {"seek", second, "absolute+exact", NULL};
+            mpv_command(self->mpv, args);
+        }
+    });
+}
 
 @end
