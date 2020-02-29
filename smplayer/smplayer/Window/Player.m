@@ -122,18 +122,6 @@
     [_timeControlView addSubview:_flagTimelineView];
 }
 
--(void)initMenu{
-    NSMenu *m = [[NSMenu alloc] initWithTitle:@"AMainMenu"];
-    NSMenuItem *item = [m addItemWithTitle:@"Apple" action:nil keyEquivalent:@""];
-    NSMenu *sm = [[NSMenu alloc] initWithTitle:@"Apple"];
-    [m setSubmenu:sm forItem:item];
-    [sm addItemWithTitle: @"mpv_cmd('stop')" action:@selector(stop) keyEquivalent:@"s"];
-    [sm addItemWithTitle: @"mpv_cmd('quit')" action:@selector(quit) keyEquivalent:@"r"];
-    [sm addItemWithTitle: @"quit" action:@selector(terminate:) keyEquivalent:@"q"];
-    [NSApp setMenu:m];
-    [NSApp activateIgnoringOtherApps:YES];
-}
-
 #pragma mark - 功能
 
 /// 文件选择
@@ -173,10 +161,20 @@
     }
 }
 
+- (IBAction)leftButtonAction:(NSButton *)sender {
+    NSString *s = @"-5";
+    [player seekWithRelative:s.UTF8String];
+}
+
+- (IBAction)rightButtonAction:(NSButton *)sender {
+    NSString *s = @"+5";
+    [player seekWithRelative:s.UTF8String];
+}
+
 - (IBAction)videoChangeAction:(id)sender {
     NSString *sliderValue = [self.flagTimelineSliderView stringValue];
     NSLog(@"slider:%@", sliderValue);
-    [player seek:sliderValue.UTF8String];
+    [player seekWithAbsolute:sliderValue.UTF8String];
     
 }
 

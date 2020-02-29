@@ -35,6 +35,8 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)start;
 -(void)quit;
 -(void)seek:(const char *)second;
+-(void)seekWithRelative:(const char *)second;
+-(void)seekWithAbsolute:(const char *)second;
 @end
 
 NS_ASSUME_NONNULL_END

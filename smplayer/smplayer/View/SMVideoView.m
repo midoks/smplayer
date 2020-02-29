@@ -327,7 +327,26 @@ static void glupdate(void *ctx)
 }
 
 -(void)seek:(const char *)second {
-    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        if (self->mpv) {
+            const char *args[] = {"seek", second, "exact", NULL};
+            mpv_command(self->mpv, args);
+        }
+    });
+}
+
+-(void)seekWithRelative:(const char *)second {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self stop];
+        if (self->mpv) {
+            const char *args[] = {"seek", second, "relative+exact", NULL};
+            mpv_command(self->mpv, args);
+        }
+         [self start];
+    });
+}
+
+-(void)seekWithAbsolute:(const char *)second {
     dispatch_async(dispatch_get_main_queue(), ^{
         if (self->mpv) {
             const char *args[] = {"seek", second, "absolute+exact", NULL};

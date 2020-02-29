@@ -52,17 +52,17 @@ static dispatch_once_t _instance_once;
 -(NSString *)getString {
     NSString *f = @"";
     int s = [self getSecond];
-    if (s>10){
-        f = [NSString stringWithFormat:@"%d",s];
-    } else {
+    if (s<10){
         f = [NSString stringWithFormat:@"0%d",s];
+    } else {
+        f = [NSString stringWithFormat:@"%d",s];
     }
     
     int m = [self getMinute];
-    if (m>10){
-        f = [NSString stringWithFormat:@"%d:%@", m,f];
-    } else {
+    if (m<10){
         f = [NSString stringWithFormat:@"0%d:%@", m,f];
+    } else {
+        f = [NSString stringWithFormat:@"%d:%@", m,f];
     }
     
     int h = [self getHour];
