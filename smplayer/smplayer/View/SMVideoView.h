@@ -19,8 +19,6 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)videoStart:(SMVideoTime *)duration;
 -(void)videoPos:(SMVideoTime *)pos;
 
--(void)hiddenToolbar:(BOOL)yes;
-
 @end
 
 

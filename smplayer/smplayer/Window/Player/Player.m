@@ -62,6 +62,8 @@
     // 窗口可以拖拽
     self.window.movableByWindowBackground = YES;
     
+    
+    
     [self regEvent];
     
     [self initVideoView];
@@ -72,12 +74,22 @@
     // 注册文件拖动事件
     [self.window registerForDraggedTypes:[NSArray arrayWithObjects:NSPasteboardTypeFileURL, nil]];
     
-    [self.window makeFirstResponder:self];
+    [self.window.contentView addTrackingArea:[[NSTrackingArea alloc] initWithRect:self.window.frame options:
+                                              NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved |
+                                              NSTrackingCursorUpdate |
+                                              NSTrackingActiveWhenFirstResponder |
+                                              NSTrackingActiveInKeyWindow |
+                                              NSTrackingActiveInActiveApp |
+                                              NSTrackingActiveAlways |
+                                              NSTrackingAssumeInside |
+                                              NSTrackingInVisibleRect |
+                                              NSTrackingEnabledDuringMouseDrag
+                                                                            owner:self userInfo:nil]];
 }
 
 -(void)initVideoView {
     self->player = [SMVideoView Instance:self.window.contentView.frame];
-//    [self->player initVideo];
+    //    [self->player initVideo];
     self->player.delegate = self;
     [self.window.contentView addSubview:player positioned:NSWindowBelow relativeTo:nil];
 }
@@ -85,15 +97,15 @@
 -(void)initFragToolbarView{
     // NSImageNameTouchBarTextListTemplate,NSImageNameTouchBarFolderTemplate
     
-//    NSButton *list = [[NSButton alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
-//    [list setBezelStyle:NSBezelStyleRegularSquare];
-//    [list setImageScaling:NSImageScaleProportionallyDown];
-//    [list setImage:[NSImage imageNamed:NSImageNameTouchBarTextListTemplate]];
-//    [list setBordered:YES];
-//    [list setTransparent:YES];
-//
-//    [_fragToolbarView addView:list inGravity:NSStackViewGravityTrailing];
-//
+    //    NSButton *list = [[NSButton alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
+    //    [list setBezelStyle:NSBezelStyleRegularSquare];
+    //    [list setImageScaling:NSImageScaleProportionallyDown];
+    //    [list setImage:[NSImage imageNamed:NSImageNameTouchBarTextListTemplate]];
+    //    [list setBordered:YES];
+    //    [list setTransparent:YES];
+    //
+    //    [_fragToolbarView addView:list inGravity:NSStackViewGravityTrailing];
+    //
     NSButton *dir = [[NSButton alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
     [dir setBezelStyle:NSBezelStyleRegularSquare];
     [dir setImage:[NSImage imageNamed:NSImageNameTouchBarFolderTemplate]];
@@ -238,17 +250,31 @@
     [self.flagTimelineLeftView setStringValue:[pos getString]];
 }
 
--(void)hiddenToolbar:(BOOL)yes{
-    _controlView.hidden = yes;
+-(void)hiddenToolbar{
+    _controlView.hidden = YES;
+//    self.window.titlebarAppearsTransparent = YES;
+//    self.window.hasTitleBar  = NO;
+    
+//    [self.window ];
 }
 
+-(void)showToolbar{
+    _controlView.hidden = NO;
+//    self.window.titlebarAppearsTransparent = YES;
+}
 
 -(void)mouseEntered:(NSEvent *)event {
-    NSLog(@"mouseEntered =========");
+    [self showToolbar];
 }
 
 -(void)mouseExited:(NSEvent *)event{
-    NSLog(@"ddd");
+    [self hiddenToolbar];
+}
+
+-(void)mouseUp:(NSEvent *)event{
+    if ([event clickCount] == 2) {
+        [[NSApp mainWindow] toggleFullScreen:event];
+    }
 }
 
 @end
