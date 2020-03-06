@@ -247,6 +247,14 @@
 
 
 #pragma mark - Private Method Of Mouse And Toolbar
+-(BOOL)isMouseEvent:(NSEvent *)event views:(NSArray<NSView *> *)views
+{
+    for (NSView *v in views) {
+        return [v mouse:[event locationInWindow] inRect:v.bounds];
+    }
+    return NO;
+}
+
 -(void)hiddenToolbar{
     _controlView.hidden = YES;
     [[self.window standardWindowButton:NSWindowZoomButton] setHidden:YES];
@@ -289,8 +297,6 @@
 
 -(void)mouseExited:(NSEvent *)event{
     [self hiddenToolbar];
-    
-//    self.window;
 }
 
 -(void)mouseUp:(NSEvent *)event{
