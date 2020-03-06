@@ -55,7 +55,7 @@ static void *get_proc_address(void *ctx, const char *name)
 -(id)init{
     self = [super init];
     if (self) {
-        [self setAsynchronous:YES];
+        [self setAsynchronous:NO];
         [self setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
         
         _switchVoice = 0;
@@ -315,20 +315,20 @@ static void render_context_callback(void *ctx) {
     });
     
     dispatch_async(dispatch_get_main_queue(), ^{
-        if (self.delegate) {
+        if (self.videoDelegate) {
             self->_videoDuration = [self mpvGetDouble:@"duration"];
-            [self.delegate videoStart:[[SMVideoTime alloc] initTime:self->_videoDuration]];
+            [self.videoDelegate videoStart:[[SMVideoTime alloc] initTime:self->_videoDuration]];
         }
     });
 }
 
 -(void)videoDurationAction{
-    if (self.delegate) {
+    if (self.videoDelegate) {
         double pos = [self mpvGetDouble:@"time-pos"];
         if (pos>_videoDuration){
             pos = _videoDuration;
         }
-        [self.delegate videoPos:[[SMVideoTime alloc] initTime:pos]];
+        [self.videoDelegate videoPos:[[SMVideoTime alloc] initTime:pos]];
     }
 }
 

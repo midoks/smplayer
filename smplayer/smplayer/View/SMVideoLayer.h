@@ -16,15 +16,14 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)videoPos:(SMVideoTime *)pos;
 @end
 
-@interface SMVideoLayer : CAOpenGLLayer{
-//    id <SMVideoLayerDelegate> delegate;
-}
-@property (weak,atomic,nullable) id <SMVideoLayerDelegate> delegate;
+@interface SMVideoLayer : CAOpenGLLayer
+
+@property (weak,nonatomic) id <SMVideoLayerDelegate> videoDelegate;
+
 
 
 @property  dispatch_queue_t queue;
 
-//-(void)initVideo;
 -(void)openVideo:(NSString *)path;
 -(void)setVoice:(double)value;
 -(void)toggleVoice;

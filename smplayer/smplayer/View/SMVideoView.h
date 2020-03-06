@@ -24,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @end
 
 
-@interface SMVideoView : NSView
+@interface SMVideoView : NSView <SMVideoLayerDelegate>
 
 @property (weak, nonatomic) id <SMVideoViewDelegate> delegate;
 @property (nonatomic, strong) SMVideoLayer *smLayer;

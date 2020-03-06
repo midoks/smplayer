@@ -58,12 +58,12 @@
 
 -(void)windowDidLoad {
     [super windowDidLoad];
-//    NSLog(@"windowDidLoad:%@", NSStringFromRect(self.window.contentView.frame));
     
     // 窗口可以拖拽
     self.window.movableByWindowBackground = YES;
     
     [self regEvent];
+    
     [self initVideoView];
     [self initControlView];
 }
@@ -71,7 +71,8 @@
 -(void)regEvent{
     // 注册文件拖动事件
     [self.window registerForDraggedTypes:[NSArray arrayWithObjects:NSPasteboardTypeFileURL, nil]];
-//    [self.window registerForDraggedTypes:<#(nonnull NSArray<NSPasteboardType> *)#>];
+    
+    [self.window makeFirstResponder:self];
 }
 
 -(void)initVideoView {
