@@ -189,6 +189,8 @@ static inline void _draw_frame(SMVideoLayer *obj) {
     
     //libmpv,gpu,opengl
     mpv_set_property_string(mpv, "vo", "libmpv");
+    mpv_set_property_string(mpv, "keepaspect", "yes");
+    mpv_set_property_string(mpv, "gpu-hwdec-interop", "auto");
     mpv_request_log_messages(mpv, "warn");
     check_error(mpv_initialize(mpv));
 }

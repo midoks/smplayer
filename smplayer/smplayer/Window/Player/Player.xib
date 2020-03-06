@@ -32,8 +32,8 @@
                 <rect key="frame" x="0.0" y="0.0" width="640" height="400"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <visualEffectView blendingMode="behindWindow" material="popover" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="yrm-bz-zb6" customClass="ControlView">
-                        <rect key="frame" x="100" y="10" width="440" height="67"/>
+                    <visualEffectView blendingMode="withinWindow" material="popover" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="yrm-bz-zb6" customClass="ControlView">
+                        <rect key="frame" x="100" y="30" width="440" height="67"/>
                         <subviews>
                             <stackView orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XtT-TH-TbO" userLabel="Osc Top View">
                                 <rect key="frame" x="12" y="38" width="416" height="24"/>
@@ -62,7 +62,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="yrm-bz-zb6" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="QsG-X2-xZ4"/>
-                    <constraint firstAttribute="bottom" secondItem="yrm-bz-zb6" secondAttribute="bottom" constant="10" id="t1b-Hu-tlQ"/>
+                    <constraint firstAttribute="bottom" secondItem="yrm-bz-zb6" secondAttribute="bottom" constant="30" id="t1b-Hu-tlQ"/>
                 </constraints>
             </view>
             <connections>
@@ -182,7 +182,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FV6-gj-LeZ" userLabel="RLabel">
                     <rect key="frame" x="256" y="4" width="50" height="14"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="--:--" id="4Uf-Kn-K6c">
-                        <font key="font" metaFont="label" size="11"/>
+                        <font key="font" metaFont="menu" size="11"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -193,7 +193,7 @@
                         <constraint firstAttribute="width" constant="46" id="ixc-Hc-csA"/>
                     </constraints>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="--:--" id="S2o-ea-K31">
-                        <font key="font" metaFont="label" size="11"/>
+                        <font key="font" metaFont="menu" size="11"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>

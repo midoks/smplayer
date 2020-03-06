@@ -24,7 +24,9 @@
 #import <Carbon/Carbon.h>
 
 
-@interface Player ()
+@interface Player (){
+    NSTimer *hideControlTimer;
+}
 
 //控制器
 @property (weak) IBOutlet ControlView *controlView;
@@ -47,6 +49,10 @@
 
 @implementation Player
 
+-(id)init{
+    self = [self initWithWindowNibName:@"Player"];
+    return self;
+}
 
 -(id)initWithWindow:(NSWindow *)window
 {
@@ -61,8 +67,8 @@
     
     // 窗口可以拖拽
     self.window.movableByWindowBackground = YES;
-    
-    
+    self.window.styleMask |= NSWindowStyleMaskFullSizeContentView;
+    self.window.appearance =  [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
     
     [self regEvent];
     
@@ -193,7 +199,7 @@
 }
 
 
-#pragma mark - 外部文件拖拽功能
+#pragma mark - Private Method Of Drag File
 // 当文件被拖动到界面触发
 - (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender {
     return NSDragOperationCopy;
@@ -239,6 +245,66 @@
     NSLog(@"%@",notification);
 }
 
+
+#pragma mark - Private Method Of Mouse And Toolbar
+-(void)hiddenToolbar{
+    _controlView.hidden = YES;
+    [[self.window standardWindowButton:NSWindowZoomButton] setHidden:YES];
+    [[self.window standardWindowButton:NSWindowMiniaturizeButton] setHidden:YES];
+    [[self.window standardWindowButton:NSWindowCloseButton] setHidden:YES];
+    [[self.window standardWindowButton:NSWindowDocumentIconButton] setHidden:YES];
+    
+    self.window.titleVisibility = NSWindowTitleHidden;
+    self.window.titlebarAppearsTransparent = YES;
+}
+
+-(void)showToolbar{
+    _controlView.hidden = NO;
+    [[self.window standardWindowButton:NSWindowZoomButton] setHidden:NO];
+    [[self.window standardWindowButton:NSWindowMiniaturizeButton] setHidden:NO];
+    [[self.window standardWindowButton:NSWindowCloseButton] setHidden:NO];
+    [[self.window standardWindowButton:NSWindowDocumentIconButton] setHidden:NO];
+    
+    self.window.titleVisibility = NSWindowTitleVisible;
+    self.window.titlebarAppearsTransparent = NO;
+}
+
+-(void)destroyControlTimer{
+    if (hideControlTimer) {
+        [hideControlTimer invalidate];
+        hideControlTimer = nil;
+    }
+}
+
+-(void)createControlTimer{
+    hideControlTimer = [NSTimer scheduledTimerWithTimeInterval:3 repeats:1 block:^(NSTimer * timer) {
+        [self hiddenToolbar];
+        [NSCursor setHiddenUntilMouseMoves:YES];
+    }];
+}
+
+-(void)mouseEntered:(NSEvent *)event {
+    [self showToolbar];
+}
+
+-(void)mouseExited:(NSEvent *)event{
+    [self hiddenToolbar];
+    
+//    self.window;
+}
+
+-(void)mouseUp:(NSEvent *)event{
+    if ([event clickCount] == 2) {
+        [[NSApp mainWindow] toggleFullScreen:event];
+    }
+}
+-(void)mouseMoved:(NSEvent *)event{
+    [self showToolbar];
+    
+    [self destroyControlTimer];
+    [self createControlTimer];
+}
+
 #pragma mark - SMVideoViewDelegate
 -(void)videoStart:(SMVideoTime *)duration{
     [self.flagTimelineSliderView setMaxValue:[duration doubleValue]];
@@ -249,32 +315,4 @@
     [self.flagTimelineSliderView setDoubleValue:[pos doubleValue]];
     [self.flagTimelineLeftView setStringValue:[pos getString]];
 }
-
--(void)hiddenToolbar{
-    _controlView.hidden = YES;
-//    self.window.titlebarAppearsTransparent = YES;
-//    self.window.hasTitleBar  = NO;
-    
-//    [self.window ];
-}
-
--(void)showToolbar{
-    _controlView.hidden = NO;
-//    self.window.titlebarAppearsTransparent = YES;
-}
-
--(void)mouseEntered:(NSEvent *)event {
-    [self showToolbar];
-}
-
--(void)mouseExited:(NSEvent *)event{
-    [self hiddenToolbar];
-}
-
--(void)mouseUp:(NSEvent *)event{
-    if ([event clickCount] == 2) {
-        [[NSApp mainWindow] toggleFullScreen:event];
-    }
-}
-
 @end

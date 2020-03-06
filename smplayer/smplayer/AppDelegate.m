@@ -43,10 +43,9 @@
 
 -(void)initPlayer{
     if (!player){
-        player =[[Player alloc] initWithWindowNibName:@"Player"];
+        player = [[Player alloc] init];
         [player.window makeKeyWindow];
         [player.window makeMainWindow];
-        [player.window center];
     }
 }
 
