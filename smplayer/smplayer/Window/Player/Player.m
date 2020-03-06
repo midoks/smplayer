@@ -21,6 +21,8 @@
 #import "SMCommon.h"
 #import "SMVideoView.h"
 
+#import <Carbon/Carbon.h>
+
 
 @interface Player ()
 
@@ -69,11 +71,12 @@
 -(void)regEvent{
     // 注册文件拖动事件
     [self.window registerForDraggedTypes:[NSArray arrayWithObjects:NSPasteboardTypeFileURL, nil]];
+//    [self.window registerForDraggedTypes:<#(nonnull NSArray<NSPasteboardType> *)#>];
 }
 
 -(void)initVideoView {
     self->player = [SMVideoView Instance:self.window.contentView.frame];
-    [self->player initVideo];
+//    [self->player initVideo];
     self->player.delegate = self;
     [self.window.contentView addSubview:player positioned:NSWindowBelow relativeTo:nil];
 }
@@ -136,7 +139,7 @@
         
         [panel beginWithCompletionHandler:^(NSModalResponse result) {
             if (result){
-                [self->player openVideo:[[panel URL] path]];
+                [self->player.smLayer openVideo:[[panel URL] path]];
             }
         }];
     }];
@@ -144,38 +147,36 @@
 
 /// 声音关闭开启按钮
 - (IBAction)voiceSwitchAction:(id)sender {
-    [player toggleVoice];
+    [self->player.smLayer toggleVoice];
 }
 
 /// 音量改变按钮
 - (IBAction)voiceChangeAction:(id)sender {
-    [player setVoice:[_flagVolumeSliderView.stringValue doubleValue]];
+    [self->player.smLayer setVoice:[_flagVolumeSliderView.stringValue doubleValue]];
 }
 
 /// 播放暂停按钮
 - (IBAction)playAction:(NSButton *)sender {
     if (sender.state == NSControlStateValueOff){
-        [player start];
+        [self->player.smLayer start];
     } else if (sender.state == NSControlStateValueOn){
-        [player stop];
+        [self->player.smLayer stop];
     }
 }
 
 - (IBAction)leftButtonAction:(NSButton *)sender {
     NSString *s = @"-5";
-    [player seekWithRelative:s.UTF8String];
+    [self->player.smLayer seekWithRelative:s.UTF8String];
 }
 
 - (IBAction)rightButtonAction:(NSButton *)sender {
     NSString *s = @"+5";
-    [player seekWithRelative:s.UTF8String];
+    [self->player.smLayer seekWithRelative:s.UTF8String];
 }
 
 - (IBAction)videoChangeAction:(id)sender {
     NSString *sliderValue = [self.flagTimelineSliderView stringValue];
-    NSLog(@"slider:%@", sliderValue);
-    [player seekWithAbsolute:sliderValue.UTF8String];
-    
+    [self->player.smLayer seekWithAbsolute:sliderValue.UTF8String];
 }
 
 
@@ -189,27 +190,44 @@
 -(BOOL)prepareForDragOperation:(id<NSDraggingInfo>)sender {
     NSPasteboard *zPasteboard = [sender draggingPasteboard];
     NSArray *files = [zPasteboard propertyListForType:NSFilenamesPboardType];
-    [player openVideo:[files objectAtIndex:0]];
+    [self->player.smLayer openVideo:[files objectAtIndex:0]];
     return YES;
 }
 
 #pragma mark - AppDelegate
 -(void)openVideo:(NSString *)path {
-    [player openVideo:path];
+    [self->player.smLayer openVideo:path];
 }
 
 #pragma mark - NSWindowDelegate
 //-(NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize
 //{
-//    NSLog(@"frameSize:%@", NSStringFromSize(frameSize));
-//    NSLog(@"NSStringFromRect:%@", NSStringFromRect(sender.frame));
-//    return NSMakeSize(sender.frame.size.width+1, sender.frame.size.height+1);
-//    return sender.aspectRatio;
+////    CGEventSourceRef src = CGEventSourceCreate(kCGEventSourceStateHIDSystemState);
+////
+////    CGEventRef cmdDown = CGEventCreateKeyboardEvent(src, kVK_Shift, true);
+////    CGEventRef cmdUp = CGEventCreateKeyboardEvent(src, kVK_Shift, false);
+////    CGEventSetFlags(cmdDown, kCGEventFlagMaskCommand);
+////    CGEventSetFlags(cmdUp, kCGEventFlagMaskCommand);
+////
+////    CGEventTapLocation loc = kCGSessionEventTap;
+////    CGEventPost(loc, cmdDown);
+////    CGEventPost(loc, cmdUp);
+////    return frameSize;
+//
+//    NSSize vs = player.videoSize;
+//    CGFloat aspect = vs.width / vs.height;
+//    CGFloat newHeight = frameSize.width / aspect;
+//
+//    [self->player.smLayer windowScale:aspect];
+//    return CGSizeMake(frameSize.width, newHeight);
 //}
+
+-(void)windowDidChangeScreen:(NSNotification *)notification{
+    NSLog(@"%@",notification);
+}
 
 #pragma mark - SMVideoViewDelegate
 -(void)videoStart:(SMVideoTime *)duration{
-    
     [self.flagTimelineSliderView setMaxValue:[duration doubleValue]];
     [self.flagTimelineRightView setStringValue:[duration getString]];
 }
@@ -217,6 +235,19 @@
 -(void)videoPos:(SMVideoTime *)pos{
     [self.flagTimelineSliderView setDoubleValue:[pos doubleValue]];
     [self.flagTimelineLeftView setStringValue:[pos getString]];
+}
+
+-(void)hiddenToolbar:(BOOL)yes{
+    _controlView.hidden = yes;
+}
+
+
+-(void)mouseEntered:(NSEvent *)event {
+    NSLog(@"mouseEntered =========");
+}
+
+-(void)mouseExited:(NSEvent *)event{
+    NSLog(@"ddd");
 }
 
 @end

@@ -27,8 +27,10 @@
 		82E9A52824030B52000DB7F3 /* libswresample.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E9A51F24030B51000DB7F3 /* libswresample.a */; };
 		82E9A52924030B52000DB7F3 /* libswscale.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 82E9A52024030B51000DB7F3 /* libswscale.a */; };
 		82E9A53624030E81000DB7F3 /* SMVideoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E9A53524030E81000DB7F3 /* SMVideoView.m */; };
-		82E9A5452403947E000DB7F3 /* Player.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82E9A5432403947E000DB7F3 /* Player.xib */; };
-		82E9A5462403947E000DB7F3 /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E9A5442403947E000DB7F3 /* Player.m */; };
+		82FBC09424120C66002E8ABD /* Player.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82FBC09224120C66002E8ABD /* Player.xib */; };
+		82FBC09524120C66002E8ABD /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 82FBC09324120C66002E8ABD /* Player.m */; };
+		82FBC09824121F76002E8ABD /* SMVideoLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 82FBC09724121F75002E8ABD /* SMVideoLayer.m */; };
+		82FC361D24124A36001A11AB /* MpvPlayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 82FC361C24124A36001A11AB /* MpvPlayer.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -201,9 +203,14 @@
 		82E9A52024030B51000DB7F3 /* libswscale.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libswscale.a; sourceTree = "<group>"; };
 		82E9A53424030E81000DB7F3 /* SMVideoView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMVideoView.h; sourceTree = "<group>"; };
 		82E9A53524030E81000DB7F3 /* SMVideoView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMVideoView.m; sourceTree = "<group>"; };
-		82E9A5422403947E000DB7F3 /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
-		82E9A5432403947E000DB7F3 /* Player.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Player.xib; sourceTree = "<group>"; };
-		82E9A5442403947E000DB7F3 /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		82FBC09124120C66002E8ABD /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		82FBC09224120C66002E8ABD /* Player.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Player.xib; sourceTree = "<group>"; };
+		82FBC09324120C66002E8ABD /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		82FBC09624121F75002E8ABD /* SMVideoLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMVideoLayer.h; sourceTree = "<group>"; };
+		82FBC09724121F75002E8ABD /* SMVideoLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMVideoLayer.m; sourceTree = "<group>"; };
+		82FC361B24124A36001A11AB /* MpvPlayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MpvPlayer.h; sourceTree = "<group>"; };
+		82FC361C24124A36001A11AB /* MpvPlayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MpvPlayer.m; sourceTree = "<group>"; };
+		82FC361F241251FA001A11AB /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/MainMenu.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -247,6 +254,8 @@
 				826AB8362406C12500B87C63 /* SMCommon.m */,
 				82C2C5062409191400485064 /* SMVideoTime.h */,
 				82C2C5072409191400485064 /* SMVideoTime.m */,
+				82FC361B24124A36001A11AB /* MpvPlayer.h */,
+				82FC361C24124A36001A11AB /* MpvPlayer.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -553,6 +562,8 @@
 			children = (
 				82E9A53424030E81000DB7F3 /* SMVideoView.h */,
 				82E9A53524030E81000DB7F3 /* SMVideoView.m */,
+				82FBC09624121F75002E8ABD /* SMVideoLayer.h */,
+				82FBC09724121F75002E8ABD /* SMVideoLayer.m */,
 				826AB831240416D400B87C63 /* ControlView.h */,
 				826AB832240416D400B87C63 /* ControlView.m */,
 			);
@@ -562,11 +573,19 @@
 		82E9A5412403947E000DB7F3 /* Window */ = {
 			isa = PBXGroup;
 			children = (
-				82E9A5422403947E000DB7F3 /* Player.h */,
-				82E9A5442403947E000DB7F3 /* Player.m */,
-				82E9A5432403947E000DB7F3 /* Player.xib */,
+				82FBC09024120C66002E8ABD /* Player */,
 			);
 			path = Window;
+			sourceTree = "<group>";
+		};
+		82FBC09024120C66002E8ABD /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				82FBC09124120C66002E8ABD /* Player.h */,
+				82FBC09324120C66002E8ABD /* Player.m */,
+				82FBC09224120C66002E8ABD /* Player.xib */,
+			);
+			path = Player;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -673,9 +692,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				82E9A46C24030AEE000DB7F3 /* Assets.xcassets in Resources */,
-				82E9A5452403947E000DB7F3 /* Player.xib in Resources */,
 				826AB8392407C0DF00B87C63 /* input.conf in Resources */,
 				82E9A46F24030AEE000DB7F3 /* MainMenu.xib in Resources */,
+				82FBC09424120C66002E8ABD /* Player.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -701,12 +720,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				82C2C5082409191400485064 /* SMVideoTime.m in Sources */,
-				82E9A5462403947E000DB7F3 /* Player.m in Sources */,
+				82FBC09824121F76002E8ABD /* SMVideoLayer.m in Sources */,
 				826AB833240416D400B87C63 /* ControlView.m in Sources */,
 				826AB8372406C12600B87C63 /* SMCommon.m in Sources */,
 				82E9A47224030AEE000DB7F3 /* main.m in Sources */,
 				82E9A53624030E81000DB7F3 /* SMVideoView.m in Sources */,
+				82FBC09524120C66002E8ABD /* Player.m in Sources */,
 				82E9A46A24030AEA000DB7F3 /* AppDelegate.m in Sources */,
+				82FC361D24124A36001A11AB /* MpvPlayer.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -746,6 +767,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				82E9A46E24030AEE000DB7F3 /* Base */,
+				82FC361F241251FA001A11AB /* en */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";

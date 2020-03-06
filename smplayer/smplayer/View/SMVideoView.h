@@ -9,6 +9,7 @@
 #import <Cocoa/Cocoa.h>
 
 #import "SMVideoTime.h"
+#import "SMVideoLayer.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -18,25 +19,19 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)videoStart:(SMVideoTime *)duration;
 -(void)videoPos:(SMVideoTime *)pos;
 
+-(void)hiddenToolbar:(BOOL)yes;
+
 @end
 
 
-@interface SMVideoView : NSOpenGLView
+@interface SMVideoView : NSView
 
 @property (weak, nonatomic) id <SMVideoViewDelegate> delegate;
+@property (nonatomic, strong) SMVideoLayer *smLayer;
+@property NSSize videoSize;
 
 + (id)Instance:(NSRect)frame;
 
--(void)initVideo;
--(void)openVideo:(NSString *)path;
--(void)setVoice:(double)value;
--(void)toggleVoice;
--(void)stop;
--(void)start;
--(void)quit;
--(void)seek:(const char *)second;
--(void)seekWithRelative:(const char *)second;
--(void)seekWithAbsolute:(const char *)second;
 @end
 
 NS_ASSUME_NONNULL_END
