@@ -44,48 +44,14 @@
 -(void)initPlayer{
     if (!player){
         player = [[Player alloc] init];
-        [player.window makeKeyWindow];
-        [player.window makeMainWindow];
+//        [player.window makeKeyWindow];
+//        [player.window makeMainWindow];
+//        [player.window makeKeyAndOrderFront:NULL];
+        [player showWindow:self];
     }
 }
 
 -(void)regListenEvent{
-    
-    
-//    [NSEvent addLocalMonitorForEventsMatchingMask:NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved |
-//    NSTrackingCursorUpdate |
-//    NSTrackingActiveWhenFirstResponder |
-//    NSTrackingActiveInKeyWindow |
-//    NSTrackingActiveInActiveApp |
-//    NSTrackingActiveAlways |
-//    NSTrackingAssumeInside |
-//    NSTrackingInVisibleRect |
-//     NSTrackingEnabledDuringMouseDrag handler:(NSEvent * event) {
-//
-//    }];
-    
-//    [NSEvent addLocalMonitorForEventsMatchingMask:NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved |
-//    NSTrackingCursorUpdate |
-//    NSTrackingActiveWhenFirstResponder |
-//    NSTrackingActiveInKeyWindow |
-//    NSTrackingActiveInActiveApp |
-//    NSTrackingActiveAlways |
-//    NSTrackingAssumeInside |
-//    NSTrackingInVisibleRect |
-//     NSTrackingEnabledDuringMouseDrag handler:^NSEvent * _Nullable(NSEvent * _Nonnull) {
-//        NSLog(@"123" );
-//    }];
-    
-//    [NSEvent addGlobalMonitorForEventsMatchingMask:NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved |
-//    NSTrackingCursorUpdate |
-//    NSTrackingActiveInKeyWindow |
-//    NSTrackingActiveInActiveApp |
-//    NSTrackingActiveAlways |
-//    NSTrackingAssumeInside |
-//    NSTrackingInVisibleRect |
-//    NSTrackingEnabledDuringMouseDrag handler:^(NSEvent * event) {
-//        NSLog(@"%@", event);
-//    }];
 }
 
 

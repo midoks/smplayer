@@ -27,6 +27,7 @@
 @interface Player (){
     NSTimer *hideControlTimer;
 }
+@property (weak) IBOutlet NSVisualEffectView *titleBarView;
 
 //控制器
 @property (weak) IBOutlet ControlView *controlView;
@@ -70,30 +71,36 @@
     self.window.styleMask |= NSWindowStyleMaskFullSizeContentView;
     self.window.appearance =  [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
     
+    self.window.titleVisibility = NSWindowTitleVisible;
+    self.window.titlebarAppearsTransparent = YES;
+    
     [self regEvent];
     
     [self initVideoView];
     [self initControlView];
+    
+    [self hiddenToolbar];
 }
 
 -(void)regEvent{
     // 注册文件拖动事件
     [self.window registerForDraggedTypes:[NSArray arrayWithObjects:NSPasteboardTypeFileURL, nil]];
     
-    [self.window.contentView addTrackingArea:[[NSTrackingArea alloc] initWithRect:self.window.frame options:
-                                              NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved |
-                                              NSTrackingCursorUpdate |
-                                              NSTrackingActiveWhenFirstResponder |
-                                              NSTrackingActiveInKeyWindow |
-                                              NSTrackingActiveInActiveApp |
-                                              NSTrackingActiveAlways |
-                                              NSTrackingAssumeInside |
-                                              NSTrackingInVisibleRect |
-                                              NSTrackingEnabledDuringMouseDrag
-                                                                            owner:self userInfo:nil]];
+    
+    NSLog(@"regEvent-frame:%@", NSStringFromRect(self.window.contentView.bounds));
+    
+    [self.window.contentView addTrackingArea:[[NSTrackingArea alloc]
+                                initWithRect:self.window.contentView.bounds
+                                     options:NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved |NSTrackingActiveAlways | NSTrackingInVisibleRect
+                                       owner:self
+                                    userInfo:@{@"obj":@"0"}]];
 }
 
 -(void)initVideoView {
+    
+    [self.titleBarView setHidden:YES];
+    self.titleBarView.layerContentsRedrawPolicy = NSViewLayerContentsRedrawOnSetNeedsDisplay;
+    
     self->player = [SMVideoView Instance:self.window.contentView.frame];
     //    [self->player initVideo];
     self->player.delegate = self;
@@ -144,7 +151,7 @@
     [_timeControlView addSubview:_flagTimelineView];
 }
 
-#pragma mark - 功能
+#pragma mark - IBAction
 
 /// 文件选择
 -(IBAction)selectedDIr:(id)sender
@@ -200,12 +207,10 @@
 
 
 #pragma mark - Private Method Of Drag File
-// 当文件被拖动到界面触发
 - (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender {
     return NSDragOperationCopy;
 }
 
-//当文件在界面中放手
 -(BOOL)prepareForDragOperation:(id<NSDraggingInfo>)sender {
     NSPasteboard *zPasteboard = [sender draggingPasteboard];
     NSArray *files = [zPasteboard propertyListForType:NSFilenamesPboardType];
@@ -219,40 +224,64 @@
 }
 
 #pragma mark - NSWindowDelegate
-//-(NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize
-//{
-////    CGEventSourceRef src = CGEventSourceCreate(kCGEventSourceStateHIDSystemState);
-////
-////    CGEventRef cmdDown = CGEventCreateKeyboardEvent(src, kVK_Shift, true);
-////    CGEventRef cmdUp = CGEventCreateKeyboardEvent(src, kVK_Shift, false);
-////    CGEventSetFlags(cmdDown, kCGEventFlagMaskCommand);
-////    CGEventSetFlags(cmdUp, kCGEventFlagMaskCommand);
-////
-////    CGEventTapLocation loc = kCGSessionEventTap;
-////    CGEventPost(loc, cmdDown);
-////    CGEventPost(loc, cmdUp);
-////    return frameSize;
+-(NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize
+{
+//    CGEventSourceRef src = CGEventSourceCreate(kCGEventSourceStateHIDSystemState);
 //
+//    CGEventRef cmdDown = CGEventCreateKeyboardEvent(src, kVK_Shift, true);
+//    CGEventRef cmdUp = CGEventCreateKeyboardEvent(src, kVK_Shift, false);
+//    CGEventSetFlags(cmdDown, kCGEventFlagMaskCommand);
+//    CGEventSetFlags(cmdUp, kCGEventFlagMaskCommand);
+//
+//    CGEventTapLocation loc = kCGSessionEventTap;
+//    CGEventPost(loc, cmdDown);
+//    CGEventPost(loc, cmdUp);
+//    return frameSize;
+
 //    NSSize vs = player.videoSize;
 //    CGFloat aspect = vs.width / vs.height;
 //    CGFloat newHeight = frameSize.width / aspect;
 //
 //    [self->player.smLayer windowScale:aspect];
 //    return CGSizeMake(frameSize.width, newHeight);
-//}
+    
+//    NSLog(@"regEvent-frame:%@", NSStringFromRect(self.window.contentView.bounds));
+//    [self.window.contentView removeTrackingArea:<#(nonnull NSTrackingArea *)#>];
+//    [self.window.contentView addTrackingArea:[[NSTrackingArea alloc]
+//                                initWithRect:self.window.contentView.bounds
+//                                     options:NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved |NSTrackingActiveAlways | NSTrackingInVisibleRect
+//                                       owner:self
+//                                    userInfo:@{@"obj":@"0"}]];
+    
+    
+    return frameSize;
+}
 
 -(void)windowDidChangeScreen:(NSNotification *)notification{
-    NSLog(@"%@",notification);
+    NSLog(@"windowDidChangeScreen:%@",notification);
+}
+
+-(void)windowWillEnterFullScreen:(NSNotification *)notification{
+    NSLog(@"windowWillEnterFullScreen:%@",notification);
+}
+
+-(void)windowWillExitFullScreen:(NSNotification *)notification{
+    NSLog(@"windowWillExitFullScreen:%@",notification);
 }
 
 
 #pragma mark - Private Method Of Mouse And Toolbar
 -(BOOL)isMouseEvent:(NSEvent *)event views:(NSArray<NSView *> *)views
 {
+    BOOL result = NO;
     for (NSView *v in views) {
-        return [v mouse:[event locationInWindow] inRect:v.bounds];
+        NSPoint p = [v convertPoint:[event locationInWindow] fromView:NULL];
+        result = [v mouse:p inRect:v.bounds];
+        if (result){
+            return result;
+        }
     }
-    return NO;
+    return result;
 }
 
 -(void)hiddenToolbar{
@@ -262,8 +291,11 @@
     [[self.window standardWindowButton:NSWindowCloseButton] setHidden:YES];
     [[self.window standardWindowButton:NSWindowDocumentIconButton] setHidden:YES];
     
-    self.window.titleVisibility = NSWindowTitleHidden;
-    self.window.titlebarAppearsTransparent = YES;
+
+    [NSCursor setHiddenUntilMouseMoves:YES];
+    [self.titleBarView setHidden:YES];
+    
+    self.window.title = @"";
 }
 
 -(void)showToolbar{
@@ -273,29 +305,32 @@
     [[self.window standardWindowButton:NSWindowCloseButton] setHidden:NO];
     [[self.window standardWindowButton:NSWindowDocumentIconButton] setHidden:NO];
     
-    self.window.titleVisibility = NSWindowTitleVisible;
-    self.window.titlebarAppearsTransparent = NO;
+    self.window.title = @"SM";
+    [self.titleBarView setHidden:NO];
+    
 }
 
 -(void)destroyControlTimer{
     if (hideControlTimer) {
         [hideControlTimer invalidate];
-        hideControlTimer = nil;
+        hideControlTimer = NULL;
     }
 }
 
 -(void)createControlTimer{
-    hideControlTimer = [NSTimer scheduledTimerWithTimeInterval:3 repeats:1 block:^(NSTimer * timer) {
-        [self hiddenToolbar];
-        [NSCursor setHiddenUntilMouseMoves:YES];
-    }];
+    hideControlTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(hiddenToolbar) userInfo:NULL repeats:false];
 }
 
 -(void)mouseEntered:(NSEvent *)event {
+    
+    NSLog(@"%@", [event trackingArea].userInfo);
+    NSLog(@"mouseEntered");
     [self showToolbar];
 }
 
 -(void)mouseExited:(NSEvent *)event{
+    NSLog(@"%@", [event trackingArea].userInfo);
+    NSLog(@"mouseExited");
     [self hiddenToolbar];
 }
 
@@ -307,8 +342,13 @@
 -(void)mouseMoved:(NSEvent *)event{
     [self showToolbar];
     
-    [self destroyControlTimer];
-    [self createControlTimer];
+    if([self isMouseEvent:event views:[NSArray arrayWithObjects:self.titleBarView, self.controlView, nil]]){
+        [self destroyControlTimer];
+    } else {
+        [self destroyControlTimer];
+        [self createControlTimer];
+    }
+    
 }
 
 #pragma mark - SMVideoViewDelegate

@@ -299,8 +299,8 @@ static void render_context_callback(void *ctx) {
     
     NSLog(@"MPV Event Methods - fileLoad start!");
     
-    double w = [self mpvGetDouble:@"width"];
-    double h = [self mpvGetDouble:@"height"];
+//    double w = [self mpvGetDouble:@"width"];
+//    double h = [self mpvGetDouble:@"height"];
     
 //    _videoSize.height = h;
 //    _videoSize.width = w;
