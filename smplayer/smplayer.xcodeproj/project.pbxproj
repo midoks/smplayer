@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		82023C552413ADA800B0B8BC /* Welcome.m in Sources */ = {isa = PBXBuildFile; fileRef = 82023C532413ADA700B0B8BC /* Welcome.m */; };
 		82023C562413ADA800B0B8BC /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82023C542413ADA700B0B8BC /* Welcome.xib */; };
+		82023C5C2414D4FC00B0B8BC /* SMCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 82023C5B2414D4FC00B0B8BC /* SMCore.m */; };
+		82023C5F2415678C00B0B8BC /* OpenFileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82023C5E2415678C00B0B8BC /* OpenFileView.m */; };
 		826AB833240416D400B87C63 /* ControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AB832240416D400B87C63 /* ControlView.m */; };
 		826AB8372406C12600B87C63 /* SMCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AB8362406C12500B87C63 /* SMCommon.m */; };
 		826AB8392407C0DF00B87C63 /* input.conf in Resources */ = {isa = PBXBuildFile; fileRef = 826AB8382407C0DE00B87C63 /* input.conf */; };
@@ -56,6 +58,10 @@
 		82023C522413ADA700B0B8BC /* Welcome.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Welcome.h; sourceTree = "<group>"; };
 		82023C532413ADA700B0B8BC /* Welcome.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Welcome.m; sourceTree = "<group>"; };
 		82023C542413ADA700B0B8BC /* Welcome.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Welcome.xib; sourceTree = "<group>"; };
+		82023C5A2414D4FC00B0B8BC /* SMCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMCore.h; sourceTree = "<group>"; };
+		82023C5B2414D4FC00B0B8BC /* SMCore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMCore.m; sourceTree = "<group>"; };
+		82023C5D2415678C00B0B8BC /* OpenFileView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenFileView.h; sourceTree = "<group>"; };
+		82023C5E2415678C00B0B8BC /* OpenFileView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenFileView.m; sourceTree = "<group>"; };
 		826AB831240416D400B87C63 /* ControlView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ControlView.h; sourceTree = "<group>"; };
 		826AB832240416D400B87C63 /* ControlView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ControlView.m; sourceTree = "<group>"; };
 		826AB8352406C12500B87C63 /* SMCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMCommon.h; sourceTree = "<group>"; };
@@ -255,6 +261,8 @@
 		82023C512413AD9600B0B8BC /* Welcome */ = {
 			isa = PBXGroup;
 			children = (
+				82023C5D2415678C00B0B8BC /* OpenFileView.h */,
+				82023C5E2415678C00B0B8BC /* OpenFileView.m */,
 				82023C522413ADA700B0B8BC /* Welcome.h */,
 				82023C532413ADA700B0B8BC /* Welcome.m */,
 				82023C542413ADA700B0B8BC /* Welcome.xib */,
@@ -588,6 +596,8 @@
 		82E9A5412403947E000DB7F3 /* Window */ = {
 			isa = PBXGroup;
 			children = (
+				82023C5A2414D4FC00B0B8BC /* SMCore.h */,
+				82023C5B2414D4FC00B0B8BC /* SMCore.m */,
 				82023C512413AD9600B0B8BC /* Welcome */,
 				82FBC09024120C66002E8ABD /* Player */,
 			);
@@ -738,7 +748,9 @@
 			files = (
 				82C2C5082409191400485064 /* SMVideoTime.m in Sources */,
 				82FBC09824121F76002E8ABD /* SMVideoLayer.m in Sources */,
+				82023C5F2415678C00B0B8BC /* OpenFileView.m in Sources */,
 				826AB833240416D400B87C63 /* ControlView.m in Sources */,
+				82023C5C2414D4FC00B0B8BC /* SMCore.m in Sources */,
 				826AB8372406C12600B87C63 /* SMCommon.m in Sources */,
 				82E9A47224030AEE000DB7F3 /* main.m in Sources */,
 				82E9A53624030E81000DB7F3 /* SMVideoView.m in Sources */,

@@ -21,6 +21,8 @@
 #import "SMCommon.h"
 #import "SMVideoView.h"
 
+#import "SMCore.h"
+
 #import <Carbon/Carbon.h>
 
 
@@ -50,10 +52,21 @@
 
 @implementation Player
 
+
+static Player *_instance = nil;
+static dispatch_once_t _instance_once;
++ (id)Instance{
+    dispatch_once(&_instance_once, ^{
+        _instance = [[Player alloc] init];
+    });
+    return _instance;
+}
+
 -(id)init{
     self = [self initWithWindowNibName:@"Player"];
     return self;
 }
+
 
 -(id)initWithWindow:(NSWindow *)window
 {
@@ -85,9 +98,6 @@
 -(void)regEvent{
     // 注册文件拖动事件
     [self.window registerForDraggedTypes:[NSArray arrayWithObjects:NSPasteboardTypeFileURL, nil]];
-    
-    
-    NSLog(@"regEvent-frame:%@", NSStringFromRect(self.window.contentView.bounds));
     
     [self.window.contentView addTrackingArea:[[NSTrackingArea alloc]
                                 initWithRect:self.window.contentView.bounds
@@ -128,7 +138,6 @@
     
     [dir setAction:@selector(selectedDIr:)];
     [_fragToolbarView addView:dir inGravity:NSStackViewGravityLeading];
-    
 }
 
 -(void)initControlView {
@@ -259,6 +268,8 @@
 
 -(void)windowDidChangeScreen:(NSNotification *)notification{
     NSLog(@"windowDidChangeScreen:%@",notification);
+    
+   
 }
 
 -(void)windowWillEnterFullScreen:(NSNotification *)notification{
@@ -291,11 +302,11 @@
     [[self.window standardWindowButton:NSWindowCloseButton] setHidden:YES];
     [[self.window standardWindowButton:NSWindowDocumentIconButton] setHidden:YES];
     
-
     [NSCursor setHiddenUntilMouseMoves:YES];
     [self.titleBarView setHidden:YES];
     
     self.window.title = @"";
+    
 }
 
 -(void)showToolbar{
@@ -305,7 +316,7 @@
     [[self.window standardWindowButton:NSWindowCloseButton] setHidden:NO];
     [[self.window standardWindowButton:NSWindowDocumentIconButton] setHidden:NO];
     
-    self.window.title = @"SM";
+    self.window.title = @"SMS";
     [self.titleBarView setHidden:NO];
     
 }
@@ -322,15 +333,12 @@
 }
 
 -(void)mouseEntered:(NSEvent *)event {
-    
-    NSLog(@"%@", [event trackingArea].userInfo);
-    NSLog(@"mouseEntered");
+//    NSLog(@"%@", [event trackingArea].userInfo);
     [self showToolbar];
 }
 
 -(void)mouseExited:(NSEvent *)event{
-    NSLog(@"%@", [event trackingArea].userInfo);
-    NSLog(@"mouseExited");
+//    NSLog(@"%@", [event trackingArea].userInfo);
     [self hiddenToolbar];
 }
 

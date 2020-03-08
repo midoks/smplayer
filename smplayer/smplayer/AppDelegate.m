@@ -8,18 +8,19 @@
 
 
 #import "AppDelegate.h"
-#import "Player.h"
+#import "SMCore.h"
 
 @interface AppDelegate (){
-    Player *player;
+//    Player *player;
 }
 @end
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    [self initPlayer];
-    [self regListenEvent];
+//    [self initPlayer];
+//    [self regListenEvent];
+    [[SMCore Instance] first];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -30,25 +31,36 @@
 #pragma mark - URL Schemes
 - (void)application:(NSApplication *)application openURLs:(NSArray<NSURL *> *)urls{
     [self initPlayer];
-    [player openVideo:[urls[0] path]];
+//    [player openVideo:[urls[0] path]];
     
-    NSAlert *alert = [[NSAlert alloc] init];
-    [alert setInformativeText:[NSString stringWithFormat:@"%@", urls ]];
-    [alert beginSheetModalForWindow:player.window
-                  completionHandler:^(NSModalResponse returnCode){
-        //用户点击告警上面的按钮后的回调
-        NSLog(@"returnCode : %ld",(long)returnCode);
-    }];
+//    NSAlert *alert = [[NSAlert alloc] init];
+//    [alert setInformativeText:[NSString stringWithFormat:@"%@", urls ]];
+//    [alert beginSheetModalForWindow:player.window
+//                  completionHandler:^(NSModalResponse returnCode){
+//        //用户点击告警上面的按钮后的回调
+//        NSLog(@"returnCode : %ld",(long)returnCode);
+//    }];
+}
+
+-(BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication
+                    hasVisibleWindows:(BOOL)flag{
+  if (!flag){
+    [NSApp activateIgnoringOtherApps:NO];
+    [[SMCore Instance] first];
+//    [self.window makeKeyAndOrderFront:self];
+  }
+  return YES;
 }
 
 -(void)initPlayer{
-    if (!player){
-        player = [[Player alloc] init];
+//    if (!player){
+//        player = [[Player];
 //        [player.window makeKeyWindow];
 //        [player.window makeMainWindow];
+//
+//        [player showWindow:self];
 //        [player.window makeKeyAndOrderFront:NULL];
-        [player showWindow:self];
-    }
+//    }
 }
 
 -(void)regListenEvent{

@@ -1,18 +1,21 @@
 //
-//  Welcome.h
+//  SMCore.h
 //  smplayer
 //
-//  Created by midoks on 2020/3/7.
+//  Created by midoks on 2020/3/8.
 //  Copyright © 2020 midoks. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
+
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Welcome : NSWindowController
+@interface SMCore : NSObject
 
 + (id)Instance;
+-(void)first;
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -9,13 +9,14 @@
 #import <Cocoa/Cocoa.h>
 #import "SMVideoView.h"
 
+
 NS_ASSUME_NONNULL_BEGIN
 
 //NSWindowController
 @interface Player : NSWindowController<NSWindowDelegate,SMVideoViewDelegate>{
     SMVideoView *player;
 }
-
++ (id)Instance;
 -(void)openVideo:(NSString *)path;
 @end
 

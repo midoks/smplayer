@@ -191,6 +191,11 @@ static inline void _draw_frame(SMVideoLayer *obj) {
     mpv_set_property_string(mpv, "vo", "libmpv");
     mpv_set_property_string(mpv, "keepaspect", "yes");
     mpv_set_property_string(mpv, "gpu-hwdec-interop", "auto");
+    
+    check_error( mpv_set_option_string(mpv, "hwdec", "videotoolbox"));
+#ifdef ENABLE_LEGACY_GPU_SUPPORT
+    check_error( mpv_set_option_string(mpv, "hwdec-image-format", "uyvy422"));
+#endif
     mpv_request_log_messages(mpv, "warn");
     check_error(mpv_initialize(mpv));
 }

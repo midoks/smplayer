@@ -1,8 +1,8 @@
 //
-//  Welcome.h
+//  OpenFileView.h
 //  smplayer
 //
-//  Created by midoks on 2020/3/7.
+//  Created by midoks on 2020/3/9.
 //  Copyright © 2020 midoks. All rights reserved.
 //
 
@@ -10,9 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Welcome : NSWindowController
+@interface OpenFileView : NSView
 
-+ (id)Instance;
 @end
 
 NS_ASSUME_NONNULL_END
