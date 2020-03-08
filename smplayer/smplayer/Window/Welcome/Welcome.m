@@ -90,26 +90,35 @@ static dispatch_once_t _instance_once;
 
 #pragma mark - NSTableViewDelegate, NSTableViewDataSource
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView{
-    return 3;
+    return 5;
 }
 
--(NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
+//-(NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
+//
+//    NSString *strId = @"viewForTableColumn_show";
+//    NSTableCellView *cell = [tableView makeViewWithIdentifier:strId owner:self];
+//    if (!cell) {
+//        cell = [[NSTableCellView alloc] init];
+//        cell.identifier = strId;
+//    }
+//
+////    cell.view
+//    cell.layer.backgroundColor = [NSColor grayColor].CGColor;
+//    NSLog(@"dddd");
+//    return cell;
+//}
+
+-(id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
     
-    NSString *strId = @"viewForTableColumn_show";
-    NSTableCellView *cell = [tableView makeViewWithIdentifier:strId owner:self];
-    if (!cell) {
-        cell = [[NSTableCellView alloc] init];
-        cell.identifier = strId;
-    }
-    
-    cell.textField.stringValue = @"234234";
-    return cell;
+    return @{@"url":@"dddsdddddddddddddddddddddddddddddddddddddd",@"image": [[NSWorkspace sharedWorkspace] iconForFile:@"/Users/midoks/Desktop/work/m3u8/demo.mp4"]};
 }
 
 
 -(CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row{
-    return 20;
+    return 28;
 }
+
+//-tabl
 
 -(void)tableViewSelectionDidChange:(NSNotification *)notification{
     NSLog(@"ddd");
