@@ -82,7 +82,7 @@ static dispatch_once_t _instance_once;
     self.recentFilesTableView.dataSource = self;
     
 //    [self.recentFilesTableView setdraw]
-    
+    self.recentFilesTableView.gridColor = [NSColor magentaColor];
     [self.recentFilesTableView reloadData];
     
 }
@@ -95,20 +95,17 @@ static dispatch_once_t _instance_once;
 
 -(NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
     
-    NSString *strIdt = @"viewForTableColumn_show";
-    NSTableCellView *cell = [tableView makeViewWithIdentifier:strIdt owner:self];
+    NSString *strId = @"viewForTableColumn_show";
+    NSTableCellView *cell = [tableView makeViewWithIdentifier:strId owner:self];
     if (!cell) {
         cell = [[NSTableCellView alloc] init];
-        cell.identifier = strIdt;
+        cell.identifier = strId;
     }
     
-//    cell.imageView.image = [NSImage imageNamed:@"history"];
     cell.textField.stringValue = @"234234";
-    [cell.textField setTextColor:[NSColor whiteColor]];
-    cell.wantsLayer = YES;
-//    cell.layer.backgroundColor = [NSColor whiteColor].CGColor;
     return cell;
 }
+
 
 -(CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row{
     return 20;
