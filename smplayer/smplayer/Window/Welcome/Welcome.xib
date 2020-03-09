@@ -55,21 +55,19 @@
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="JZ2-z0-ikY" userLabel="Open File" customClass="OpenFileView">
+                                    <customView identifier="open-file" translatesAutoresizingMaskIntoConstraints="NO" id="JZ2-z0-ikY" userLabel="Open File" customClass="OpenFileView">
                                         <rect key="frame" x="204" y="249" width="266" height="28"/>
                                         <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="NvX-Ff-SP8">
-                                                <rect key="frame" x="10" y="6" width="49" height="16"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NvX-Ff-SP8">
+                                                <rect key="frame" x="6" y="6" width="49" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Open..." id="Ufd-ut-MKL">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="w4c-TU-8qJ">
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w4c-TU-8qJ">
                                                 <rect key="frame" x="234" y="6" width="26" height="16"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="⌘O" id="X9V-PG-qLo">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -77,22 +75,27 @@
                                                 </textFieldCell>
                                             </textField>
                                         </subviews>
+                                        <constraints>
+                                            <constraint firstAttribute="trailing" secondItem="w4c-TU-8qJ" secondAttribute="trailing" constant="8" id="3U5-kz-LgX"/>
+                                            <constraint firstItem="w4c-TU-8qJ" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="NvX-Ff-SP8" secondAttribute="trailing" constant="8" id="Hla-TS-Veh"/>
+                                            <constraint firstItem="w4c-TU-8qJ" firstAttribute="centerY" secondItem="JZ2-z0-ikY" secondAttribute="centerY" id="T9S-Rj-kLs"/>
+                                            <constraint firstItem="NvX-Ff-SP8" firstAttribute="leading" secondItem="JZ2-z0-ikY" secondAttribute="leading" constant="8" id="aI8-JQ-WZZ"/>
+                                            <constraint firstItem="NvX-Ff-SP8" firstAttribute="centerY" secondItem="JZ2-z0-ikY" secondAttribute="centerY" id="f2D-0m-1Ji"/>
+                                        </constraints>
                                     </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="QhI-h3-WR7" userLabel="Open Url File" customClass="OpenFileView">
+                                    <customView identifier="open-fileurl" translatesAutoresizingMaskIntoConstraints="NO" id="QhI-h3-WR7" userLabel="Open Url File" customClass="OpenFileView">
                                         <rect key="frame" x="204" y="221" width="266" height="28"/>
                                         <subviews>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZXo-Qi-NHc">
-                                                <rect key="frame" x="10" y="6" width="76" height="16"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZXo-Qi-NHc">
+                                                <rect key="frame" x="6" y="6" width="76" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Open URL…" id="z92-Gk-AC4">
                                                     <font key="font" usesAppearanceFont="YES"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                                 </textFieldCell>
                                             </textField>
-                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JRE-aa-Mhc">
+                                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JRE-aa-Mhc">
                                                 <rect key="frame" x="221" y="6" width="39" height="16"/>
-                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="⇧⌘O" id="JBR-rU-Iiw">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -101,10 +104,15 @@
                                             </textField>
                                         </subviews>
                                         <constraints>
+                                            <constraint firstItem="ZXo-Qi-NHc" firstAttribute="leading" secondItem="QhI-h3-WR7" secondAttribute="leading" constant="8" id="3rJ-UX-xaT"/>
+                                            <constraint firstAttribute="trailing" secondItem="JRE-aa-Mhc" secondAttribute="trailing" constant="8" id="RPO-uB-IN0"/>
                                             <constraint firstAttribute="height" constant="28" id="aQZ-EP-Lw4"/>
+                                            <constraint firstItem="JRE-aa-Mhc" firstAttribute="centerY" secondItem="QhI-h3-WR7" secondAttribute="centerY" id="kve-Ap-tOF"/>
+                                            <constraint firstItem="JRE-aa-Mhc" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="ZXo-Qi-NHc" secondAttribute="trailing" constant="8" id="m9a-nL-gYi"/>
+                                            <constraint firstItem="ZXo-Qi-NHc" firstAttribute="centerY" secondItem="QhI-h3-WR7" secondAttribute="centerY" id="tEg-TR-bG6"/>
                                         </constraints>
                                     </customView>
-                                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="p1L-6I-VnM" userLabel="Last File Play" customClass="OpenFileView">
+                                    <customView identifier="open-resume" translatesAutoresizingMaskIntoConstraints="NO" id="p1L-6I-VnM" userLabel="Last File Play" customClass="OpenFileView">
                                         <rect key="frame" x="204" y="190" width="266" height="28"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ljo-Pd-kFV" userLabel="Last Image View">
@@ -155,11 +163,11 @@
                                     </customView>
                                     <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qpk-zG-iFV" userLabel="Scroll View - Table View">
                                         <rect key="frame" x="206" y="20" width="264" height="163"/>
-                                        <clipView key="contentView" ambiguous="YES" drawsBackground="NO" copiesOnScroll="NO" id="RLe-yd-C1T">
+                                        <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="RLe-yd-C1T">
                                             <rect key="frame" x="0.0" y="0.0" width="264" height="163"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
-                                                <tableView verticalHuggingPriority="750" ambiguous="YES" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="CKw-Mk-JFE">
+                                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="CKw-Mk-JFE">
                                                     <rect key="frame" x="0.0" y="0.0" width="264" height="163"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <size key="intercellSpacing" width="3" height="2"/>

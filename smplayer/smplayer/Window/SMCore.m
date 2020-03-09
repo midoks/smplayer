@@ -38,8 +38,12 @@ static dispatch_once_t _instance_once;
     return self;
 }
 
--(void)first{
-    [self->welcome showWindow:nil];
+-(Welcome *)first{
+    return self->welcome;
+}
+
+-(Player *)player{
+    return self->player;
 }
 
 

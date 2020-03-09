@@ -52,6 +52,36 @@
 	<key>CFBundleDocumentTypes</key>
 	<array>
 		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>flv</string>
+				<string>f4v</string>
+				<string>f4p</string>
+				<string>f4a</string>
+				<string>f4b</string>
+			</array>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>CFBundleTypeName</key>
+			<string>Flash Video file</string>
+			<key>LSHandlerRank</key>
+			<string>Default</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>m3u8</string>
+				<string>m3u</string>
+				<string>pls</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Playlist</string>
+			<key>LSHandlerRank</key>
+			<string>Default</string>
+		</dict>
+		<dict>
 			<key>CFBundleTypeName</key>
 			<string>MPEG-4 video</string>
 			<key>LSHandlerRank</key>

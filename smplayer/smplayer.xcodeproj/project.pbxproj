@@ -14,6 +14,12 @@
 		826AB833240416D400B87C63 /* ControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AB832240416D400B87C63 /* ControlView.m */; };
 		826AB8372406C12600B87C63 /* SMCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AB8362406C12500B87C63 /* SMCommon.m */; };
 		826AB8392407C0DF00B87C63 /* input.conf in Resources */ = {isa = PBXBuildFile; fileRef = 826AB8382407C0DE00B87C63 /* input.conf */; };
+		828DBD3B2416886E00A89A89 /* Web.m in Sources */ = {isa = PBXBuildFile; fileRef = 828DBD392416886E00A89A89 /* Web.m */; };
+		828DBD3C2416886E00A89A89 /* Web.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828DBD3A2416886E00A89A89 /* Web.xib */; };
+		828DBD40241688D200A89A89 /* Preference.m in Sources */ = {isa = PBXBuildFile; fileRef = 828DBD3E241688D200A89A89 /* Preference.m */; };
+		828DBD41241688D200A89A89 /* Preference.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828DBD3F241688D200A89A89 /* Preference.xib */; };
+		828DBD462416B12400A89A89 /* OpenURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 828DBD442416B12400A89A89 /* OpenURL.m */; };
+		828DBD472416B12400A89A89 /* OpenURL.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828DBD452416B12400A89A89 /* OpenURL.xib */; };
 		82C2C5082409191400485064 /* SMVideoTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C2C5072409191400485064 /* SMVideoTime.m */; };
 		82E9A46A24030AEA000DB7F3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E9A46924030AEA000DB7F3 /* AppDelegate.m */; };
 		82E9A46C24030AEE000DB7F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82E9A46B24030AEE000DB7F3 /* Assets.xcassets */; };
@@ -68,6 +74,15 @@
 		826AB8362406C12500B87C63 /* SMCommon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMCommon.m; sourceTree = "<group>"; };
 		826AB8382407C0DE00B87C63 /* input.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = input.conf; sourceTree = "<group>"; };
 		826AB83B2408229000B87C63 /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
+		828DBD382416886E00A89A89 /* Web.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Web.h; sourceTree = "<group>"; };
+		828DBD392416886E00A89A89 /* Web.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Web.m; sourceTree = "<group>"; };
+		828DBD3A2416886E00A89A89 /* Web.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Web.xib; sourceTree = "<group>"; };
+		828DBD3D241688D200A89A89 /* Preference.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Preference.h; sourceTree = "<group>"; };
+		828DBD3E241688D200A89A89 /* Preference.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Preference.m; sourceTree = "<group>"; };
+		828DBD3F241688D200A89A89 /* Preference.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Preference.xib; sourceTree = "<group>"; };
+		828DBD432416B12400A89A89 /* OpenURL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenURL.h; sourceTree = "<group>"; };
+		828DBD442416B12400A89A89 /* OpenURL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenURL.m; sourceTree = "<group>"; };
+		828DBD452416B12400A89A89 /* OpenURL.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenURL.xib; sourceTree = "<group>"; };
 		82C2C5062409191400485064 /* SMVideoTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMVideoTime.h; sourceTree = "<group>"; };
 		82C2C5072409191400485064 /* SMVideoTime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMVideoTime.m; sourceTree = "<group>"; };
 		82E9A46524030AEA000DB7F3 /* smplayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smplayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -291,6 +306,36 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		828DBD362416884100A89A89 /* Preference */ = {
+			isa = PBXGroup;
+			children = (
+				828DBD3D241688D200A89A89 /* Preference.h */,
+				828DBD3E241688D200A89A89 /* Preference.m */,
+				828DBD3F241688D200A89A89 /* Preference.xib */,
+			);
+			path = Preference;
+			sourceTree = "<group>";
+		};
+		828DBD372416884100A89A89 /* Web */ = {
+			isa = PBXGroup;
+			children = (
+				828DBD382416886E00A89A89 /* Web.h */,
+				828DBD392416886E00A89A89 /* Web.m */,
+				828DBD3A2416886E00A89A89 /* Web.xib */,
+			);
+			path = Web;
+			sourceTree = "<group>";
+		};
+		828DBD422416B0A100A89A89 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				828DBD432416B12400A89A89 /* OpenURL.h */,
+				828DBD442416B12400A89A89 /* OpenURL.m */,
+				828DBD452416B12400A89A89 /* OpenURL.xib */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		82E9A45C24030AEA000DB7F3 = {
 			isa = PBXGroup;
 			children = (
@@ -315,10 +360,10 @@
 		82E9A46724030AEA000DB7F3 /* smplayer */ = {
 			isa = PBXGroup;
 			children = (
+				82E9A49524030B51000DB7F3 /* Deps */,
+				82E9A52A24030C1F000DB7F3 /* Assets */,
 				826AB8342406C0D400B87C63 /* Util */,
 				82E9A5412403947E000DB7F3 /* Window */,
-				82E9A52A24030C1F000DB7F3 /* Assets */,
-				82E9A49524030B51000DB7F3 /* Deps */,
 				82E9A53324030DCF000DB7F3 /* View */,
 				82E9A46824030AEA000DB7F3 /* AppDelegate.h */,
 				82E9A46924030AEA000DB7F3 /* AppDelegate.m */,
@@ -598,6 +643,9 @@
 			children = (
 				82023C5A2414D4FC00B0B8BC /* SMCore.h */,
 				82023C5B2414D4FC00B0B8BC /* SMCore.m */,
+				828DBD422416B0A100A89A89 /* Common */,
+				828DBD362416884100A89A89 /* Preference */,
+				828DBD372416884100A89A89 /* Web */,
 				82023C512413AD9600B0B8BC /* Welcome */,
 				82FBC09024120C66002E8ABD /* Player */,
 			);
@@ -717,8 +765,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				828DBD3C2416886E00A89A89 /* Web.xib in Resources */,
+				828DBD472416B12400A89A89 /* OpenURL.xib in Resources */,
 				82023C562413ADA800B0B8BC /* Welcome.xib in Resources */,
 				82E9A46C24030AEE000DB7F3 /* Assets.xcassets in Resources */,
+				828DBD41241688D200A89A89 /* Preference.xib in Resources */,
 				826AB8392407C0DF00B87C63 /* input.conf in Resources */,
 				82E9A46F24030AEE000DB7F3 /* MainMenu.xib in Resources */,
 				82FBC09424120C66002E8ABD /* Player.xib in Resources */,
@@ -751,13 +802,16 @@
 				82023C5F2415678C00B0B8BC /* OpenFileView.m in Sources */,
 				826AB833240416D400B87C63 /* ControlView.m in Sources */,
 				82023C5C2414D4FC00B0B8BC /* SMCore.m in Sources */,
+				828DBD462416B12400A89A89 /* OpenURL.m in Sources */,
 				826AB8372406C12600B87C63 /* SMCommon.m in Sources */,
 				82E9A47224030AEE000DB7F3 /* main.m in Sources */,
 				82E9A53624030E81000DB7F3 /* SMVideoView.m in Sources */,
+				828DBD40241688D200A89A89 /* Preference.m in Sources */,
 				82023C552413ADA800B0B8BC /* Welcome.m in Sources */,
 				82FBC09524120C66002E8ABD /* Player.m in Sources */,
 				82E9A46A24030AEA000DB7F3 /* AppDelegate.m in Sources */,
 				82FC361D24124A36001A11AB /* MpvPlayer.m in Sources */,
+				828DBD3B2416886E00A89A89 /* Web.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

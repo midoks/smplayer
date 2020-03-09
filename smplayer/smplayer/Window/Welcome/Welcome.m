@@ -57,6 +57,8 @@ static dispatch_once_t _instance_once;
     self.window.titleVisibility = NSWindowTitleHidden;
     self.window.titlebarAppearsTransparent = YES;
     
+    [self.window registerForDraggedTypes:[NSArray arrayWithObjects:NSPasteboardTypeFileURL, nil]];
+    
     self.window.appearance =  [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
     self.mainView.wantsLayer = YES;
     
@@ -68,11 +70,9 @@ static dispatch_once_t _instance_once;
     [self.lastFilePosLabel setStringValue:@"10:20"];
     
     
-    NSString *version = [[NSBundle mainBundle]objectForInfoDictionaryKey:@"CFBundleShortVersionString"];
-    [self.version setStringValue:version];
+    [self.version setStringValue:[[NSBundle mainBundle]objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
     
     [self initRecentTableView];
-    
 }
 
 -(void)initRecentTableView{
@@ -93,24 +93,9 @@ static dispatch_once_t _instance_once;
     return 5;
 }
 
-//-(NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
-//
-//    NSString *strId = @"viewForTableColumn_show";
-//    NSTableCellView *cell = [tableView makeViewWithIdentifier:strId owner:self];
-//    if (!cell) {
-//        cell = [[NSTableCellView alloc] init];
-//        cell.identifier = strId;
-//    }
-//
-////    cell.view
-//    cell.layer.backgroundColor = [NSColor grayColor].CGColor;
-//    NSLog(@"dddd");
-//    return cell;
-//}
-
 -(id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
     
-    return @{@"url":@"dddsdddddddddddddddddddddddddddddddddddddd",@"image": [[NSWorkspace sharedWorkspace] iconForFile:@"/Users/midoks/Desktop/work/m3u8/demo.mp4"]};
+    return @{@"url":@"dd.mp4",@"image": [[NSWorkspace sharedWorkspace] iconForFile:@"/Users/midoks/Desktop/work/m3u8/demo.mp4"]};
 }
 
 
@@ -124,5 +109,17 @@ static dispatch_once_t _instance_once;
     NSLog(@"ddd");
 }
 
+#pragma mark - Private Method Of Drag File
+- (NSDragOperation)draggingEntered:(id <NSDraggingInfo>)sender {
+    return NSDragOperationCopy;
+}
+
+-(BOOL)prepareForDragOperation:(id<NSDraggingInfo>)sender {
+    NSPasteboard *zPasteboard = [sender draggingPasteboard];
+    NSArray *files = [zPasteboard propertyListForType:NSFilenamesPboardType];
+    
+    [[NSApp delegate] application:[NSApplication sharedApplication] openFile:[files objectAtIndex:0]];
+    return YES;
+}
 
 @end

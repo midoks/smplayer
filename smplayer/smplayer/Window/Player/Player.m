@@ -6,29 +6,23 @@
 //  Copyright © 2020 midoks. All rights reserved.
 //
 
-//AppDelegate.m
-//self.player =[[NSWindowController alloc] initWithWindowNibName:@"Player"];
-//
-//[self.player loadWindow];
-//[self.player.window makeKeyWindow];
-//[self.player.window makeMainWindow];
-//[self.player.window center];
-
-
-#import "Player.h"
 #import "ControlView.h"
-
 #import "SMCommon.h"
 #import "SMVideoView.h"
-
 #import "SMCore.h"
 
 #import <Carbon/Carbon.h>
 
+#import "Player.h"
 
 @interface Player (){
     NSTimer *hideControlTimer;
 }
+
+@property (nonatomic,assign) BOOL isFullScreen;
+@property (nonatomic,assign) CGSize minWindowSize;
+
+
 @property (weak) IBOutlet NSVisualEffectView *titleBarView;
 
 //控制器
@@ -67,7 +61,6 @@ static dispatch_once_t _instance_once;
     return self;
 }
 
-
 -(id)initWithWindow:(NSWindow *)window
 {
     if (self = [super initWithWindow:window]) {
@@ -79,14 +72,7 @@ static dispatch_once_t _instance_once;
 -(void)windowDidLoad {
     [super windowDidLoad];
     
-    // 窗口可以拖拽
-    self.window.movableByWindowBackground = YES;
-    self.window.styleMask |= NSWindowStyleMaskFullSizeContentView;
-    self.window.appearance =  [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
-    
-    self.window.titleVisibility = NSWindowTitleVisible;
-    self.window.titlebarAppearsTransparent = YES;
-    
+    [self initVar];
     [self regEvent];
     
     [self initVideoView];
@@ -95,15 +81,28 @@ static dispatch_once_t _instance_once;
     [self hiddenToolbar];
 }
 
+-(void)initVar{
+    self.isFullScreen = NO;
+    self.minWindowSize = NSMakeSize(285, 120); 
+    
+    // 窗口可以拖拽
+    self.window.movableByWindowBackground = YES;
+    self.window.styleMask |= NSWindowStyleMaskFullSizeContentView;
+    self.window.appearance =  [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
+    
+    self.window.titleVisibility = NSWindowTitleVisible;
+    self.window.titlebarAppearsTransparent = YES;
+}
+
 -(void)regEvent{
     // 注册文件拖动事件
     [self.window registerForDraggedTypes:[NSArray arrayWithObjects:NSPasteboardTypeFileURL, nil]];
     
     [self.window.contentView addTrackingArea:[[NSTrackingArea alloc]
-                                initWithRect:self.window.contentView.bounds
-                                     options:NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved |NSTrackingActiveAlways | NSTrackingInVisibleRect
-                                       owner:self
-                                    userInfo:@{@"obj":@"0"}]];
+                                              initWithRect:self.window.contentView.bounds
+                                              options:NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved |NSTrackingActiveAlways | NSTrackingInVisibleRect
+                                              owner:self
+                                              userInfo:@{@"obj":@"0"}]];
 }
 
 -(void)initVideoView {
@@ -235,49 +234,64 @@ static dispatch_once_t _instance_once;
 #pragma mark - NSWindowDelegate
 -(NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize
 {
-//    CGEventSourceRef src = CGEventSourceCreate(kCGEventSourceStateHIDSystemState);
-//
-//    CGEventRef cmdDown = CGEventCreateKeyboardEvent(src, kVK_Shift, true);
-//    CGEventRef cmdUp = CGEventCreateKeyboardEvent(src, kVK_Shift, false);
-//    CGEventSetFlags(cmdDown, kCGEventFlagMaskCommand);
-//    CGEventSetFlags(cmdUp, kCGEventFlagMaskCommand);
-//
-//    CGEventTapLocation loc = kCGSessionEventTap;
-//    CGEventPost(loc, cmdDown);
-//    CGEventPost(loc, cmdUp);
-//    return frameSize;
-
-//    NSSize vs = player.videoSize;
-//    CGFloat aspect = vs.width / vs.height;
-//    CGFloat newHeight = frameSize.width / aspect;
-//
-//    [self->player.smLayer windowScale:aspect];
-//    return CGSizeMake(frameSize.width, newHeight);
+    //    CGEventSourceRef src = CGEventSourceCreate(kCGEventSourceStateHIDSystemState);
+    //
+    //    CGEventRef cmdDown = CGEventCreateKeyboardEvent(src, kVK_Shift, true);
+    //    CGEventRef cmdUp = CGEventCreateKeyboardEvent(src, kVK_Shift, false);
+    //    CGEventSetFlags(cmdDown, kCGEventFlagMaskCommand);
+    //    CGEventSetFlags(cmdUp, kCGEventFlagMaskCommand);
+    //
+    //    CGEventTapLocation loc = kCGSessionEventTap;
+    //    CGEventPost(loc, cmdDown);
+    //    CGEventPost(loc, cmdUp);
+    //    return frameSize;
     
-//    NSLog(@"regEvent-frame:%@", NSStringFromRect(self.window.contentView.bounds));
-//    [self.window.contentView removeTrackingArea:<#(nonnull NSTrackingArea *)#>];
-//    [self.window.contentView addTrackingArea:[[NSTrackingArea alloc]
-//                                initWithRect:self.window.contentView.bounds
-//                                     options:NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved |NSTrackingActiveAlways | NSTrackingInVisibleRect
-//                                       owner:self
-//                                    userInfo:@{@"obj":@"0"}]];
+    //    NSSize vs = player.videoSize;
+    //    CGFloat aspect = vs.width / vs.height;
+    //    CGFloat newHeight = frameSize.width / aspect;
+    //
+    //    [self->player.smLayer windowScale:aspect];
+    //    return CGSizeMake(frameSize.width, newHeight);
     
+    //    NSLog(@"regEvent-frame:%@", NSStringFromRect(self.window.contentView.bounds));
+    //    [self.window.contentView removeTrackingArea:<#(nonnull NSTrackingArea *)#>];
+    //    [self.window.contentView addTrackingArea:[[NSTrackingArea alloc]
+    //                                initWithRect:self.window.contentView.bounds
+    //                                     options:NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved |NSTrackingActiveAlways | NSTrackingInVisibleRect
+    //                                       owner:self
+    //                                    userInfo:@{@"obj":@"0"}]];
+    
+    
+    [self->player.smLayer display];
+    
+    
+    if (frameSize.height <= _minWindowSize.height || frameSize.width <= _minWindowSize.width ){
+        CGFloat wAspect = self.window.frame.size.width/self.window.frame.size.height;
+        CGFloat mAspect = _minWindowSize.width/_minWindowSize.height;
+        if (wAspect > mAspect){
+            return NSMakeSize(_minWindowSize.height*wAspect, _minWindowSize.height);
+        }
+        return NSMakeSize(_minWindowSize.width, _minWindowSize.width/mAspect);
+    }
     
     return frameSize;
 }
 
--(void)windowDidChangeScreen:(NSNotification *)notification{
-    NSLog(@"windowDidChangeScreen:%@",notification);
-    
-   
-}
-
 -(void)windowWillEnterFullScreen:(NSNotification *)notification{
-    NSLog(@"windowWillEnterFullScreen:%@",notification);
+    self.isFullScreen = YES;
+    [self.titleBarView setHidden:YES];
+    
+    
+    self.window.titlebarAppearsTransparent = NO;
+    self.window.title = @"SM";
+    
 }
 
 -(void)windowWillExitFullScreen:(NSNotification *)notification{
-    NSLog(@"windowWillExitFullScreen:%@",notification);
+    self.isFullScreen = NO;
+    [self.titleBarView setHidden:NO];
+    
+    self.window.titlebarAppearsTransparent = YES;
 }
 
 
@@ -297,28 +311,33 @@ static dispatch_once_t _instance_once;
 
 -(void)hiddenToolbar{
     _controlView.hidden = YES;
-    [[self.window standardWindowButton:NSWindowZoomButton] setHidden:YES];
-    [[self.window standardWindowButton:NSWindowMiniaturizeButton] setHidden:YES];
-    [[self.window standardWindowButton:NSWindowCloseButton] setHidden:YES];
-    [[self.window standardWindowButton:NSWindowDocumentIconButton] setHidden:YES];
-    
     [NSCursor setHiddenUntilMouseMoves:YES];
-    [self.titleBarView setHidden:YES];
     
-    self.window.title = @"";
     
+    if (!_isFullScreen){
+        self.window.title = @"";
+        
+        [self.titleBarView setHidden:YES];
+        [[self.window standardWindowButton:NSWindowZoomButton] setHidden:YES];
+        [[self.window standardWindowButton:NSWindowMiniaturizeButton] setHidden:YES];
+        [[self.window standardWindowButton:NSWindowCloseButton] setHidden:YES];
+        [[self.window standardWindowButton:NSWindowDocumentIconButton] setHidden:YES];
+    }
 }
 
 -(void)showToolbar{
+    
     _controlView.hidden = NO;
-    [[self.window standardWindowButton:NSWindowZoomButton] setHidden:NO];
-    [[self.window standardWindowButton:NSWindowMiniaturizeButton] setHidden:NO];
-    [[self.window standardWindowButton:NSWindowCloseButton] setHidden:NO];
-    [[self.window standardWindowButton:NSWindowDocumentIconButton] setHidden:NO];
-    
-    self.window.title = @"SMS";
-    [self.titleBarView setHidden:NO];
-    
+
+    if (!_isFullScreen){
+        self.window.title = @"SMS";
+        [self.titleBarView setHidden:NO];
+        
+        [[self.window standardWindowButton:NSWindowZoomButton] setHidden:NO];
+        [[self.window standardWindowButton:NSWindowMiniaturizeButton] setHidden:NO];
+        [[self.window standardWindowButton:NSWindowCloseButton] setHidden:NO];
+        [[self.window standardWindowButton:NSWindowDocumentIconButton] setHidden:NO];
+    }
 }
 
 -(void)destroyControlTimer{
@@ -333,12 +352,12 @@ static dispatch_once_t _instance_once;
 }
 
 -(void)mouseEntered:(NSEvent *)event {
-//    NSLog(@"%@", [event trackingArea].userInfo);
+    //    NSLog(@"%@", [event trackingArea].userInfo);
     [self showToolbar];
 }
 
 -(void)mouseExited:(NSEvent *)event{
-//    NSLog(@"%@", [event trackingArea].userInfo);
+    //    NSLog(@"%@", [event trackingArea].userInfo);
     [self hiddenToolbar];
 }
 
@@ -370,3 +389,4 @@ static dispatch_once_t _instance_once;
     [self.flagTimelineLeftView setStringValue:[pos getString]];
 }
 @end
+

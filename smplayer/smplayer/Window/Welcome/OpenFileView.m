@@ -13,14 +13,14 @@
 -(void)awakeFromNib{
     self.wantsLayer = YES;
     self.layer.cornerRadius = 4;
-    [self addTrackingArea:[[NSTrackingArea alloc] initWithRect:self.bounds
-                                                       options:NSTrackingMouseEnteredAndExited | NSTrackingActiveInKeyWindow | NSTrackingActiveAlways
-                                                         owner:self
-                                                      userInfo:nil]];
 }
 
 -(void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
+    [self addTrackingArea:[[NSTrackingArea alloc] initWithRect:self.bounds
+                                                       options:NSTrackingMouseEnteredAndExited | NSTrackingActiveInKeyWindow | NSTrackingMouseMoved | NSTrackingActiveAlways
+                                                         owner:self
+                                                      userInfo:nil]];
 }
 
 -(void)mouseEntered:(NSEvent *)event{
@@ -29,6 +29,25 @@
 
 -(void)mouseExited:(NSEvent *)event{
     self.layer.backgroundColor = [NSColor colorWithCalibratedWhite:0 alpha:0].CGColor;
+}
+
+-(void)mouseDown:(NSEvent *)event{
+    
+    if ([self.identifier isEqualToString:@"open-file"]){
+        [[NSApp delegate] application:[NSApplication sharedApplication] openFile:@""];
+    } else if ([self.identifier isEqualToString:@"open-fileurl"]){
+        
+//        NSApplicationDelegate nd = [NSApp delegate];
+//        [nd open]
+//        [(AppDelegate*)nd open];
+//        [[NSApp delegate] application:[NSApplication sharedApplication] open:];
+        
+    } else if ([self.identifier isEqualToString:@"open-resume"]){
+    }
+}
+
+-(void)mouseUp:(NSEvent *)event{
+    NSLog(@"dddss");
 }
 
 @end

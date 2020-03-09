@@ -44,6 +44,9 @@ static void *get_proc_address(void *ctx, const char *name)
     mpv_handle *mpv;
     mpv_render_context *_mpv_render_context;
 }
+
+@property (nonatomic, strong) NSLock* uninitLock;
+
 @property (nonatomic, weak) NSTimer *asyncPlayerTimer;
 @property int switchVoice;
 @property double videoDuration;
@@ -140,7 +143,9 @@ static void *get_proc_address(void *ctx, const char *name)
 }
 
 - (void)drawInCGLContext:(CGLContextObj)ctx pixelFormat:(CGLPixelFormatObj)pf forLayerTime:(CFTimeInterval)t displayTime:(const CVTimeStamp *)ts {
+    [_uninitLock lock];
     _draw_frame(self);
+    [_uninitLock unlock];
 }
 
 - (CGLContextObj)copyCGLContextForPixelFormat:(CGLPixelFormatObj)pf {
@@ -304,14 +309,14 @@ static void render_context_callback(void *ctx) {
     
     NSLog(@"MPV Event Methods - fileLoad start!");
     
-//    double w = [self mpvGetDouble:@"width"];
-//    double h = [self mpvGetDouble:@"height"];
+    double w = [self mpvGetDouble:@"width"];
+    double h = [self mpvGetDouble:@"height"];
     
 //    _videoSize.height = h;
 //    _videoSize.width = w;
     
     dispatch_async(dispatch_get_main_queue(), ^{
-//        [[NSApp mainWindow] setFrame:NSMakeRect(0, 0, w, h) display:YES];
+        [[NSApp mainWindow] setFrame:NSMakeRect(0, 0, w, h) display:YES];
 //        [[NSApp mainWindow] center];
     });
     

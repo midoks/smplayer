@@ -7,14 +7,16 @@
 //
 
 #import <Foundation/Foundation.h>
-
+#import "Welcome.h"
+#import "Player.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SMCore : NSObject
 
 + (id)Instance;
--(void)first;
+-(Welcome *)first;
+-(Player *)player;
 
 @end
 
