@@ -89,9 +89,11 @@ static dispatch_once_t _instance_once;
     self.window.movableByWindowBackground = YES;
     self.window.styleMask |= NSWindowStyleMaskFullSizeContentView;
     self.window.appearance =  [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
-    
     self.window.titleVisibility = NSWindowTitleVisible;
     self.window.titlebarAppearsTransparent = YES;
+    
+    _titleBarView.material = NSVisualEffectMaterialDark;
+    _titleBarView.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
 }
 
 -(void)regEvent{

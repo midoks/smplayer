@@ -7,10 +7,12 @@
 //
 
 #import "Web.h"
+#import "Masonry.h"
 
 @interface Web ()<NSWindowDelegate>
 {
     NSView *titleBarView;
+    BOOL isFullScreen;
 }
 
 @end
@@ -36,26 +38,53 @@
     self.window.titleVisibility = NSWindowTitleHidden;
     self.window.titlebarAppearsTransparent = YES;
     
+    isFullScreen = NO;
+    
     NSButton *zoomBtn = [self.window standardWindowButton:NSWindowZoomButton];
     NSView *s = [zoomBtn superview];
     titleBarView = [s superview];
-    
     [self setTitleBarView:self.window.frame.size];
 }
 
--(NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize{
-    NSLog(@"frameSize:%@", NSStringFromSize(frameSize));
-    [self setTitleBarView:frameSize];
-    return frameSize;
+-(void)windowWillEnterFullScreen:(NSNotification *)notification{
+    isFullScreen = YES;
+    [self setTitleBarView:self.window.frame.size];
 }
 
+-(void)windowWillExitFullScreen:(NSNotification *)notification{
+    isFullScreen = NO;
+    [self setTitleBarView:self.window.frame.size];
+}
 
 -(void)setTitleBarView:(NSSize)size{
-    
+        
     titleBarView.wantsLayer = YES;
-    titleBarView.layer.backgroundColor = [NSColor redColor].CGColor;
-    NSLog(@"%@", NSStringFromSize(size));
-    titleBarView.frame = CGRectMake(0, size.height-50, size.width, 50);
+    titleBarView.layer.backgroundColor = [NSColor grayColor].CGColor;
+
+    [titleBarView mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(@0);
+        make.right.equalTo(@0);
+        make.top.equalTo(@0);
+        if (isFullScreen) {
+            make.height.equalTo(@22);
+        } else {
+            make.height.mas_equalTo(50);
+        }
+    }];
+    
+    NSButton *closeBtn = [self.window standardWindowButton:NSWindowCloseButton];
+    NSButton *zoomBtn = [self.window standardWindowButton:NSWindowZoomButton];
+    NSButton *minBtn = [self.window standardWindowButton:NSWindowMiniaturizeButton];
+    
+    for (NSView *buttonView in @[closeBtn, zoomBtn, minBtn]) {
+        [buttonView mas_remakeConstraints:^(MASConstraintMaker *make) {
+            if (isFullScreen) {
+                make.top.mas_equalTo(3.0);
+            } else {
+                make.centerY.mas_equalTo(buttonView.superview.mas_centerY);
+            }
+        }];
+    }
 }
 
 @end

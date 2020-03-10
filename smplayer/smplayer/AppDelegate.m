@@ -20,11 +20,8 @@
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     
     self.openURL = [[OpenURL alloc] init];
-    
-    
     [[[SMCore Instance] first] showWindow:self];
     
-    NSLog(@"applicationDidFinishLaunching");
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
