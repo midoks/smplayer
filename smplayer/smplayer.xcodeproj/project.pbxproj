@@ -11,7 +11,7 @@
 		82023C562413ADA800B0B8BC /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82023C542413ADA700B0B8BC /* Welcome.xib */; };
 		82023C5C2414D4FC00B0B8BC /* SMCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 82023C5B2414D4FC00B0B8BC /* SMCore.m */; };
 		82023C5F2415678C00B0B8BC /* OpenFileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82023C5E2415678C00B0B8BC /* OpenFileView.m */; };
-		826AB833240416D400B87C63 /* ControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AB832240416D400B87C63 /* ControlView.m */; };
+		826AB833240416D400B87C63 /* SMControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AB832240416D400B87C63 /* SMControlView.m */; };
 		826AB8372406C12600B87C63 /* SMCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AB8362406C12500B87C63 /* SMCommon.m */; };
 		826AB8392407C0DF00B87C63 /* input.conf in Resources */ = {isa = PBXBuildFile; fileRef = 826AB8382407C0DE00B87C63 /* input.conf */; };
 		828DBD3B2416886E00A89A89 /* Web.m in Sources */ = {isa = PBXBuildFile; fileRef = 828DBD392416886E00A89A89 /* Web.m */; };
@@ -68,8 +68,8 @@
 		82023C5B2414D4FC00B0B8BC /* SMCore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMCore.m; sourceTree = "<group>"; };
 		82023C5D2415678C00B0B8BC /* OpenFileView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenFileView.h; sourceTree = "<group>"; };
 		82023C5E2415678C00B0B8BC /* OpenFileView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenFileView.m; sourceTree = "<group>"; };
-		826AB831240416D400B87C63 /* ControlView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ControlView.h; sourceTree = "<group>"; };
-		826AB832240416D400B87C63 /* ControlView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ControlView.m; sourceTree = "<group>"; };
+		826AB831240416D400B87C63 /* SMControlView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMControlView.h; sourceTree = "<group>"; };
+		826AB832240416D400B87C63 /* SMControlView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMControlView.m; sourceTree = "<group>"; };
 		826AB8352406C12500B87C63 /* SMCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMCommon.h; sourceTree = "<group>"; };
 		826AB8362406C12500B87C63 /* SMCommon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMCommon.m; sourceTree = "<group>"; };
 		826AB8382407C0DE00B87C63 /* input.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = input.conf; sourceTree = "<group>"; };
@@ -633,8 +633,8 @@
 				82E9A53524030E81000DB7F3 /* SMVideoView.m */,
 				82FBC09624121F75002E8ABD /* SMVideoLayer.h */,
 				82FBC09724121F75002E8ABD /* SMVideoLayer.m */,
-				826AB831240416D400B87C63 /* ControlView.h */,
-				826AB832240416D400B87C63 /* ControlView.m */,
+				826AB831240416D400B87C63 /* SMControlView.h */,
+				826AB832240416D400B87C63 /* SMControlView.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -802,7 +802,7 @@
 				82C2C5082409191400485064 /* SMVideoTime.m in Sources */,
 				82FBC09824121F76002E8ABD /* SMVideoLayer.m in Sources */,
 				82023C5F2415678C00B0B8BC /* OpenFileView.m in Sources */,
-				826AB833240416D400B87C63 /* ControlView.m in Sources */,
+				826AB833240416D400B87C63 /* SMControlView.m in Sources */,
 				82023C5C2414D4FC00B0B8BC /* SMCore.m in Sources */,
 				828DBD462416B12400A89A89 /* OpenURL.m in Sources */,
 				826AB8372406C12600B87C63 /* SMCommon.m in Sources */,

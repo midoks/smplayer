@@ -6,7 +6,7 @@
 //  Copyright © 2020 midoks. All rights reserved.
 //
 
-#import "ControlView.h"
+#import "SMControlView.h"
 #import "SMCommon.h"
 #import "SMVideoView.h"
 #import "SMCore.h"
@@ -26,7 +26,7 @@
 @property (weak) IBOutlet NSVisualEffectView *titleBarView;
 
 //控制器
-@property (weak) IBOutlet ControlView *controlView;
+@property (weak) IBOutlet SMControlView *controlView;
 @property (weak) IBOutlet NSStackView *oscTopView;
 @property (weak) IBOutlet NSView *timeControlView;
 

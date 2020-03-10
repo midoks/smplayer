@@ -6,9 +6,9 @@
 //  Copyright © 2020 midoks. All rights reserved.
 //
 
-#import "ControlView.h"
+#import "SMControlView.h"
 
-@implementation ControlView
+@implementation SMControlView
 
 -(void)awakeFromNib{
 
