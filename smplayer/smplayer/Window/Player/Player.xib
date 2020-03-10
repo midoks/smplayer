@@ -33,7 +33,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="640" height="400"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <visualEffectView blendingMode="behindWindow" material="popover" state="inactive" translatesAutoresizingMaskIntoConstraints="NO" id="yrm-bz-zb6" customClass="ControlView">
+                    <visualEffectView blendingMode="behindWindow" material="popover" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="yrm-bz-zb6" customClass="ControlView">
                         <rect key="frame" x="100" y="30" width="440" height="67"/>
                         <subviews>
                             <stackView orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XtT-TH-TbO" userLabel="Osc Top View">
@@ -60,7 +60,7 @@
                             <constraint firstAttribute="trailing" secondItem="XtT-TH-TbO" secondAttribute="trailing" constant="12" id="qMT-bu-Hxw"/>
                         </constraints>
                     </visualEffectView>
-                    <visualEffectView wantsLayer="YES" blendingMode="withinWindow" material="titlebar" state="followsWindowActiveState" translatesAutoresizingMaskIntoConstraints="NO" id="LK1-Ec-bhA" userLabel="Title Bar View">
+                    <visualEffectView wantsLayer="YES" blendingMode="withinWindow" material="titlebar" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="LK1-Ec-bhA" userLabel="Title Bar View">
                         <rect key="frame" x="0.0" y="378" width="640" height="22"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="22" id="X7p-cN-wQS"/>
@@ -80,10 +80,10 @@
             </connections>
             <point key="canvasLocation" x="-1164.5" y="73"/>
         </window>
-        <customView translatesAutoresizingMaskIntoConstraints="NO" id="qaV-zr-t9f" userLabel="Frag Volume View">
+        <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qaV-zr-t9f" userLabel="Frag Volume View">
             <rect key="frame" x="0.0" y="0.0" width="100" height="20"/>
             <subviews>
-                <button translatesAutoresizingMaskIntoConstraints="NO" id="IvJ-7I-dDB" userLabel="Voice Control">
+                <button wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IvJ-7I-dDB" userLabel="Voice Control">
                     <rect key="frame" x="0.0" y="0.0" width="34" height="20"/>
                     <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarAudioOutputVolumeHighTemplate" imagePosition="overlaps" alignment="center" alternateImage="NSTouchBarAudioOutputMuteTemplate" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="zlS-4R-zGl">
                         <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
@@ -115,11 +115,11 @@
             </constraints>
             <point key="canvasLocation" x="112.5" y="145"/>
         </customView>
-        <customView id="4UG-18-z1k" userLabel="Frag Control View">
+        <customView wantsLayer="YES" id="4UG-18-z1k" userLabel="Frag Control View">
             <rect key="frame" x="0.0" y="0.0" width="128" height="38"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j39-0i-fuv" userLabel="Play Button">
+                <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j39-0i-fuv" userLabel="Play Button">
                     <rect key="frame" x="52" y="7" width="24" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="WMs-eU-nm9"/>
@@ -133,7 +133,7 @@
                         <action selector="playAction:" target="-2" id="h93-be-O8l"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="f6T-u4-THP" userLabel="Right Button">
+                <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="f6T-u4-THP" userLabel="Right Button">
                     <rect key="frame" x="90" y="7" width="24" height="24"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="24" id="00b-Rd-o7f"/>
@@ -147,7 +147,7 @@
                         <action selector="rightButtonAction:" target="-2" id="RVr-56-62E"/>
                     </connections>
                 </button>
-                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9I4-Lx-fS7" userLabel="Left Button">
+                <button wantsLayer="YES" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9I4-Lx-fS7" userLabel="Left Button">
                     <rect key="frame" x="14" y="7" width="24" height="24"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="24" id="9Pr-ZP-1iv"/>

@@ -18,7 +18,7 @@
 @interface Player (){
     NSTimer *hideControlTimer;
 }
-
+@property (nonatomic, strong) NSLock* uninitLock;
 @property (nonatomic,assign) BOOL isFullScreen;
 @property (nonatomic,assign) CGSize minWindowSize;
 
@@ -261,9 +261,9 @@ static dispatch_once_t _instance_once;
     //                                       owner:self
     //                                    userInfo:@{@"obj":@"0"}]];
     
-    
+    [_uninitLock lock];
     [self->player.smLayer display];
-    
+    [_uninitLock unlock];
     
     if (frameSize.height <= _minWindowSize.height || frameSize.width <= _minWindowSize.width ){
         CGFloat wAspect = self.window.frame.size.width/self.window.frame.size.height;

@@ -7,6 +7,7 @@
 //
 
 #import "OpenFileView.h"
+#import "Web.h"
 
 @implementation OpenFileView
 
@@ -36,18 +37,19 @@
     if ([self.identifier isEqualToString:@"open-file"]){
         [[NSApp delegate] application:[NSApplication sharedApplication] openFile:@""];
     } else if ([self.identifier isEqualToString:@"open-fileurl"]){
-        
+
 //        NSApplicationDelegate nd = [NSApp delegate];
 //        [nd open]
 //        [(AppDelegate*)nd open];
 //        [[NSApp delegate] application:[NSApplication sharedApplication] open:];
-        
+        Web *w = [[Web alloc] init];
+        [w showWindow:nil];
     } else if ([self.identifier isEqualToString:@"open-resume"]){
     }
 }
 
 -(void)mouseUp:(NSEvent *)event{
-    NSLog(@"dddss");
+//    NSLog(@"dddss");
 }
 
 @end
