@@ -125,7 +125,7 @@
                         <constraint firstAttribute="height" constant="24" id="WMs-eU-nm9"/>
                         <constraint firstAttribute="width" constant="24" id="l3r-mK-awE"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarPauseTemplate" imagePosition="overlaps" alignment="center" alternateImage="NSTouchBarPlayTemplate" lineBreakMode="truncatingTail" state="on" borderStyle="border" transparent="YES" inset="2" id="aI5-td-Kxz">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarPauseTemplate" imagePosition="overlaps" alignment="center" alternateImage="NSTouchBarPlayTemplate" lineBreakMode="truncatingTail" borderStyle="border" transparent="YES" inset="2" id="aI5-td-Kxz">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
