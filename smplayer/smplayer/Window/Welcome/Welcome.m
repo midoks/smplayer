@@ -83,7 +83,6 @@ static dispatch_once_t _instance_once;
     
     self.recentFilesTableView.gridColor = [NSColor magentaColor];
     [self.recentFilesTableView reloadData];
-    
 }
 
 
