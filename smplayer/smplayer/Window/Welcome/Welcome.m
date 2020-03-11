@@ -60,9 +60,10 @@ static dispatch_once_t _instance_once;
     [self.window registerForDraggedTypes:[NSArray arrayWithObjects:NSPasteboardTypeFileURL, nil]];
     
     self.window.appearance =  [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
-    self.mainView.wantsLayer = YES;
     
+    self.mainView.wantsLayer = YES;
     self.mainView.layer.backgroundColor = CGColorCreateGenericGray(0.5, 0.1);
+    
     self.visualEffectView.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
     self.lastFileIcon.image = [NSImage imageNamed:@"history"];
     
@@ -76,12 +77,10 @@ static dispatch_once_t _instance_once;
 }
 
 -(void)initRecentTableView{
-//    self.recentFilesTableView.backgroundColor = [NSColor orangeColor];
-//    self.recentFilesTableView.usesAlternatingRowBackgroundColors = YES;
+    
     self.recentFilesTableView.delegate = self;
     self.recentFilesTableView.dataSource = self;
     
-//    [self.recentFilesTableView setdraw]
     self.recentFilesTableView.gridColor = [NSColor magentaColor];
     [self.recentFilesTableView reloadData];
     
