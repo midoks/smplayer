@@ -9,11 +9,13 @@
 #import "Web.h"
 #import "Masonry.h"
 
-@interface Web ()<NSWindowDelegate>
+@interface Web ()<NSWindowDelegate,NSTableViewDelegate,NSTableViewDataSource>
 {
     NSView *titleBarView;
     BOOL isFullScreen;
 }
+
+@property (weak) IBOutlet NSTableView *listTableView;
 
 @end
 
@@ -57,10 +59,10 @@
 }
 
 -(void)setTitleBarView:(NSSize)size{
-        
-    titleBarView.wantsLayer = YES;
-    titleBarView.layer.backgroundColor = [NSColor grayColor].CGColor;
-
+    
+    //    titleBarView.wantsLayer = YES;
+    //    titleBarView.layer.backgroundColor = [NSColor grayColor].CGColor;
+    
     [titleBarView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(@0);
         make.right.equalTo(@0);
@@ -85,6 +87,34 @@
             }
         }];
     }
+}
+
+-(void)initTableView{
+    self.listTableView.delegate = self;
+    self.listTableView.dataSource = self;
+    
+    self.listTableView.gridColor = [NSColor magentaColor];
+    [self.listTableView reloadData];
+}
+
+#pragma mark - NSTableViewDelegate, NSTableViewDataSource
+-(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView{
+    return 5;
+}
+
+-(id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
+    return @{@"title":@"dd.mp4"};
+}
+
+
+-(CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row{
+    return 28;
+}
+
+//-tabl
+
+-(void)tableViewSelectionDidChange:(NSNotification *)notification{
+    NSLog(@"ddd");
 }
 
 @end
