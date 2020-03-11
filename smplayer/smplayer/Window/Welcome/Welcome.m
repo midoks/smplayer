@@ -96,12 +96,9 @@ static dispatch_once_t _instance_once;
     return @{@"url":@"dd.mp4",@"image": [[NSWorkspace sharedWorkspace] iconForFile:@"/Users/midoks/Desktop/work/m3u8/demo.mp4"]};
 }
 
-
 -(CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row{
     return 28;
 }
-
-//-tabl
 
 -(void)tableViewSelectionDidChange:(NSNotification *)notification{
     NSLog(@"ddd");
