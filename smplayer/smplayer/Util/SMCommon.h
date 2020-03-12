@@ -10,6 +10,13 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#pragma mark - Notification Event Start
+#define SM_NOTIF_FILELOADED @"NS_NOTIF_FileLoaded"
+
+
+#define SM_HISTORY_FILE @"history.plist"
+
+
 @interface SMCommon : NSObject
 
 +(void)asyncCmd:(void(^)(void))cmd;

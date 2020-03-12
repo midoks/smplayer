@@ -34,10 +34,10 @@
                         <autoresizingMask key="autoresizingMask" heightSizable="YES"/>
                         <subviews>
                             <visualEffectView blendingMode="behindWindow" material="underWindowBackground" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="e7Z-xc-VKV">
-                                <rect key="frame" x="180" y="0.0" width="320" height="309"/>
+                                <rect key="frame" x="180" y="0.0" width="227" height="309"/>
                             </visualEffectView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="emK-Pz-pfr">
-                                <rect key="frame" x="0.0" y="0.0" width="500" height="309"/>
+                                <rect key="frame" x="0.0" y="0.0" width="407" height="309"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Upn-Gx-pEF">
                                         <rect key="frame" x="35" y="110" width="107" height="29"/>
@@ -56,7 +56,7 @@
                                         </textFieldCell>
                                     </textField>
                                     <customView identifier="open-file" translatesAutoresizingMaskIntoConstraints="NO" id="JZ2-z0-ikY" userLabel="Open File" customClass="OpenFileView">
-                                        <rect key="frame" x="204" y="249" width="266" height="28"/>
+                                        <rect key="frame" x="204" y="249" width="173" height="28"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NvX-Ff-SP8">
                                                 <rect key="frame" x="6" y="6" width="49" height="16"/>
@@ -67,7 +67,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w4c-TU-8qJ">
-                                                <rect key="frame" x="234" y="6" width="26" height="16"/>
+                                                <rect key="frame" x="141" y="6" width="26" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="⌘O" id="X9V-PG-qLo">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -84,7 +84,7 @@
                                         </constraints>
                                     </customView>
                                     <customView identifier="open-fileurl" translatesAutoresizingMaskIntoConstraints="NO" id="QhI-h3-WR7" userLabel="Open Url File" customClass="OpenFileView">
-                                        <rect key="frame" x="204" y="221" width="266" height="28"/>
+                                        <rect key="frame" x="204" y="221" width="173" height="28"/>
                                         <subviews>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="ZXo-Qi-NHc">
                                                 <rect key="frame" x="6" y="6" width="76" height="16"/>
@@ -95,7 +95,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="JRE-aa-Mhc">
-                                                <rect key="frame" x="221" y="6" width="39" height="16"/>
+                                                <rect key="frame" x="128" y="6" width="39" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="⇧⌘O" id="JBR-rU-Iiw">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -113,7 +113,7 @@
                                         </constraints>
                                     </customView>
                                     <customView identifier="open-resume" translatesAutoresizingMaskIntoConstraints="NO" id="p1L-6I-VnM" userLabel="Last File Play" customClass="OpenFileView">
-                                        <rect key="frame" x="204" y="190" width="266" height="28"/>
+                                        <rect key="frame" x="204" y="190" width="173" height="28"/>
                                         <subviews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Ljo-Pd-kFV" userLabel="Last Image View">
                                                 <rect key="frame" x="10" y="7" width="14" height="14"/>
@@ -121,7 +121,7 @@
                                                     <constraint firstAttribute="height" constant="14" id="3gu-9a-B0B"/>
                                                     <constraint firstAttribute="width" constant="14" id="OCg-xH-zHu"/>
                                                 </constraints>
-                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" image="NSTouchBarHistoryTemplate" id="EPe-yk-rTc"/>
+                                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyUpOrDown" id="EPe-yk-rTc"/>
                                             </imageView>
                                             <textField horizontalHuggingPriority="252" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tcf-ou-0k2">
                                                 <rect key="frame" x="26" y="6" width="53" height="16"/>
@@ -132,7 +132,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vvX-yZ-kME">
-                                                <rect key="frame" x="79" y="6" width="130" height="16"/>
+                                                <rect key="frame" x="79" y="6" width="37" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="QqD-SN-DAj">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -140,7 +140,7 @@
                                                 </textFieldCell>
                                             </textField>
                                             <textField horizontalHuggingPriority="252" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="SBe-E2-Ub9">
-                                                <rect key="frame" x="225" y="6" width="37" height="16"/>
+                                                <rect key="frame" x="132" y="6" width="37" height="16"/>
                                                 <textFieldCell key="cell" lineBreakMode="clipping" title="Label" id="aCI-8X-45S">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -162,21 +162,21 @@
                                         </constraints>
                                     </customView>
                                     <scrollView borderType="none" autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qpk-zG-iFV" userLabel="Scroll View - Table View">
-                                        <rect key="frame" x="206" y="20" width="264" height="163"/>
+                                        <rect key="frame" x="206" y="20" width="171" height="163"/>
                                         <clipView key="contentView" drawsBackground="NO" copiesOnScroll="NO" id="RLe-yd-C1T">
-                                            <rect key="frame" x="0.0" y="0.0" width="264" height="163"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="171" height="163"/>
                                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" rowSizeStyle="automatic" viewBased="YES" id="CKw-Mk-JFE">
-                                                    <rect key="frame" x="0.0" y="0.0" width="264" height="163"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="171" height="163"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <size key="intercellSpacing" width="3" height="2"/>
                                                     <color key="backgroundColor" red="0.99990516900000004" green="1" blue="0.99987047910000004" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                                     <tableColumns>
-                                                        <tableColumn width="261" minWidth="40" maxWidth="1000" id="3Nc-Fa-Y4x">
+                                                        <tableColumn width="168" minWidth="40" maxWidth="1000" id="3Nc-Fa-Y4x">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                                <font key="font" metaFont="controlContent" size="11"/>
+                                                                <font key="font" metaFont="menu" size="11"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                             </tableHeaderCell>
@@ -297,6 +297,5 @@
     </objects>
     <resources>
         <image name="NSApplicationIcon" width="32" height="32"/>
-        <image name="NSTouchBarHistoryTemplate" width="18" height="30"/>
     </resources>
 </document>

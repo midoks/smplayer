@@ -10,9 +10,12 @@
 #import "AppDelegate.h"
 #import "SMCore.h"
 #import "OpenURL.h"
+#import "Preference.h"
 
 @interface AppDelegate ()
 @property OpenURL *openURL;
+
+@property Preference *pref;
 @end
 
 @implementation AppDelegate
@@ -21,6 +24,11 @@
     
     self.openURL = [[OpenURL alloc] init];
     [[[SMCore Instance] first] showWindow:self];
+    
+    
+    
+//    self.pref = [[Preference alloc] init];
+//    [self.pref showWindow:self];
     
 }
 

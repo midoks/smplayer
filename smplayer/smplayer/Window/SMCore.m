@@ -10,11 +10,13 @@
 #import "Player.h"
 
 #import "SMCore.h"
+#import "Web.h"
 
 @interface SMCore()
 {
     Welcome *welcome;
     Player *player;
+    Web *web;
 }
 @end
 
@@ -34,6 +36,7 @@ static dispatch_once_t _instance_once;
     if (self){
         self->welcome = [Welcome Instance];
         self->player = [Player Instance];
+        self->web = [Web Instance];
     }
     return self;
 }
@@ -44,6 +47,10 @@ static dispatch_once_t _instance_once;
 
 -(Player *)player{
     return self->player;
+}
+
+-(Web *)web{
+    return self->web;
 }
 
 

@@ -15,6 +15,7 @@
 #import <Cocoa/Cocoa.h>
 #import "SMVideoTime.h"
 #import "SMVideoLayer.h"
+#import "SMCommon.h"
 
 
 static void wakeup(void *);
@@ -50,6 +51,7 @@ static void *get_proc_address(void *ctx, const char *name)
 @property (nonatomic, weak) NSTimer *asyncPlayerTimer;
 @property int switchVoice;
 @property double videoDuration;
+@property NSString *currentPath;
 @end
 
 
@@ -226,6 +228,7 @@ static inline void _draw_frame(SMVideoLayer *obj) {
 }
 
 -(void)openVideo:(NSString *)path{
+    _currentPath = path;
     mpv_set_wakeup_callback(self->mpv, wakeup, (__bridge void *) self);
     const char *cmd[] = {"loadfile", path.UTF8String, NULL};
     check_error(mpv_command(self->mpv, cmd));
@@ -317,7 +320,7 @@ static void render_context_callback(void *ctx) {
     
     dispatch_async(dispatch_get_main_queue(), ^{
         [[NSApp mainWindow] setFrame:NSMakeRect(0, 0, w, h) display:YES];
-//        [[NSApp mainWindow] center];
+        [[NSApp mainWindow] center];
     });
     
     dispatch_async(dispatch_get_main_queue(), ^{
@@ -332,6 +335,13 @@ static void render_context_callback(void *ctx) {
             [self.videoDelegate videoStart:[[SMVideoTime alloc] initTime:self->_videoDuration]];
         }
     });
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        NSURL *urlFile = [NSURL fileURLWithPath:self->_currentPath isDirectory:NO];
+        [[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL:urlFile];
+        [[NSNotificationCenter defaultCenter] postNotificationName:SM_NOTIF_FILELOADED object:nil userInfo:nil];
+    });
+   
 }
 
 -(void)videoDurationAction{
@@ -340,6 +350,7 @@ static void render_context_callback(void *ctx) {
         if (pos>_videoDuration){
             pos = _videoDuration;
         }
+        
         [self.videoDelegate videoPos:[[SMVideoTime alloc] initTime:pos]];
     }
 }

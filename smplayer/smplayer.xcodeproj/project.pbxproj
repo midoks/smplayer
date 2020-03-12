@@ -11,6 +11,7 @@
 		82023C562413ADA800B0B8BC /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82023C542413ADA700B0B8BC /* Welcome.xib */; };
 		82023C5C2414D4FC00B0B8BC /* SMCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 82023C5B2414D4FC00B0B8BC /* SMCore.m */; };
 		82023C5F2415678C00B0B8BC /* OpenFileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82023C5E2415678C00B0B8BC /* OpenFileView.m */; };
+		82394280241AAC25006B7049 /* SMLastHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8239427F241AAC24006B7049 /* SMLastHistory.m */; };
 		826AB833240416D400B87C63 /* SMControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AB832240416D400B87C63 /* SMControlView.m */; };
 		826AB8372406C12600B87C63 /* SMCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AB8362406C12500B87C63 /* SMCommon.m */; };
 		826AB8392407C0DF00B87C63 /* input.conf in Resources */ = {isa = PBXBuildFile; fileRef = 826AB8382407C0DE00B87C63 /* input.conf */; };
@@ -78,6 +79,8 @@
 		82023C5B2414D4FC00B0B8BC /* SMCore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMCore.m; sourceTree = "<group>"; };
 		82023C5D2415678C00B0B8BC /* OpenFileView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenFileView.h; sourceTree = "<group>"; };
 		82023C5E2415678C00B0B8BC /* OpenFileView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenFileView.m; sourceTree = "<group>"; };
+		8239427E241AAC24006B7049 /* SMLastHistory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMLastHistory.h; sourceTree = "<group>"; };
+		8239427F241AAC24006B7049 /* SMLastHistory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMLastHistory.m; sourceTree = "<group>"; };
 		826AB831240416D400B87C63 /* SMControlView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMControlView.h; sourceTree = "<group>"; };
 		826AB832240416D400B87C63 /* SMControlView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMControlView.m; sourceTree = "<group>"; };
 		826AB8352406C12500B87C63 /* SMCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMCommon.h; sourceTree = "<group>"; };
@@ -331,6 +334,8 @@
 				82C2C5072409191400485064 /* SMVideoTime.m */,
 				82FC361B24124A36001A11AB /* MpvPlayer.h */,
 				82FC361C24124A36001A11AB /* MpvPlayer.m */,
+				8239427E241AAC24006B7049 /* SMLastHistory.h */,
+				8239427F241AAC24006B7049 /* SMLastHistory.m */,
 			);
 			path = Util;
 			sourceTree = "<group>";
@@ -879,6 +884,7 @@
 				826AB8372406C12600B87C63 /* SMCommon.m in Sources */,
 				828DBD832418271100A89A89 /* MASViewAttribute.m in Sources */,
 				828DBD7A2418271100A89A89 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				82394280241AAC25006B7049 /* SMLastHistory.m in Sources */,
 				82E9A47224030AEE000DB7F3 /* main.m in Sources */,
 				82E9A53624030E81000DB7F3 /* SMVideoView.m in Sources */,
 				828DBD40241688D200A89A89 /* Preference.m in Sources */,

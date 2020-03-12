@@ -1,18 +1,17 @@
 //
-//  Web.h
+//  SMLastHistory.h
 //  smplayer
 //
-//  Created by midoks on 2020/3/11.
+//  Created by midoks on 2020/3/13.
 //  Copyright © 2020 midoks. All rights reserved.
 //
 
-#import <Cocoa/Cocoa.h>
+#import <Foundation/Foundation.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface Web : NSWindowController
+@interface SMLastHistory : NSObject
 
-+ (id)Instance;
 @end
 
 NS_ASSUME_NONNULL_END

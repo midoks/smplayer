@@ -7,15 +7,18 @@
 //
 
 #import "Welcome.h"
+#import "SMCore.h"
 #import "OpenFileView.h"
+#import "SMCommon.h"
 
-@interface Welcome () <NSTableViewDelegate,NSTableViewDataSource>
+@interface Welcome () <NSWindowDelegate,NSTableViewDelegate,NSTableViewDataSource>
 
 @property (weak) IBOutlet NSView *mainView;
 
 @property (weak) IBOutlet NSTextField *version;
 
 @property (weak) IBOutlet NSVisualEffectView *visualEffectView;
+
 @property (weak) IBOutlet OpenFileView *lastFileView;
 @property (weak) IBOutlet NSImageView *lastFileIcon;
 @property (weak) IBOutlet NSTextField *lastFileNameLabel;
@@ -23,16 +26,16 @@
 
 @property (weak) IBOutlet NSTableView *recentFilesTableView;
 
+@property (readonly, copy) NSArray<NSURL *> *recentDocumentURLs;
+
 @end
 
 @implementation Welcome
-
 
 -(id)init{
     self = [self initWithWindowNibName:@"Welcome"];
     return self;
 }
-
 
 static Welcome *_instance = nil;
 static dispatch_once_t _instance_once;
@@ -58,7 +61,6 @@ static dispatch_once_t _instance_once;
     self.window.titlebarAppearsTransparent = YES;
     
     [self.window registerForDraggedTypes:[NSArray arrayWithObjects:NSPasteboardTypeFileURL, nil]];
-    
     self.window.appearance =  [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
     
     self.mainView.wantsLayer = YES;
@@ -66,18 +68,21 @@ static dispatch_once_t _instance_once;
     
     self.visualEffectView.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
     self.lastFileIcon.image = [NSImage imageNamed:@"history"];
-    
+
     [self.lastFileNameLabel setStringValue:@"demo.mp4"];
     [self.lastFilePosLabel setStringValue:@"10:20"];
     
     
     [self.version setStringValue:[[NSBundle mainBundle]objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
-    
+
     [self initRecentTableView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:SM_NOTIF_FILELOADED object:nil];
 }
 
 -(void)initRecentTableView{
-    
+    _recentDocumentURLs = [[NSDocumentController sharedDocumentController] recentDocumentURLs];
+
     self.recentFilesTableView.delegate = self;
     self.recentFilesTableView.dataSource = self;
     
@@ -85,15 +90,22 @@ static dispatch_once_t _instance_once;
     [self.recentFilesTableView reloadData];
 }
 
+-(void)reloadData{
+    _recentDocumentURLs = [[NSDocumentController sharedDocumentController] recentDocumentURLs];
+    [self.recentFilesTableView reloadData];
+}
 
 #pragma mark - NSTableViewDelegate, NSTableViewDataSource
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView{
-    return 5;
+    return [_recentDocumentURLs count];
 }
 
 -(id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
-    
-    return @{@"url":@"dd.mp4",@"image": [[NSWorkspace sharedWorkspace] iconForFile:@"/Users/midoks/Desktop/work/m3u8/demo.mp4"]};
+    NSURL *url = _recentDocumentURLs[row];
+    return @{
+        @"url":url.lastPathComponent,
+        @"image": [[NSWorkspace sharedWorkspace] iconForFile:url.path]
+    };
 }
 
 -(CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row{
@@ -101,7 +113,15 @@ static dispatch_once_t _instance_once;
 }
 
 -(void)tableViewSelectionDidChange:(NSNotification *)notification{
-    NSLog(@"ddd");
+    
+    NSInteger row = _recentFilesTableView.selectedRow;
+    if (row>=0){
+        NSURL *url = _recentDocumentURLs[row];
+        [[[SMCore Instance] player] showWindow:self];
+        [[[SMCore Instance] player] openVideo:[url path]];
+        [[[SMCore Instance] first] close];
+    }
+    [_recentFilesTableView deselectAll:self];
 }
 
 #pragma mark - Private Method Of Drag File
@@ -116,5 +136,10 @@ static dispatch_once_t _instance_once;
     [[NSApp delegate] application:[NSApplication sharedApplication] openFile:[files objectAtIndex:0]];
     return YES;
 }
+
+#pragma mark - NSWindowDelegate
+//-(void)windowWillClose:(NSNotification *)notification{
+//    NSLog(@"windowWillClose");
+//}
 
 @end

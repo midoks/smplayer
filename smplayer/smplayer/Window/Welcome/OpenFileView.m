@@ -7,7 +7,9 @@
 //
 
 #import "OpenFileView.h"
+#import "SMCore.h"
 #import "Web.h"
+#import "Preference.h"
 
 @implementation OpenFileView
 
@@ -42,14 +44,17 @@
 //        [nd open]
 //        [(AppDelegate*)nd open];
 //        [[NSApp delegate] application:[NSApplication sharedApplication] open:];
+        
+        
+        [[[SMCore Instance] web] showWindow:self];
+    } else if ([self.identifier isEqualToString:@"open-resume"]){
+        
         Web *w = [[Web alloc] init];
         [w showWindow:nil];
-    } else if ([self.identifier isEqualToString:@"open-resume"]){
     }
 }
 
 -(void)mouseUp:(NSEvent *)event{
-//    NSLog(@"dddss");
 }
 
 @end
