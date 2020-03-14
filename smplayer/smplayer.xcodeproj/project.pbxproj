@@ -14,6 +14,7 @@
 		82394283241BA9EB006B7049 /* SMLastHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82394282241BA9EA006B7049 /* SMLastHistoryModel.m */; };
 		824384F0241CE62800A1A218 /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = 824384F2241CE62800A1A218 /* Welcome.xib */; };
 		824384FA241D2A1500A1A218 /* MenuListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 824384F9241D2A1400A1A218 /* MenuListController.m */; };
+		824384FB241D3A5A00A1A218 /* OpenURL.xib in Resources */ = {isa = PBXBuildFile; fileRef = 824384FD241D3A5A00A1A218 /* OpenURL.xib */; };
 		826AB833240416D400B87C63 /* SMControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AB832240416D400B87C63 /* SMControlView.m */; };
 		826AB8372406C12600B87C63 /* SMCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AB8362406C12500B87C63 /* SMCommon.m */; };
 		826AB8392407C0DF00B87C63 /* input.conf in Resources */ = {isa = PBXBuildFile; fileRef = 826AB8382407C0DE00B87C63 /* input.conf */; };
@@ -22,7 +23,6 @@
 		828DBD40241688D200A89A89 /* Preference.m in Sources */ = {isa = PBXBuildFile; fileRef = 828DBD3E241688D200A89A89 /* Preference.m */; };
 		828DBD41241688D200A89A89 /* Preference.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828DBD3F241688D200A89A89 /* Preference.xib */; };
 		828DBD462416B12400A89A89 /* OpenURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 828DBD442416B12400A89A89 /* OpenURL.m */; };
-		828DBD472416B12400A89A89 /* OpenURL.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828DBD452416B12400A89A89 /* OpenURL.xib */; };
 		828DBD7A2418271100A89A89 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 828DBD622418271100A89A89 /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		828DBD7B2418271100A89A89 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 828DBD6B2418271100A89A89 /* ViewController+MASAdditions.m */; };
 		828DBD7C2418271100A89A89 /* MASCompositeConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 828DBD6F2418271100A89A89 /* MASCompositeConstraint.m */; };
@@ -89,6 +89,9 @@
 		824384F6241CE63B00A1A218 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Welcome.strings"; sourceTree = "<group>"; };
 		824384F8241D2A1400A1A218 /* MenuListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuListController.h; sourceTree = "<group>"; };
 		824384F9241D2A1400A1A218 /* MenuListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuListController.m; sourceTree = "<group>"; };
+		824384FC241D3A5A00A1A218 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/OpenURL.xib; sourceTree = "<group>"; };
+		824384FF241D3A6100A1A218 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/OpenURL.strings; sourceTree = "<group>"; };
+		82438501241D3A6400A1A218 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/OpenURL.strings"; sourceTree = "<group>"; };
 		826AB831240416D400B87C63 /* SMControlView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMControlView.h; sourceTree = "<group>"; };
 		826AB832240416D400B87C63 /* SMControlView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMControlView.m; sourceTree = "<group>"; };
 		826AB8352406C12500B87C63 /* SMCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMCommon.h; sourceTree = "<group>"; };
@@ -103,7 +106,6 @@
 		828DBD3F241688D200A89A89 /* Preference.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Preference.xib; sourceTree = "<group>"; };
 		828DBD432416B12400A89A89 /* OpenURL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenURL.h; sourceTree = "<group>"; };
 		828DBD442416B12400A89A89 /* OpenURL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenURL.m; sourceTree = "<group>"; };
-		828DBD452416B12400A89A89 /* OpenURL.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = OpenURL.xib; sourceTree = "<group>"; };
 		828DBD572417C2E300A89A89 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
 		828DBD612418271100A89A89 /* MASCompositeConstraint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASCompositeConstraint.h; sourceTree = "<group>"; };
 		828DBD622418271100A89A89 /* NSLayoutConstraint+MASDebugAdditions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSLayoutConstraint+MASDebugAdditions.m"; sourceTree = "<group>"; };
@@ -392,7 +394,7 @@
 			children = (
 				828DBD432416B12400A89A89 /* OpenURL.h */,
 				828DBD442416B12400A89A89 /* OpenURL.m */,
-				828DBD452416B12400A89A89 /* OpenURL.xib */,
+				824384FD241D3A5A00A1A218 /* OpenURL.xib */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -861,7 +863,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				828DBD3C2416886E00A89A89 /* Web.xib in Resources */,
-				828DBD472416B12400A89A89 /* OpenURL.xib in Resources */,
+				824384FB241D3A5A00A1A218 /* OpenURL.xib in Resources */,
 				824384F0241CE62800A1A218 /* Welcome.xib in Resources */,
 				82E9A46C24030AEE000DB7F3 /* Assets.xcassets in Resources */,
 				828DBD41241688D200A89A89 /* Preference.xib in Resources */,
@@ -963,6 +965,16 @@
 				824384F6241CE63B00A1A218 /* zh-Hans */,
 			);
 			name = Welcome.xib;
+			sourceTree = "<group>";
+		};
+		824384FD241D3A5A00A1A218 /* OpenURL.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				824384FC241D3A5A00A1A218 /* Base */,
+				824384FF241D3A6100A1A218 /* en */,
+				82438501241D3A6400A1A218 /* zh-Hans */,
+			);
+			name = OpenURL.xib;
 			sourceTree = "<group>";
 		};
 		82E9A46D24030AEE000DB7F3 /* MainMenu.xib */ = {

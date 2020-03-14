@@ -1,0 +1,12 @@
+
+/* Class = "NSTextFieldCell"; title = "http://"; ObjectID = "3ck-bQ-huO"; */
+"3ck-bQ-huO.title" = "http://";
+
+/* Class = "NSButtonCell"; title = "Open"; ObjectID = "VFV-dx-kOQ"; */
+"VFV-dx-kOQ.title" = "打开";
+
+/* Class = "NSTextFieldCell"; placeholderString = "Please enter the URL here……"; ObjectID = "eKv-z4-3ai"; */
+"eKv-z4-3ai.placeholderString" = "在此输入URL...";
+
+/* Class = "NSButtonCell"; title = "Cancel"; ObjectID = "oNN-7E-h3i"; */
+"oNN-7E-h3i.title" = "取消";

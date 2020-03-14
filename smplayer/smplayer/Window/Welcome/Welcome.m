@@ -13,6 +13,7 @@
 #import "SMCommon.h"
 #import "SMVideoTime.h"
 #import "Preference.h"
+#import "OpenURL.h"
 
 
 @interface Welcome () <NSWindowDelegate,NSTableViewDelegate,NSTableViewDataSource,OpenFileViewDelegate>
@@ -183,15 +184,7 @@ static dispatch_once_t _instance_once;
         }];
     
     } else if ([identifier isEqualToString:@"open-fileurl"]){
-        
-        
-        
-        //        NSApplicationDelegate nd = [NSApp delegate];
-        //        [nd open]
-        //        [(AppDelegate*)nd open];
-        //        [[NSApp delegate] application:[NSApplication sharedApplication] open:];
-        
-        [[[SMCore Instance] web] showWindow:self];
+        [[OpenURL Instance] showWindow:self];
     } else if ([identifier isEqualToString:@"open-resume"]){
 
         [[[SMCore Instance] player] showWindow:self];
