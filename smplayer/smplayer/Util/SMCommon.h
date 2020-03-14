@@ -20,6 +20,10 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SMCommon : NSObject
 
 +(void)asyncCmd:(void(^)(void))cmd;
+
++(void)createDirIfNoExist:(NSURL *)url;
++(NSURL *)appSupportDirURL;
++(NSURL *)playHistoryURL;
 @end
 
 NS_ASSUME_NONNULL_END

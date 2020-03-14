@@ -25,6 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property  dispatch_queue_t queue;
 
 -(void)openVideo:(NSString *)path;
+-(void)closeVideo;
 -(void)setVoice:(double)value;
 -(void)toggleVoice;
 -(void)stop;

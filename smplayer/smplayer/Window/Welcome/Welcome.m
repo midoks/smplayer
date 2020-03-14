@@ -10,6 +10,7 @@
 #import "SMCore.h"
 #import "OpenFileView.h"
 #import "SMCommon.h"
+#import "SMVideoTime.h"
 
 @interface Welcome () <NSWindowDelegate,NSTableViewDelegate,NSTableViewDataSource>
 
@@ -21,6 +22,7 @@
 
 @property (weak) IBOutlet OpenFileView *lastFileView;
 @property (weak) IBOutlet NSImageView *lastFileIcon;
+@property (weak) IBOutlet NSTextField *lastResumeLabel;
 @property (weak) IBOutlet NSTextField *lastFileNameLabel;
 @property (weak) IBOutlet NSTextField *lastFilePosLabel;
 
@@ -56,6 +58,7 @@ static dispatch_once_t _instance_once;
 
 - (void)windowDidLoad {
     [super windowDidLoad];
+    [SMCommon appSupportDirURL];
     self.window.movableByWindowBackground = YES;
     self.window.titleVisibility = NSWindowTitleHidden;
     self.window.titlebarAppearsTransparent = YES;
@@ -68,14 +71,12 @@ static dispatch_once_t _instance_once;
     
     self.visualEffectView.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
     self.lastFileIcon.image = [NSImage imageNamed:@"history"];
-
-    [self.lastFileNameLabel setStringValue:@"demo.mp4"];
-    [self.lastFilePosLabel setStringValue:@"10:20"];
-    
     
     [self.version setStringValue:[[NSBundle mainBundle]objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
 
     [self initRecentTableView];
+    
+    [self updateLastPlayInfo];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reloadData) name:SM_NOTIF_FILELOADED object:nil];
 }
@@ -90,9 +91,32 @@ static dispatch_once_t _instance_once;
     [self.recentFilesTableView reloadData];
 }
 
+-(void)updateLastPlayInfo{
+    NSFileManager *fm = [NSFileManager defaultManager];
+    
+    NSString *path = [[NSUserDefaults standardUserDefaults] objectForKey:@"t_123"];
+    double pos = [[NSUserDefaults standardUserDefaults] doubleForKey:@"t_123_pos"];
+    
+
+    if ([fm fileExistsAtPath:path]){
+        NSURL *url = [NSURL fileURLWithPath:path isDirectory:NO];
+        SMVideoTime *time = [[SMVideoTime alloc] initTime:pos];
+        
+        [self.lastFileNameLabel setStringValue:url.lastPathComponent];
+        [self.lastFilePosLabel setStringValue:[time getString]];
+        self.lastFileView.hidden = NO;
+    } else {
+        [self.lastFileNameLabel setStringValue:@"demo.mp4"];
+        [self.lastFilePosLabel setStringValue:@"10:20"];
+        self.lastFileView.hidden = YES;
+    }
+}
+
 -(void)reloadData{
     _recentDocumentURLs = [[NSDocumentController sharedDocumentController] recentDocumentURLs];
     [self.recentFilesTableView reloadData];
+    
+    [self updateLastPlayInfo];
 }
 
 #pragma mark - NSTableViewDelegate, NSTableViewDataSource

@@ -1,5 +1,5 @@
 //
-//  SMLastHistory.h
+//  SMLastHistoryModel.h
 //  smplayer
 //
 //  Created by midoks on 2020/3/13.
@@ -10,11 +10,8 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface SMLastHistory : NSObject
-
-+ (id)Instance;
-
--(void)add:(NSURL *)url duration:(double)duration;
+@interface SMLastHistoryModel : NSObject
+-(id)init:(NSURL *)url duration:(double)_duration;
 @end
 
 NS_ASSUME_NONNULL_END

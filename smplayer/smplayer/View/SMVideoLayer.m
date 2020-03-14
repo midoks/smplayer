@@ -16,6 +16,7 @@
 #import "SMVideoTime.h"
 #import "SMVideoLayer.h"
 #import "SMCommon.h"
+#import "SMLastHistory.h"
 
 
 static void wakeup(void *);
@@ -51,6 +52,7 @@ static void *get_proc_address(void *ctx, const char *name)
 @property (nonatomic, weak) NSTimer *asyncPlayerTimer;
 @property int switchVoice;
 @property double videoDuration;
+@property double videoPos;
 @property NSString *currentPath;
 @end
 
@@ -159,12 +161,12 @@ static inline void _draw_frame(SMVideoLayer *obj) {
     
     static GLint dims[] = { 0, 0, 0, 0 };
     glGetIntegerv(GL_VIEWPORT, dims);
- 
+    
     GLint i = 0;
     glGetIntegerv(GL_DRAW_FRAMEBUFFER_BINDING, &i);
     
     if (i) {
-//        NSLog(@"print:%d",i);
+        //        NSLog(@"print:%d",i);
     }
     
     mpv_render_param params[] = {
@@ -222,7 +224,7 @@ static inline void _draw_frame(SMVideoLayer *obj) {
         puts("failed to initialize mpv GL context");
         exit(1);
     }
-
+    
     mpv_render_context_set_update_callback(_mpv_render_context, render_context_callback, (__bridge void *)self);
     
 }
@@ -232,6 +234,16 @@ static inline void _draw_frame(SMVideoLayer *obj) {
     mpv_set_wakeup_callback(self->mpv, wakeup, (__bridge void *) self);
     const char *cmd[] = {"loadfile", path.UTF8String, NULL};
     check_error(mpv_command(self->mpv, cmd));
+}
+
+-(void)closeVideo{
+//    [self quit];
+    [self stop];
+    
+    
+//    NSURL *urlFile = [NSURL fileURLWithPath:self->_currentPath isDirectory:NO];
+    [[NSUserDefaults standardUserDefaults] setObject:self->_currentPath forKey:@"t_123"];
+    [[NSUserDefaults standardUserDefaults] setDouble:_videoPos forKey:@"t_123_pos"];
 }
 
 
@@ -264,13 +276,17 @@ static void render_context_callback(void *ctx) {
 {
     switch (event->event_id) {
         case MPV_EVENT_SHUTDOWN: {
-            mpv_detach_destroy(mpv);
-            mpv = NULL;
+            if (mpv){
+//                mpv_detach_destroy(mpv);
+                mpv = NULL;
+            }
             NSLog(@"event-MPV_EVENT_SHUTDOWN: shutdown");
             break;
         }
         case MPV_EVENT_FILE_LOADED:{
-            [self fileLoad];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self fileLoad];
+            });
             break;
         }
         case MPV_EVENT_PROPERTY_CHANGE:{
@@ -315,33 +331,35 @@ static void render_context_callback(void *ctx) {
     double w = [self mpvGetDouble:@"width"];
     double h = [self mpvGetDouble:@"height"];
     
-//    _videoSize.height = h;
-//    _videoSize.width = w;
+    //    _videoSize.height = h;
+    //    _videoSize.width = w;
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [[NSApp mainWindow] setFrame:NSMakeRect(0, 0, w, h) display:YES];
-        [[NSApp mainWindow] center];
-    });
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSTimer *timer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(videoDurationAction) userInfo:nil repeats:YES];
-        [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
-        self.asyncPlayerTimer  = timer;
-    });
+    [[NSApp mainWindow] setFrame:NSMakeRect(0, 0, w, h) display:YES];
+    [[NSApp mainWindow] center];
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (self.videoDelegate) {
-            self->_videoDuration = [self mpvGetDouble:@"duration"];
-            [self.videoDelegate videoStart:[[SMVideoTime alloc] initTime:self->_videoDuration]];
-        }
-    });
     
-    dispatch_async(dispatch_get_main_queue(), ^{
-        NSURL *urlFile = [NSURL fileURLWithPath:self->_currentPath isDirectory:NO];
-        [[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL:urlFile];
-        [[NSNotificationCenter defaultCenter] postNotificationName:SM_NOTIF_FILELOADED object:nil userInfo:nil];
-    });
-   
+    
+    NSTimer *timer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(videoDurationAction) userInfo:nil repeats:YES];
+    [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
+    self.asyncPlayerTimer  = timer;
+    
+    
+    
+    if (self.videoDelegate) {
+        self->_videoDuration = [self mpvGetDouble:@"duration"];
+        [self.videoDelegate videoStart:[[SMVideoTime alloc] initTime:self->_videoDuration]];
+    }
+    
+    
+
+    NSURL *urlFile = [NSURL fileURLWithPath:self->_currentPath isDirectory:NO];
+    [[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL:urlFile];
+    [[NSNotificationCenter defaultCenter] postNotificationName:SM_NOTIF_FILELOADED object:nil userInfo:nil];
+    
+    [[SMLastHistory Instance] add:urlFile duration:2.0];
+    
+    
 }
 
 -(void)videoDurationAction{
@@ -350,8 +368,9 @@ static void render_context_callback(void *ctx) {
         if (pos>_videoDuration){
             pos = _videoDuration;
         }
-        
-        [self.videoDelegate videoPos:[[SMVideoTime alloc] initTime:pos]];
+        _videoPos = pos;
+        [[SMLastHistory Instance] add:[NSURL fileURLWithPath:self->_currentPath isDirectory:NO] duration:_videoPos];
+        [self.videoDelegate videoPos:[[SMVideoTime alloc] initTime:_videoPos]];
     }
 }
 

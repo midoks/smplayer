@@ -236,17 +236,6 @@ static dispatch_once_t _instance_once;
 #pragma mark - NSWindowDelegate
 -(NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize
 {
-    //    CGEventSourceRef src = CGEventSourceCreate(kCGEventSourceStateHIDSystemState);
-    //
-    //    CGEventRef cmdDown = CGEventCreateKeyboardEvent(src, kVK_Shift, true);
-    //    CGEventRef cmdUp = CGEventCreateKeyboardEvent(src, kVK_Shift, false);
-    //    CGEventSetFlags(cmdDown, kCGEventFlagMaskCommand);
-    //    CGEventSetFlags(cmdUp, kCGEventFlagMaskCommand);
-    //
-    //    CGEventTapLocation loc = kCGSessionEventTap;
-    //    CGEventPost(loc, cmdDown);
-    //    CGEventPost(loc, cmdUp);
-    //    return frameSize;
     
     //    NSSize vs = player.videoSize;
     //    CGFloat aspect = vs.width / vs.height;
@@ -254,14 +243,6 @@ static dispatch_once_t _instance_once;
     //
     //    [self->player.smLayer windowScale:aspect];
     //    return CGSizeMake(frameSize.width, newHeight);
-    
-    //    NSLog(@"regEvent-frame:%@", NSStringFromRect(self.window.contentView.bounds));
-    //    [self.window.contentView removeTrackingArea:<#(nonnull NSTrackingArea *)#>];
-    //    [self.window.contentView addTrackingArea:[[NSTrackingArea alloc]
-    //                                initWithRect:self.window.contentView.bounds
-    //                                     options:NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved |NSTrackingActiveAlways | NSTrackingInVisibleRect
-    //                                       owner:self
-    //                                    userInfo:@{@"obj":@"0"}]];
     
     [_uninitLock lock];
     [self->player.smLayer display];
@@ -294,6 +275,12 @@ static dispatch_once_t _instance_once;
     [self.titleBarView setHidden:NO];
     
     self.window.titlebarAppearsTransparent = YES;
+}
+
+-(void)windowWillClose:(NSNotification *)notification{
+//    NSLog(@"player-windowWillClose");
+    [self->player.smLayer closeVideo];
+    
 }
 
 
