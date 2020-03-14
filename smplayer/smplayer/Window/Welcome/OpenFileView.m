@@ -7,9 +7,6 @@
 //
 
 #import "OpenFileView.h"
-#import "SMCore.h"
-#import "Web.h"
-#import "Preference.h"
 
 @implementation OpenFileView
 
@@ -35,26 +32,15 @@
 }
 
 -(void)mouseDown:(NSEvent *)event{
-    
-    if ([self.identifier isEqualToString:@"open-file"]){
-        [[NSApp delegate] application:[NSApplication sharedApplication] openFile:@""];
-    } else if ([self.identifier isEqualToString:@"open-fileurl"]){
-
-//        NSApplicationDelegate nd = [NSApp delegate];
-//        [nd open]
-//        [(AppDelegate*)nd open];
-//        [[NSApp delegate] application:[NSApplication sharedApplication] open:];
-        
-        
-        [[[SMCore Instance] web] showWindow:self];
-    } else if ([self.identifier isEqualToString:@"open-resume"]){
-        
-        Web *w = [[Web alloc] init];
-        [w showWindow:nil];
+    if (self.delegate) {
+        [self.delegate openFileMouseDown:self.identifier];
     }
 }
 
 -(void)mouseUp:(NSEvent *)event{
+    if (self.delegate) {
+        [self.delegate openFileMouseUp:self.identifier];
+    }
 }
 
 @end

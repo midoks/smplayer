@@ -41,7 +41,6 @@
 - (void)application:(NSApplication *)application openURLs:(NSArray<NSURL *> *)urls{
     NSLog(@"applicationDidFinishLaunching");
     
-//    [player openVideo:[urls[0] path]];
     [[[SMCore Instance] player] showWindow:self];
     [[[SMCore Instance] player] openVideo:[urls[0] path]];
     

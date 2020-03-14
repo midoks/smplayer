@@ -10,7 +10,15 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+@protocol OpenFileViewDelegate <NSObject>
+@optional
+-(void)openFileMouseDown:(NSString *)identifier;
+-(void)openFileMouseUp:(NSString *)identifier;
+@end
+
 @interface OpenFileView : NSView
+
+@property (nonatomic,strong) id <OpenFileViewDelegate> delegate;
 
 @end
 

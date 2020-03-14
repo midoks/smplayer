@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface OpenURL : NSWindowController
 
++ (id)Instance;
 @end
 
 NS_ASSUME_NONNULL_END

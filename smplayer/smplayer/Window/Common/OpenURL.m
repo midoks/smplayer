@@ -14,6 +14,15 @@
 
 @implementation OpenURL
 
+static OpenURL *_instance = nil;
+static dispatch_once_t _instance_once;
++ (id)Instance{
+    dispatch_once(&_instance_once, ^{
+        _instance = [[OpenURL alloc] init];
+    });
+    return _instance;
+}
+
 -(id)init{
     self = [self initWithWindowNibName:@"OpenURL"];
     return self;

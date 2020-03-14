@@ -13,6 +13,7 @@
 		82394280241AAC25006B7049 /* SMLastHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8239427F241AAC24006B7049 /* SMLastHistory.m */; };
 		82394283241BA9EB006B7049 /* SMLastHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82394282241BA9EA006B7049 /* SMLastHistoryModel.m */; };
 		824384F0241CE62800A1A218 /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = 824384F2241CE62800A1A218 /* Welcome.xib */; };
+		824384FA241D2A1500A1A218 /* MenuListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 824384F9241D2A1400A1A218 /* MenuListController.m */; };
 		826AB833240416D400B87C63 /* SMControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AB832240416D400B87C63 /* SMControlView.m */; };
 		826AB8372406C12600B87C63 /* SMCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AB8362406C12500B87C63 /* SMCommon.m */; };
 		826AB8392407C0DF00B87C63 /* input.conf in Resources */ = {isa = PBXBuildFile; fileRef = 826AB8382407C0DE00B87C63 /* input.conf */; };
@@ -86,6 +87,8 @@
 		824384F1241CE62800A1A218 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/Welcome.xib; sourceTree = "<group>"; };
 		824384F4241CE63700A1A218 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Welcome.strings; sourceTree = "<group>"; };
 		824384F6241CE63B00A1A218 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Welcome.strings"; sourceTree = "<group>"; };
+		824384F8241D2A1400A1A218 /* MenuListController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuListController.h; sourceTree = "<group>"; };
+		824384F9241D2A1400A1A218 /* MenuListController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuListController.m; sourceTree = "<group>"; };
 		826AB831240416D400B87C63 /* SMControlView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMControlView.h; sourceTree = "<group>"; };
 		826AB832240416D400B87C63 /* SMControlView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMControlView.m; sourceTree = "<group>"; };
 		826AB8352406C12500B87C63 /* SMCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMCommon.h; sourceTree = "<group>"; };
@@ -327,6 +330,15 @@
 				824384F2241CE62800A1A218 /* Welcome.xib */,
 			);
 			path = Welcome;
+			sourceTree = "<group>";
+		};
+		824384F7241D28B300A1A218 /* Menu */ = {
+			isa = PBXGroup;
+			children = (
+				824384F8241D2A1400A1A218 /* MenuListController.h */,
+				824384F9241D2A1400A1A218 /* MenuListController.m */,
+			);
+			path = Menu;
 			sourceTree = "<group>";
 		};
 		826AB8342406C0D400B87C63 /* Util */ = {
@@ -724,6 +736,7 @@
 			children = (
 				82023C5A2414D4FC00B0B8BC /* SMCore.h */,
 				82023C5B2414D4FC00B0B8BC /* SMCore.m */,
+				824384F7241D28B300A1A218 /* Menu */,
 				828DBD422416B0A100A89A89 /* Common */,
 				828DBD362416884100A89A89 /* Preference */,
 				828DBD372416884100A89A89 /* Web */,
@@ -899,6 +912,7 @@
 				828DBD822418271100A89A89 /* MASViewConstraint.m in Sources */,
 				82023C552413ADA800B0B8BC /* Welcome.m in Sources */,
 				828DBD7F2418271100A89A89 /* NSArray+MASAdditions.m in Sources */,
+				824384FA241D2A1500A1A218 /* MenuListController.m in Sources */,
 				82FBC09524120C66002E8ABD /* Player.m in Sources */,
 				828DBD7D2418271100A89A89 /* MASConstraintMaker.m in Sources */,
 				82E9A46A24030AEA000DB7F3 /* AppDelegate.m in Sources */,

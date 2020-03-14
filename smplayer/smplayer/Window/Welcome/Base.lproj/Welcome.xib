@@ -14,6 +14,8 @@
                 <outlet property="lastFileView" destination="p1L-6I-VnM" id="SHB-Ay-eLa"/>
                 <outlet property="lastResumeLabel" destination="tcf-ou-0k2" id="3Rh-26-7wh"/>
                 <outlet property="mainView" destination="EnC-ej-djs" id="2eO-uM-Rug"/>
+                <outlet property="openFileUrlView" destination="QhI-h3-WR7" id="NcB-fL-slK"/>
+                <outlet property="openFileView" destination="JZ2-z0-ikY" id="zfK-tW-8Rv"/>
                 <outlet property="recentFilesTableView" destination="CKw-Mk-JFE" id="cVn-au-5zC"/>
                 <outlet property="version" destination="9Bg-Cb-7oW" id="aVS-ej-bbO"/>
                 <outlet property="visualEffectView" destination="e7Z-xc-VKV" id="pXk-r7-vgo"/>
@@ -177,7 +179,7 @@
                                                     <tableColumns>
                                                         <tableColumn width="261" minWidth="40" maxWidth="1000" id="3Nc-Fa-Y4x">
                                                             <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
-                                                                <font key="font" metaFont="menu" size="11"/>
+                                                                <font key="font" metaFont="label" size="11"/>
                                                                 <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
                                                                 <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
                                                             </tableHeaderCell>

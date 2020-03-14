@@ -233,6 +233,36 @@ static dispatch_once_t _instance_once;
     [self->player.smLayer openVideo:path];
 }
 
+-(void)openVideo:(NSString *)path seek:(double)seek{
+    [self->player.smLayer openVideo:path];
+    
+
+    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
+    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
+       NSString *_seek = [NSString stringWithFormat:@"%f",seek];
+        NSLog(@"%f-%@",seek,_seek);
+        [self->player.smLayer seek:_seek.UTF8String];
+    });
+    
+}
+
+-(void)openSelectVideo:(void(^)(void))cmd{
+    NSOpenPanel *panel = [NSOpenPanel openPanel];
+    [panel setPrompt: @"选择"];
+    [panel setCanChooseDirectories:NO];
+    [panel setCanChooseFiles:YES];
+    [panel setCanCreateDirectories:YES];
+    panel.allowsMultipleSelection = YES;
+    [panel setAllowedFileTypes:[NSArray arrayWithObject:@"mp4"]];
+    
+    if([panel runModal]){
+        [self showWindow:self];
+        [self openVideo:[[panel URL] path]];
+        cmd();
+    }
+}
+
+
 #pragma mark - NSWindowDelegate
 -(NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize
 {

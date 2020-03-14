@@ -8,27 +8,34 @@
 
 #import "Welcome.h"
 #import "SMCore.h"
+#import "Web.h"
 #import "OpenFileView.h"
 #import "SMCommon.h"
 #import "SMVideoTime.h"
+#import "Preference.h"
 
-@interface Welcome () <NSWindowDelegate,NSTableViewDelegate,NSTableViewDataSource>
+
+@interface Welcome () <NSWindowDelegate,NSTableViewDelegate,NSTableViewDataSource,OpenFileViewDelegate>
 
 @property (weak) IBOutlet NSView *mainView;
-
 @property (weak) IBOutlet NSTextField *version;
-
 @property (weak) IBOutlet NSVisualEffectView *visualEffectView;
 
+@property (weak) IBOutlet OpenFileView *openFileView;
+@property (weak) IBOutlet OpenFileView *openFileUrlView;
 @property (weak) IBOutlet OpenFileView *lastFileView;
 @property (weak) IBOutlet NSImageView *lastFileIcon;
 @property (weak) IBOutlet NSTextField *lastResumeLabel;
 @property (weak) IBOutlet NSTextField *lastFileNameLabel;
 @property (weak) IBOutlet NSTextField *lastFilePosLabel;
 
+
 @property (weak) IBOutlet NSTableView *recentFilesTableView;
 
+
 @property (readonly, copy) NSArray<NSURL *> *recentDocumentURLs;
+@property NSString *currentFilePath;
+@property double currentFilePos;
 
 @end
 
@@ -73,7 +80,12 @@ static dispatch_once_t _instance_once;
     self.lastFileIcon.image = [NSImage imageNamed:@"history"];
     
     [self.version setStringValue:[[NSBundle mainBundle]objectForInfoDictionaryKey:@"CFBundleShortVersionString"]];
-
+    
+    _openFileView.delegate = self;
+    _openFileUrlView.delegate = self;
+    _lastFileView.delegate = self;
+    
+    
     [self initRecentTableView];
     
     [self updateLastPlayInfo];
@@ -83,7 +95,7 @@ static dispatch_once_t _instance_once;
 
 -(void)initRecentTableView{
     _recentDocumentURLs = [[NSDocumentController sharedDocumentController] recentDocumentURLs];
-
+    
     self.recentFilesTableView.delegate = self;
     self.recentFilesTableView.dataSource = self;
     
@@ -94,13 +106,13 @@ static dispatch_once_t _instance_once;
 -(void)updateLastPlayInfo{
     NSFileManager *fm = [NSFileManager defaultManager];
     
-    NSString *path = [[NSUserDefaults standardUserDefaults] objectForKey:@"t_123"];
-    double pos = [[NSUserDefaults standardUserDefaults] doubleForKey:@"t_123_pos"];
+    _currentFilePath = [[NSUserDefaults standardUserDefaults] objectForKey:@"t_123"];
+    _currentFilePos = [[NSUserDefaults standardUserDefaults] doubleForKey:@"t_123_pos"];
     
-
-    if ([fm fileExistsAtPath:path]){
-        NSURL *url = [NSURL fileURLWithPath:path isDirectory:NO];
-        SMVideoTime *time = [[SMVideoTime alloc] initTime:pos];
+    
+    if ([fm fileExistsAtPath:_currentFilePath]){
+        NSURL *url = [NSURL fileURLWithPath:_currentFilePath isDirectory:NO];
+        SMVideoTime *time = [[SMVideoTime alloc] initTime:_currentFilePos];
         
         [self.lastFileNameLabel setStringValue:url.lastPathComponent];
         [self.lastFilePosLabel setStringValue:[time getString]];
@@ -160,6 +172,38 @@ static dispatch_once_t _instance_once;
     [[NSApp delegate] application:[NSApplication sharedApplication] openFile:[files objectAtIndex:0]];
     return YES;
 }
+
+#pragma mark - OpenFileViewDelegate
+-(void)openFileMouseDown:(NSString *)identifier{
+    
+    if ([identifier isEqualToString:@"open-file"]){
+        
+        [[[SMCore Instance] player] openSelectVideo:^{
+            [[[SMCore Instance] first] close];
+        }];
+    
+    } else if ([identifier isEqualToString:@"open-fileurl"]){
+        
+        
+        
+        //        NSApplicationDelegate nd = [NSApp delegate];
+        //        [nd open]
+        //        [(AppDelegate*)nd open];
+        //        [[NSApp delegate] application:[NSApplication sharedApplication] open:];
+        
+        [[[SMCore Instance] web] showWindow:self];
+    } else if ([identifier isEqualToString:@"open-resume"]){
+
+        [[[SMCore Instance] player] showWindow:self];
+        [[[SMCore Instance] player] openVideo:_currentFilePath seek:_currentFilePos];
+    }
+}
+
+-(void)openFileMouseUp:(NSString *)identifier{
+    
+}
+
+
 
 #pragma mark - NSWindowDelegate
 //-(void)windowWillClose:(NSNotification *)notification{

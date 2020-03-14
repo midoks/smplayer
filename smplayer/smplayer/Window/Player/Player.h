@@ -18,6 +18,8 @@ NS_ASSUME_NONNULL_BEGIN
 }
 + (id)Instance;
 -(void)openVideo:(NSString *)path;
+-(void)openVideo:(NSString *)path seek:(double)seek;
+-(void)openSelectVideo:(void(^)(void))cmd;
 @end
 
 NS_ASSUME_NONNULL_END
