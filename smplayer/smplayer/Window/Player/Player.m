@@ -253,7 +253,8 @@ static dispatch_once_t _instance_once;
     [panel setCanChooseFiles:YES];
     [panel setCanCreateDirectories:YES];
     panel.allowsMultipleSelection = YES;
-    [panel setAllowedFileTypes:[NSArray arrayWithObject:@"mp4"]];
+    
+    [panel setAllowedFileTypes:[SMCommon getSupportPlayFormat]];
     
     if([panel runModal]){
         [self showWindow:self];
