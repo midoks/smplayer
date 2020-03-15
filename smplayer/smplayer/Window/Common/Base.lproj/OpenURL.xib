@@ -68,7 +68,7 @@
                                 </customSpacing>
                             </stackView>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rxP-gL-Jpq">
-                                <rect key="frame" x="383" y="18" width="73" height="32"/>
+                                <rect key="frame" x="407" y="18" width="73" height="32"/>
                                 <buttonCell key="cell" type="push" title="Open" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VFV-dx-kOQ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -78,7 +78,7 @@
                                 </connections>
                             </button>
                             <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fBy-Oh-oCr">
-                                <rect key="frame" x="297" y="18" width="82" height="32"/>
+                                <rect key="frame" x="321" y="18" width="82" height="32"/>
                                 <buttonCell key="cell" type="push" title="Cancel" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="oNN-7E-h3i">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -98,7 +98,7 @@ Gw
                             <constraint firstAttribute="bottom" secondItem="fBy-Oh-oCr" secondAttribute="bottom" constant="25" id="KcY-YZ-ecc"/>
                             <constraint firstAttribute="trailing" secondItem="iON-J4-LhM" secondAttribute="trailing" constant="16" id="UYd-YN-eNg"/>
                             <constraint firstAttribute="bottom" secondItem="rxP-gL-Jpq" secondAttribute="bottom" constant="25" id="XEI-GK-tDR"/>
-                            <constraint firstAttribute="trailing" secondItem="rxP-gL-Jpq" secondAttribute="trailing" constant="40" id="paI-tO-a8C"/>
+                            <constraint firstAttribute="trailing" secondItem="rxP-gL-Jpq" secondAttribute="trailing" constant="16" id="paI-tO-a8C"/>
                             <constraint firstAttribute="width" constant="490" id="rT5-NF-LcC"/>
                             <constraint firstItem="fBy-Oh-oCr" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="1wX-rT-Vp7" secondAttribute="leading" constant="20" symbolic="YES" id="xph-Rq-8C2"/>
                             <constraint firstItem="rxP-gL-Jpq" firstAttribute="leading" secondItem="fBy-Oh-oCr" secondAttribute="trailing" constant="16" id="y05-Hx-aaQ"/>

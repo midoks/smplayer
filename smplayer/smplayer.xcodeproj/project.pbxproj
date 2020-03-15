@@ -15,6 +15,7 @@
 		824384F0241CE62800A1A218 /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = 824384F2241CE62800A1A218 /* Welcome.xib */; };
 		824384FA241D2A1500A1A218 /* MenuListController.m in Sources */ = {isa = PBXBuildFile; fileRef = 824384F9241D2A1400A1A218 /* MenuListController.m */; };
 		824384FB241D3A5A00A1A218 /* OpenURL.xib in Resources */ = {isa = PBXBuildFile; fileRef = 824384FD241D3A5A00A1A218 /* OpenURL.xib */; };
+		8243850A241E357F00A1A218 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8243850C241E357F00A1A218 /* Localizable.strings */; };
 		826AB833240416D400B87C63 /* SMControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AB832240416D400B87C63 /* SMControlView.m */; };
 		826AB8372406C12600B87C63 /* SMCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AB8362406C12500B87C63 /* SMCommon.m */; };
 		826AB8392407C0DF00B87C63 /* input.conf in Resources */ = {isa = PBXBuildFile; fileRef = 826AB8382407C0DE00B87C63 /* input.conf */; };
@@ -92,6 +93,8 @@
 		824384FC241D3A5A00A1A218 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/OpenURL.xib; sourceTree = "<group>"; };
 		824384FF241D3A6100A1A218 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/OpenURL.strings; sourceTree = "<group>"; };
 		82438501241D3A6400A1A218 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/OpenURL.strings"; sourceTree = "<group>"; };
+		8243850B241E357F00A1A218 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		8243850D241E358300A1A218 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/Localizable.strings"; sourceTree = "<group>"; };
 		826AB831240416D400B87C63 /* SMControlView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMControlView.h; sourceTree = "<group>"; };
 		826AB832240416D400B87C63 /* SMControlView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMControlView.m; sourceTree = "<group>"; };
 		826AB8352406C12500B87C63 /* SMCommon.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMCommon.h; sourceTree = "<group>"; };
@@ -716,6 +719,7 @@
 			isa = PBXGroup;
 			children = (
 				826AB8382407C0DE00B87C63 /* input.conf */,
+				8243850C241E357F00A1A218 /* Localizable.strings */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -866,6 +870,7 @@
 				824384FB241D3A5A00A1A218 /* OpenURL.xib in Resources */,
 				824384F0241CE62800A1A218 /* Welcome.xib in Resources */,
 				82E9A46C24030AEE000DB7F3 /* Assets.xcassets in Resources */,
+				8243850A241E357F00A1A218 /* Localizable.strings in Resources */,
 				828DBD41241688D200A89A89 /* Preference.xib in Resources */,
 				826AB8392407C0DF00B87C63 /* input.conf in Resources */,
 				82E9A46F24030AEE000DB7F3 /* MainMenu.xib in Resources */,
@@ -975,6 +980,15 @@
 				82438501241D3A6400A1A218 /* zh-Hans */,
 			);
 			name = OpenURL.xib;
+			sourceTree = "<group>";
+		};
+		8243850C241E357F00A1A218 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8243850B241E357F00A1A218 /* en */,
+				8243850D241E358300A1A218 /* zh-Hans */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 		82E9A46D24030AEE000DB7F3 /* MainMenu.xib */ = {

@@ -1,0 +1,9 @@
+/* 
+  Localizable.strings
+  smplayer
+
+  Created by midoks on 2020/3/15.
+  Copyright © 2020 midoks. All rights reserved.
+*/
+"alert.notice" = "提示";
+"alert.invalid_url" = "无效URL";

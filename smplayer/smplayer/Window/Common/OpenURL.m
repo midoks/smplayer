@@ -7,6 +7,7 @@
 //
 
 #import "OpenURL.h"
+#import "SMCommon.h"
 #import "SMCore.h"
 
 @interface OpenURL ()<NSWindowDelegate,NSTextFieldDelegate,NSControlTextEditingDelegate>
@@ -53,36 +54,59 @@ static dispatch_once_t _instance_once;
     
     _urlTextField.delegate = self;
     _openBtn.enabled = NO;
+    
+    
 }
 
 - (IBAction)cancelBtnAction:(id)sender {
     [self.window close];
 }
 - (IBAction)openBtnAction:(id)sender {
-    NSString *url = _urlTextField.stringValue;
+    NSURL *httpUrl = [self getURL];
+    NSString *url =  @"";
+    if (!httpUrl.scheme){
+        url = [NSString stringWithFormat:@"http://%@",httpUrl.absoluteString];
+    } else {
+        url = httpUrl.absoluteString;
+    }
     
-    NSLog(@"dd:%@",url);
+    NSString *ext = httpUrl.pathExtension;
+    NSMutableArray *list = [SMCommon getSupportPlayFormat];
     
-    NSString *httpUrl = [NSString stringWithFormat:@"http://%@", url];
-    
-    [[[SMCore Instance] player] showWindow:self];
-    [[[SMCore Instance] player] openVideo:httpUrl];
+    if ([list containsObject:ext]){
+        [[[SMCore Instance] player] showWindow:self];
+        [[[SMCore Instance] player] openVideo:url];
+        [self.window close];
+        [[[SMCore Instance] first] close];
+    } else{
+        [SMCommon alert:NSLocalizedString(@"alert.invalid_url", nil)];
+    }
+}
+
+-(NSURL *)getURL{
+    NSURL *url = [NSURL URLWithString:_urlTextField.stringValue];
+    return url;
 }
 
 #pragma mark - NSControlTextEditingDelegate
 -(void)controlTextDidChange:(NSNotification *)obj{
     NSTextView *textView = [obj.userInfo objectForKey:@"NSFieldEditor"];
     NSString *str = [textView textStorage].string;
-
+    
     if([str isEqualToString:@""]){
         _openBtn.enabled = NO;
         [_urlStackView setVisibilityPriority:NSStackViewVisibilityPriorityNotVisible forView:_httpPrexTextField];
         return;
     }
     
-    
+    NSURL *url = [self getURL];
+    if (url.scheme){
+        [_urlStackView setVisibilityPriority:NSStackViewVisibilityPriorityNotVisible forView:_httpPrexTextField];
+        
+    } else {
+        [_urlStackView setVisibilityPriority:NSStackViewVisibilityPriorityMustHold forView:_httpPrexTextField];
+    }
     _openBtn.enabled = YES;
-    [_urlStackView setVisibilityPriority:NSStackViewVisibilityPriorityMustHold forView:_httpPrexTextField];
 }
 
 @end
