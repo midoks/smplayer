@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Preference : NSWindowController
 
++ (id)Instance;
 @end
 
 NS_ASSUME_NONNULL_END

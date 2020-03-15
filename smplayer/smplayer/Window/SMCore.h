@@ -10,6 +10,7 @@
 #import "Welcome.h"
 #import "Player.h"
 #import "Web.h"
+#import "Preference.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -20,6 +21,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(Welcome *)first;
 -(Player *)player;
 -(Web *)web;
+-(Preference *)preference;
 
 @end
 

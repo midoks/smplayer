@@ -102,5 +102,9 @@
 //    }
 }
 
+#pragma mark - menu function
+- (IBAction)showPreference:(id)sender {
+    [[[SMCore Instance] preference] showWindow:self];
+}
 
 @end

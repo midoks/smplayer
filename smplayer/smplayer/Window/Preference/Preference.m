@@ -9,17 +9,21 @@
 #import "Preference.h"
 
 @interface Preference ()<NSTableViewDelegate,NSTableViewDataSource>
-
-@property (weak) IBOutlet NSTableView *listTableView;
 @end
 
 @implementation Preference
 
-//
+static Preference *_instance = nil;
+static dispatch_once_t _instance_once;
++ (id)Instance{
+    dispatch_once(&_instance_once, ^{
+        _instance = [[Preference alloc] init];
+    });
+    return _instance;
+}
+
 -(id)init{
     self = [self initWithWindowNibName:@"Preference"];
-     
-//       [self.listTableView reloadData];
     return self;
 }
 -(id)initWithWindow:(NSWindow *)window
@@ -32,40 +36,7 @@
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-    
-    
-//    self.listTableView.delegate = self;
-//    self.listTableView.dataSource = self;
 }
 
-
-#pragma mark - NSTableViewDelegate, NSTableViewDataSource
--(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView{
-    NSLog(@"numberOfRowsInTableView");
-    return 5;
-}
-
-
-- (NSView *)tableView:(NSTableView *)tableView viewForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row {
-    NSTableCellView *cell = [tableView makeViewWithIdentifier:tableColumn.identifier owner:self];
-    [cell.textField setStringValue:@"dd"];
-//    [cell.textField setEditable:NO];
-//    [cell.textField setDrawsBackground:NO];
-    return cell;
-}
-
-
-//-(id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
-//    NSLog(@"objectValueForTableColumn");
-//    NSLog(@"%@",[NSString stringWithFormat:@"%ld", row]);
-////    return [NSString stringWithFormat:@"%ld", row];
-//    return @{@"n":@"dd.mp4"};
-////    return nil;
-//}
-
-
--(void)tableViewSelectionDidChange:(NSNotification *)notification{
-    NSLog(@"ddd");
-}
 
 @end

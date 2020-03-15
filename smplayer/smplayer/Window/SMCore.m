@@ -10,6 +10,7 @@
 #import "Player.h"
 
 #import "SMCore.h"
+#import "Preference.h"
 #import "Web.h"
 
 @interface SMCore()
@@ -17,6 +18,7 @@
     Welcome *welcome;
     Player *player;
     Web *web;
+    Preference *preference;
 }
 @end
 
@@ -37,6 +39,7 @@ static dispatch_once_t _instance_once;
         self->welcome = [Welcome Instance];
         self->player = [Player Instance];
         self->web = [Web Instance];
+        self->preference = [Preference Instance];
     }
     return self;
 }
@@ -52,6 +55,12 @@ static dispatch_once_t _instance_once;
 -(Web *)web{
     return self->web;
 }
+
+-(Preference *)preference{
+    return self->preference;
+}
+
+
 
 
 @end
