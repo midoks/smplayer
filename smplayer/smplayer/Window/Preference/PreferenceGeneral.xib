@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="PreferenceGeneral">
+            <connections>
+                <outlet property="baseView" destination="s1O-au-EXf" id="GPN-WB-pRk"/>
+                <outlet property="behaviorView" destination="VKi-xn-xAh" id="PW2-a0-b6z"/>
+                <outlet property="testView" destination="5Ph-cp-vdj" id="gpv-0D-XmK"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="220"/>
+            <subviews>
+                <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1O-au-EXf">
+                    <rect key="frame" x="0.0" y="0.0" width="480" height="220"/>
+                </stackView>
+            </subviews>
+            <constraints>
+                <constraint firstItem="s1O-au-EXf" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" id="9rp-9f-xQF"/>
+                <constraint firstAttribute="bottom" secondItem="s1O-au-EXf" secondAttribute="bottom" id="WVi-xP-Ee2"/>
+                <constraint firstAttribute="trailing" secondItem="s1O-au-EXf" secondAttribute="trailing" id="c3h-mB-3Fn"/>
+                <constraint firstItem="s1O-au-EXf" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="st8-eM-3Tn"/>
+            </constraints>
+            <point key="canvasLocation" x="140" y="128"/>
+        </customView>
+        <customView id="VKi-xn-xAh" userLabel="Behavior View">
+            <rect key="frame" x="0.0" y="0.0" width="480" height="130"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xg9-Vi-ktH">
+                    <rect key="frame" x="13" y="106" width="61" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Behavior:" id="0tH-5Q-Wro">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j3k-lg-Ce5">
+                    <rect key="frame" x="190" y="106" width="102" height="16"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="When launched:" id="Ube-i6-IXE">
+                        <font key="font" metaFont="system"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EFi-Tf-RMo">
+                    <rect key="frame" x="290" y="101" width="178" height="25"/>
+                    <popUpButtonCell key="cell" type="push" title="Show welcome window" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="v4K-Nn-Qkq" id="99k-13-hVh">
+                        <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                        <menu key="menu" id="LMH-7n-Q9Z">
+                            <items>
+                                <menuItem title="Show welcome window" state="on" id="v4K-Nn-Qkq"/>
+                                <menuItem title="Show open file panel" id="jm9-1B-jEG"/>
+                                <menuItem title="Do nothing" id="FQl-6g-0Pu"/>
+                            </items>
+                        </menu>
+                    </popUpButtonCell>
+                </popUpButton>
+            </subviews>
+            <constraints>
+                <constraint firstItem="EFi-Tf-RMo" firstAttribute="leading" secondItem="xg9-Vi-ktH" secondAttribute="trailing" constant="220" id="25r-D6-McF"/>
+                <constraint firstItem="j3k-lg-Ce5" firstAttribute="leading" secondItem="xg9-Vi-ktH" secondAttribute="trailing" constant="120" id="3yi-xQ-cPK"/>
+                <constraint firstItem="EFi-Tf-RMo" firstAttribute="centerY" secondItem="j3k-lg-Ce5" secondAttribute="centerY" id="BuK-Pv-Czl"/>
+                <constraint firstItem="j3k-lg-Ce5" firstAttribute="top" secondItem="VKi-xn-xAh" secondAttribute="top" constant="8" id="MEQ-zT-wZ8"/>
+                <constraint firstItem="xg9-Vi-ktH" firstAttribute="leading" secondItem="VKi-xn-xAh" secondAttribute="leading" constant="15" id="Nnv-SR-mXq"/>
+                <constraint firstItem="xg9-Vi-ktH" firstAttribute="top" secondItem="VKi-xn-xAh" secondAttribute="top" constant="8" id="QZK-gF-bkt"/>
+            </constraints>
+            <point key="canvasLocation" x="140" y="515"/>
+        </customView>
+        <customView id="5Ph-cp-vdj">
+            <rect key="frame" x="0.0" y="0.0" width="481" height="59"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GN8-qq-XSa">
+                    <rect key="frame" x="207" y="13" width="81" height="32"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                    <buttonCell key="cell" type="push" title="Button" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Wpg-Qx-48t">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                </button>
+            </subviews>
+            <point key="canvasLocation" x="140.5" y="660.5"/>
+        </customView>
+    </objects>
+</document>

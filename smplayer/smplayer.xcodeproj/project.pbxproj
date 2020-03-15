@@ -10,6 +10,10 @@
 		82023C552413ADA800B0B8BC /* Welcome.m in Sources */ = {isa = PBXBuildFile; fileRef = 82023C532413ADA700B0B8BC /* Welcome.m */; };
 		82023C5C2414D4FC00B0B8BC /* SMCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 82023C5B2414D4FC00B0B8BC /* SMCore.m */; };
 		82023C5F2415678C00B0B8BC /* OpenFileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82023C5E2415678C00B0B8BC /* OpenFileView.m */; };
+		8228D9A3241E6BC200734908 /* PreferenceGeneral.m in Sources */ = {isa = PBXBuildFile; fileRef = 8228D9A1241E6BC200734908 /* PreferenceGeneral.m */; };
+		8228D9A4241E6BC200734908 /* PreferenceGeneral.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8228D9A2241E6BC200734908 /* PreferenceGeneral.xib */; };
+		8228D9A8241EB5C200734908 /* PreferenceNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 8228D9A6241EB5C200734908 /* PreferenceNetwork.m */; };
+		8228D9A9241EB5C200734908 /* PreferenceNetwork.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8228D9A7241EB5C200734908 /* PreferenceNetwork.xib */; };
 		82394280241AAC25006B7049 /* SMLastHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8239427F241AAC24006B7049 /* SMLastHistory.m */; };
 		82394283241BA9EB006B7049 /* SMLastHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82394282241BA9EA006B7049 /* SMLastHistoryModel.m */; };
 		824384F0241CE62800A1A218 /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = 824384F2241CE62800A1A218 /* Welcome.xib */; };
@@ -81,6 +85,12 @@
 		82023C5B2414D4FC00B0B8BC /* SMCore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMCore.m; sourceTree = "<group>"; };
 		82023C5D2415678C00B0B8BC /* OpenFileView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenFileView.h; sourceTree = "<group>"; };
 		82023C5E2415678C00B0B8BC /* OpenFileView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenFileView.m; sourceTree = "<group>"; };
+		8228D9A0241E6BC200734908 /* PreferenceGeneral.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferenceGeneral.h; sourceTree = "<group>"; };
+		8228D9A1241E6BC200734908 /* PreferenceGeneral.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferenceGeneral.m; sourceTree = "<group>"; };
+		8228D9A2241E6BC200734908 /* PreferenceGeneral.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferenceGeneral.xib; sourceTree = "<group>"; };
+		8228D9A5241EB5C200734908 /* PreferenceNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferenceNetwork.h; sourceTree = "<group>"; };
+		8228D9A6241EB5C200734908 /* PreferenceNetwork.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferenceNetwork.m; sourceTree = "<group>"; };
+		8228D9A7241EB5C200734908 /* PreferenceNetwork.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferenceNetwork.xib; sourceTree = "<group>"; };
 		8239427E241AAC24006B7049 /* SMLastHistory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMLastHistory.h; sourceTree = "<group>"; };
 		8239427F241AAC24006B7049 /* SMLastHistory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMLastHistory.m; sourceTree = "<group>"; };
 		82394281241BA9EA006B7049 /* SMLastHistoryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMLastHistoryModel.h; sourceTree = "<group>"; };
@@ -378,6 +388,12 @@
 				828DBD3D241688D200A89A89 /* Preference.h */,
 				828DBD3E241688D200A89A89 /* Preference.m */,
 				828DBD3F241688D200A89A89 /* Preference.xib */,
+				8228D9A0241E6BC200734908 /* PreferenceGeneral.h */,
+				8228D9A1241E6BC200734908 /* PreferenceGeneral.m */,
+				8228D9A2241E6BC200734908 /* PreferenceGeneral.xib */,
+				8228D9A5241EB5C200734908 /* PreferenceNetwork.h */,
+				8228D9A6241EB5C200734908 /* PreferenceNetwork.m */,
+				8228D9A7241EB5C200734908 /* PreferenceNetwork.xib */,
 			);
 			path = Preference;
 			sourceTree = "<group>";
@@ -867,12 +883,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				828DBD3C2416886E00A89A89 /* Web.xib in Resources */,
+				8228D9A4241E6BC200734908 /* PreferenceGeneral.xib in Resources */,
 				824384FB241D3A5A00A1A218 /* OpenURL.xib in Resources */,
 				824384F0241CE62800A1A218 /* Welcome.xib in Resources */,
 				82E9A46C24030AEE000DB7F3 /* Assets.xcassets in Resources */,
 				8243850A241E357F00A1A218 /* Localizable.strings in Resources */,
 				828DBD41241688D200A89A89 /* Preference.xib in Resources */,
 				826AB8392407C0DF00B87C63 /* input.conf in Resources */,
+				8228D9A9241EB5C200734908 /* PreferenceNetwork.xib in Resources */,
 				82E9A46F24030AEE000DB7F3 /* MainMenu.xib in Resources */,
 				82FBC09424120C66002E8ABD /* Player.xib in Resources */,
 			);
@@ -903,6 +921,7 @@
 				82FBC09824121F76002E8ABD /* SMVideoLayer.m in Sources */,
 				82023C5F2415678C00B0B8BC /* OpenFileView.m in Sources */,
 				826AB833240416D400B87C63 /* SMControlView.m in Sources */,
+				8228D9A3241E6BC200734908 /* PreferenceGeneral.m in Sources */,
 				828DBD7C2418271100A89A89 /* MASCompositeConstraint.m in Sources */,
 				82023C5C2414D4FC00B0B8BC /* SMCore.m in Sources */,
 				828DBD812418271100A89A89 /* MASConstraint.m in Sources */,
@@ -911,6 +930,7 @@
 				826AB8372406C12600B87C63 /* SMCommon.m in Sources */,
 				828DBD832418271100A89A89 /* MASViewAttribute.m in Sources */,
 				828DBD7A2418271100A89A89 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				8228D9A8241EB5C200734908 /* PreferenceNetwork.m in Sources */,
 				82394280241AAC25006B7049 /* SMLastHistory.m in Sources */,
 				82E9A47224030AEE000DB7F3 /* main.m in Sources */,
 				82E9A53624030E81000DB7F3 /* SMVideoView.m in Sources */,

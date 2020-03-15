@@ -32,8 +32,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 +(NSMutableArray*)getSupportPlayFormat;
 +(void)createDirIfNoExist:(NSURL *)url;
+
 +(NSURL *)appSupportDirURL;
 +(NSURL *)playHistoryURL;
+
+#pragma mark - constraints
++(void)quickConstraints:(NSArray<NSString *>*)constraints view:(NSDictionary *)view;
 @end
 
 NS_ASSUME_NONNULL_END

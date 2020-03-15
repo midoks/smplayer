@@ -85,4 +85,13 @@
     return [[self appSupportDirURL] URLByAppendingPathComponent:SM_HISTORY_FILE];
 }
 
+#pragma mark - constraints
++(void)quickConstraints:(NSArray<NSString *>*)constraints view:(NSDictionary *)view {
+    for (NSString * c in constraints) {
+        NSArray *cc = [NSLayoutConstraint constraintsWithVisualFormat:c options:0 metrics:nil views:view];
+        [NSLayoutConstraint activateConstraints:cc];
+    }
+}
+
+
 @end
