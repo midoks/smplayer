@@ -13,9 +13,6 @@
 #import "Preference.h"
 
 @interface AppDelegate ()
-@property OpenURL *openURL;
-
-@property Preference *pref;
 @end
 
 @implementation AppDelegate
