@@ -10,13 +10,21 @@
 
 @interface PreferenceNetwork ()
 
+@property (strong) IBOutlet NSView *cacheView;
+
 @end
 
 @implementation PreferenceNetwork
 
+-(id)init{
+    self = [self initWithNibName:@"PreferenceNetwork" bundle:nil];
+    return self;
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do view setup here.
+    
+    [self.view addSubview:_cacheView];
 }
 
 @end

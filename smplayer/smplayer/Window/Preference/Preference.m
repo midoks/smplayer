@@ -8,15 +8,22 @@
 
 #import "Preference.h"
 #import "PreferenceGeneral.h"
+#import "PreferenceNetwork.h"
+
 #import "SMCommon.h"
 
 @interface Preference ()<NSTableViewDelegate,NSTableViewDataSource>
 {
+    
+    NSDictionary * list;
+    
     PreferenceGeneral *prefGeneral;
+    PreferenceNetwork *prefNetwork;
 }
 
 
-@property (weak) IBOutlet NSStackView *baseView;
+@property (weak) IBOutlet NSStackView *baseStackView;
+@property (weak) IBOutlet NSScrollView *baseView;
 
 
 @end
@@ -34,7 +41,14 @@ static dispatch_once_t _instance_once;
 
 -(id)init{
     self = [self initWithWindowNibName:@"Preference"];
-    prefGeneral = [[PreferenceGeneral alloc] initWithNibName:@"PreferenceGeneral" bundle:nil];
+    prefGeneral = [[PreferenceGeneral alloc] init];
+    prefNetwork = [[PreferenceNetwork alloc] init];
+    
+    list = @{
+        @"general":prefGeneral,
+        @"network":prefNetwork,
+             
+    };
     return self;
 }
 -(id)initWithWindow:(NSWindow *)window
@@ -50,23 +64,25 @@ static dispatch_once_t _instance_once;
     
     self.window.movableByWindowBackground = YES;
     
-    
     self.contentViewController = prefGeneral;
 //    [self.window.contentView addSubview:prefGeneral.view];
-    
+//
 //    [self.baseView addSubview:prefGeneral.view];
-    
-    
-//    self.window.contentView = prefGeneral.view;
-    
-//    [SMCommon quickConstraints:@[@"H:|-20-[v]-20-|"]
+//
+//
+//    self.window.contentView.wantsLayer = YES;
+//    self.window.contentView.layer.backgroundColor = [NSColor yellowColor].CGColor;
+//
+//    [SMCommon quickConstraints:@[@"H:|-[v]-|",@"V:|-[v]-|"]
 //                          view:@{@"v":prefGeneral.view}];
+    
+//    [SMCommon quickConstraints:@[@"H:|-2-[v]-2-|",@"V:|-2-[v]-2-|"]
+//                          view:@{@"v":self.baseView}];
 }
 
--(IBAction)generalAction:(NSToolbarItem *)sender{
-    
+-(IBAction)commonAction:(NSToolbarItem *)sender{
 
-    NSLog(@"dddd:%ld",(long)sender.tag);
-    
+    NSViewController *c = [list objectForKey:sender.itemIdentifier];
+    self.contentViewController = c;
 }
 @end

@@ -70,12 +70,12 @@
                         <items>
                             <menuItem title="Open…" keyEquivalent="o" id="IAo-SY-fd9">
                                 <connections>
-                                    <action selector="openDocument:" target="-1" id="bVn-NM-KNZ"/>
+                                    <action selector="openFile:" target="Voe-Tx-rLC" id="DeA-3B-h3M"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Open URL..." keyEquivalent="n" id="Was-JA-tGl">
                                 <connections>
-                                    <action selector="newDocument:" target="-1" id="4Si-XN-c54"/>
+                                    <action selector="openFileURL:" target="Voe-Tx-rLC" id="ny0-ao-bFg"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Open Recent" id="tXI-mr-wws">

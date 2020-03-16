@@ -212,8 +212,8 @@
 /* Class = "NSMenuItem"; title = "Underline"; ObjectID = "WRG-CD-K1S"; */
 "WRG-CD-K1S.title" = "Underline";
 
-/* Class = "NSMenuItem"; title = "New"; ObjectID = "Was-JA-tGl"; */
-"Was-JA-tGl.title" = "New";
+/* Class = "NSMenuItem"; title = "Open URL..."; ObjectID = "Was-JA-tGl"; */
+"Was-JA-tGl.title" = "Open URL...";
 
 /* Class = "NSMenuItem"; title = "Paste and Match Style"; ObjectID = "WeT-3V-zwk"; */
 "WeT-3V-zwk.title" = "Paste and Match Style";

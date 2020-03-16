@@ -17,10 +17,10 @@
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="220"/>
+            <rect key="frame" x="0.0" y="0.0" width="494" height="261"/>
             <subviews>
                 <stackView distribution="fill" orientation="vertical" alignment="leading" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="s1O-au-EXf">
-                    <rect key="frame" x="0.0" y="0.0" width="480" height="220"/>
+                    <rect key="frame" x="0.0" y="0.0" width="494" height="261"/>
                 </stackView>
             </subviews>
             <constraints>
@@ -29,14 +29,14 @@
                 <constraint firstAttribute="trailing" secondItem="s1O-au-EXf" secondAttribute="trailing" id="c3h-mB-3Fn"/>
                 <constraint firstItem="s1O-au-EXf" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" id="st8-eM-3Tn"/>
             </constraints>
-            <point key="canvasLocation" x="140" y="128"/>
+            <point key="canvasLocation" x="147" y="148.5"/>
         </customView>
         <customView id="VKi-xn-xAh" userLabel="Behavior View">
-            <rect key="frame" x="0.0" y="0.0" width="480" height="130"/>
+            <rect key="frame" x="0.0" y="0.0" width="480" height="183"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xg9-Vi-ktH">
-                    <rect key="frame" x="13" y="106" width="61" height="16"/>
+                    <rect key="frame" x="13" y="159" width="61" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="Behavior:" id="0tH-5Q-Wro">
                         <font key="font" usesAppearanceFont="YES"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -44,7 +44,7 @@
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="j3k-lg-Ce5">
-                    <rect key="frame" x="190" y="106" width="102" height="16"/>
+                    <rect key="frame" x="190" y="159" width="102" height="16"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" title="When launched:" id="Ube-i6-IXE">
                         <font key="font" metaFont="system"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -52,7 +52,7 @@
                     </textFieldCell>
                 </textField>
                 <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="EFi-Tf-RMo">
-                    <rect key="frame" x="290" y="101" width="178" height="25"/>
+                    <rect key="frame" x="290" y="154" width="178" height="25"/>
                     <popUpButtonCell key="cell" type="push" title="Show welcome window" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="v4K-Nn-Qkq" id="99k-13-hVh">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" metaFont="system"/>
@@ -74,7 +74,7 @@
                 <constraint firstItem="xg9-Vi-ktH" firstAttribute="leading" secondItem="VKi-xn-xAh" secondAttribute="leading" constant="15" id="Nnv-SR-mXq"/>
                 <constraint firstItem="xg9-Vi-ktH" firstAttribute="top" secondItem="VKi-xn-xAh" secondAttribute="top" constant="8" id="QZK-gF-bkt"/>
             </constraints>
-            <point key="canvasLocation" x="140" y="515"/>
+            <point key="canvasLocation" x="140" y="488.5"/>
         </customView>
         <customView id="5Ph-cp-vdj">
             <rect key="frame" x="0.0" y="0.0" width="481" height="59"/>

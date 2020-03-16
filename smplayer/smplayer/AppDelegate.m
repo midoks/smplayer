@@ -21,25 +21,15 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-    
-    self.openURL = [[OpenURL alloc] init];
     [[[SMCore Instance] first] showWindow:self];
-    
-    
-    
-//    self.pref = [[Preference alloc] init];
-//    [self.pref showWindow:self];
-    
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
-    NSLog(@"%@",@"dddd");
 }
 
 
 #pragma mark - URL Schemes
 - (void)application:(NSApplication *)application openURLs:(NSArray<NSURL *> *)urls{
-    NSLog(@"applicationDidFinishLaunching");
     
     [[[SMCore Instance] player] showWindow:self];
     [[[SMCore Instance] player] openVideo:[urls[0] path]];
@@ -78,10 +68,6 @@
     return YES;
 }
 
--(void)openWindowURL{
-    NSLog(@"openWindowURL");
-}
-
 -(BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication
                     hasVisibleWindows:(BOOL)flag{
   if (!flag){
@@ -91,20 +77,21 @@
   return YES;
 }
 
--(void)initPlayer{
-//    if (!player){
-//        player = [[Player];
-//        [player.window makeKeyWindow];
-//        [player.window makeMainWindow];
-//
-//        [player showWindow:self];
-//        [player.window makeKeyAndOrderFront:NULL];
-//    }
-}
 
 #pragma mark - menu function
 - (IBAction)showPreference:(id)sender {
     [[[SMCore Instance] preference] showWindow:self];
 }
+
+- (IBAction)openFile:(id)sender {
+    [[[SMCore Instance] player] openSelectVideo:^{
+        [[[SMCore Instance] first] close];
+    }];
+}
+
+- (IBAction)openFileURL:(id)sender {
+    [[OpenURL Instance] showWindow:self];
+}
+
 
 @end
