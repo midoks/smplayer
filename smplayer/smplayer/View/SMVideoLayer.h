@@ -6,6 +6,7 @@
 //  Copyright © 2020 midoks. All rights reserved.
 //
 
+#import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
 
 NS_ASSUME_NONNULL_BEGIN
@@ -26,8 +27,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void)openVideo:(NSString *)path;
 -(void)closeVideo;
--(void)setVoice:(double)value;
 -(void)toggleVoice;
+-(void)toggleVideo;
+-(void)setVoice:(double)value;
 -(void)stop;
 -(void)start;
 -(void)quit;

@@ -12,7 +12,6 @@
 @import OpenGL.GL;
 @import OpenGL.GL3;
 
-#import <Cocoa/Cocoa.h>
 #import "SMVideoTime.h"
 #import "SMVideoLayer.h"
 #import "SMCommon.h"
@@ -50,7 +49,8 @@ static void *get_proc_address(void *ctx, const char *name)
 @property (nonatomic, strong) NSLock* uninitLock;
 
 @property (nonatomic, weak) NSTimer *asyncPlayerTimer;
-@property int switchVoice;
+@property BOOL switchVoice;
+@property BOOL switchVideo;
 @property double videoDuration;
 @property double videoPos;
 @property NSString *currentPath;
@@ -65,7 +65,9 @@ static void *get_proc_address(void *ctx, const char *name)
         [self setAsynchronous:NO];
         [self setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
         
-        _switchVoice = 0;
+        _switchVoice = NO;
+        _switchVideo = NO;
+        
         _cglPixelFormat = [self copyCGLPixelFormatForDisplayMask:0];
         if (!_cglPixelFormat) {
             NSLog(@"Failed to create CGLPixelFormatObj");
@@ -78,11 +80,9 @@ static void *get_proc_address(void *ctx, const char *name)
         }
         GLint i = 1;
         CGLSetParameter(_cglContext, kCGLCPSwapInterval, &i);
-        
         CGLSetCurrentContext(_cglContext);
         
-        
-        
+    
         [self initMPV];
         [self initVideoRender];
     }
@@ -166,7 +166,6 @@ static inline void _draw_frame(SMVideoLayer *obj) {
     glGetIntegerv(GL_DRAW_FRAMEBUFFER_BINDING, &i);
     
     if (i) {
-        //        NSLog(@"print:%d",i);
     }
     
     mpv_render_param params[] = {
@@ -237,13 +236,10 @@ static inline void _draw_frame(SMVideoLayer *obj) {
 }
 
 -(void)closeVideo{
-//    [self quit];
+    
     [self stop];
-    
-    
-//    NSURL *urlFile = [NSURL fileURLWithPath:self->_currentPath isDirectory:NO];
-    [[NSUserDefaults standardUserDefaults] setObject:self->_currentPath forKey:@"t_123"];
-    [[NSUserDefaults standardUserDefaults] setDouble:_videoPos forKey:@"t_123_pos"];
+    [[NSUserDefaults standardUserDefaults] setObject:self->_currentPath forKey:SM_FILE_PATH];
+    [[NSUserDefaults standardUserDefaults] setDouble:_videoPos forKey:SM_FILE_POS];
 }
 
 
@@ -331,13 +327,9 @@ static void render_context_callback(void *ctx) {
     double w = [self mpvGetDouble:@"width"];
     double h = [self mpvGetDouble:@"height"];
     
-    //    _videoSize.height = h;
-    //    _videoSize.width = w;
-    
     
     [[NSApp mainWindow] setFrame:NSMakeRect(0, 0, w, h) display:YES];
     [[NSApp mainWindow] center];
-    
     
     
     NSTimer *timer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(videoDurationAction) userInfo:nil repeats:YES];
@@ -351,15 +343,12 @@ static void render_context_callback(void *ctx) {
         [self.videoDelegate videoStart:[[SMVideoTime alloc] initTime:self->_videoDuration]];
     }
     
-    
 
     NSURL *urlFile = [NSURL fileURLWithPath:self->_currentPath isDirectory:NO];
     [[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL:urlFile];
     [[NSNotificationCenter defaultCenter] postNotificationName:SM_NOTIF_FILELOADED object:nil userInfo:nil];
     
     [[SMLastHistory Instance] add:urlFile duration:2.0];
-    
-    
 }
 
 -(void)videoDurationAction{
@@ -376,6 +365,12 @@ static void render_context_callback(void *ctx) {
 
 
 #pragma mark - Public Methods -
+-(void)toggleVideo {
+    if(mpv){
+        _switchVideo ? [self stop] : [self start];
+    }
+}
+
 -(void)toggleVoice{
     if (mpv) {
         int data = _switchVoice ? 0 : 1;
@@ -392,6 +387,7 @@ static void render_context_callback(void *ctx) {
 }
 
 -(void)stop{
+    _switchVideo = NO;
     if (mpv) {
         int data = 1;
         mpv_set_property(mpv, "pause", MPV_FORMAT_FLAG, &data);
@@ -399,6 +395,7 @@ static void render_context_callback(void *ctx) {
 }
 
 -(void)start{
+    _switchVideo = YES;
     if (mpv) {
         int data = 0;
         mpv_set_property(mpv, "pause", MPV_FORMAT_FLAG, &data);
@@ -406,6 +403,7 @@ static void render_context_callback(void *ctx) {
 }
 
 -(void)quit{
+    _switchVideo = NO;
     if (mpv) {
         const char *args[] = {"quit", NULL};
         mpv_command(mpv, args);
