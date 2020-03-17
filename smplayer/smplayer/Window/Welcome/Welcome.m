@@ -107,9 +107,8 @@ static dispatch_once_t _instance_once;
 -(void)updateLastPlayInfo{
     NSFileManager *fm = [NSFileManager defaultManager];
     
-    _currentFilePath = [[NSUserDefaults standardUserDefaults] objectForKey:@"t_123"];
-    _currentFilePos = [[NSUserDefaults standardUserDefaults] doubleForKey:@"t_123_pos"];
-    
+    _currentFilePath = [[NSUserDefaults standardUserDefaults] objectForKey:SM_FILE_PATH];
+    _currentFilePos = [[NSUserDefaults standardUserDefaults] doubleForKey:SM_FILE_POS];
     
     if ([fm fileExistsAtPath:_currentFilePath]){
         NSURL *url = [NSURL fileURLWithPath:_currentFilePath isDirectory:NO];
@@ -193,7 +192,6 @@ static dispatch_once_t _instance_once;
 }
 
 -(void)openFileMouseUp:(NSString *)identifier{
-    
 }
 
 

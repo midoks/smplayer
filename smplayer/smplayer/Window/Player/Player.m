@@ -46,7 +46,6 @@
 
 @implementation Player
 
-
 static Player *_instance = nil;
 static dispatch_once_t _instance_once;
 + (id)Instance{
@@ -83,7 +82,7 @@ static dispatch_once_t _instance_once;
 
 -(void)initVar{
     self.isFullScreen = NO;
-    self.minWindowSize = NSMakeSize(285, 120); 
+    self.minWindowSize = NSMakeSize(285, 120);
     
     // 窗口可以拖拽
     self.window.movableByWindowBackground = YES;
@@ -112,10 +111,9 @@ static dispatch_once_t _instance_once;
     [self.titleBarView setHidden:YES];
     self.titleBarView.layerContentsRedrawPolicy = NSViewLayerContentsRedrawOnSetNeedsDisplay;
     
-    self->player = [SMVideoView Instance:self.window.contentView.frame];
-    //    [self->player initVideo];
-    self->player.delegate = self;
-    [self.window.contentView addSubview:player positioned:NSWindowBelow relativeTo:nil];
+    _playerView = [SMVideoView Instance:self.window.contentView.frame];
+    _playerView.delegate = self;
+    [self.window.contentView addSubview:_playerView positioned:NSWindowBelow relativeTo:nil];
 }
 
 -(void)initFragToolbarView{
@@ -175,7 +173,7 @@ static dispatch_once_t _instance_once;
         
         [panel beginWithCompletionHandler:^(NSModalResponse result) {
             if (result){
-                [self->player.smLayer openVideo:[[panel URL] path]];
+                [self->_playerView.smLayer openVideo:[[panel URL] path]];
             }
         }];
     }];
@@ -183,36 +181,36 @@ static dispatch_once_t _instance_once;
 
 /// 声音关闭开启按钮
 - (IBAction)voiceSwitchAction:(id)sender {
-    [self->player.smLayer toggleVoice];
+    [_playerView.smLayer toggleVoice];
 }
 
 /// 音量改变按钮
 - (IBAction)voiceChangeAction:(id)sender {
-    [self->player.smLayer setVoice:[_flagVolumeSliderView.stringValue doubleValue]];
+    [_playerView.smLayer setVoice:[_flagVolumeSliderView.stringValue doubleValue]];
 }
 
 /// 播放暂停按钮
 - (IBAction)playAction:(NSButton *)sender {
     if (sender.state == NSControlStateValueOff){
-        [self->player.smLayer start];
+        [_playerView.smLayer start];
     } else if (sender.state == NSControlStateValueOn){
-        [self->player.smLayer stop];
+        [_playerView.smLayer stop];
     }
 }
 
 - (IBAction)leftButtonAction:(NSButton *)sender {
     NSString *s = @"-5";
-    [self->player.smLayer seekWithRelative:s.UTF8String];
+    [_playerView.smLayer seekWithRelative:s.UTF8String];
 }
 
 - (IBAction)rightButtonAction:(NSButton *)sender {
     NSString *s = @"+5";
-    [self->player.smLayer seekWithRelative:s.UTF8String];
+    [_playerView.smLayer seekWithRelative:s.UTF8String];
 }
 
 - (IBAction)videoChangeAction:(id)sender {
     NSString *sliderValue = [self.flagTimelineSliderView stringValue];
-    [self->player.smLayer seekWithAbsolute:sliderValue.UTF8String];
+    [_playerView.smLayer seekWithAbsolute:sliderValue.UTF8String];
 }
 
 
@@ -224,24 +222,23 @@ static dispatch_once_t _instance_once;
 -(BOOL)prepareForDragOperation:(id<NSDraggingInfo>)sender {
     NSPasteboard *zPasteboard = [sender draggingPasteboard];
     NSArray *files = [zPasteboard propertyListForType:NSFilenamesPboardType];
-    [self->player.smLayer openVideo:[files objectAtIndex:0]];
+    [_playerView.smLayer openVideo:[files objectAtIndex:0]];
     return YES;
 }
 
 #pragma mark - AppDelegate
 -(void)openVideo:(NSString *)path {
-    [self->player.smLayer openVideo:path];
+    [_playerView.smLayer openVideo:path];
 }
 
 -(void)openVideo:(NSString *)path seek:(double)seek{
-    [self->player.smLayer openVideo:path];
+    [_playerView.smLayer openVideo:path];
     
-
     dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
     dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-       NSString *_seek = [NSString stringWithFormat:@"%f",seek];
+        NSString *_seek = [NSString stringWithFormat:@"%f",seek];
         NSLog(@"%f-%@",seek,_seek);
-        [self->player.smLayer seek:_seek.UTF8String];
+        [self->_playerView.smLayer seek:_seek.UTF8String];
     });
     
 }
@@ -276,7 +273,7 @@ static dispatch_once_t _instance_once;
     //    return CGSizeMake(frameSize.width, newHeight);
     
     [_uninitLock lock];
-    [self->player.smLayer display];
+    [_playerView.smLayer display];
     [_uninitLock unlock];
     
     if (frameSize.height <= _minWindowSize.height || frameSize.width <= _minWindowSize.width ){
@@ -309,8 +306,8 @@ static dispatch_once_t _instance_once;
 }
 
 -(void)windowWillClose:(NSNotification *)notification{
-//    NSLog(@"player-windowWillClose");
-    [self->player.smLayer closeVideo];
+    //    NSLog(@"player-windowWillClose");
+    [_playerView.smLayer closeVideo];
     
 }
 
@@ -348,7 +345,7 @@ static dispatch_once_t _instance_once;
 -(void)showToolbar{
     
     _controlView.hidden = NO;
-
+    
     if (!_isFullScreen){
         self.window.title = @"SMS";
         [self.titleBarView setHidden:NO];

@@ -31,6 +31,10 @@
                             <action selector="commonAction:" target="-2" id="OiC-S3-aOO"/>
                         </connections>
                     </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="5495F718-4CD4-4D94-BCEF-4B252EE2397F" label="Toolbar Item" paletteLabel="Toolbar Item" tag="-1" image="NSHomeTemplate" id="hCY-a4-MqP">
+                        <size key="minSize" width="14" height="14"/>
+                        <size key="maxSize" width="14" height="14"/>
+                    </toolbarItem>
                     <toolbarItem implicitItemIdentifier="9F45C10E-D53F-4201-B656-2BFB214F7D3C" explicitItemIdentifier="network" label="Network" paletteLabel="Network" tag="1" image="NSNetwork" id="dgG-lb-qs5">
                         <size key="minSize" width="32" height="32"/>
                         <size key="maxSize" width="32" height="32"/>
@@ -65,6 +69,7 @@
     <resources>
         <image name="NSAdvanced" width="32" height="32"/>
         <image name="NSBonjour" width="32" height="32"/>
+        <image name="NSHomeTemplate" width="14" height="14"/>
         <image name="NSNetwork" width="32" height="32"/>
     </resources>
 </document>

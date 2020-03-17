@@ -322,6 +322,8 @@ static void render_context_callback(void *ctx) {
 
 -(void)fileLoad{
     
+    _switchVideo = YES;
+    
     NSLog(@"MPV Event Methods - fileLoad start!");
     
     double w = [self mpvGetDouble:@"width"];

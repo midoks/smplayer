@@ -13,9 +13,11 @@
 NS_ASSUME_NONNULL_BEGIN
 
 //NSWindowController
-@interface Player : NSWindowController<NSWindowDelegate,SMVideoViewDelegate>{
-    SMVideoView *player;
-}
+@interface Player : NSWindowController<NSWindowDelegate,SMVideoViewDelegate>
+
+@property (strong) SMVideoView *playerView;
+
+
 + (id)Instance;
 -(void)openVideo:(NSString *)path;
 -(void)openVideo:(NSString *)path seek:(double)seek;

@@ -6,11 +6,12 @@
 //  Copyright © 2020 midoks. All rights reserved.
 //
 
-
-#import "AppDelegate.h"
 #import "SMCore.h"
 #import "OpenURL.h"
 #import "Preference.h"
+#import "SMCommon.h"
+
+#import "AppDelegate.h"
 
 @interface AppDelegate ()
 @end
@@ -41,7 +42,7 @@
 }
 
 -(BOOL)application:(NSApplication *)sender openFile:(NSString *)filename{
- 
+    
     if ([filename isNotEqualTo:@""]){
         [[[SMCore Instance] first] close];
         [[[SMCore Instance] player] showWindow:self];
@@ -66,12 +67,12 @@
 }
 
 -(BOOL)applicationShouldHandleReopen:(NSApplication *)theApplication
-                    hasVisibleWindows:(BOOL)flag{
-  if (!flag){
-    [NSApp activateIgnoringOtherApps:NO];
-    [[[SMCore Instance] first] showWindow:self];
-  }
-  return YES;
+                   hasVisibleWindows:(BOOL)flag{
+    if (!flag){
+        [NSApp activateIgnoringOtherApps:NO];
+        [[[SMCore Instance] first] showWindow:self];
+    }
+    return YES;
 }
 
 
@@ -90,5 +91,9 @@
     [[OpenURL Instance] showWindow:self];
 }
 
+- (IBAction)openGithub:(id)sender {
+    NSURL *url = [NSURL URLWithString:SM_AUTHOR_URL];
+    [[NSWorkspace sharedWorkspace] openURL:url];
+}
 
 @end

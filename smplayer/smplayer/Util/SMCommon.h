@@ -12,6 +12,9 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
+#pragma mark - Common
+#define SM_AUTHOR_URL @"https://github.com/midoks/smplayer"
+
 #pragma mark - Notification Event Start
 #define SM_NOTIF_FILELOADED @"NS_NOTIF_FileLoaded"
 

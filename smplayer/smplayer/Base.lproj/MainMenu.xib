@@ -199,7 +199,8 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Playback" id="6XL-4X-DBu">
                         <items>
-                            <menuItem title="Pause" id="P6T-2W-cHo">
+                            <menuItem title="Pause" keyEquivalent=" " id="P6T-2W-cHo">
+                                <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>
                                     <action selector="pauseAction:" target="hGE-iT-icH" id="tEI-sH-9mO"/>
                                 </connections>
@@ -248,8 +249,11 @@
                                     <action selector="showHelp:" target="-1" id="y7X-2Q-9no"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Github Issue" id="wQJ-OB-FeA">
+                            <menuItem title="Github" id="wQJ-OB-FeA">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="openGithub:" target="Voe-Tx-rLC" id="F4a-Sl-3Tw"/>
+                                </connections>
                             </menuItem>
                         </items>
                     </menu>
