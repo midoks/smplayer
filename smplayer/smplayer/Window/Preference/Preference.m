@@ -82,6 +82,7 @@ static dispatch_once_t _instance_once;
 
 -(IBAction)commonAction:(NSToolbarItem *)sender{
 
+    self.window.title = sender.itemIdentifier;
     NSViewController *c = [list objectForKey:sender.itemIdentifier];
     self.contentViewController = c;
 }
