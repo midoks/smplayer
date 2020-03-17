@@ -16,7 +16,13 @@ NS_ASSUME_NONNULL_BEGIN
 #define SM_NOTIF_FILELOADED @"NS_NOTIF_FileLoaded"
 
 
+#pragma mark - NSUserDefaults Config
+#define SM_FILE_PATH @"SM_FILE_PATH"
+#define SM_FILE_POS @"SM_FILE_POS"
+
+
 #define SM_HISTORY_FILE @"history.plist"
+
 
 
 @interface SMCommon : NSObject
