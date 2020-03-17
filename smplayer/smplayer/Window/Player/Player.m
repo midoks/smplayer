@@ -10,6 +10,7 @@
 #import "SMCommon.h"
 #import "SMVideoView.h"
 #import "SMCore.h"
+#import "MenuListController.h"
 
 #import <Carbon/Carbon.h>
 
@@ -17,6 +18,8 @@
 
 @interface Player (){
     NSTimer *hideControlTimer;
+    NSString *windowTitle;
+    NSString *videoSeek;
 }
 @property (nonatomic, strong) NSLock* uninitLock;
 @property (nonatomic,assign) BOOL isFullScreen;
@@ -71,6 +74,8 @@ static dispatch_once_t _instance_once;
 -(void)windowDidLoad {
     [super windowDidLoad];
     
+    [[[MenuListController alloc] init] bindMenuItems];
+    
     [self initVar];
     [self regEvent];
     
@@ -81,6 +86,7 @@ static dispatch_once_t _instance_once;
 }
 
 -(void)initVar{
+    windowTitle = @"";
     self.isFullScreen = NO;
     self.minWindowSize = NSMakeSize(285, 120);
     
@@ -104,6 +110,8 @@ static dispatch_once_t _instance_once;
                                               options:NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved |NSTrackingActiveAlways | NSTrackingInVisibleRect
                                               owner:self
                                               userInfo:@{@"obj":@"0"}]];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(fileLoaded) name:SM_NOTIF_FILELOADED object:nil];
 }
 
 -(void)initVideoView {
@@ -228,19 +236,17 @@ static dispatch_once_t _instance_once;
 
 #pragma mark - AppDelegate
 -(void)openVideo:(NSString *)path {
+    windowTitle = [NSURL fileURLWithPath:path].lastPathComponent;
     [_playerView.smLayer openVideo:path];
 }
 
 -(void)openVideo:(NSString *)path seek:(double)seek{
-    [_playerView.smLayer openVideo:path];
-    
-    dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 1 * NSEC_PER_SEC);
-    dispatch_after(popTime, dispatch_get_main_queue(), ^(void){
-        NSString *_seek = [NSString stringWithFormat:@"%f",seek];
-        NSLog(@"%f-%@",seek,_seek);
-        [self->_playerView.smLayer seek:_seek.UTF8String];
-    });
-    
+    [self openVideo:path];
+    videoSeek = [NSString stringWithFormat:@"%f", seek];
+}
+
+-(void)fileLoaded{
+    [self->_playerView.smLayer seek:videoSeek.UTF8String];
 }
 
 -(void)openSelectVideo:(void(^)(void))cmd{
@@ -264,7 +270,6 @@ static dispatch_once_t _instance_once;
 #pragma mark - NSWindowDelegate
 -(NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize
 {
-    
     //    NSSize vs = player.videoSize;
     //    CGFloat aspect = vs.width / vs.height;
     //    CGFloat newHeight = frameSize.width / aspect;
@@ -294,7 +299,7 @@ static dispatch_once_t _instance_once;
     
     
     self.window.titlebarAppearsTransparent = NO;
-    self.window.title = @"SM";
+    self.window.title = windowTitle;
     
 }
 
@@ -308,7 +313,6 @@ static dispatch_once_t _instance_once;
 -(void)windowWillClose:(NSNotification *)notification{
     //    NSLog(@"player-windowWillClose");
     [_playerView.smLayer closeVideo];
-    
 }
 
 
@@ -330,7 +334,6 @@ static dispatch_once_t _instance_once;
     _controlView.hidden = YES;
     [NSCursor setHiddenUntilMouseMoves:YES];
     
-    
     if (!_isFullScreen){
         self.window.title = @"";
         
@@ -347,7 +350,7 @@ static dispatch_once_t _instance_once;
     _controlView.hidden = NO;
     
     if (!_isFullScreen){
-        self.window.title = @"SMS";
+        self.window.title = windowTitle;
         [self.titleBarView setHidden:NO];
         
         [[self.window standardWindowButton:NSWindowZoomButton] setHidden:NO];

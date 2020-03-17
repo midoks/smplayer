@@ -13,6 +13,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MenuListController : NSObject
 
+
+-(void)bindMenuItems;
+
 @end
 
 NS_ASSUME_NONNULL_END

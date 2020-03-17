@@ -9,21 +9,33 @@
 #import "MenuListController.h"
 #import "SMCore.h"
 
-@interface MenuListController()<NSPortDelegate>
+@interface MenuListController()<NSMenuDelegate>
 
-//player
+//playback
 @property (weak) IBOutlet NSMenuItem *pause;
 
 @end
 
 @implementation MenuListController
 
-- (IBAction)pauseAction:(id)sender {
+-(void)bindMenuItems{
     
-    NSLog(@"ll");
+    NSLog(@"bindMenuItems ready");
     
+    [self.pause setAction:@selector(pauseAction:)];
+}
+
+#pragma mark - Action
+-(void)pauseAction:(NSMenuItem *)sender {
     [[[SMCore Instance] player].playerView.smLayer toggleVideo];
-    
+}
+
+
+
+#pragma mark - NSMenuDelegate
+
+-(void)menuWillOpen:(NSMenu *)menu{
+    NSLog(@"menuWillOpen");
 }
 
 @end

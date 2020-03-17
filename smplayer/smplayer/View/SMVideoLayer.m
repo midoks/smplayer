@@ -300,7 +300,7 @@ static void render_context_callback(void *ctx) {
             break;
         }
         default:{
-            NSLog(@"event-default: %s\n", mpv_event_name(event->event_id));
+//            NSLog(@"event-default: %s\n", mpv_event_name(event->event_id));
             break;
         }
     }
@@ -419,12 +419,12 @@ static void render_context_callback(void *ctx) {
 }
 
 -(void)seek:(const char *)second {
-    dispatch_async(dispatch_get_main_queue(), ^{
+//    dispatch_async(dispatch_get_main_queue(), ^{
         if (self->mpv) {
             const char *args[] = {"seek", second, "exact", NULL};
             mpv_command(self->mpv, args);
         }
-    });
+//    });
 }
 
 -(void)seekWithRelative:(const char *)second {

@@ -66,7 +66,6 @@ static dispatch_once_t _instance_once;
 
 - (void)windowDidLoad {
     [super windowDidLoad];
-    [SMCommon appSupportDirURL];
     self.window.movableByWindowBackground = YES;
     self.window.titleVisibility = NSWindowTitleHidden;
     self.window.titlebarAppearsTransparent = YES;
@@ -194,11 +193,9 @@ static dispatch_once_t _instance_once;
 -(void)openFileMouseUp:(NSString *)identifier{
 }
 
-
-
 #pragma mark - NSWindowDelegate
-//-(void)windowWillClose:(NSNotification *)notification{
-//    NSLog(@"windowWillClose");
-//}
+-(void)windowDidBecomeKey:(NSNotification *)notification{
+    [self reloadData];
+}
 
 @end

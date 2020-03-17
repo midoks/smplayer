@@ -201,9 +201,6 @@
                         <items>
                             <menuItem title="Pause" keyEquivalent=" " id="P6T-2W-cHo">
                                 <modifierMask key="keyEquivalentModifierMask"/>
-                                <connections>
-                                    <action selector="pauseAction:" target="hGE-iT-icH" id="tEI-sH-9mO"/>
-                                </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="BkP-Pk-8q0"/>
                             <menuItem title="Step Forward 5s" id="kZ9-tQ-p1B">
