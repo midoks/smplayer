@@ -195,6 +195,25 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="Playback" id="HP2-MZ-V1E" userLabel="Playback">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Playback" id="6XL-4X-DBu">
+                        <items>
+                            <menuItem title="Pause" id="P6T-2W-cHo">
+                                <connections>
+                                    <action selector="pauseAction:" target="hGE-iT-icH" id="tEI-sH-9mO"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="BkP-Pk-8q0"/>
+                            <menuItem title="Step Forward 5s" id="kZ9-tQ-p1B">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Step Backward 5s" id="nrK-Mp-xgT">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="Window" id="aUF-d1-5bR">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">
@@ -238,6 +257,10 @@
             </items>
             <point key="canvasLocation" x="190" y="-17"/>
         </menu>
-        <customObject id="hGE-iT-icH" customClass="MenuListController"/>
+        <customObject id="hGE-iT-icH" customClass="MenuListController">
+            <connections>
+                <outlet property="pause" destination="P6T-2W-cHo" id="PXc-oc-jQ3"/>
+            </connections>
+        </customObject>
     </objects>
 </document>
