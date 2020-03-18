@@ -20,6 +20,7 @@
     NSTimer *hideControlTimer;
     NSString *windowTitle;
     NSString *videoSeek;
+    BOOL isFileLoaded;
 }
 @property (nonatomic, strong) NSLock* uninitLock;
 @property (nonatomic,assign) BOOL isFullScreen;
@@ -87,6 +88,7 @@ static dispatch_once_t _instance_once;
 
 -(void)initVar{
     windowTitle = @"";
+    isFileLoaded = NO;
     self.isFullScreen = NO;
     self.minWindowSize = NSMakeSize(285, 120);
     
@@ -99,6 +101,9 @@ static dispatch_once_t _instance_once;
     
     _titleBarView.material = NSVisualEffectMaterialDark;
     _titleBarView.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
+    
+    _controlView.material = NSVisualEffectMaterialDark;
+    _controlView.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
 }
 
 -(void)regEvent{
@@ -200,23 +205,30 @@ static dispatch_once_t _instance_once;
 /// 播放暂停按钮
 - (IBAction)playAction:(NSButton *)sender {
     if (sender.state == NSControlStateValueOff){
-        [_playerView.smLayer start];
+        [_playerView.smLayer resume];
     } else if (sender.state == NSControlStateValueOn){
         [_playerView.smLayer stop];
     }
 }
 
 - (IBAction)leftButtonAction:(NSButton *)sender {
+    if (!isFileLoaded){return;}
+    
     NSString *s = @"-5";
     [_playerView.smLayer seekWithRelative:s.UTF8String];
 }
 
 - (IBAction)rightButtonAction:(NSButton *)sender {
+    if (!isFileLoaded){return;}
+    
     NSString *s = @"+5";
     [_playerView.smLayer seekWithRelative:s.UTF8String];
 }
 
 - (IBAction)videoChangeAction:(id)sender {
+    
+    if (!isFileLoaded){return;}
+    
     NSString *sliderValue = [self.flagTimelineSliderView stringValue];
     [_playerView.smLayer seekWithAbsolute:sliderValue.UTF8String];
 }
@@ -246,6 +258,7 @@ static dispatch_once_t _instance_once;
 }
 
 -(void)fileLoaded{
+    isFileLoaded = YES;
     [self->_playerView.smLayer seek:videoSeek.UTF8String];
 }
 
@@ -309,7 +322,6 @@ static dispatch_once_t _instance_once;
 }
 
 -(void)windowWillClose:(NSNotification *)notification{
-    //    NSLog(@"player-windowWillClose");
     [_playerView.smLayer closeVideo];
 }
 

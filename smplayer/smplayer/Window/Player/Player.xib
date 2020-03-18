@@ -33,7 +33,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="640" height="400"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <visualEffectView blendingMode="behindWindow" material="popover" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="yrm-bz-zb6" customClass="SMControlView">
+                    <visualEffectView blendingMode="withinWindow" material="popover" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="yrm-bz-zb6" customClass="SMControlView">
                         <rect key="frame" x="100" y="30" width="440" height="67"/>
                         <subviews>
                             <stackView orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XtT-TH-TbO" userLabel="Osc Top View">
