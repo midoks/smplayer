@@ -184,7 +184,7 @@
             <subviews>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="RMK-Xi-um2" userLabel="Player Slider">
                     <rect key="frame" x="50" y="4" width="206" height="15"/>
-                    <sliderCell key="cell" controlSize="small" continuous="YES" refusesFirstResponder="YES" alignment="left" maxValue="100" tickMarkPosition="above" sliderType="linear" id="wml-C8-VAO"/>
+                    <sliderCell key="cell" controlSize="small" continuous="YES" refusesFirstResponder="YES" alignment="left" maxValue="100" tickMarkPosition="above" sliderType="linear" id="wml-C8-VAO" customClass="SMSliderCell"/>
                     <connections>
                         <action selector="videoChangeAction:" target="-2" id="MYn-2l-HYD"/>
                     </connections>

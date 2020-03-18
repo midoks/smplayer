@@ -39,6 +39,7 @@
 		828DBD822418271100A89A89 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 828DBD782418271100A89A89 /* MASViewConstraint.m */; };
 		828DBD832418271100A89A89 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 828DBD792418271100A89A89 /* MASViewAttribute.m */; };
 		82C2C5082409191400485064 /* SMVideoTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C2C5072409191400485064 /* SMVideoTime.m */; };
+		82E7AD57242124580033993D /* SMSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E7AD56242124580033993D /* SMSliderCell.m */; };
 		82E9A46A24030AEA000DB7F3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E9A46924030AEA000DB7F3 /* AppDelegate.m */; };
 		82E9A46C24030AEE000DB7F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82E9A46B24030AEE000DB7F3 /* Assets.xcassets */; };
 		82E9A46F24030AEE000DB7F3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82E9A46D24030AEE000DB7F3 /* MainMenu.xib */; };
@@ -147,6 +148,8 @@
 		828DBD792418271100A89A89 /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
 		82C2C5062409191400485064 /* SMVideoTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMVideoTime.h; sourceTree = "<group>"; };
 		82C2C5072409191400485064 /* SMVideoTime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMVideoTime.m; sourceTree = "<group>"; };
+		82E7AD55242124580033993D /* SMSliderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMSliderCell.h; sourceTree = "<group>"; };
+		82E7AD56242124580033993D /* SMSliderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMSliderCell.m; sourceTree = "<group>"; };
 		82E9A46524030AEA000DB7F3 /* smplayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smplayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82E9A46824030AEA000DB7F3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		82E9A46924030AEA000DB7F3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -749,6 +752,8 @@
 				82FBC09724121F75002E8ABD /* SMVideoLayer.m */,
 				826AB831240416D400B87C63 /* SMControlView.h */,
 				826AB832240416D400B87C63 /* SMControlView.m */,
+				82E7AD55242124580033993D /* SMSliderCell.h */,
+				82E7AD56242124580033993D /* SMSliderCell.m */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -921,6 +926,7 @@
 				82FBC09824121F76002E8ABD /* SMVideoLayer.m in Sources */,
 				82023C5F2415678C00B0B8BC /* OpenFileView.m in Sources */,
 				826AB833240416D400B87C63 /* SMControlView.m in Sources */,
+				82E7AD57242124580033993D /* SMSliderCell.m in Sources */,
 				8228D9A3241E6BC200734908 /* PreferenceGeneral.m in Sources */,
 				828DBD7C2418271100A89A89 /* MASCompositeConstraint.m in Sources */,
 				82023C5C2414D4FC00B0B8BC /* SMCore.m in Sources */,
