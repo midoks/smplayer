@@ -32,6 +32,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)setVoice:(double)value;
 -(void)stop;
 -(void)start;
+-(void)resume;
 -(void)quit;
 -(void)seek:(const char *)second;
 -(void)seekWithRelative:(const char *)second;

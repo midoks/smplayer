@@ -42,13 +42,13 @@ static dispatch_once_t _instance_once;
 
 -(void)read{
     NSArray<SMLastHistoryModel *> *p = [NSKeyedUnarchiver unarchiveObjectWithFile:[_plistURL path]];
-    NSLog(@"%@", p);
+    NSLog(@"SMLastHistory:%@", p);
 }
 
 -(void)save{
     BOOL result =  [NSKeyedArchiver archiveRootObject:_history toFile:[_plistURL path]];
     if (result){
-        NSLog(@"dddddddd --- ok");
+        NSLog(@"SMLastHistory dddddddd --- ok");
     }
 }
 

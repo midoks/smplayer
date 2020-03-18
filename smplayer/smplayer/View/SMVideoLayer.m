@@ -300,7 +300,7 @@ static void render_context_callback(void *ctx) {
             break;
         }
         default:{
-//            NSLog(@"event-default: %s\n", mpv_event_name(event->event_id));
+            NSLog(@"event-default: %s\n", mpv_event_name(event->event_id));
             break;
         }
     }
@@ -319,12 +319,17 @@ static void render_context_callback(void *ctx) {
     return (double)data;
 }
 
+-(BOOL)getFlag:(NSString *)name{
+    int64_t data;
+    NSLog(@"getFlag:%@", name);
+    mpv_get_property(mpv, name.UTF8String, MPV_FORMAT_INT64, &data);
+    NSLog(@"getFlag:%lld", data);
+    return data > 0;
+}
+
 
 -(void)fileLoad{
-    
     _switchVideo = YES;
-    
-    NSLog(@"MPV Event Methods - fileLoad start!");
     
     double w = [self mpvGetDouble:@"width"];
     double h = [self mpvGetDouble:@"height"];
@@ -338,8 +343,6 @@ static void render_context_callback(void *ctx) {
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
     self.asyncPlayerTimer  = timer;
     
-    
-    
     if (self.videoDelegate) {
         self->_videoDuration = [self mpvGetDouble:@"duration"];
         [self.videoDelegate videoStart:[[SMVideoTime alloc] initTime:self->_videoDuration]];
@@ -350,7 +353,7 @@ static void render_context_callback(void *ctx) {
     [[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL:urlFile];
     [[NSNotificationCenter defaultCenter] postNotificationName:SM_NOTIF_FILELOADED object:nil userInfo:nil];
     
-    [[SMLastHistory Instance] add:urlFile duration:2.0];
+//    [[SMLastHistory Instance] add:urlFile duration:2.0];
 }
 
 -(void)videoDurationAction{
@@ -369,7 +372,7 @@ static void render_context_callback(void *ctx) {
 #pragma mark - Public Methods -
 -(void)toggleVideo {
     if(mpv){
-        _switchVideo ? [self stop] : [self start];
+        _switchVideo ? [self stop] : [self resume];
     }
 }
 
@@ -389,16 +392,25 @@ static void render_context_callback(void *ctx) {
 }
 
 -(void)stop{
-    _switchVideo = NO;
     if (mpv) {
+        _switchVideo = NO;
         int data = 1;
         mpv_set_property(mpv, "pause", MPV_FORMAT_FLAG, &data);
     }
 }
 
+-(void)resume{
+    if(![self getFlag:@"eof-reached"]){
+        NSLog(@"eof-reached");
+        NSString *d = @"0";
+        [self seek:d.UTF8String];
+    }
+    [self start];
+}
+
 -(void)start{
-    _switchVideo = YES;
     if (mpv) {
+        _switchVideo = YES;
         int data = 0;
         mpv_set_property(mpv, "pause", MPV_FORMAT_FLAG, &data);
     }
@@ -419,22 +431,21 @@ static void render_context_callback(void *ctx) {
 }
 
 -(void)seek:(const char *)second {
-//    dispatch_async(dispatch_get_main_queue(), ^{
-        if (self->mpv) {
-            const char *args[] = {"seek", second, "exact", NULL};
-            mpv_command(self->mpv, args);
-        }
-//    });
+    if (self->mpv) {
+        const char *args[] = {"seek", second, "exact", NULL};
+        mpv_command(self->mpv, args);
+    }
 }
 
 -(void)seekWithRelative:(const char *)second {
+    
     dispatch_async(dispatch_get_main_queue(), ^{
         [self stop];
         if (self->mpv) {
             const char *args[] = {"seek", second, "relative+exact", NULL};
             mpv_command(self->mpv, args);
         }
-        [self start];
+        [self resume];
     });
 }
 

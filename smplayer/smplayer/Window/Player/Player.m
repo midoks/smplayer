@@ -75,7 +75,7 @@ static dispatch_once_t _instance_once;
 -(void)windowDidLoad {
     [super windowDidLoad];
     
-    [[[MenuListController alloc] init] bindMenuItems];
+    
     
     [self initVar];
     [self regEvent];
