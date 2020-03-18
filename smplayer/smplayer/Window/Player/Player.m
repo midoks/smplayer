@@ -297,10 +297,8 @@ static dispatch_once_t _instance_once;
     self.isFullScreen = YES;
     [self.titleBarView setHidden:YES];
     
-    
     self.window.titlebarAppearsTransparent = NO;
     self.window.title = windowTitle;
-    
 }
 
 -(void)windowWillExitFullScreen:(NSNotification *)notification{
