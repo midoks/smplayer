@@ -70,6 +70,7 @@ static dispatch_once_t _instance_once;
     self.window.titleVisibility = NSWindowTitleHidden;
     self.window.titlebarAppearsTransparent = YES;
     
+    // Drag File
     [self.window registerForDraggedTypes:[NSArray arrayWithObjects:NSPasteboardTypeFileURL, nil]];
     self.window.appearance =  [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
     
@@ -187,6 +188,7 @@ static dispatch_once_t _instance_once;
 
         [[[SMCore Instance] player] showWindow:self];
         [[[SMCore Instance] player] openVideo:_currentFilePath seek:_currentFilePos];
+        [[[SMCore Instance] first] close];
     }
 }
 
