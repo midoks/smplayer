@@ -7,12 +7,14 @@
 //
 
 #import "MenuListController.h"
+#import "MenuActionHandler.h"
 #import "SMCore.h"
 
 @interface MenuListController()<NSMenuDelegate>
 
 //playback
-@property (weak) IBOutlet NSMenuItem *pause;
+@property (weak) IBOutlet NSMenu *playback;
+@property (weak,nonatomic) IBOutlet NSMenuItem *pause;
 
 @end
 
@@ -20,22 +22,22 @@
 
 -(void)bindMenuItems{
     
-    NSLog(@"bindMenuItems ready");
-    
-    [self.pause setAction:@selector(pauseAction:)];
+    // playback
+    _playback.delegate = self;
+    _pause.action = @selector(pauseAction:);
 }
 
-#pragma mark - Action
--(void)pauseAction:(NSMenuItem *)sender {
-    [[[SMCore Instance] player].playerView.smLayer toggleVideo];
+-(void)updatePlaybackMenu{
+    _pause.title = [[SMCore Instance] player].info.isPause ? @"暂停": @"继续";
 }
-
-
 
 #pragma mark - NSMenuDelegate
-
 -(void)menuWillOpen:(NSMenu *)menu{
-    NSLog(@"menuWillOpen");
+    if (menu == _playback){
+        [self updatePlaybackMenu];
+    }
 }
+
+#pragma mark - Control Public Methods
 
 @end

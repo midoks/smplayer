@@ -21,8 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (weak,nonatomic) id <SMVideoLayerDelegate> videoDelegate;
 
-
-
 @property  dispatch_queue_t queue;
 
 -(void)openVideo:(NSString *)path;

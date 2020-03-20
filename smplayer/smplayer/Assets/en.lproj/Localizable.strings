@@ -9,3 +9,8 @@
 // alert
 "alert.notice" = "notice";
 "alert.invalid_url" = "Invalid URL";
+
+
+//menu
+"menu.pause" = "Pause";
+"menu.resume" = "resume";

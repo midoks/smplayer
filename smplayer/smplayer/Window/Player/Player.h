@@ -7,16 +7,20 @@
 //
 
 #import <Cocoa/Cocoa.h>
+#import <Carbon/Carbon.h>
+
 #import "SMVideoView.h"
+#import "SMPlayerInfo.h"
 
 
 NS_ASSUME_NONNULL_BEGIN
 
 //NSWindowController
-@interface Player : NSWindowController<NSWindowDelegate,SMVideoViewDelegate>
+@interface Player : NSWindowController<NSWindowDelegate,SMVideoLayerDelegate>
 
-@property (strong) SMVideoView *playerView;
-
+@property (nonatomic, strong) NSLock* uninitLock;
+@property (nonatomic,strong) SMVideoView *videoView;
+@property (nonatomic,strong) SMPlayerInfo* info;
 
 + (id)Instance;
 -(void)openVideo:(NSString *)path;

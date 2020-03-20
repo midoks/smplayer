@@ -11,9 +11,9 @@
 #import "SMVideoView.h"
 #import "SMCore.h"
 #import "MenuListController.h"
+#import "MenuActionHandler.h"
 
-#import <Carbon/Carbon.h>
-
+#import "SMPlayerInfo.h"
 #import "Player.h"
 
 @interface Player (){
@@ -22,10 +22,10 @@
     NSString *videoSeek;
     BOOL isFileLoaded;
 }
-@property (nonatomic, strong) NSLock* uninitLock;
+
 @property (nonatomic,assign) BOOL isFullScreen;
 @property (nonatomic,assign) CGSize minWindowSize;
-
+@property (nonatomic, strong) MenuActionHandler* menuActionHandler;
 
 @property (weak) IBOutlet NSVisualEffectView *titleBarView;
 
@@ -61,6 +61,10 @@ static dispatch_once_t _instance_once;
 
 -(id)init{
     self = [self initWithWindowNibName:@"Player"];
+    if (self){
+        [self initVar];
+        [self regEvent];
+    }
     return self;
 }
 
@@ -75,24 +79,30 @@ static dispatch_once_t _instance_once;
 -(void)windowDidLoad {
     [super windowDidLoad];
     
-    
-    
-    [self initVar];
-    [self regEvent];
-    
     [self initVideoView];
     [self initControlView];
     
     [self hiddenToolbar];
 }
 
--(void)initVar{
+-(void)initVar {
+    
+    // responder chain | for menu action
+    self.window.initialFirstResponder = nil;
+    _menuActionHandler = [[MenuActionHandler alloc] init];
+    NSResponder *wr = self.window.nextResponder;
+    self.window.nextResponder = _menuActionHandler;
+    _menuActionHandler.nextResponder = wr;
+    
+    // save video base info
+    _info = [[SMPlayerInfo alloc] init];
+    
     windowTitle = @"";
     isFileLoaded = NO;
     self.isFullScreen = NO;
-    self.minWindowSize = NSMakeSize(285, 120);
+    self.minWindowSize = NSMakeSize(300, 180);
     
-    // 窗口可以拖拽
+    // view setting
     self.window.movableByWindowBackground = YES;
     self.window.styleMask |= NSWindowStyleMaskFullSizeContentView;
     self.window.appearance =  [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
@@ -107,7 +117,7 @@ static dispatch_once_t _instance_once;
 }
 
 -(void)regEvent{
-    // 注册文件拖动事件
+    // drag event
     [self.window registerForDraggedTypes:[NSArray arrayWithObjects:NSPasteboardTypeFileURL, nil]];
     
     [self.window.contentView addTrackingArea:[[NSTrackingArea alloc]
@@ -124,9 +134,9 @@ static dispatch_once_t _instance_once;
     [self.titleBarView setHidden:YES];
     self.titleBarView.layerContentsRedrawPolicy = NSViewLayerContentsRedrawOnSetNeedsDisplay;
     
-    _playerView = [SMVideoView Instance:self.window.contentView.frame];
-    _playerView.delegate = self;
-    [self.window.contentView addSubview:_playerView positioned:NSWindowBelow relativeTo:nil];
+    _videoView = [SMVideoView Instance:self.window.contentView.frame];
+    _videoView.smLayer.videoDelegate = self;
+    [self.window.contentView addSubview:_videoView positioned:NSWindowBelow relativeTo:nil];
 }
 
 -(void)initFragToolbarView{
@@ -154,7 +164,7 @@ static dispatch_once_t _instance_once;
 
 -(void)initControlView {
     
-    // 控制视图
+    // control view
     [_oscTopView addView:_fragVolumeView inGravity:NSStackViewGravityLeading];
     [_oscTopView setVisibilityPriority:NSStackViewVisibilityPriorityDetachOnlyIfNecessary forView:_fragVolumeView];
     
@@ -165,7 +175,7 @@ static dispatch_once_t _instance_once;
     [_oscTopView addView:_fragToolbarView inGravity:NSStackViewGravityTrailing];
     [_oscTopView setVisibilityPriority:NSStackViewVisibilityPriorityDetachOnlyIfNecessary forView:_fragToolbarView];
     
-    // 时间线
+    // timeline 
     NSRect newFrame = NSMakeRect(_flagTimelineView.frame.origin.x, _flagTimelineView.frame.origin.y, _timeControlView.frame.size.width, _flagTimelineView.frame.size.height);
     
     _flagTimelineView.frame = newFrame;
@@ -186,7 +196,7 @@ static dispatch_once_t _instance_once;
         
         [panel beginWithCompletionHandler:^(NSModalResponse result) {
             if (result){
-                [self->_playerView.smLayer openVideo:[[panel URL] path]];
+                [self->_videoView.smLayer openVideo:[[panel URL] path]];
             }
         }];
     }];
@@ -194,20 +204,20 @@ static dispatch_once_t _instance_once;
 
 /// 声音关闭开启按钮
 - (IBAction)voiceSwitchAction:(id)sender {
-    [_playerView.smLayer toggleVoice];
+    [_videoView.smLayer toggleVoice];
 }
 
 /// 音量改变按钮
 - (IBAction)voiceChangeAction:(id)sender {
-    [_playerView.smLayer setVoice:[_flagVolumeSliderView.stringValue doubleValue]];
+    [_videoView.smLayer setVoice:[_flagVolumeSliderView.stringValue doubleValue]];
 }
 
 /// 播放暂停按钮
 - (IBAction)playAction:(NSButton *)sender {
     if (sender.state == NSControlStateValueOff){
-        [_playerView.smLayer resume];
+        [_videoView.smLayer resume];
     } else if (sender.state == NSControlStateValueOn){
-        [_playerView.smLayer stop];
+        [_videoView.smLayer stop];
     }
 }
 
@@ -215,22 +225,21 @@ static dispatch_once_t _instance_once;
     if (!isFileLoaded){return;}
     
     NSString *s = @"-5";
-    [_playerView.smLayer seekWithRelative:s.UTF8String];
+    [_videoView.smLayer seekWithRelative:s.UTF8String];
 }
 
 - (IBAction)rightButtonAction:(NSButton *)sender {
     if (!isFileLoaded){return;}
     
     NSString *s = @"+5";
-    [_playerView.smLayer seekWithRelative:s.UTF8String];
+    [_videoView.smLayer seekWithRelative:s.UTF8String];
 }
 
 - (IBAction)videoChangeAction:(id)sender {
-    
     if (!isFileLoaded){return;}
     
     NSString *sliderValue = [self.flagTimelineSliderView stringValue];
-    [_playerView.smLayer seekWithAbsolute:sliderValue.UTF8String];
+    [_videoView.smLayer seekWithAbsolute:sliderValue.UTF8String];
 }
 
 
@@ -242,24 +251,19 @@ static dispatch_once_t _instance_once;
 -(BOOL)prepareForDragOperation:(id<NSDraggingInfo>)sender {
     NSPasteboard *zPasteboard = [sender draggingPasteboard];
     NSArray *files = [zPasteboard propertyListForType:NSFilenamesPboardType];
-    [_playerView.smLayer openVideo:[files objectAtIndex:0]];
+    [_videoView.smLayer openVideo:[files objectAtIndex:0]];
     return YES;
 }
 
 #pragma mark - AppDelegate
 -(void)openVideo:(NSString *)path {
     windowTitle = [NSURL fileURLWithPath:path].lastPathComponent;
-    [_playerView.smLayer openVideo:path];
+    [_videoView.smLayer openVideo:path];
 }
 
 -(void)openVideo:(NSString *)path seek:(double)seek{
     [self openVideo:path];
     videoSeek = [NSString stringWithFormat:@"%f", seek];
-}
-
--(void)fileLoaded{
-    isFileLoaded = YES;
-    [self->_playerView.smLayer seek:videoSeek.UTF8String];
 }
 
 -(void)openSelectVideo:(void(^)(void))cmd{
@@ -291,7 +295,7 @@ static dispatch_once_t _instance_once;
     //    return CGSizeMake(frameSize.width, newHeight);
     
     [_uninitLock lock];
-    [_playerView.smLayer display];
+    [_videoView.smLayer display];
     [_uninitLock unlock];
     
     if (frameSize.height <= _minWindowSize.height || frameSize.width <= _minWindowSize.width ){
@@ -322,7 +326,7 @@ static dispatch_once_t _instance_once;
 }
 
 -(void)windowWillClose:(NSNotification *)notification{
-    [_playerView.smLayer closeVideo];
+    [_videoView.smLayer closeVideo];
 }
 
 
@@ -356,7 +360,6 @@ static dispatch_once_t _instance_once;
 }
 
 -(void)showToolbar{
-    
     _controlView.hidden = NO;
     
     if (!_isFullScreen){
@@ -382,12 +385,10 @@ static dispatch_once_t _instance_once;
 }
 
 -(void)mouseEntered:(NSEvent *)event {
-    //    NSLog(@"%@", [event trackingArea].userInfo);
     [self showToolbar];
 }
 
 -(void)mouseExited:(NSEvent *)event{
-    //    NSLog(@"%@", [event trackingArea].userInfo);
     [self hiddenToolbar];
 }
 
@@ -405,7 +406,6 @@ static dispatch_once_t _instance_once;
         [self destroyControlTimer];
         [self createControlTimer];
     }
-    
 }
 
 #pragma mark - SMVideoViewDelegate
@@ -417,6 +417,14 @@ static dispatch_once_t _instance_once;
 -(void)videoPos:(SMVideoTime *)pos{
     [self.flagTimelineSliderView setDoubleValue:[pos doubleValue]];
     [self.flagTimelineLeftView setStringValue:[pos getString]];
+}
+
+#pragma mark - NSNotificationCenter
+-(void)fileLoaded{
+    _info.isPause = NO;
+    
+    isFileLoaded = YES;
+    [self->_videoView.smLayer seek:videoSeek.UTF8String];
 }
 @end
 

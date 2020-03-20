@@ -65,15 +65,4 @@ static dispatch_once_t _instance_once;
     [self.smLayer openVideo:path];
 }
 
--(void)videoStart:(SMVideoTime *)duration{
-    if (self.delegate) {
-        [self.delegate videoStart:duration];
-    }
-}
--(void)videoPos:(SMVideoTime *)pos{
-    if (self.delegate) {
-        [self.delegate videoPos:pos];
-    }
-}
-
 @end

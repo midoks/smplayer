@@ -10,16 +10,23 @@
 #import "OpenURL.h"
 #import "Preference.h"
 #import "SMCommon.h"
+#import "MenuListController.h"
 
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
+
+@property (weak) IBOutlet MenuListController *menuList;
+
 @end
 
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
+
     [[[SMCore Instance] first] showWindow:self];
+    
+    [_menuList bindMenuItems];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -51,7 +58,7 @@
     }
     
     NSOpenPanel *panel = [NSOpenPanel openPanel];
-    [panel setPrompt: @"选择"];
+    [panel setPrompt:@"选择"];
     [panel setCanChooseDirectories:NO];
     [panel setCanChooseFiles:YES];
     [panel setCanCreateDirectories:YES];

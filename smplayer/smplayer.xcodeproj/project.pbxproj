@@ -38,9 +38,11 @@
 		828DBD812418271100A89A89 /* MASConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 828DBD762418271100A89A89 /* MASConstraint.m */; };
 		828DBD822418271100A89A89 /* MASViewConstraint.m in Sources */ = {isa = PBXBuildFile; fileRef = 828DBD782418271100A89A89 /* MASViewConstraint.m */; };
 		828DBD832418271100A89A89 /* MASViewAttribute.m in Sources */ = {isa = PBXBuildFile; fileRef = 828DBD792418271100A89A89 /* MASViewAttribute.m */; };
+		82C16A54242516AD002DF9CF /* SMPlayerInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C16A53242516AD002DF9CF /* SMPlayerInfo.m */; };
 		82C2C5082409191400485064 /* SMVideoTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C2C5072409191400485064 /* SMVideoTime.m */; };
 		82E7AD57242124580033993D /* SMSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E7AD56242124580033993D /* SMSliderCell.m */; };
 		82E7AD5A242209070033993D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 82E7AD5C242209070033993D /* Credits.rtf */; };
+		82E7AD6124226FFE0033993D /* MenuActionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E7AD6024226FFC0033993D /* MenuActionHandler.m */; };
 		82E9A46A24030AEA000DB7F3 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E9A46924030AEA000DB7F3 /* AppDelegate.m */; };
 		82E9A46C24030AEE000DB7F3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82E9A46B24030AEE000DB7F3 /* Assets.xcassets */; };
 		82E9A46F24030AEE000DB7F3 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82E9A46D24030AEE000DB7F3 /* MainMenu.xib */; };
@@ -147,6 +149,8 @@
 		828DBD772418271100A89A89 /* ViewController+MASAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "ViewController+MASAdditions.h"; sourceTree = "<group>"; };
 		828DBD782418271100A89A89 /* MASViewConstraint.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewConstraint.m; sourceTree = "<group>"; };
 		828DBD792418271100A89A89 /* MASViewAttribute.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASViewAttribute.m; sourceTree = "<group>"; };
+		82C16A52242516AD002DF9CF /* SMPlayerInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMPlayerInfo.h; sourceTree = "<group>"; };
+		82C16A53242516AD002DF9CF /* SMPlayerInfo.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMPlayerInfo.m; sourceTree = "<group>"; };
 		82C2C5062409191400485064 /* SMVideoTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMVideoTime.h; sourceTree = "<group>"; };
 		82C2C5072409191400485064 /* SMVideoTime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMVideoTime.m; sourceTree = "<group>"; };
 		82E7AD55242124580033993D /* SMSliderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMSliderCell.h; sourceTree = "<group>"; };
@@ -154,6 +158,8 @@
 		82E7AD5B242209070033993D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Base; path = Base.lproj/Credits.rtf; sourceTree = "<group>"; };
 		82E7AD5D2422090B0033993D /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
 		82E7AD5E2422090C0033993D /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = "zh-Hans"; path = "zh-Hans.lproj/Credits.rtf"; sourceTree = "<group>"; };
+		82E7AD5F24226FFC0033993D /* MenuActionHandler.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MenuActionHandler.h; sourceTree = "<group>"; };
+		82E7AD6024226FFC0033993D /* MenuActionHandler.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MenuActionHandler.m; sourceTree = "<group>"; };
 		82E9A46524030AEA000DB7F3 /* smplayer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smplayer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82E9A46824030AEA000DB7F3 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		82E9A46924030AEA000DB7F3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -359,6 +365,8 @@
 			children = (
 				824384F8241D2A1400A1A218 /* MenuListController.h */,
 				824384F9241D2A1400A1A218 /* MenuListController.m */,
+				82E7AD5F24226FFC0033993D /* MenuActionHandler.h */,
+				82E7AD6024226FFC0033993D /* MenuActionHandler.m */,
 			);
 			path = Menu;
 			sourceTree = "<group>";
@@ -457,6 +465,15 @@
 			path = Masonry;
 			sourceTree = "<group>";
 		};
+		82C16A5124251689002DF9CF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				82C16A52242516AD002DF9CF /* SMPlayerInfo.h */,
+				82C16A53242516AD002DF9CF /* SMPlayerInfo.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		82E9A45C24030AEA000DB7F3 = {
 			isa = PBXGroup;
 			children = (
@@ -481,6 +498,7 @@
 		82E9A46724030AEA000DB7F3 /* smplayer */ = {
 			isa = PBXGroup;
 			children = (
+				82C16A5124251689002DF9CF /* Models */,
 				82E9A49524030B51000DB7F3 /* Deps */,
 				82E9A52A24030C1F000DB7F3 /* Assets */,
 				826AB8342406C0D400B87C63 /* Util */,
@@ -936,6 +954,7 @@
 				8228D9A3241E6BC200734908 /* PreferenceGeneral.m in Sources */,
 				828DBD7C2418271100A89A89 /* MASCompositeConstraint.m in Sources */,
 				82023C5C2414D4FC00B0B8BC /* SMCore.m in Sources */,
+				82C16A54242516AD002DF9CF /* SMPlayerInfo.m in Sources */,
 				828DBD812418271100A89A89 /* MASConstraint.m in Sources */,
 				828DBD802418271100A89A89 /* View+MASAdditions.m in Sources */,
 				828DBD462416B12400A89A89 /* OpenURL.m in Sources */,
@@ -959,6 +978,7 @@
 				828DBD7B2418271100A89A89 /* ViewController+MASAdditions.m in Sources */,
 				828DBD3B2416886E00A89A89 /* Web.m in Sources */,
 				82394283241BA9EB006B7049 /* SMLastHistoryModel.m in Sources */,
+				82E7AD6124226FFE0033993D /* MenuActionHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

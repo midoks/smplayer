@@ -24,14 +24,14 @@
             </view>
             <toolbar key="toolbar" implicitIdentifier="B05A9D77-65F1-4572-92A5-01BCC64EF6FE" autosavesConfiguration="NO" displayMode="iconAndLabel" sizeMode="small" id="cab-qf-dHq">
                 <allowedToolbarItems>
-                    <toolbarItem implicitItemIdentifier="0DCC55ED-D28E-4844-9A2A-B35BB32E4B51" explicitItemIdentifier="general" label="General" paletteLabel="General" image="NSAdvanced" id="NJ9-lI-sln">
+                    <toolbarItem implicitItemIdentifier="0DCC55ED-D28E-4844-9A2A-B35BB32E4B51" explicitItemIdentifier="general" label="General" paletteLabel="General" image="NSPreferencesGeneral" id="NJ9-lI-sln">
                         <size key="minSize" width="32" height="32"/>
                         <size key="maxSize" width="32" height="32"/>
                         <connections>
                             <action selector="commonAction:" target="-2" id="OiC-S3-aOO"/>
                         </connections>
                     </toolbarItem>
-                    <toolbarItem implicitItemIdentifier="5495F718-4CD4-4D94-BCEF-4B252EE2397F" label="Toolbar Item" paletteLabel="Toolbar Item" tag="-1" image="NSHomeTemplate" id="hCY-a4-MqP">
+                    <toolbarItem implicitItemIdentifier="5495F718-4CD4-4D94-BCEF-4B252EE2397F" label="Toolbar Item" paletteLabel="Toolbar Item" tag="-1" image="NSPreferencesGeneral" id="hCY-a4-MqP">
                         <size key="minSize" width="14" height="14"/>
                         <size key="maxSize" width="14" height="14"/>
                     </toolbarItem>
@@ -67,9 +67,8 @@
         <customObject id="Job-7F-yjq" customClass="Preference"/>
     </objects>
     <resources>
-        <image name="NSAdvanced" width="32" height="32"/>
         <image name="NSBonjour" width="32" height="32"/>
-        <image name="NSHomeTemplate" width="14" height="14"/>
         <image name="NSNetwork" width="32" height="32"/>
+        <image name="NSPreferencesGeneral" width="32" height="32"/>
     </resources>
 </document>

@@ -13,18 +13,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@protocol SMVideoViewDelegate <NSObject>
-@optional
-
--(void)videoStart:(SMVideoTime *)duration;
--(void)videoPos:(SMVideoTime *)pos;
-
-@end
-
-
 @interface SMVideoView : NSView <SMVideoLayerDelegate>
-
-@property (weak, nonatomic) id <SMVideoViewDelegate> delegate;
 @property (nonatomic, strong) SMVideoLayer *smLayer;
 @property NSSize videoSize;
 

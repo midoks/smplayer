@@ -56,7 +56,6 @@ static void *get_proc_address(void *ctx, const char *name)
 @property NSString *currentPath;
 @end
 
-
 @implementation SMVideoLayer
 
 -(id)init{
@@ -82,7 +81,6 @@ static void *get_proc_address(void *ctx, const char *name)
         CGLSetParameter(_cglContext, kCGLCPSwapInterval, &i);
         CGLSetCurrentContext(_cglContext);
         
-    
         [self initMPV];
         [self initVideoRender];
     }
