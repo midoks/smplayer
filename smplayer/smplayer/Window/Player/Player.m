@@ -134,7 +134,7 @@ static dispatch_once_t _instance_once;
     [self.titleBarView setHidden:YES];
     self.titleBarView.layerContentsRedrawPolicy = NSViewLayerContentsRedrawOnSetNeedsDisplay;
     
-    _videoView = [SMVideoView Instance:self.window.contentView.frame];
+    _videoView = [[SMVideoView alloc] initWithFrame:self.window.contentView.frame];
     _videoView.smLayer.videoDelegate = self;
     [self.window.contentView addSubview:_videoView positioned:NSWindowBelow relativeTo:nil];
 }
@@ -224,22 +224,20 @@ static dispatch_once_t _instance_once;
 - (IBAction)leftButtonAction:(NSButton *)sender {
     if (!isFileLoaded){return;}
     
-    NSString *s = @"-5";
-    [_videoView.smLayer seekWithRelative:s.UTF8String];
+    [_videoView.smLayer seek:@"-5" option:SMSeekRelative];
 }
 
 - (IBAction)rightButtonAction:(NSButton *)sender {
     if (!isFileLoaded){return;}
     
-    NSString *s = @"+5";
-    [_videoView.smLayer seekWithRelative:s.UTF8String];
+    [_videoView.smLayer seek:@"+5" option:SMSeekRelative];
 }
 
 - (IBAction)videoChangeAction:(id)sender {
     if (!isFileLoaded){return;}
     
     NSString *sliderValue = [self.flagTimelineSliderView stringValue];
-    [_videoView.smLayer seekWithAbsolute:sliderValue.UTF8String];
+    [_videoView.smLayer seek:sliderValue option:SMSeekAbsolute];
 }
 
 
@@ -306,7 +304,6 @@ static dispatch_once_t _instance_once;
         }
         return NSMakeSize(_minWindowSize.width, _minWindowSize.width/mAspect);
     }
-    
     return frameSize;
 }
 
@@ -331,18 +328,6 @@ static dispatch_once_t _instance_once;
 
 
 #pragma mark - Private Method Of Mouse And Toolbar
--(BOOL)isMouseEvent:(NSEvent *)event views:(NSArray<NSView *> *)views
-{
-    BOOL result = NO;
-    for (NSView *v in views) {
-        NSPoint p = [v convertPoint:[event locationInWindow] fromView:NULL];
-        result = [v mouse:p inRect:v.bounds];
-        if (result){
-            return result;
-        }
-    }
-    return result;
-}
 
 -(void)hiddenToolbar{
     _controlView.hidden = YES;
@@ -400,7 +385,7 @@ static dispatch_once_t _instance_once;
 -(void)mouseMoved:(NSEvent *)event{
     [self showToolbar];
     
-    if([self isMouseEvent:event views:[NSArray arrayWithObjects:self.titleBarView, self.controlView, nil]]){
+    if([SMCommon isMouseEvent:event views:[NSArray arrayWithObjects:self.titleBarView, self.controlView, nil]]){
         [self destroyControlTimer];
     } else {
         [self destroyControlTimer];
@@ -421,10 +406,9 @@ static dispatch_once_t _instance_once;
 
 #pragma mark - NSNotificationCenter
 -(void)fileLoaded{
-    _info.isPause = NO;
-    
     isFileLoaded = YES;
-    [self->_videoView.smLayer seek:videoSeek.UTF8String];
+    
+    [self->_videoView.smLayer seek:videoSeek option:SMSeekRelative];
 }
 @end
 

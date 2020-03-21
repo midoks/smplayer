@@ -5,18 +5,14 @@
 //  Created by midoks on 2020/3/6.
 //  Copyright © 2020 midoks. All rights reserved.
 //
-#include <mpv/client.h>
-#include <mpv/render.h>
-#include <mpv/render_gl.h>
 
-@import OpenGL.GL;
-@import OpenGL.GL3;
 
 #import "SMVideoTime.h"
-#import "SMVideoLayer.h"
 #import "SMCommon.h"
+#import "SMCore.h"
 #import "SMLastHistory.h"
 
+#import "SMVideoLayer.h"
 
 static void wakeup(void *);
 static void *get_proc_address(void *ctx, const char *name);
@@ -36,14 +32,13 @@ static void *get_proc_address(void *ctx, const char *name)
     return addr;
 }
 
-
 @interface SMVideoLayer()
 {
     CGLContextObj _cglContext;
     CGLPixelFormatObj _cglPixelFormat;
     
     mpv_handle *mpv;
-    mpv_render_context *_mpv_render_context;
+    mpv_render_context *sm_render_context;
 }
 
 @property (nonatomic, strong) NSLock* uninitLock;
@@ -141,13 +136,21 @@ static void *get_proc_address(void *ctx, const char *name)
 
 
 - (BOOL)canDrawInCGLContext:(CGLContextObj)ctx pixelFormat:(CGLPixelFormatObj)pf forLayerTime:(CFTimeInterval)t displayTime:(const CVTimeStamp *)ts {
-    return (_mpv_render_context != nil);
+//    NSLog(@"dddd");
+//    [[[SMCore Instance] player].uninitLock lock];
+    return (sm_render_context != nil);
 }
 
 - (void)drawInCGLContext:(CGLContextObj)ctx pixelFormat:(CGLPixelFormatObj)pf forLayerTime:(CFTimeInterval)t displayTime:(const CVTimeStamp *)ts {
-    [_uninitLock lock];
-    _draw_frame(self);
-    [_uninitLock unlock];
+//    [_uninitLock lock];
+    
+    [[[SMCore Instance] player].uninitLock lock];
+//    NSLog(@"lock2");
+    draw_frame(self);
+//    [self drawFrame];
+//    [_uninitLock unlock];
+    
+    [[[SMCore Instance] player].uninitLock unlock];
 }
 
 - (CGLContextObj)copyCGLContextForPixelFormat:(CGLPixelFormatObj)pf {
@@ -155,7 +158,28 @@ static void *get_proc_address(void *ctx, const char *name)
 }
 
 
-static inline void _draw_frame(SMVideoLayer *obj) {
+-(void)drawFrame{
+    static GLint dims[] = { 0, 0, 0, 0 };
+    glGetIntegerv(GL_VIEWPORT, dims);
+    
+    GLint i = 0;
+    glGetIntegerv(GL_DRAW_FRAMEBUFFER_BINDING, &i);
+    
+    mpv_render_param params[] = {
+        {MPV_RENDER_PARAM_OPENGL_FBO, &(mpv_opengl_fbo){
+            .fbo = i,
+            .w = self.frame.size.width,
+            .h = self.frame.size.height,
+        }},
+        {MPV_RENDER_PARAM_FLIP_Y, &(int){1}},
+        {0}
+    };
+    
+    mpv_render_context_render(sm_render_context, params);
+    CGLFlushDrawable(_cglContext);
+}
+
+static inline void draw_frame(SMVideoLayer *obj) {
     
     static GLint dims[] = { 0, 0, 0, 0 };
     glGetIntegerv(GL_VIEWPORT, dims);
@@ -176,7 +200,7 @@ static inline void _draw_frame(SMVideoLayer *obj) {
         {0}
     };
     
-    mpv_render_context_render(obj->_mpv_render_context, params);
+    mpv_render_context_render(obj->sm_render_context, params);
     CGLFlushDrawable(obj->_cglContext);
 }
 
@@ -217,27 +241,11 @@ static inline void _draw_frame(SMVideoLayer *obj) {
         {0}
     };
     
-    if (mpv_render_context_create(&_mpv_render_context, mpv, params) < 0) {
+    if (mpv_render_context_create(&sm_render_context, mpv, params) < 0) {
         puts("failed to initialize mpv GL context");
         exit(1);
     }
-    
-    mpv_render_context_set_update_callback(_mpv_render_context, render_context_callback, (__bridge void *)self);
-    
-}
-
--(void)openVideo:(NSString *)path{
-    _currentPath = path;
-    mpv_set_wakeup_callback(self->mpv, wakeup, (__bridge void *) self);
-    const char *cmd[] = {"loadfile", path.UTF8String, NULL};
-    check_error(mpv_command(self->mpv, cmd));
-}
-
--(void)closeVideo{
-    
-    [self stop];
-    [[NSUserDefaults standardUserDefaults] setObject:self->_currentPath forKey:SM_FILE_PATH];
-    [[NSUserDefaults standardUserDefaults] setDouble:_videoPos forKey:SM_FILE_POS];
+    mpv_render_context_set_update_callback(sm_render_context, render_context_callback, (__bridge void *)self);
 }
 
 
@@ -298,13 +306,18 @@ static void render_context_callback(void *ctx) {
             break;
         }
         default:{
-            NSLog(@"event-default: %s\n", mpv_event_name(event->event_id));
+//            NSLog(@"event-default: %s\n", mpv_event_name(event->event_id));
             break;
         }
     }
 }
 
-#pragma mark - MPV Private Methods
+
+#pragma mark - MPV Init Methods
+
+
+
+#pragma mark - MPV Public Methods
 -(int)mpvGetInt:(NSString *)name {
     int64_t data;
     mpv_get_property(mpv, name.UTF8String, MPV_FORMAT_INT64, &data);
@@ -317,17 +330,21 @@ static void render_context_callback(void *ctx) {
     return (double)data;
 }
 
--(BOOL)getFlag:(NSString *)name{
+-(BOOL)mpvGetFlag:(NSString *)name{
     int64_t data;
-    NSLog(@"getFlag:%@", name);
     mpv_get_property(mpv, name.UTF8String, MPV_FORMAT_INT64, &data);
     NSLog(@"getFlag:%lld", data);
     return data > 0;
 }
 
 
+#pragma mark - Layer Private Method
+
 -(void)fileLoad{
+    NSLog(@"fileLoad:%@",@"........");
     _switchVideo = YES;
+    
+    _info.isPause = NO;
     
     double w = [self mpvGetDouble:@"width"];
     double h = [self mpvGetDouble:@"height"];
@@ -346,7 +363,6 @@ static void render_context_callback(void *ctx) {
         [self.videoDelegate videoStart:[[SMVideoTime alloc] initTime:self->_videoDuration]];
     }
     
-
     NSURL *urlFile = [NSURL fileURLWithPath:self->_currentPath isDirectory:NO];
     [[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL:urlFile];
     [[NSNotificationCenter defaultCenter] postNotificationName:SM_NOTIF_FILELOADED object:nil userInfo:nil];
@@ -368,6 +384,20 @@ static void render_context_callback(void *ctx) {
 
 
 #pragma mark - Public Methods -
+
+-(void)openVideo:(NSString *)path{
+    _currentPath = path;
+    mpv_set_wakeup_callback(self->mpv, wakeup, (__bridge void *) self);
+    const char *cmd[] = {"loadfile", path.UTF8String, NULL};
+    check_error(mpv_command(self->mpv, cmd));
+}
+
+-(void)closeVideo{
+    [self stop];
+    [[NSUserDefaults standardUserDefaults] setObject:self->_currentPath forKey:SM_FILE_PATH];
+    [[NSUserDefaults standardUserDefaults] setDouble:_videoPos forKey:SM_FILE_POS];
+}
+
 -(void)toggleVideo {
     if(mpv){
         _switchVideo ? [self stop] : [self resume];
@@ -391,6 +421,7 @@ static void render_context_callback(void *ctx) {
 
 -(void)stop{
     if (mpv) {
+        [[[SMCore Instance] player].info setIsPause:YES];
         _switchVideo = NO;
         int data = 1;
         mpv_set_property(mpv, "pause", MPV_FORMAT_FLAG, &data);
@@ -398,17 +429,19 @@ static void render_context_callback(void *ctx) {
 }
 
 -(void)resume{
-    if(![self getFlag:@"eof-reached"]){
+    if(![self mpvGetFlag:@"eof-reached"]){
         NSLog(@"eof-reached");
         NSString *d = @"0";
-        [self seek:d.UTF8String];
+        [self seek:d option:SMSeekNormal];
     }
+    
     [self start];
 }
 
 -(void)start{
     if (mpv) {
         _switchVideo = YES;
+       [[[SMCore Instance] player].info setIsPause:NO];
         int data = 0;
         mpv_set_property(mpv, "pause", MPV_FORMAT_FLAG, &data);
     }
@@ -428,32 +461,24 @@ static void render_context_callback(void *ctx) {
     }
 }
 
--(void)seek:(const char *)second {
-    if (self->mpv) {
-        const char *args[] = {"seek", second, "exact", NULL};
+-(void)seek:(NSString *)second option:(SMSeek)option{
+    if (self->mpv){
+        const char *args[] = {"seek", second.UTF8String, "exact", NULL};
+        switch (option) {
+            case SMSeekNormal:
+                args[2] = "exact";
+                break;
+            case SMSeekRelative:
+                args[2] = "relative+exact";
+                break;
+            case SMSeekAbsolute:
+                args[2] = "absolute+exact";
+                break;
+            default:
+                break;
+        }
         mpv_command(self->mpv, args);
     }
-}
-
--(void)seekWithRelative:(const char *)second {
-    
-    dispatch_async(dispatch_get_main_queue(), ^{
-        [self stop];
-        if (self->mpv) {
-            const char *args[] = {"seek", second, "relative+exact", NULL};
-            mpv_command(self->mpv, args);
-        }
-        [self resume];
-    });
-}
-
--(void)seekWithAbsolute:(const char *)second {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        if (self->mpv) {
-            const char *args[] = {"seek", second, "absolute+exact", NULL};
-            mpv_command(self->mpv, args);
-        }
-    });
 }
 
 @end

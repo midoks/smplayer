@@ -6,10 +6,6 @@
 //  Copyright © 2020 midoks. All rights reserved.
 //
 
-
-
-#import <Cocoa/Cocoa.h>
-
 #import "SMVideoTime.h"
 #import "SMVideoView.h"
 
@@ -20,24 +16,12 @@
 
 @implementation SMVideoView
 
-
-static SMVideoView *_instance = nil;
-static dispatch_once_t _instance_once;
-+ (id)Instance:(NSRect)frame {
-    dispatch_once(&_instance_once, ^{
-        _instance = [[SMVideoView alloc] initWithFrame:frame];
-    });
-    return _instance;
-}
-
 - (id)initWithFrame:(NSRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
         
         [self setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
         _smLayer = [[SMVideoLayer alloc] init];
-        _smLayer.videoDelegate = self;
-        
         self.layer = _smLayer;
     }
     return self;
@@ -45,24 +29,6 @@ static dispatch_once_t _instance_once;
 
 - (void)drawRect:(NSRect)dirtyRect {
     [super drawRect:dirtyRect];
-    
-    [self addTrackingArea:[[NSTrackingArea alloc] initWithRect:dirtyRect options:
-                           NSTrackingMouseEnteredAndExited | NSTrackingMouseMoved |
-                           NSTrackingCursorUpdate |
-                           NSTrackingActiveWhenFirstResponder |
-                           NSTrackingActiveInKeyWindow |
-                           NSTrackingActiveInActiveApp |
-                           NSTrackingActiveAlways |
-                           NSTrackingAssumeInside |
-                           NSTrackingInVisibleRect |
-                           NSTrackingEnabledDuringMouseDrag
-                        owner:self userInfo:nil]];
-    
-    [self becomeFirstResponder];
-}
-
--(void)openVideo:(NSString *)path{
-    [self.smLayer openVideo:path];
 }
 
 @end

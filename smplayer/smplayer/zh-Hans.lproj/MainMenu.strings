@@ -215,4 +215,15 @@
 /* Class = "NSMenuItem"; title = "Playback"; ObjectID = "6XL-4X-DBu"; */
 "6XL-4X-DBu.title" = "播放";
 
+/* Class = "NSMenuItem"; title = "Step Forward 5s"; ObjectID = "kZ9-tQ-p1B"; */
+"kZ9-tQ-p1B.title" = "前进5秒";
+
+/* Class = "NSMenuItem"; title = "Step Backward 5s"; ObjectID = "nrK-Mp-xgT"; */
+"nrK-Mp-xgT.title" = "后退5秒";
+
+
+
+
+
+
 

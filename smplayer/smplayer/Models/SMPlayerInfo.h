@@ -12,7 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SMPlayerInfo : NSObject
 
-@property (nonatomic,assign) BOOL isPause;
+@property  BOOL isPause;
 
 @end
 

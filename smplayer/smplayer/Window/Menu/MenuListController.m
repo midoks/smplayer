@@ -14,7 +14,9 @@
 
 //playback
 @property (weak) IBOutlet NSMenu *playback;
-@property (weak,nonatomic) IBOutlet NSMenuItem *pause;
+@property (weak) IBOutlet NSMenuItem *pause;
+@property (weak) IBOutlet NSMenuItem *forward;
+@property (weak) IBOutlet NSMenuItem *backward;
 
 @end
 
@@ -25,10 +27,20 @@
     // playback
     _playback.delegate = self;
     _pause.action = @selector(pauseAction:);
+    [_pause setKeyEquivalent:@" "];
+    
+    _forward.action = @selector(stepAction:);
+    [_forward setKeyEquivalent:@"→"];
+    _backward.action = @selector(stepAction:);
+    [_backward setKeyEquivalent:@"←"];
 }
 
 -(void)updatePlaybackMenu{
-    _pause.title = [[SMCore Instance] player].info.isPause ? @"暂停": @"继续";
+    
+    _pause.title = [[SMCore Instance] player].info.isPause ?
+            NSLocalizedString(@"menu.pause",nil):
+            NSLocalizedString(@"menu.resume",nil);
+    
 }
 
 #pragma mark - NSMenuDelegate

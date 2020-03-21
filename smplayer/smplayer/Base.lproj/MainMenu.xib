@@ -210,7 +210,7 @@
                             <menuItem title="Step Forward 5s" id="kZ9-tQ-p1B">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
-                            <menuItem title="Step Backward 5s" id="nrK-Mp-xgT">
+                            <menuItem title="Step Backward 5s" tag="1" id="nrK-Mp-xgT">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
                         </items>
@@ -264,6 +264,8 @@
         </menu>
         <customObject id="hGE-iT-icH" customClass="MenuListController">
             <connections>
+                <outlet property="backward" destination="nrK-Mp-xgT" id="FAH-UM-11i"/>
+                <outlet property="forward" destination="kZ9-tQ-p1B" id="axy-Yf-4Ol"/>
                 <outlet property="pause" destination="P6T-2W-cHo" id="PXc-oc-jQ3"/>
                 <outlet property="playback" destination="6XL-4X-DBu" id="qpD-1T-Yy3"/>
             </connections>

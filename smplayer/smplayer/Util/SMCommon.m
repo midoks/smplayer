@@ -50,6 +50,19 @@
     });
 }
 
++(BOOL)isMouseEvent:(NSEvent *)event views:(NSArray<NSView *> *)views
+{
+    BOOL result = NO;
+    for (NSView *v in views) {
+        NSPoint p = [v convertPoint:[event locationInWindow] fromView:NULL];
+        result = [v mouse:p inRect:v.bounds];
+        if (result){
+            return result;
+        }
+    }
+    return result;
+}
+
 +(void)createDirIfNoExist:(NSURL *)url{
     NSFileManager *fm = [NSFileManager defaultManager];
     NSString *path = [url path];

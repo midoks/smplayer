@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MenuActionHandler : NSResponder
 
 -(void)pauseAction:(NSMenuItem *)sender;
+-(void)stepAction:(NSMenuItem *)sender;
 @end
 
 NS_ASSUME_NONNULL_END

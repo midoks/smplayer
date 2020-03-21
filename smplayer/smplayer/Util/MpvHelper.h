@@ -1,8 +1,8 @@
 //
-//  MpvPlayer.h
+//  MpvHelper.h
 //  smplayer
 //
-//  Created by midoks on 2020/3/6.
+//  Created by midoks on 2020/3/21.
 //  Copyright © 2020 midoks. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface MpvPlayer : NSObject
+@interface MpvHelper : NSObject
 
 @end
 

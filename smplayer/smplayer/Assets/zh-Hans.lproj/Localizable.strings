@@ -11,5 +11,5 @@
 "alert.invalid_url" = "无效URL";
 
 // menu
-"menu.pause" = "Pause";
-"menu.resume" = "resume";
+"menu.pause" = "暂停";
+"menu.resume" = "继续";

@@ -81,11 +81,11 @@
             <point key="canvasLocation" x="-1164.5" y="73"/>
         </window>
         <customView wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qaV-zr-t9f" userLabel="Frag Volume View">
-            <rect key="frame" x="0.0" y="0.0" width="100" height="20"/>
+            <rect key="frame" x="0.0" y="0.0" width="102" height="20"/>
             <subviews>
                 <button wantsLayer="YES" translatesAutoresizingMaskIntoConstraints="NO" id="IvJ-7I-dDB" userLabel="Voice Control">
-                    <rect key="frame" x="0.0" y="0.0" width="34" height="20"/>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarAudioOutputVolumeHighTemplate" imagePosition="overlaps" alignment="center" alternateImage="NSTouchBarAudioOutputMuteTemplate" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" id="zlS-4R-zGl">
+                    <rect key="frame" x="0.0" y="0.0" width="36" height="20"/>
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarVolumeUpTemplate" imagePosition="overlaps" alignment="center" alternateImage="NSTouchBarAudioOutputMuteTemplate" transparent="YES" imageScaling="proportionallyDown" inset="2" id="zlS-4R-zGl">
                         <behavior key="behavior" pushIn="YES" changeContents="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -94,7 +94,7 @@
                     </connections>
                 </button>
                 <slider verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FEj-C2-Iop" userLabel="Volume Slider">
-                    <rect key="frame" x="34" y="-1" width="60" height="21"/>
+                    <rect key="frame" x="36" y="-1" width="60" height="21"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="60" id="2kn-fS-wYb"/>
                     </constraints>
@@ -113,7 +113,7 @@
                 <constraint firstItem="IvJ-7I-dDB" firstAttribute="centerY" secondItem="FEj-C2-Iop" secondAttribute="centerY" id="fZt-Cm-yN2"/>
                 <constraint firstItem="FEj-C2-Iop" firstAttribute="top" secondItem="qaV-zr-t9f" secondAttribute="top" id="h4D-GQ-64p"/>
             </constraints>
-            <point key="canvasLocation" x="112.5" y="145"/>
+            <point key="canvasLocation" x="63" y="145"/>
         </customView>
         <customView wantsLayer="YES" id="4UG-18-z1k" userLabel="Frag Control View">
             <rect key="frame" x="0.0" y="0.0" width="128" height="38"/>
@@ -125,7 +125,7 @@
                         <constraint firstAttribute="height" constant="24" id="WMs-eU-nm9"/>
                         <constraint firstAttribute="width" constant="24" id="l3r-mK-awE"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarPauseTemplate" imagePosition="overlaps" alignment="center" alternateImage="NSTouchBarPlayTemplate" lineBreakMode="truncatingTail" borderStyle="border" transparent="YES" inset="2" id="aI5-td-Kxz">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="pause" imagePosition="only" alignment="center" alternateImage="play" lineBreakMode="truncatingTail" transparent="YES" imageScaling="proportionallyDown" inset="2" id="aI5-td-Kxz">
                         <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -139,7 +139,7 @@
                         <constraint firstAttribute="width" constant="24" id="00b-Rd-o7f"/>
                         <constraint firstAttribute="height" constant="24" id="EZr-4v-quz"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarFastForwardTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" maxAcceleratorLevel="4" id="Dva-fa-Dhu">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="speed" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" transparent="YES" imageScaling="proportionallyDown" inset="2" maxAcceleratorLevel="4" id="Dva-fa-Dhu">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES" multiLevelAccelerator="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -153,7 +153,7 @@
                         <constraint firstAttribute="height" constant="24" id="9Pr-ZP-1iv"/>
                         <constraint firstAttribute="width" constant="24" id="ZvA-lb-3KT"/>
                     </constraints>
-                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="NSTouchBarRewindTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" borderStyle="border" transparent="YES" imageScaling="proportionallyDown" inset="2" maxAcceleratorLevel="2" id="Iwl-id-P8F">
+                    <buttonCell key="cell" type="square" bezelStyle="shadowlessSquare" image="speedl" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" transparent="YES" imageScaling="proportionallyDown" inset="2" maxAcceleratorLevel="2" id="Iwl-id-P8F">
                         <behavior key="behavior" lightByBackground="YES" lightByGray="YES" multiLevelAccelerator="YES"/>
                         <font key="font" metaFont="system"/>
                     </buttonCell>
@@ -189,11 +189,11 @@
                         <action selector="videoChangeAction:" target="-2" id="MYn-2l-HYD"/>
                     </connections>
                 </slider>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FV6-gj-LeZ" userLabel="RLabel">
-                    <rect key="frame" x="256" y="4" width="50" height="14"/>
-                    <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="--:--" id="4Uf-Kn-K6c">
-                        <font key="font" metaFont="menu" size="11"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" allowsCharacterPickerTouchBarItem="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FV6-gj-LeZ" userLabel="RLabel">
+                    <rect key="frame" x="256" y="5" width="50" height="12"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" alignment="center" title="--:--" id="4Uf-Kn-K6c">
+                        <font key="font" size="11" name="HelveticaNeue"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
@@ -203,8 +203,8 @@
                         <constraint firstAttribute="width" constant="46" id="ixc-Hc-csA"/>
                     </constraints>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="--:--" id="S2o-ea-K31">
-                        <font key="font" metaFont="menu" size="11"/>
-                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <font key="font" metaFont="message" size="11"/>
+                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
@@ -227,10 +227,10 @@
     </objects>
     <resources>
         <image name="NSTouchBarAudioOutputMuteTemplate" width="26" height="30"/>
-        <image name="NSTouchBarAudioOutputVolumeHighTemplate" width="23" height="30"/>
-        <image name="NSTouchBarFastForwardTemplate" width="22" height="30"/>
-        <image name="NSTouchBarPauseTemplate" width="11" height="30"/>
-        <image name="NSTouchBarPlayTemplate" width="14" height="30"/>
-        <image name="NSTouchBarRewindTemplate" width="22" height="30"/>
+        <image name="NSTouchBarVolumeUpTemplate" width="23" height="30"/>
+        <image name="pause" width="24" height="24"/>
+        <image name="play" width="24" height="24"/>
+        <image name="speed" width="24" height="24"/>
+        <image name="speedl" width="24" height="24"/>
     </resources>
 </document>

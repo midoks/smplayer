@@ -23,7 +23,7 @@ NS_ASSUME_NONNULL_BEGIN
 #define SM_FILE_PATH @"SM_FILE_PATH"
 #define SM_FILE_POS @"SM_FILE_POS"
 
-
+#pragma mark - FILE NAME
 #define SM_HISTORY_FILE @"history.plist"
 
 
@@ -38,6 +38,8 @@ NS_ASSUME_NONNULL_BEGIN
  delayedTime:(double)delayedTime;
 
 +(void)asyncCmd:(void(^)(void))cmd;
+
++(BOOL)isMouseEvent:(NSEvent *)event views:(NSArray<NSView *> *)views;
 
 +(NSMutableArray*)getSupportPlayFormat;
 +(void)createDirIfNoExist:(NSURL *)url;
