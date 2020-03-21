@@ -23,7 +23,7 @@
 -(void)stepAction:(NSMenuItem *)sender{
     
     if (sender.tag == 0){
-        [[[SMCore Instance] player].videoView.smLayer seek:@"5" option:SMSeekNormal];
+        [[[SMCore Instance] player].videoView.smLayer seek:@"+5" option:SMSeekNormal];
     } else if (sender.tag == 1){
         [[[SMCore Instance] player].videoView.smLayer seek:@"-5" option:SMSeekNormal];
     }
