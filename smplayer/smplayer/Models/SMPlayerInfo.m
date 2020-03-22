@@ -14,6 +14,7 @@
     self = [super init];
     if (self){
         _isPause = NO;
+        _playSpeed = 1;
         
     }
     return self;

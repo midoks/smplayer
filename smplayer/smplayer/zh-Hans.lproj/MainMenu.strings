@@ -233,6 +233,26 @@
 /* Class = "NSMenuItem"; title = "Jump to..."; ObjectID = "5XU-ES-UwM"; */
 "5XU-ES-UwM.title" = "跳转至...";
 
+/* Class = "NSMenuItem"; title = "Speed Up"; ObjectID = "bS1-CE-hle"; */
+"bS1-CE-hle.title" = "增加速度至2.0x";
+
+/* Class = "NSMenuItem"; title = "Speed Up Slightly"; ObjectID = "F2x-Dr-HEW"; */
+"F2x-Dr-HEW.title" = "增加速度至1.1x";
+
+/* Class = "NSMenuItem"; title = "Speed Down"; ObjectID = "8TG-4n-zJJ"; */
+"8TG-4n-zJJ.title" = "减慢速度至0.5x";
+
+/* Class = "NSMenuItem"; title = "Speed Down Slightly"; ObjectID = "lfg-6h-gVp"; */
+"lfg-6h-gVp.title" = "减慢速度至0.9x";
+
+/* Class = "NSMenuItem"; title = "Speed Reset"; ObjectID = "ksG-38-qy0"; */
+"ksG-38-qy0.title" = "重置速度";
+
+/* Class = "NSMenuItem"; title = "Take a Screenshot"; ObjectID = "CYg-rT-PiL"; */
+"CYg-rT-PiL.title" = "截图";
+
+/* Class = "NSMenuItem"; title = "Go to Screenshot Folder"; ObjectID = "fhv-vn-faU"; */
+"fhv-vn-faU.title" = "前往截图文件夹";
 
 
 

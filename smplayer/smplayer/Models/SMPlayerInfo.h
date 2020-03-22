@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SMPlayerInfo : NSObject
 
 @property  BOOL isPause;
+@property  double playSpeed;
 
 @end
 

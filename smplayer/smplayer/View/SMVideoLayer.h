@@ -53,6 +53,8 @@ typedef NS_ENUM(NSUInteger, SMSeek) {
 -(void)seek:(NSString *)second option:(SMSeek)option;
 -(void)windowScale:(double)scale;
 -(void)frameStep:(BOOL)backwards;
+-(void)setSpeed:(double)speed;
+-(void)screenshot;
 
 @end
 

@@ -494,4 +494,18 @@ static void render_context_callback(void *ctx) {
     }
 }
 
+-(void)setSpeed:(double)speed{
+    if (mpv){
+        double data = speed;
+        mpv_set_property(mpv, "speed", MPV_FORMAT_DOUBLE, &data);
+    }
+}
+
+-(void)screenshot{
+    if (mpv){
+        const char *args[] = {"screenshot", "video", NULL};
+        mpv_command(mpv, args);
+    }
+}
+
 @end

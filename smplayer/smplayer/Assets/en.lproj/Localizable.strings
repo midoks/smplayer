@@ -20,5 +20,6 @@
 //menu
 "menu.pause" = "Pause";
 "menu.resume" = "resume";
+"menu.speed" = "Speed: %.2fx";
 
 

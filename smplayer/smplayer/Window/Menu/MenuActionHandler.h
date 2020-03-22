@@ -17,6 +17,13 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)stepFrameAction:(NSMenuItem *)sender;
 -(void)jumpToBeginAction:(NSMenuItem *)sender;
 -(void)jumpToAction:(NSMenuItem *)sender;
+-(void)speedChange:(NSMenuItem *)sender;
+-(void)snapshotAction:(NSMenuItem *)sender;
+-(void)openScreenshotFolderAction:(NSMenuItem *)sender;
+
+
+
+
 @end
 
 NS_ASSUME_NONNULL_END

@@ -225,6 +225,32 @@
                             <menuItem title="Jump to…" id="5XU-ES-UwM">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="dDR-q1-1ku"/>
+                            <menuItem title="Speed Indicator" id="EUK-a7-2qO">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Speed Up" tag="1" id="bS1-CE-hle">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Speed Up Slightly" tag="2" id="F2x-Dr-HEW">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Speed Down" tag="3" id="8TG-4n-zJJ">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Speed Down Slightly" tag="4" id="lfg-6h-gVp">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Speed Reset" tag="5" id="ksG-38-qy0">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="TH6-ZD-xId"/>
+                            <menuItem title="Take a Screenshot" id="CYg-rT-PiL">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Go to Screenshot Folder" id="fhv-vn-faU">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
                         </items>
                     </menu>
                 </menuItem>
@@ -278,12 +304,20 @@
             <connections>
                 <outlet property="backward" destination="nrK-Mp-xgT" id="FAH-UM-11i"/>
                 <outlet property="forward" destination="kZ9-tQ-p1B" id="axy-Yf-4Ol"/>
+                <outlet property="goScreenshotDir" destination="fhv-vn-faU" id="cIJ-80-suR"/>
                 <outlet property="jumpTo" destination="5XU-ES-UwM" id="sIe-7R-jf9"/>
                 <outlet property="jumpToBegin" destination="3bq-bF-sAX" id="VV5-1f-0I6"/>
                 <outlet property="nextFrame" destination="hJc-WO-W9K" id="Nz4-uh-3cA"/>
                 <outlet property="pause" destination="P6T-2W-cHo" id="PXc-oc-jQ3"/>
                 <outlet property="playback" destination="6XL-4X-DBu" id="qpD-1T-Yy3"/>
                 <outlet property="prevFrame" destination="DWs-r6-Str" id="xm9-0F-QIT"/>
+                <outlet property="screenshot" destination="CYg-rT-PiL" id="iVD-Zs-bWQ"/>
+                <outlet property="speedDown" destination="8TG-4n-zJJ" id="joN-Bb-d70"/>
+                <outlet property="speedDownSlightly" destination="lfg-6h-gVp" id="JSw-ke-msT"/>
+                <outlet property="speedIndicator" destination="EUK-a7-2qO" id="Gdk-bI-g2p"/>
+                <outlet property="speedReset" destination="ksG-38-qy0" id="g3H-cg-h4B"/>
+                <outlet property="speedUp" destination="bS1-CE-hle" id="bbh-Ho-aWz"/>
+                <outlet property="speedUpSlightly" destination="F2x-Dr-HEW" id="fRl-Ox-GGw"/>
             </connections>
         </customObject>
     </objects>

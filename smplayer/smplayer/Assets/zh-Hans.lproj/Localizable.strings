@@ -20,3 +20,4 @@
 // menu
 "menu.pause" = "暂停";
 "menu.resume" = "继续";
+"menu.speed" = "速度: %.2fx";
