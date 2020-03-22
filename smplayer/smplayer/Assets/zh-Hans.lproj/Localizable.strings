@@ -6,9 +6,16 @@
   Copyright © 2020 midoks. All rights reserved.
 */
 
+"common.ok" = "好";
+"common.cancel" = "取消";
+
 // alert
 "alert.notice" = "提示";
 "alert.invalid_url" = "无效URL";
+
+"alert.jump_to.title" = "跳转至";
+"alert.jump_to.message" = "请输入希望跳转的时间。例: 10:10";
+
 
 // menu
 "menu.pause" = "暂停";

@@ -27,8 +27,14 @@ NS_ASSUME_NONNULL_BEGIN
 #define SM_HISTORY_FILE @"history.plist"
 
 
+typedef NS_ENUM(NSUInteger, SMAlertStyle) {
+    SMAlertWindowSheetStyle = 0,
+    SMAlertRunModelStyle = 1,
+};
 
 @interface SMCommon : NSObject
+
++(void)asyncCmd:(void(^)(void))cmd;
 +(void)delayedRun:(float)t callback:(void(^)(void)) callback;
 
 +(void)alert:(NSString *)info;
@@ -37,7 +43,10 @@ NS_ASSUME_NONNULL_BEGIN
       style:(NSAlertStyle)style
  delayedTime:(double)delayedTime;
 
-+(void)asyncCmd:(void(^)(void))cmd;
++(void)quickPromptPanel:(NSString *)key
+                 option:(SMAlertStyle)option
+               callback:(void(^)(NSString *inputValue))callback;
+
 
 +(BOOL)isMouseEvent:(NSEvent *)event views:(NSArray<NSView *> *)views;
 

@@ -8,6 +8,8 @@
 
 #import "MenuActionHandler.h"
 #import "SMCore.h"
+#import "SMCommon.h"
+#import "SMVideoTime.h"
 
 @implementation MenuActionHandler
 
@@ -21,12 +23,35 @@
 }
 
 -(void)stepAction:(NSMenuItem *)sender{
-    
     if (sender.tag == 0){
         [[[SMCore Instance] player].videoView.smLayer seek:@"+5" option:SMSeekNormal];
     } else if (sender.tag == 1){
         [[[SMCore Instance] player].videoView.smLayer seek:@"-5" option:SMSeekNormal];
     }
+}
+
+-(void)stepFrameAction:(NSMenuItem *)sender{
+    if (![[SMCore Instance] player].videoView.smLayer.info.isPause){
+        [[[SMCore Instance] player].videoView.smLayer stop];
+    }
+    
+    if (sender.tag == 0){
+        [[[SMCore Instance] player].videoView.smLayer frameStep:YES];
+    } else if (sender.tag == 1) {
+        [[[SMCore Instance] player].videoView.smLayer frameStep:NO];
+    }
+}
+
+-(void)jumpToBeginAction:(NSMenuItem *)sender{
+    [[[SMCore Instance] player].videoView.smLayer seek:@"0" option:SMSeekAbsolute];
+}
+
+-(void)jumpToAction:(NSMenuItem *)sender{
+    [SMCommon quickPromptPanel:@"jump_to" option:SMAlertRunModelStyle callback:^(NSString *inputValue) {
+        SMVideoTime *vtime = [[SMVideoTime alloc] initTimeWithString:inputValue];
+        [[[SMCore Instance] player].videoView.smLayer seek:[vtime stringValue] option:SMSeekAbsolute];
+    }];
+
 }
 
 

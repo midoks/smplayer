@@ -17,6 +17,10 @@
 @property (weak) IBOutlet NSMenuItem *pause;
 @property (weak) IBOutlet NSMenuItem *forward;
 @property (weak) IBOutlet NSMenuItem *backward;
+@property (weak) IBOutlet NSMenuItem *nextFrame;
+@property (weak) IBOutlet NSMenuItem *prevFrame;
+@property (weak) IBOutlet NSMenuItem *jumpToBegin;
+@property (weak) IBOutlet NSMenuItem *jumpTo;
 
 @end
 
@@ -31,8 +35,20 @@
     
     _forward.action = @selector(stepAction:);
     [_forward setKeyEquivalent:@"→"];
+
+    _nextFrame.action = @selector(stepFrameAction:);
+    [_nextFrame setKeyEquivalent:@"."];
+    
     _backward.action = @selector(stepAction:);
     [_backward setKeyEquivalent:@"←"];
+    
+    _prevFrame.action = @selector(stepFrameAction:);
+    [_prevFrame setKeyEquivalent:@","];
+    
+    _jumpToBegin.action = @selector(jumpToBeginAction:);
+    _jumpTo.action = @selector(jumpToAction:);
+    
+    
 }
 
 -(void)updatePlaybackMenu{

@@ -16,8 +16,11 @@ NS_ASSUME_NONNULL_BEGIN
 + (id)Instance;
 
 -(id)initTime:(double)time;
+-(id)initTimeWithString:(NSString *)time;
+
 -(double)doubleValue;
 -(int)intValue;
+-(NSString *)stringValue;
 -(NSString *)getString;
 @end
 

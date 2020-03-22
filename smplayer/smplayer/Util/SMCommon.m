@@ -9,6 +9,12 @@
 
 @implementation SMCommon
 
++(void)asyncCmd:(void(^)(void))cmd
+{
+    dispatch_async(dispatch_get_main_queue(), ^{
+        cmd();
+    });
+}
 
 +(void)delayedRun:(float)t
          callback:(void(^)(void)) callback
@@ -42,13 +48,37 @@
     }
 }
 
-
-+(void)asyncCmd:(void(^)(void))cmd
++(void)quickPromptPanel:(NSString *)key
+            option:(SMAlertStyle)option
+               callback:(void(^)(NSString *inputValue))callback
 {
-    dispatch_async(dispatch_get_main_queue(), ^{
-        cmd();
-    });
+    NSString *titleKey = [NSString stringWithFormat:@"alert.%@.title", key];
+    NSString *msgKey = [NSString stringWithFormat:@"alert.%@.message", key];
+    
+    NSAlert *alert = [[NSAlert alloc] init];
+    alert.messageText = NSLocalizedString(titleKey, nil);
+    alert.informativeText = NSLocalizedString(msgKey, nil);
+
+    NSTextField *input = [[NSTextField alloc] initWithFrame:NSMakeRect(0, 0, 240, 24)];
+    input.lineBreakMode = NSLineBreakByClipping;
+    input.usesSingleLineMode = YES;
+
+    alert.accessoryView = input;
+    [alert addButtonWithTitle:NSLocalizedString(@"common.ok", nil)];
+    [alert addButtonWithTitle:NSLocalizedString(@"common.cancel", nil)];
+    alert.window.initialFirstResponder = input;
+    
+    if (option == SMAlertWindowSheetStyle){
+        [alert beginSheetModalForWindow:[NSApp mainWindow] completionHandler:^(NSModalResponse returnCode) {
+            callback([input stringValue]);
+        }];
+    } else {
+        if ([alert runModal]){
+            callback([input stringValue]);
+        }
+    }
 }
+
 
 +(BOOL)isMouseEvent:(NSEvent *)event views:(NSArray<NSView *> *)views
 {

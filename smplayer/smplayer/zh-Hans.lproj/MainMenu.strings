@@ -218,8 +218,24 @@
 /* Class = "NSMenuItem"; title = "Step Forward 5s"; ObjectID = "kZ9-tQ-p1B"; */
 "kZ9-tQ-p1B.title" = "前进5秒";
 
+/* Class = "NSMenuItem"; title = "Next Frame"; ObjectID = "hJc-WO-W9K"; */
+"hJc-WO-W9K.title" = "下一帧";
+
 /* Class = "NSMenuItem"; title = "Step Backward 5s"; ObjectID = "nrK-Mp-xgT"; */
 "nrK-Mp-xgT.title" = "后退5秒";
+
+/* Class = "NSMenuItem"; title = "Previous Frame"; ObjectID = "DWs-r6-Str"; */
+"DWs-r6-Str.title" = "上一帧";
+
+/* Class = "NSMenuItem"; title = "Jump to Beginning"; ObjectID = "3bq-bF-sAX"; */
+"3bq-bF-sAX.title" = "回到开头";
+
+/* Class = "NSMenuItem"; title = "Jump to..."; ObjectID = "5XU-ES-UwM"; */
+"5XU-ES-UwM.title" = "跳转至...";
+
+
+
+
 
 
 

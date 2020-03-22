@@ -210,7 +210,19 @@
                             <menuItem title="Step Forward 5s" id="kZ9-tQ-p1B">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
+                            <menuItem title="Next Frame" id="hJc-WO-W9K">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
                             <menuItem title="Step Backward 5s" tag="1" id="nrK-Mp-xgT">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Previous Frame" tag="1" id="DWs-r6-Str">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Jump to Beginning" id="3bq-bF-sAX">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Jump to…" id="5XU-ES-UwM">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
                         </items>
@@ -266,8 +278,12 @@
             <connections>
                 <outlet property="backward" destination="nrK-Mp-xgT" id="FAH-UM-11i"/>
                 <outlet property="forward" destination="kZ9-tQ-p1B" id="axy-Yf-4Ol"/>
+                <outlet property="jumpTo" destination="5XU-ES-UwM" id="sIe-7R-jf9"/>
+                <outlet property="jumpToBegin" destination="3bq-bF-sAX" id="VV5-1f-0I6"/>
+                <outlet property="nextFrame" destination="hJc-WO-W9K" id="Nz4-uh-3cA"/>
                 <outlet property="pause" destination="P6T-2W-cHo" id="PXc-oc-jQ3"/>
                 <outlet property="playback" destination="6XL-4X-DBu" id="qpD-1T-Yy3"/>
+                <outlet property="prevFrame" destination="DWs-r6-Str" id="xm9-0F-QIT"/>
             </connections>
         </customObject>
     </objects>

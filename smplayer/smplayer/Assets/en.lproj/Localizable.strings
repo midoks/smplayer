@@ -6,11 +6,19 @@
   Copyright © 2020 midoks. All rights reserved.
 */
 
+"common.ok" = "OK";
+"common.cancel" = "Cancel";
+
 // alert
 "alert.notice" = "notice";
 "alert.invalid_url" = "Invalid URL";
+
+"alert.jump_to.title" = "Jump to";
+"alert.jump_to.message" = "Please enter the time you want to jump to. Example: 10:10";
 
 
 //menu
 "menu.pause" = "Pause";
 "menu.resume" = "resume";
+
+

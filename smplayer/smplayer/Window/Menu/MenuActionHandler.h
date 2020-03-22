@@ -14,6 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(void)pauseAction:(NSMenuItem *)sender;
 -(void)stepAction:(NSMenuItem *)sender;
+-(void)stepFrameAction:(NSMenuItem *)sender;
+-(void)jumpToBeginAction:(NSMenuItem *)sender;
+-(void)jumpToAction:(NSMenuItem *)sender;
 @end
 
 NS_ASSUME_NONNULL_END

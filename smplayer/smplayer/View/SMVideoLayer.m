@@ -481,4 +481,17 @@ static void render_context_callback(void *ctx) {
     }
 }
 
+-(void)frameStep:(BOOL)backwards{
+    NSString *cmd = @"frame-back-step";
+    
+    if (backwards){
+        cmd = @"frame-step";
+    }
+    
+    const char *args[] = {cmd.UTF8String, NULL};
+    if (self->mpv){
+        mpv_command(self->mpv, args);
+    }
+}
+
 @end

@@ -52,6 +52,7 @@ typedef NS_ENUM(NSUInteger, SMSeek) {
 -(void)quit;
 -(void)seek:(NSString *)second option:(SMSeek)option;
 -(void)windowScale:(double)scale;
+-(void)frameStep:(BOOL)backwards;
 
 @end
 

@@ -32,8 +32,36 @@ static dispatch_once_t _instance_once;
     return (int)self.second;
 }
 
+-(NSString *)stringValue{
+    return [NSString stringWithFormat:@"%f",self.second];
+}
+
 -(id)initTime:(double)time{
     self.second = time;
+    return self;
+}
+
+-(id)initTime:(int)hour minute:(int)minute second:(int)second{
+    int _second = hour*3600 + minute*60 + second;
+    self.second = [[NSString stringWithFormat:@"%d", _second] doubleValue];
+    return self;
+}
+
+-(id)initTime:(int)minute second:(int)second{
+    int _second = minute*60 + second;
+    self.second = [[NSString stringWithFormat:@"%d", _second] doubleValue];
+    return self;
+}
+
+-(id)initTimeWithString:(NSString *)time{
+    NSArray *list = [time componentsSeparatedByString:@":"];
+    if ( [list count] == 3 ){
+        self = [self initTime:[[list objectAtIndex:0] intValue] minute:[[list objectAtIndex:1] intValue] second:[[list objectAtIndex:2] intValue]];
+    } else if ( [list count] == 2){
+        self = [self initTime:[[list objectAtIndex:0] intValue] second:[[list objectAtIndex:1] intValue]];
+    } else {
+        self.second = [[list objectAtIndex:0] doubleValue];
+    }
     return self;
 }
 
