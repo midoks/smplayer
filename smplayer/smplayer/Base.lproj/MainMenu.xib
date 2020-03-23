@@ -254,6 +254,64 @@
                         </items>
                     </menu>
                 </menuItem>
+                <menuItem title="Video" id="lFm-VP-JHE" userLabel="Video">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Video" id="GKS-et-IyQ" userLabel="Video">
+                        <items>
+                            <menuItem title="Item 1" id="NR7-0g-Mv2">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Item 2" id="EHh-dc-kry">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Item 3" id="Mbu-O6-hEc">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Audio" id="zqu-aN-dil">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Audio" id="foo-yx-zQU">
+                        <items>
+                            <menuItem title="Item 1" id="qfL-cv-sFC">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Item 2" id="js5-wK-Dxf">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Item 3" id="YAm-8i-7kO">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Subtitles" id="6Es-co-rpr">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Subtitles" id="UrH-Ge-TSL">
+                        <items>
+                            <menuItem title="Item 1" id="ldz-fM-8pc">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Item 2" id="grk-21-zvD">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Item 3" id="T67-lJ-Ztq">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="Record" id="dnQ-rd-vpB">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="Record" id="KJ5-V0-Bot">
+                        <items>
+                            <menuItem title="New Record Screen" id="DKD-qo-4AU">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
                 <menuItem title="Window" id="aUF-d1-5bR">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Window" systemMenu="window" id="Td7-aD-5lo">

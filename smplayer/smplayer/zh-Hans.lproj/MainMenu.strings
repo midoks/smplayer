@@ -254,12 +254,17 @@
 /* Class = "NSMenuItem"; title = "Go to Screenshot Folder"; ObjectID = "fhv-vn-faU"; */
 "fhv-vn-faU.title" = "前往截图文件夹";
 
+/* Class = "NSMenuItem"; title = "Video"; ObjectID = "GKS-et-IyQ"; */
+"GKS-et-IyQ.title" = "视频";
 
+/* Class = "NSMenuItem"; title = "Audio"; ObjectID = "foo-yx-zQU"; */
+"foo-yx-zQU.title" = "音频";
 
+/* Class = "NSMenuItem"; title = "Subtitles"; ObjectID = "UrH-Ge-TSL"; */
+"UrH-Ge-TSL.title" = "字幕";
 
+/* Class = "NSMenuItem"; title = "Record"; ObjectID = "KJ5-V0-Bot"; */
+"KJ5-V0-Bot.title" = "录制";
 
-
-
-
-
-
+/* Class = "NSMenuItem"; title = "New Record Srceen"; ObjectID = "DKD-qo-4AU"; */
+"DKD-qo-4AU.title" = "新建录制屏幕";

@@ -12,7 +12,7 @@
 
 @interface MenuListController()<NSMenuDelegate>
 
-//playback
+// playback
 @property (weak) IBOutlet NSMenu *playback;
 @property (weak) IBOutlet NSMenuItem *pause;
 @property (weak) IBOutlet NSMenuItem *forward;
@@ -31,7 +31,12 @@
 @property (weak) IBOutlet NSMenuItem *screenshot;
 @property (weak) IBOutlet NSMenuItem *goScreenshotDir;
 
-
+// video
+@property (weak) IBOutlet NSMenu *video;
+@property (weak) IBOutlet NSMenuItem *halfSize;
+@property (weak) IBOutlet NSMenuItem *normalSize;
+@property (weak) IBOutlet NSMenuItem *doubleSize;
+@property (weak) IBOutlet NSMenuItem *fitToScreen;
 
 
 @end
@@ -77,6 +82,9 @@
     
     _screenshot.action = @selector(snapshotAction:);
     _goScreenshotDir.action = @selector(openScreenshotFolderAction:);
+    
+    // video
+    _video.delegate = self;
 
 }
 

@@ -502,9 +502,17 @@ static void render_context_callback(void *ctx) {
 }
 
 -(void)screenshot{
+    BOOL tookScreenshot = NO;
+    
+
     if (mpv){
         const char *args[] = {"screenshot", "video", NULL};
         mpv_command(mpv, args);
+    }
+    
+    if (tookScreenshot){
+        [[NSPasteboard generalPasteboard] clearContents];
+//        [[NSPasteboard generalPasteboard] writeObjects:[]];
     }
 }
 

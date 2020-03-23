@@ -64,15 +64,6 @@
 }
 
 -(void)snapshotAction:(NSMenuItem *)sender{
-    BOOL tookScreenshot = NO;
-    
-    if (tookScreenshot){
-        
-        [[NSPasteboard generalPasteboard] clearContents];
-        
-        
-    }
-    
     [[[SMCore Instance] player].videoView.smLayer screenshot];
 }
 
