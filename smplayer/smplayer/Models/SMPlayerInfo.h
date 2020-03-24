@@ -15,6 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property  BOOL isPause;
 @property  double playSpeed;
 
+@property double width;
+@property double height;
+
 @end
 
 NS_ASSUME_NONNULL_END

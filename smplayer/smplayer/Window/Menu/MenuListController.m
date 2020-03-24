@@ -37,6 +37,11 @@
 @property (weak) IBOutlet NSMenuItem *normalSize;
 @property (weak) IBOutlet NSMenuItem *doubleSize;
 @property (weak) IBOutlet NSMenuItem *fitToScreen;
+@property (weak) IBOutlet NSMenuItem *biggerSize;
+@property (weak) IBOutlet NSMenuItem *smallerSize;
+@property (weak) IBOutlet NSMenuItem *fullScreen;
+@property (weak) IBOutlet NSMenuItem *alwaysOnTop;
+
 
 
 @end
@@ -85,6 +90,24 @@
     
     // video
     _video.delegate = self;
+    
+    NSArray *videoSize = @[
+        @[_halfSize, @0],
+        @[_normalSize,@1],
+        @[_doubleSize,@2],
+        @[_fitToScreen,@3],
+        @[_biggerSize,@11],
+        @[_smallerSize,@10],
+    ];
+    
+    for (NSArray *i in videoSize) {
+        NSMenuItem *vSize = [i objectAtIndex:0];
+        vSize.tag = [[i objectAtIndex:1] integerValue];
+        vSize.action = @selector(menuChangeWindowSize:);
+    }
+
+    _fullScreen.action = @selector(menuToggleFullScreen:);
+    _alwaysOnTop.action = @selector(menuAlwaysOnTop:);
 
 }
 

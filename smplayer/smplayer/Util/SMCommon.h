@@ -58,6 +58,16 @@ typedef NS_ENUM(NSUInteger, SMAlertStyle) {
 
 #pragma mark - constraints
 +(void)quickConstraints:(NSArray<NSString *>*)constraints view:(NSDictionary *)view;
-@end
 
+#pragma mark - Size
++(CGFloat)sizeAspect:(NSSize)to;
++(NSSize)sizeGrow:(NSSize)from to:(NSSize)to;
++(NSSize)sizeShrink:(NSSize)from to:(NSSize)to;
++(NSRect)rectCentered:(NSRect)from to:(NSRect)to;
++(NSRect)resizeCentered:(NSRect)from to:(NSSize)to;
++(NSRect)sizeConstrain:(NSRect)from to:(NSRect)to;
++(NSSize)satisfyMinSizeWithSameAspectRatio:(NSSize)from to:(NSSize)to;
++(NSSize)satisfyMaxSizeWithSameAspectRatio:(NSSize)from to:(NSSize)to;
+
+@end
 NS_ASSUME_NONNULL_END

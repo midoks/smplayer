@@ -136,5 +136,97 @@
     }
 }
 
+#pragma mark - Size
+
++(CGFloat)sizeAspect:(NSSize)to{
+    assert(to.width !=0 && to.height != 0);
+    return to.width/to.height;
+}
+
++(NSSize)sizeGrow:(NSSize)from to:(NSSize)to {
+    if (from.width == 0 || from.height == 0){
+        return from;
+    }
+    CGFloat fromAspect = [self sizeAspect:from];
+    CGFloat toAspect = [self sizeAspect:to];
+    if (fromAspect > toAspect){
+        return NSMakeSize(to.height*fromAspect, to.height);
+    }
+    return NSMakeSize(to.width, to.height/fromAspect);
+}
+
++(NSSize)sizeShrink:(NSSize)from to:(NSSize)to{
+    if (to.width == 0 || to.height == 0){
+        return to;
+    }
+    CGFloat fromAspect = [self sizeAspect:from];
+    CGFloat toAspect = [self sizeAspect:to];
+    if (fromAspect < toAspect){
+        return NSMakeSize(to.height*fromAspect, to.height);
+    }
+    return NSMakeSize(to.width, to.width/fromAspect);
+}
+
++(NSSize)satisfyMinSizeWithSameAspectRatio:(NSSize)from to:(NSSize)to{
+    if (from.width >= to.width && from.height >= to.height){
+        return from;
+    }
+    return [self sizeGrow:from to:to];
+}
+
++(NSSize)satisfyMaxSizeWithSameAspectRatio:(NSSize)from to:(NSSize)to{
+    if (from.width <= to.width && from.height <= to.height){
+        return from;
+    }
+    return [self sizeShrink:from to:to];
+}
+
++(NSRect)rectCentered:(NSRect)from to:(NSRect)to{
+    return NSMakeRect(
+            (to.size.width-from.size.width)/2,
+            (to.size.height-from.size.height)/2,
+            from.size.width,
+            from.size.height
+    );
+}
+
++(NSRect)resizeCentered:(NSRect)from to:(NSSize)to{
+    return NSMakeRect(
+            from.origin.x - (to.width-from.size.width)/2,
+            from.origin.y - (to.height-from.size.height)/2,
+            to.width,
+            to.height
+    );
+}
+
++(NSRect)sizeConstrain:(NSRect)from to:(NSRect)to
+{
+    NSSize newSize = from.size;
+    if (newSize.width>to.size.width || newSize.height> to.size.height){
+        newSize = [self sizeShrink:from.size to:to.size];
+    }
+    
+    CGPoint newOrgin = from.origin;
+    if (newOrgin.x < to.origin.x) {
+        newOrgin.x = to.origin.x;
+    }
+    
+    if (newOrgin.y < to.origin.y ){
+        newOrgin.y = to.origin.y;
+    }
+    
+    if (newOrgin.x+from.size.width > to.origin.x + to.size.width){
+        newOrgin.x = to.origin.x + to.size.width - from.size.width;
+    }
+    
+    if (newOrgin.y + from.size.height < to.origin.y + to.size.height){
+        newOrgin.y = to.origin.y + to.size.height - from.size.height;
+    }
+    return NSMakeRect(newOrgin.x, newOrgin.y, newSize.width, newSize.height);
+}
+
+
+
+
 
 @end

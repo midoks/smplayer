@@ -15,6 +15,8 @@
     if (self){
         _isPause = NO;
         _playSpeed = 1;
+        _width = 0;
+        _height = 0;
         
     }
     return self;

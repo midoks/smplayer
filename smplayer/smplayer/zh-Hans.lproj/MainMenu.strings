@@ -268,3 +268,36 @@
 
 /* Class = "NSMenuItem"; title = "New Record Srceen"; ObjectID = "DKD-qo-4AU"; */
 "DKD-qo-4AU.title" = "新建录制屏幕";
+
+/* Class = "NSMenuItem"; title = "Half Size"; ObjectID = "NR7-0g-Mv2"; */
+"NR7-0g-Mv2.title" = "一半大小";
+
+/* Class = "NSMenuItem"; title = "Normal Size"; ObjectID = "EHh-dc-kry"; */
+"EHh-dc-kry.title" = "原始大小";
+
+/* Class = "NSMenuItem"; title = "Double Size"; ObjectID = "Mbu-O6-hEc"; */
+"Mbu-O6-hEc.title" = "双倍大小";
+
+/* Class = "NSMenuItem"; title = "Fit to Screen"; ObjectID = "GMl-WG-ss8"; */
+"GMl-WG-ss8.title" = "适应屏幕";
+
+/* Class = "NSMenuItem"; title = "Bigger Size"; ObjectID = "2N8-3q-3VR"; */
+"2N8-3q-3VR.title" = "大一点";
+
+/* Class = "NSMenuItem"; title = "Smaller Size"; ObjectID = "NAj-TR-QTo"; */
+"NAj-TR-QTo.title" = "小一点";
+
+/* Class = "NSMenuItem"; title = "Enter Full Screen"; ObjectID = "45G-XK-9DO"; */
+"45G-XK-9DO.title" = "进入全屏";
+
+/* Class = "NSMenuItem"; title = "Float on Top"; ObjectID = "6Mg-95-aII"; */
+"6Mg-95-aII.title" = "窗口置顶";
+
+
+
+
+
+
+
+
+

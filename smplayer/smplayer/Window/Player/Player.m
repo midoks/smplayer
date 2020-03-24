@@ -23,6 +23,7 @@
     BOOL isFileLoaded;
 }
 
+@property (nonatomic,assign) BOOL isOnTop;
 @property (nonatomic,assign) BOOL isFullScreen;
 @property (nonatomic,assign) CGSize minWindowSize;
 @property (nonatomic, strong) MenuActionHandler* menuActionHandler;
@@ -94,12 +95,12 @@ static dispatch_once_t _instance_once;
     self.window.nextResponder = _menuActionHandler;
     _menuActionHandler.nextResponder = wr;
     
-    // save video base info
-    _info = [[SMPlayerInfo alloc] init];
-    
+
     windowTitle = @"";
     isFileLoaded = NO;
+    _isOnTop = NO;
     self.isFullScreen = NO;
+    
     self.minWindowSize = NSMakeSize(300, 180);
     
     // view setting
@@ -114,6 +115,9 @@ static dispatch_once_t _instance_once;
     
     _controlView.material = NSVisualEffectMaterialDark;
     _controlView.appearance = [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
+    
+    // save video base info
+    _info = [[SMPlayerInfo alloc] init];
 }
 
 -(void)regEvent{
@@ -281,6 +285,70 @@ static dispatch_once_t _instance_once;
     }
 }
 
+-(void)setWindowScale:(double)scale{
+    NSRect screenFrame = self.window.screen.visibleFrame;
+    NSRect newFrame;
+    CGSize newSize = CGSizeMake(_info.width * scale, _info.height * scale);
+    
+    if (newSize.width>screenFrame.size.width || newSize.height > screenFrame.size.height ){
+        NSSize fitToSize = [SMCommon sizeShrink:self.window.frame.size to:screenFrame.size];
+        newFrame = [SMCommon resizeCentered:self.window.frame to:fitToSize];
+        newFrame = [SMCommon sizeConstrain:newFrame to:screenFrame];
+    } else {
+        newFrame = [SMCommon resizeCentered:self.window.frame to:newSize];
+    }
+    [self.window setFrame:newFrame display:YES animate:YES];
+}
+#pragma mark - menu action
+-(void)menuChangeWindowSize:(NSMenuItem *)sender{
+    NSInteger size = sender.tag;
+    NSRect screenFrame = self.window.screen.visibleFrame;
+    NSRect newFrame;
+    NSArray *sizeList = @[@0.5,@1,@2];
+    CGFloat scaleStep = 25;
+    CGFloat telescopic;
+
+    switch (size) {
+        case 0:
+        case 1:
+        case 2:
+            [self setWindowScale:[[sizeList objectAtIndex:size] doubleValue]];
+            return;
+        case 3:
+            [self.window center];
+            NSSize fitToSize = [SMCommon sizeShrink:self.window.frame.size to:screenFrame.size];
+            newFrame = [SMCommon resizeCentered:self.window.frame to:fitToSize];
+            break;
+        case 10:
+        case 11:
+            telescopic = size == 10 ? -1 : 1;
+            CGFloat newWidth = self.window.frame.size.width + scaleStep * telescopic;
+            CGFloat newHeight = newWidth/(self.window.frame.size.width/self.window.frame.size.height);
+            CGSize tsSize = [SMCommon satisfyMinSizeWithSameAspectRatio:CGSizeMake(newWidth, newHeight) to:_minWindowSize];
+            newFrame = [SMCommon resizeCentered:self.window.frame to:tsSize];
+            break;
+        default:
+            return;
+    }
+    [self.window setFrame:newFrame display:YES animate:YES];
+}
+
+-(void)menuToggleFullScreen:(NSMenuItem *)sender{
+    [self.window toggleFullScreen:self];
+}
+
+-(void)menuAlwaysOnTop:(NSMenuItem *)sender{
+    if(_isFullScreen){return;}
+    
+    _isOnTop = !_isOnTop;
+
+////        self.window.collectionBehavior = NSWindowCollectionBehaviorFullScreenAuxiliary;
+////        self.window.collectionBehavior = NSWindowCollectionBehaviorFullScreenPrimary;
+    
+    self.window.level = _isOnTop?NSFloatingWindowLevel:NSNormalWindowLevel;
+    self.window.collectionBehavior = NSWindowCollectionBehaviorFullScreenPrimary;
+}
+
 
 #pragma mark - NSWindowDelegate
 -(NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize
@@ -369,6 +437,7 @@ static dispatch_once_t _instance_once;
     hideControlTimer = [NSTimer scheduledTimerWithTimeInterval:3 target:self selector:@selector(hiddenToolbar) userInfo:NULL repeats:false];
 }
 
+#pragma mark - Mouse Event
 -(void)mouseEntered:(NSEvent *)event {
     [self showToolbar];
 }

@@ -349,10 +349,13 @@ static void render_context_callback(void *ctx) {
     double w = [self mpvGetDouble:@"width"];
     double h = [self mpvGetDouble:@"height"];
     
+    [[[SMCore Instance] player].info setWidth:w];
+    [[[SMCore Instance] player].info setHeight:h];
     
-    [[NSApp mainWindow] setFrame:NSMakeRect(0, 0, w, h) display:YES];
-    [[NSApp mainWindow] center];
     
+    // init window
+    NSSize screenSize = [NSApp mainWindow].screen.visibleFrame.size;
+    [[NSApp mainWindow] setFrame:NSMakeRect((screenSize.width-w)/2, (screenSize.height-h)/2, w, h) display:YES animate:YES];
     
     NSTimer *timer = [NSTimer timerWithTimeInterval:0.1 target:self selector:@selector(videoDurationAction) userInfo:nil repeats:YES];
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];

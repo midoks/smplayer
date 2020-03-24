@@ -258,13 +258,30 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Video" id="GKS-et-IyQ" userLabel="Video">
                         <items>
-                            <menuItem title="Item 1" id="NR7-0g-Mv2">
+                            <menuItem title="Half Size" id="NR7-0g-Mv2">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
-                            <menuItem title="Item 2" id="EHh-dc-kry">
+                            <menuItem title="Normal Size" id="EHh-dc-kry">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
-                            <menuItem title="Item 3" id="Mbu-O6-hEc">
+                            <menuItem title="Double Size" id="Mbu-O6-hEc">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Fit to Screen" id="GMl-WG-ss8">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="J74-4Q-4Qz"/>
+                            <menuItem title="Bigger Size" id="2N8-3q-3VR">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Smaller Size" id="NAj-TR-QTo">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="Ff8-aE-JQj"/>
+                            <menuItem title="Enter Full Screen" id="45G-XK-9DO">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Float on Top" id="6Mg-95-aII">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
                         </items>
@@ -360,22 +377,31 @@
         </menu>
         <customObject id="hGE-iT-icH" customClass="MenuListController">
             <connections>
+                <outlet property="alwaysOnTop" destination="6Mg-95-aII" id="9Uh-Sf-ZUV"/>
                 <outlet property="backward" destination="nrK-Mp-xgT" id="FAH-UM-11i"/>
+                <outlet property="biggerSize" destination="2N8-3q-3VR" id="iOU-WY-nZq"/>
+                <outlet property="doubleSize" destination="Mbu-O6-hEc" id="ywW-23-U5Y"/>
+                <outlet property="fitToScreen" destination="GMl-WG-ss8" id="cGk-8b-V6E"/>
                 <outlet property="forward" destination="kZ9-tQ-p1B" id="axy-Yf-4Ol"/>
+                <outlet property="fullScreen" destination="45G-XK-9DO" id="IQN-yQ-xR4"/>
                 <outlet property="goScreenshotDir" destination="fhv-vn-faU" id="cIJ-80-suR"/>
+                <outlet property="halfSize" destination="NR7-0g-Mv2" id="78h-4u-9VC"/>
                 <outlet property="jumpTo" destination="5XU-ES-UwM" id="sIe-7R-jf9"/>
                 <outlet property="jumpToBegin" destination="3bq-bF-sAX" id="VV5-1f-0I6"/>
                 <outlet property="nextFrame" destination="hJc-WO-W9K" id="Nz4-uh-3cA"/>
+                <outlet property="normalSize" destination="EHh-dc-kry" id="UHq-kF-MyX"/>
                 <outlet property="pause" destination="P6T-2W-cHo" id="PXc-oc-jQ3"/>
                 <outlet property="playback" destination="6XL-4X-DBu" id="qpD-1T-Yy3"/>
                 <outlet property="prevFrame" destination="DWs-r6-Str" id="xm9-0F-QIT"/>
                 <outlet property="screenshot" destination="CYg-rT-PiL" id="iVD-Zs-bWQ"/>
+                <outlet property="smallerSize" destination="NAj-TR-QTo" id="NhE-KB-reQ"/>
                 <outlet property="speedDown" destination="8TG-4n-zJJ" id="joN-Bb-d70"/>
                 <outlet property="speedDownSlightly" destination="lfg-6h-gVp" id="JSw-ke-msT"/>
                 <outlet property="speedIndicator" destination="EUK-a7-2qO" id="Gdk-bI-g2p"/>
                 <outlet property="speedReset" destination="ksG-38-qy0" id="g3H-cg-h4B"/>
                 <outlet property="speedUp" destination="bS1-CE-hle" id="bbh-Ho-aWz"/>
                 <outlet property="speedUpSlightly" destination="F2x-Dr-HEW" id="fRl-Ox-GGw"/>
+                <outlet property="video" destination="GKS-et-IyQ" id="OJl-T6-i6W"/>
             </connections>
         </customObject>
     </objects>
