@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface MenuActionHandler : NSResponder
 
+//playback
 -(void)pauseAction:(NSMenuItem *)sender;
 -(void)stepAction:(NSMenuItem *)sender;
 -(void)stepFrameAction:(NSMenuItem *)sender;
@@ -20,6 +21,15 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)speedChange:(NSMenuItem *)sender;
 -(void)snapshotAction:(NSMenuItem *)sender;
 -(void)openScreenshotFolderAction:(NSMenuItem *)sender;
+
+//audio
+-(void)volumeChange:(NSMenuItem *)sender;
+-(void)volumeMute:(NSMenuItem *)sender;
+-(void)audioDelayChange:(NSMenuItem *)sender;
+-(void)audioDelayReset:(NSMenuItem *)sender;
+
+
+
 
 
 

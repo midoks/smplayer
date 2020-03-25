@@ -293,6 +293,38 @@
 /* Class = "NSMenuItem"; title = "Float on Top"; ObjectID = "6Mg-95-aII"; */
 "6Mg-95-aII.title" = "窗口置顶";
 
+/* Class = "NSMenuItem"; title = "Volume + 5%"; ObjectID = "js5-wK-Dxf"; */
+"js5-wK-Dxf.title" = "音量 + 5%";
+
+/* Class = "NSMenuItem"; title = "Volume + 1%"; ObjectID = "YAm-8i-7kO"; */
+"YAm-8i-7kO.title" = "音量 + 1%";
+
+/* Class = "NSMenuItem"; title = "Volume - 5%"; ObjectID = "zwv-ag-T72"; */
+"zwv-ag-T72.title" = "音量 - 5%";
+
+/* Class = "NSMenuItem"; title = "Volume - 1%"; ObjectID = "lXI-Yr-cg1"; */
+"lXI-Yr-cg1.title" = "音量 - 1%";
+
+/* Class = "NSMenuItem"; title = "Mute"; ObjectID = "5Mi-uZ-vn2"; */
+"5Mi-uZ-vn2.title" = "静音";
+
+/* Class = "NSMenuItem"; title = "Audio Delay + 0.5s"; ObjectID = "2VA-JC-e98"; */
+"2VA-JC-e98.title" = "音频延迟 + 0.5s";
+
+/* Class = "NSMenuItem"; title = "Audio Delay + 0.1s"; ObjectID = "a9P-IL-saH"; */
+"a9P-IL-saH.title" = "音频延迟 + 0.1s";
+
+/* Class = "NSMenuItem"; title = "Audio Delay - 0.5s"; ObjectID = "kUO-R3-AsW"; */
+"kUO-R3-AsW.title" = "音频延迟 - 0.5s";
+
+/* Class = "NSMenuItem"; title = "Audio Delay - 0.1s"; ObjectID = "xOh-Un-L53"; */
+"xOh-Un-L53.title" = "音频延迟 - 0.1s";
+
+/* Class = "NSMenuItem"; title = "Reset Audio Delay"; ObjectID = "y3c-ZA-l0L"; */
+"y3c-ZA-l0L.title" = "重置音频延迟";
+
+
+
 
 
 

@@ -72,4 +72,28 @@
 }
 
 
+//audio
+-(void)volumeChange:(NSMenuItem *)sender{
+    int volumeDelta = [sender.representedObject intValue];
+    int newVolume = volumeDelta + [[SMCore Instance] player].info.volume;
+    [[[SMCore Instance] player].videoView.smLayer setVoice:newVolume];
+}
+
+-(void)volumeMute:(NSMenuItem *)sender{
+    [[[SMCore Instance] player].videoView.smLayer toggleVoice];
+}
+
+-(void)audioDelayChange:(NSMenuItem *)sender{
+    double delayDelta = [sender.representedObject doubleValue];
+    double newDelay = delayDelta + [[SMCore Instance] player].info.audioDelay;
+    [[SMCore Instance] player].info.audioDelay = newDelay;
+    [[[SMCore Instance] player].videoView.smLayer setAudioDelay:newDelay];
+}
+
+-(void)audioDelayReset:(NSMenuItem *)sender{
+    [[SMCore Instance] player].info.audioDelay = 0;
+    [[[SMCore Instance] player].videoView.smLayer setAudioDelay:0];
+}
+
+
 @end

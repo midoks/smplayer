@@ -14,9 +14,11 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property  BOOL isPause;
 @property  double playSpeed;
+@property  double audioDelay;
 
 @property double width;
 @property double height;
+@property double volume;
 
 @end
 

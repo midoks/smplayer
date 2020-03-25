@@ -21,3 +21,6 @@
 "menu.pause" = "暂停";
 "menu.resume" = "继续";
 "menu.speed" = "速度: %.2fx";
+
+"menu.volume" = "音量: %d";
+"menu.audio_delay" = "音频延迟: %.2f秒";

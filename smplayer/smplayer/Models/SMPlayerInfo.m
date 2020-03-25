@@ -15,8 +15,10 @@
     if (self){
         _isPause = NO;
         _playSpeed = 1;
+        _audioDelay = 0;
         _width = 0;
         _height = 0;
+        _volume = 50;
         
     }
     return self;

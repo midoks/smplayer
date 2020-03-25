@@ -42,6 +42,23 @@
 @property (weak) IBOutlet NSMenuItem *fullScreen;
 @property (weak) IBOutlet NSMenuItem *alwaysOnTop;
 
+// audio
+@property (weak) IBOutlet NSMenu *audio;
+@property (weak) IBOutlet NSMenuItem *volumeIndicator;
+@property (weak) IBOutlet NSMenuItem *increaseVolume;
+@property (weak) IBOutlet NSMenuItem *increaseVolumeSlightly;
+@property (weak) IBOutlet NSMenuItem *decreaseVolume;
+@property (weak) IBOutlet NSMenuItem *decreaseVolumeSlightly;
+@property (weak) IBOutlet NSMenuItem *mute;
+@property (weak) IBOutlet NSMenuItem *audioDelayIndicator;
+@property (weak) IBOutlet NSMenuItem *increaseAudioDelay;
+@property (weak) IBOutlet NSMenuItem *increaseAudioDelaySlightly;
+@property (weak) IBOutlet NSMenuItem *decreaseAudioDelay;
+@property (weak) IBOutlet NSMenuItem *decreaseAudioDelaySlightly;
+@property (weak) IBOutlet NSMenuItem *resetAudioDelay;
+
+
+
 
 
 @end
@@ -80,9 +97,9 @@
                             @[_speedReset,@"1.0"]
                         ];
     for (NSArray *i in speedList) {
-        NSMenuItem *speed = [i objectAtIndex:0];
-        speed.action = @selector(speedChange:);
-        speed.representedObject = [i objectAtIndex:1];
+        NSMenuItem *item = [i objectAtIndex:0];
+        item.action = @selector(speedChange:);
+        item.representedObject = [i objectAtIndex:1];
     }
     
     _screenshot.action = @selector(snapshotAction:);
@@ -101,18 +118,48 @@
     ];
     
     for (NSArray *i in videoSize) {
-        NSMenuItem *vSize = [i objectAtIndex:0];
-        vSize.tag = [[i objectAtIndex:1] integerValue];
-        vSize.action = @selector(menuChangeWindowSize:);
+        NSMenuItem *item = [i objectAtIndex:0];
+        item.tag = [[i objectAtIndex:1] integerValue];
+        item.action = @selector(menuChangeWindowSize:);
     }
 
     _fullScreen.action = @selector(menuToggleFullScreen:);
     _alwaysOnTop.action = @selector(menuAlwaysOnTop:);
 
+    
+    // audio
+    _audio.delegate = self;
+    NSArray *videoVolume = @[
+        @[_increaseVolume, @5],
+        @[_decreaseVolume,@-5],
+        @[_increaseVolumeSlightly,@1],
+        @[_decreaseVolumeSlightly,@-1],
+    ];
+    for (NSArray *i in videoVolume) {
+        NSMenuItem *item = [i objectAtIndex:0];
+        item.representedObject = [i objectAtIndex:1];
+        item.action = @selector(volumeChange:);
+    }
+    _mute.action = @selector(volumeMute:);
+    
+    NSArray *videoAudioDelay = @[
+        @[_increaseAudioDelay, @0.5],
+        @[_increaseAudioDelaySlightly,@0.1],
+        @[_decreaseAudioDelay,@-0.5],
+        @[_decreaseAudioDelaySlightly,@-0.1],
+    ];
+    
+    for (NSArray *i in videoAudioDelay) {
+        NSMenuItem *item = [i objectAtIndex:0];
+        item.representedObject = [i objectAtIndex:1];
+        item.action = @selector(audioDelayChange:);
+    }
+    _resetAudioDelay.action = @selector(audioDelayReset:);
+    
+    
 }
 
 -(void)updatePlaybackMenu{
-    
     _pause.title = [[SMCore Instance] player].info.isPause ?
             NSLocalizedString(@"menu.pause",nil):
             NSLocalizedString(@"menu.resume",nil);
@@ -120,10 +167,18 @@
     _speedIndicator.title = [NSString stringWithFormat:NSLocalizedString(@"menu.speed",nil), [[SMCore Instance] player].info.playSpeed];
 }
 
+-(void)updateAudioMenu{
+    _volumeIndicator.title = [NSString stringWithFormat:NSLocalizedString(@"menu.volume",nil), (int)[[SMCore Instance] player].info.volume];
+    
+    _audioDelayIndicator.title = [NSString stringWithFormat:NSLocalizedString(@"menu.audio_delay",nil), [[SMCore Instance] player].info.audioDelay];
+}
+
 #pragma mark - NSMenuDelegate
 -(void)menuWillOpen:(NSMenu *)menu{
     if (menu == _playback){
         [self updatePlaybackMenu];
+    } else if (menu == _audio){
+        [self updateAudioMenu];
     }
 }
 

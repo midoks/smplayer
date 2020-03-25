@@ -417,6 +417,7 @@ static void render_context_callback(void *ctx) {
 
 -(void)setVoice:(double)value{
     if (mpv) {
+        [[[SMCore Instance] player].info setVolume:value];
         double data = value;
         mpv_set_property_async(mpv, 0, "volume", MPV_FORMAT_DOUBLE, &data);
     }
@@ -501,6 +502,13 @@ static void render_context_callback(void *ctx) {
     if (mpv){
         double data = speed;
         mpv_set_property(mpv, "speed", MPV_FORMAT_DOUBLE, &data);
+    }
+}
+
+-(void)setAudioDelay:(double)delay{
+    if (mpv){
+        double data = delay;
+        mpv_set_property(mpv, "audio-delay", MPV_FORMAT_DOUBLE, &data);
     }
 }
 

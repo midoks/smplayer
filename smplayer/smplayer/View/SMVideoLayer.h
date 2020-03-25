@@ -55,7 +55,7 @@ typedef NS_ENUM(NSUInteger, SMSeek) {
 -(void)frameStep:(BOOL)backwards;
 -(void)setSpeed:(double)speed;
 -(void)screenshot;
-
+-(void)setAudioDelay:(double)delay;
 @end
 
 NS_ASSUME_NONNULL_END
