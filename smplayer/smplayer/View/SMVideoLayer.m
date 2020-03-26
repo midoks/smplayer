@@ -261,7 +261,9 @@ static void wakeup(void *context) {
             if (event->event_id == MPV_EVENT_NONE){
                 break;
             }
-            [self handleEvent:event];
+            
+                [self handleEvent:event];
+           
         }
     });
 }
@@ -285,12 +287,19 @@ static void render_context_callback(void *ctx) {
             NSLog(@"event-MPV_EVENT_SHUTDOWN: shutdown");
             break;
         }
+        case MPV_EVENT_START_FILE:{
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self fileStart];
+            });
+            break;
+        }
         case MPV_EVENT_FILE_LOADED:{
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self fileLoad];
             });
             break;
         }
+        
         case MPV_EVENT_PROPERTY_CHANGE:{
             NSLog(@"MPV_EVENT_PROPERTY_CHANGE");
             break;
@@ -344,7 +353,7 @@ static void render_context_callback(void *ctx) {
     NSLog(@"fileLoad:%@",@"........");
     _switchVideo = YES;
     
-    _info.isPause = NO;
+    [[[SMCore Instance] player].info setIsPause:NO];
     
     double w = [self mpvGetDouble:@"width"];
     double h = [self mpvGetDouble:@"height"];
@@ -371,6 +380,10 @@ static void render_context_callback(void *ctx) {
     [[NSNotificationCenter defaultCenter] postNotificationName:SM_NOTIF_FILELOADED object:nil userInfo:nil];
     
 //    [[SMLastHistory Instance] add:urlFile duration:2.0];
+}
+
+-(void)fileStart{
+    NSLog(@"fileStart");
 }
 
 -(void)videoDurationAction{

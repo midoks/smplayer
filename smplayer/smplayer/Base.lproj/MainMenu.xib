@@ -335,6 +335,13 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Subtitles" id="UrH-Ge-TSL">
                         <items>
+                            <menuItem title="Find Online Subtitles…" id="pdn-1e-f12">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem title="Save Downloaded Subtitle" id="uXL-kS-FXH">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="360-yv-MRt"/>
                             <menuItem title="Scale Up" id="ldz-fM-8pc">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
@@ -420,6 +427,7 @@
                 <outlet property="decreaseVolume" destination="zwv-ag-T72" id="UaC-vU-USn"/>
                 <outlet property="decreaseVolumeSlightly" destination="lXI-Yr-cg1" id="H0k-O8-TDj"/>
                 <outlet property="doubleSize" destination="Mbu-O6-hEc" id="ywW-23-U5Y"/>
+                <outlet property="findOnlineSub" destination="pdn-1e-f12" id="55i-ju-wux"/>
                 <outlet property="fitToScreen" destination="GMl-WG-ss8" id="cGk-8b-V6E"/>
                 <outlet property="forward" destination="kZ9-tQ-p1B" id="axy-Yf-4Ol"/>
                 <outlet property="fullScreen" destination="45G-XK-9DO" id="IQN-yQ-xR4"/>
@@ -440,6 +448,7 @@
                 <outlet property="prevFrame" destination="DWs-r6-Str" id="xm9-0F-QIT"/>
                 <outlet property="resetAudioDelay" destination="y3c-ZA-l0L" id="Yqw-LD-08a"/>
                 <outlet property="resetTextSize" destination="T67-lJ-Ztq" id="IKW-hm-ZGI"/>
+                <outlet property="saveDownloadedSub" destination="uXL-kS-FXH" id="UtE-6o-GYW"/>
                 <outlet property="screenshot" destination="CYg-rT-PiL" id="iVD-Zs-bWQ"/>
                 <outlet property="smallerSize" destination="NAj-TR-QTo" id="NhE-KB-reQ"/>
                 <outlet property="speedDown" destination="8TG-4n-zJJ" id="joN-Bb-d70"/>

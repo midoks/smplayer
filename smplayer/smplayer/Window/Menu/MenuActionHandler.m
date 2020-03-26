@@ -95,5 +95,9 @@
     [[[SMCore Instance] player].videoView.smLayer setAudioDelay:0];
 }
 
+// subtitle
+-(void)findOnlineSub:(NSMenuItem *)sender{
+    NSLog(@"findOnlineSub...");
+}
 
 @end

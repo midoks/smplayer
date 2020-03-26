@@ -63,6 +63,8 @@
 @property (weak) IBOutlet NSMenuItem *decreaseTextSize;
 @property (weak) IBOutlet NSMenuItem *resetTextSize;
 @property (weak) IBOutlet NSMenuItem *subFont;
+@property (weak) IBOutlet NSMenuItem *findOnlineSub;
+@property (weak) IBOutlet NSMenuItem *saveDownloadedSub;
 
 
 
@@ -161,7 +163,9 @@
     }
     _resetAudioDelay.action = @selector(audioDelayReset:);
     
-    
+    //subtitle
+    _subtitle.delegate = self;
+    _findOnlineSub.action = @selector(findOnlineSub:);
 }
 
 -(void)updatePlaybackMenu{
