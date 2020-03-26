@@ -57,7 +57,12 @@
 @property (weak) IBOutlet NSMenuItem *decreaseAudioDelaySlightly;
 @property (weak) IBOutlet NSMenuItem *resetAudioDelay;
 
-
+// subtitle
+@property (weak) IBOutlet NSMenu *subtitle;
+@property (weak) IBOutlet NSMenuItem *increaseTextSize;
+@property (weak) IBOutlet NSMenuItem *decreaseTextSize;
+@property (weak) IBOutlet NSMenuItem *resetTextSize;
+@property (weak) IBOutlet NSMenuItem *subFont;
 
 
 
@@ -173,12 +178,18 @@
     _audioDelayIndicator.title = [NSString stringWithFormat:NSLocalizedString(@"menu.audio_delay",nil), [[SMCore Instance] player].info.audioDelay];
 }
 
+-(void)updateSubtitleMenu{
+    
+}
+
 #pragma mark - NSMenuDelegate
 -(void)menuWillOpen:(NSMenu *)menu{
     if (menu == _playback){
         [self updatePlaybackMenu];
     } else if (menu == _audio){
         [self updateAudioMenu];
+    } else if (menu == _subtitle){
+        [self updateSubtitleMenu];
     }
 }
 

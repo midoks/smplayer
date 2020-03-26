@@ -323,6 +323,20 @@
 /* Class = "NSMenuItem"; title = "Reset Audio Delay"; ObjectID = "y3c-ZA-l0L"; */
 "y3c-ZA-l0L.title" = "重置音频延迟";
 
+/* Class = "NSMenuItem"; title = "Scale Up"; ObjectID = "ldz-fM-8pc"; */
+"ldz-fM-8pc.title" = "放大";
+
+/* Class = "NSMenuItem"; title = "Scale Down"; ObjectID = "grk-21-zvD"; */
+"grk-21-zvD.title" = "缩小";
+
+/* Class = "NSMenuItem"; title = "Reset Subtitle Scale"; ObjectID = "T67-lJ-Ztq"; */
+"T67-lJ-Ztq.title" = "重置字幕缩放";
+
+/* Class = "NSMenuItem"; title = "Font..."; ObjectID = "Cd0-R1-bDh"; */
+"Cd0-R1-bDh.title" = "字体...";
+
+
+
 
 
 

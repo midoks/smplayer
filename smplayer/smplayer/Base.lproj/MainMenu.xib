@@ -335,13 +335,17 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Subtitles" id="UrH-Ge-TSL">
                         <items>
-                            <menuItem title="Item 1" id="ldz-fM-8pc">
+                            <menuItem title="Scale Up" id="ldz-fM-8pc">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
-                            <menuItem title="Item 2" id="grk-21-zvD">
+                            <menuItem title="Scale Down" id="grk-21-zvD">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
-                            <menuItem title="Item 3" id="T67-lJ-Ztq">
+                            <menuItem title="Reset Subtitle Scale" id="T67-lJ-Ztq">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="KkE-xw-dpT"/>
+                            <menuItem title="Font..." id="Cd0-R1-bDh">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
                         </items>
@@ -412,6 +416,7 @@
                 <outlet property="biggerSize" destination="2N8-3q-3VR" id="iOU-WY-nZq"/>
                 <outlet property="decreaseAudioDelay" destination="kUO-R3-AsW" id="LHa-cR-1Z3"/>
                 <outlet property="decreaseAudioDelaySlightly" destination="xOh-Un-L53" id="PAB-Rz-Wd4"/>
+                <outlet property="decreaseTextSize" destination="grk-21-zvD" id="qQH-Us-6Z2"/>
                 <outlet property="decreaseVolume" destination="zwv-ag-T72" id="UaC-vU-USn"/>
                 <outlet property="decreaseVolumeSlightly" destination="lXI-Yr-cg1" id="H0k-O8-TDj"/>
                 <outlet property="doubleSize" destination="Mbu-O6-hEc" id="ywW-23-U5Y"/>
@@ -422,6 +427,7 @@
                 <outlet property="halfSize" destination="NR7-0g-Mv2" id="78h-4u-9VC"/>
                 <outlet property="increaseAudioDelay" destination="2VA-JC-e98" id="kuS-jb-Yia"/>
                 <outlet property="increaseAudioDelaySlightly" destination="a9P-IL-saH" id="XAr-3T-TgC"/>
+                <outlet property="increaseTextSize" destination="ldz-fM-8pc" id="ntO-bQ-VOH"/>
                 <outlet property="increaseVolume" destination="js5-wK-Dxf" id="blt-xf-8ly"/>
                 <outlet property="increaseVolumeSlightly" destination="YAm-8i-7kO" id="RJQ-k6-R0n"/>
                 <outlet property="jumpTo" destination="5XU-ES-UwM" id="sIe-7R-jf9"/>
@@ -433,6 +439,7 @@
                 <outlet property="playback" destination="6XL-4X-DBu" id="qpD-1T-Yy3"/>
                 <outlet property="prevFrame" destination="DWs-r6-Str" id="xm9-0F-QIT"/>
                 <outlet property="resetAudioDelay" destination="y3c-ZA-l0L" id="Yqw-LD-08a"/>
+                <outlet property="resetTextSize" destination="T67-lJ-Ztq" id="IKW-hm-ZGI"/>
                 <outlet property="screenshot" destination="CYg-rT-PiL" id="iVD-Zs-bWQ"/>
                 <outlet property="smallerSize" destination="NAj-TR-QTo" id="NhE-KB-reQ"/>
                 <outlet property="speedDown" destination="8TG-4n-zJJ" id="joN-Bb-d70"/>
@@ -441,6 +448,8 @@
                 <outlet property="speedReset" destination="ksG-38-qy0" id="g3H-cg-h4B"/>
                 <outlet property="speedUp" destination="bS1-CE-hle" id="bbh-Ho-aWz"/>
                 <outlet property="speedUpSlightly" destination="F2x-Dr-HEW" id="fRl-Ox-GGw"/>
+                <outlet property="subFont" destination="Cd0-R1-bDh" id="frH-yp-sXe"/>
+                <outlet property="subtitle" destination="UrH-Ge-TSL" id="uN4-K3-uNh"/>
                 <outlet property="video" destination="GKS-et-IyQ" id="OJl-T6-i6W"/>
                 <outlet property="volumeIndicator" destination="qfL-cv-sFC" id="oSF-jM-ONs"/>
             </connections>
