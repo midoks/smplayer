@@ -12,6 +12,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface SMPlayerInfo : NSObject
 
+@property NSURL *currentURL;
 @property  BOOL isPause;
 @property  double playSpeed;
 @property  double audioDelay;
@@ -19,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property double width;
 @property double height;
 @property double volume;
+
 
 @end
 

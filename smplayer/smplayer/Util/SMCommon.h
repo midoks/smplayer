@@ -5,8 +5,10 @@
 //  Created by midoks on 2020/2/26.
 //  Copyright © 2020 midoks. All rights reserved.
 //
-#import <Cocoa/Cocoa.h>
 #include <mach-o/dyld.h>
+
+#import <Cocoa/Cocoa.h>
+#import <CommonCrypto/CommonCrypto.h>
 
 #import <Foundation/Foundation.h>
 
@@ -69,5 +71,7 @@ typedef NS_ENUM(NSUInteger, SMAlertStyle) {
 +(NSSize)satisfyMinSizeWithSameAspectRatio:(NSSize)from to:(NSSize)to;
 +(NSSize)satisfyMaxSizeWithSameAspectRatio:(NSSize)from to:(NSSize)to;
 
+#pragma mark - algorithm
++(NSString *)md5:(NSString *)toStr;
 @end
 NS_ASSUME_NONNULL_END

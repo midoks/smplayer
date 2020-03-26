@@ -259,7 +259,8 @@ static dispatch_once_t _instance_once;
 
 #pragma mark - AppDelegate
 -(void)openVideo:(NSString *)path {
-    windowTitle = [NSURL fileURLWithPath:path].lastPathComponent;
+    _info.currentURL = [NSURL fileURLWithPath:path];
+    windowTitle = _info.currentURL.lastPathComponent;
     [_videoView.smLayer openVideo:path];
 }
 

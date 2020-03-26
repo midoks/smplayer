@@ -6,10 +6,14 @@
 //  Copyright © 2020 midoks. All rights reserved.
 //
 
-#import "MenuActionHandler.h"
 #import "SMCore.h"
 #import "SMCommon.h"
 #import "SMVideoTime.h"
+#import "SMSubtitle.h"
+
+#import "MenuActionHandler.h"
+
+
 
 @implementation MenuActionHandler
 
@@ -98,6 +102,7 @@
 // subtitle
 -(void)findOnlineSub:(NSMenuItem *)sender{
     NSLog(@"findOnlineSub...");
+    [[SMSubtitle Instance] get:[[SMCore Instance] player].info.currentURL];
 }
 
 @end
