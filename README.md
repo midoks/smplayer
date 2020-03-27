@@ -9,7 +9,7 @@
 <p align="center">smplayer is simple macOS player</p>
 
 <p align=center>
-<a href="https://github.com/iina/iina/releases">Releases</a> ·
+<a href="https://github.com/midoks/smplayer/releases">Releases</a> ·
 <!-- <a href="https://t.me/IINAUsers">Telegram Group</a> -->
 </p>
 
