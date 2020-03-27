@@ -83,10 +83,12 @@ static dispatch_once_t _instance_once;
     return reqInfoData;
 }
 
--(void)request:(NSURL *)url{
+-(void)request:(NSURL *)url
+      callback:(void(^)(NSUInteger index, NSURL *path))callback
+{
     NSDictionary *reqInfoData = [self hash:url];
     
-    [manager POST:apiPath parameters:reqInfoData progress:^(NSProgress * _Nonnull uploadProgress) {
+    [manager POST:apiPath parameters:reqInfoData progress:^(NSProgress * uploadProgress) {
     } success:^(NSURLSessionDataTask * task, id responseObject) {
         NSArray *data = responseObject;
         NSUInteger count = [data count];
@@ -94,7 +96,8 @@ static dispatch_once_t _instance_once;
         for (NSUInteger i=0; i<count; i++) {
             NSDictionary *info =  [responseObject objectAtIndex:i];
             NSString *downloadURL = [[[info objectForKey:@"Files"] objectAtIndex:0] objectForKey:@"Link"];
-            [self download:downloadURL path:url index:i+1];
+            NSString *extName = [[[info objectForKey:@"Files"] objectAtIndex:0] objectForKey:@"Ext"];
+            [self download:downloadURL path:url index:i+1 extName:extName callback:callback];
         }
         
     } failure:^(NSURLSessionDataTask * task, NSError * error) {
@@ -102,7 +105,12 @@ static dispatch_once_t _instance_once;
     }];
 }
 
--(void)download:(NSString *)url path:(NSURL *)pathURL index:(NSInteger)index{
+-(void)download:(NSString *)url
+           path:(NSURL *)pathURL
+          index:(NSInteger)index
+        extName:(NSString *)extName
+       callback:(void(^)(NSUInteger index, NSURL *path))callback
+{
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     
@@ -110,13 +118,21 @@ static dispatch_once_t _instance_once;
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];
     
     NSURLSessionDownloadTask *downloadTask = [manager downloadTaskWithRequest:request progress:nil destination:^NSURL *(NSURL *targetPath, NSURLResponse *response) {
+    
         NSString *fileName;
-        fileName = [NSString stringWithFormat:@"[%ld]%@", index, pathURL.lastPathComponent];
-  
-        NSURL *documentsDirectoryURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory inDomain:NSUserDomainMask appropriateForURL:nil create:NO error:nil];
-        return [documentsDirectoryURL URLByAppendingPathComponent:fileName];
+        fileName = [pathURL.lastPathComponent stringByReplacingOccurrencesOfString:pathURL.pathExtension
+                                                                        withString:extName];
+
+        fileName = [NSString stringWithFormat:@"[%ld]%@", index, fileName];
+        NSURL *downloadURL = [[NSFileManager defaultManager] URLForDirectory:NSDocumentDirectory
+                                                                    inDomain:NSUserDomainMask
+                                                           appropriateForURL:nil
+                                                                      create:YES
+                                                                       error:nil];
+
+        return [downloadURL URLByAppendingPathComponent:fileName];
     } completionHandler:^(NSURLResponse *response, NSURL *filePath, NSError *error) {
-        NSLog(@"File downloaded to: %@", filePath);
+        callback(index, filePath);
     }];
     [downloadTask resume];
 }

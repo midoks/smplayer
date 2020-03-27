@@ -56,6 +56,7 @@ typedef NS_ENUM(NSUInteger, SMSeek) {
 -(void)setSpeed:(double)speed;
 -(void)screenshot;
 -(void)setAudioDelay:(double)delay;
+-(void)loadSubtitle:(NSURL *)url;
 @end
 
 NS_ASSUME_NONNULL_END

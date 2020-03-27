@@ -14,7 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (id)Instance;
 
--(void)request:(NSURL *)url;
+-(void)request:(NSURL *)url
+      callback:(void(^)(NSUInteger index, NSURL *path))callback;
 @end
 
 NS_ASSUME_NONNULL_END

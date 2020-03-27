@@ -102,7 +102,13 @@
 // subtitle
 -(void)findOnlineSub:(NSMenuItem *)sender{
     NSLog(@"findOnlineSub...");
-    [[SMSubtitle Instance] get:[[SMCore Instance] player].info.currentURL];
+    [[SMSubtitle Instance] get:[[SMCore Instance] player].info.currentURL callback:^(NSUInteger index, NSURL * _Nonnull path) {
+        NSLog(@"%lu,%@",index,path);
+        
+        if (index == 1){
+            [[[SMCore Instance] player].videoView.smLayer loadSubtitle:path];
+        }
+    }];
 }
 
 @end

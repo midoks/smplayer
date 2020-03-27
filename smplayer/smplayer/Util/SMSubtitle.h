@@ -14,7 +14,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 + (id)Instance;
 
--(void)get:(NSURL *)file;
+-(void)get:(NSURL *)file
+  callback:(void(^)(NSUInteger index, NSURL *path))callback;
 
 @end
 

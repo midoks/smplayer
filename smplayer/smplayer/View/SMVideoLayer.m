@@ -540,4 +540,12 @@ static void render_context_callback(void *ctx) {
     }
 }
 
+-(void)loadSubtitle:(NSURL *)url{
+    const char *args[] = {"sub-add", [url path].UTF8String, NULL};
+    int code = mpv_command(mpv, args);
+    if (code < 0 ){
+        NSLog(@"load:%@",@"fail");
+    }
+}
+
 @end

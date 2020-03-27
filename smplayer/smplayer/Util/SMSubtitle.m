@@ -20,9 +20,12 @@ static dispatch_once_t _instance_once;
     return _instance;
 }
 
--(void)get:(NSURL *)file{
-//    NSLog(@"SMSubtitle:%@", file);
-    [[SMSubtitleShooter Instance] request:file];
+-(void)get:(NSURL *)file
+  callback:(void(^)(NSUInteger index, NSURL *path))callback
+{
+    [[SMSubtitleShooter Instance] request:file callback:^(NSUInteger index, NSURL * _Nonnull path) {
+        callback(index,path);
+    }];
     
     
 }

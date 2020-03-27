@@ -257,7 +257,7 @@ static dispatch_once_t _instance_once;
     return YES;
 }
 
-#pragma mark - AppDelegate
+#pragma mark - Public Methods
 -(void)openVideo:(NSString *)path {
     _info.currentURL = [NSURL fileURLWithPath:path];
     windowTitle = _info.currentURL.lastPathComponent;
@@ -284,6 +284,10 @@ static dispatch_once_t _instance_once;
         [self openVideo:[[panel URL] path]];
         cmd();
     }
+}
+
+-(void)loadSubtitle:(NSURL *)path{
+    
 }
 
 -(void)setWindowScale:(double)scale{
