@@ -304,6 +304,7 @@ static dispatch_once_t _instance_once;
     }
     [self.window setFrame:newFrame display:YES animate:YES];
 }
+
 #pragma mark - menu action
 -(void)menuChangeWindowSize:(NSMenuItem *)sender{
     NSInteger size = sender.tag;
