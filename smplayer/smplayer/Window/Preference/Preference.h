@@ -8,6 +8,9 @@
 
 #import <Cocoa/Cocoa.h>
 
+#import "PreferenceGeneral.h"
+#import "PreferenceNetwork.h"
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface Preference : NSWindowController

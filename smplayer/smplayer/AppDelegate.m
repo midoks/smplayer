@@ -8,14 +8,19 @@
 
 #import "SMCore.h"
 #import "OpenURL.h"
-#import "Preference.h"
 #import "SMCommon.h"
 #import "MenuListController.h"
+
+#import "MASPreferences.h"
+#import "Preference.h"
+
 
 #import "AppDelegate.h"
 
 @interface AppDelegate ()
-
+{
+    NSWindowController *_preferenceWindow;
+}
 @property (weak) IBOutlet MenuListController *menuList;
 
 @end
@@ -27,6 +32,8 @@
     [[[SMCore Instance] first] showWindow:self];
     
     [_menuList bindMenuItems];
+    
+    [self initPrefencesWindow];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
@@ -83,9 +90,20 @@
 }
 
 
+-(void)initPrefencesWindow
+{
+    NSArray *listVC = @[
+        [[PreferenceGeneral alloc] init],
+        [[PreferenceNetwork alloc] init],
+    ];
+    
+    _preferenceWindow = [[MASPreferencesWindowController alloc] initWithViewControllers:listVC title:@""];
+    _preferenceWindow.window.level = NSFloatingWindowLevel;
+}
+
 #pragma mark - menu function
 - (IBAction)showPreference:(id)sender {
-    [[[SMCore Instance] preference] showWindow:self];
+    [_preferenceWindow showWindow:nil];
 }
 
 - (IBAction)openFile:(id)sender {

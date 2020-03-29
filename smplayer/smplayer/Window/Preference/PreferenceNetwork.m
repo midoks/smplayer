@@ -27,4 +27,21 @@
     [self.view addSubview:_cacheView];
 }
 
+#pragma mark - MASPreferencesViewController
+
+- (NSString *)viewIdentifier
+{
+    return @"PreferenceNetwork";
+}
+
+- (NSImage *)toolbarItemImage
+{
+    return [NSImage imageNamed:NSImageNameNetwork];
+}
+
+- (NSString *)toolbarItemLabel
+{
+    return NSLocalizedString(@"Network", nil);
+}
+
 @end

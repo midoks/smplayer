@@ -11,9 +11,6 @@
 #import "SMCommon.h"
 
 @interface PreferenceGeneral ()
-@property (strong) IBOutlet NSView *behaviorView;
-@property (strong) IBOutlet NSView *testView;
-@property (weak) IBOutlet NSStackView *baseView;
 
 @end
 
@@ -24,45 +21,24 @@
     return self;
 }
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    NSLog(@"viewDidLoad...");
-//    _behaviorView.frame = NSMakeRect(0, 0, 300, 200);
-//    _behaviorView.wantsLayer = YES;
-//    _behaviorView.layer.backgroundColor = [NSColor redColor].CGColor;
-//    [self.view addSubview:_behaviorView];
-    
-    NSBox *b = [[NSBox alloc] initWithFrame:NSMakeRect(0, 0, 100, 1)];
-    b.boxType = NSBoxSeparator;
-//
-    NSBox *b2 = [[NSBox alloc] initWithFrame:NSMakeRect(0, 10, 100, 1)];
-    b2.boxType = NSBoxSeparator;
-    
-//    NSArray *list = [NSArray arrayWithObjects:_behaviorView,nil];
-//    _baseView = [NSStackView stackViewWithViews:list];
-    
-//    [self.view addSubview:_behaviorView];
-    [_baseView addSubview:_behaviorView];
-    [_baseView addSubview:b];
-    [_baseView addSubview:_testView];
-    
-//    [_baseView addSubview:b2];
+}
 
-    _baseView.orientation = NSUserInterfaceLayoutOrientationVertical;
-    _baseView.alignment = NSLayoutAttributeLeading;
-    _baseView.spacing = 0;
-    _baseView.distribution = NSStackViewDistributionFill;
+#pragma mark - MASPreferencesViewController
+- (NSString *)viewIdentifier
+{
+    return @"PreferenceGeneral";
+}
 
-    for (int i = 0 ; i<[_baseView.views count]; i++) {
-        NSLog(@"%@", _baseView.views[i]);
-//        [SMCommon quickConstraints:@[@"H:|-1-[v]-1-|",@"V:|-1-[v]-1-|"] view:@{@"v":_baseView.views[i]}];
-    }
-//    [self.view addSubview:stackView];
-//    [SMCommon quickConstraints:@[@"H:|-[v]-|",@"V:|-1-[v]-1-|"] view:@{@"v":_baseView}];
-    
-//    [self.view addSubview:_baseView];
+- (NSImage *)toolbarItemImage
+{
+    return [NSImage imageNamed:NSImageNamePreferencesGeneral];
+}
+
+- (NSString *)toolbarItemLabel
+{
+    return NSLocalizedString(@"General", @"");
 }
 
 @end

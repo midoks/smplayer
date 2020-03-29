@@ -26,7 +26,6 @@
 		828DBD3B2416886E00A89A89 /* Web.m in Sources */ = {isa = PBXBuildFile; fileRef = 828DBD392416886E00A89A89 /* Web.m */; };
 		828DBD3C2416886E00A89A89 /* Web.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828DBD3A2416886E00A89A89 /* Web.xib */; };
 		828DBD40241688D200A89A89 /* Preference.m in Sources */ = {isa = PBXBuildFile; fileRef = 828DBD3E241688D200A89A89 /* Preference.m */; };
-		828DBD41241688D200A89A89 /* Preference.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828DBD3F241688D200A89A89 /* Preference.xib */; };
 		828DBD462416B12400A89A89 /* OpenURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 828DBD442416B12400A89A89 /* OpenURL.m */; };
 		828DBD7A2418271100A89A89 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 828DBD622418271100A89A89 /* NSLayoutConstraint+MASDebugAdditions.m */; };
 		828DBD7B2418271100A89A89 /* ViewController+MASAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 828DBD6B2418271100A89A89 /* ViewController+MASAdditions.m */; };
@@ -50,6 +49,10 @@
 		82C2C1CF242CEA4D00F5261C /* SMSubtitleShooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C2C1CE242CEA4D00F5261C /* SMSubtitleShooter.m */; };
 		82C2C1D6242CFE3800F5261C /* NSData+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C2C1D4242CFE3800F5261C /* NSData+MD5.m */; };
 		82C2C5082409191400485064 /* SMVideoTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C2C5072409191400485064 /* SMVideoTime.m */; };
+		82CFFF542430A2D6000445EF /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 82CFFF4B2430A2D6000445EF /* LICENSE.md */; };
+		82CFFF552430A2D6000445EF /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82CFFF4E2430A2D6000445EF /* MASPreferencesWindow.xib */; };
+		82CFFF562430A2D6000445EF /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CFFF522430A2D6000445EF /* MASPreferencesWindowController.m */; };
+		82CFFF572430A2D6000445EF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 82CFFF532430A2D6000445EF /* README.md */; };
 		82E7AD57242124580033993D /* SMSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E7AD56242124580033993D /* SMSliderCell.m */; };
 		82E7AD5A242209070033993D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 82E7AD5C242209070033993D /* Credits.rtf */; };
 		82E7AD6124226FFE0033993D /* MenuActionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E7AD6024226FFC0033993D /* MenuActionHandler.m */; };
@@ -129,7 +132,6 @@
 		828DBD3A2416886E00A89A89 /* Web.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Web.xib; sourceTree = "<group>"; };
 		828DBD3D241688D200A89A89 /* Preference.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Preference.h; sourceTree = "<group>"; };
 		828DBD3E241688D200A89A89 /* Preference.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Preference.m; sourceTree = "<group>"; };
-		828DBD3F241688D200A89A89 /* Preference.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Preference.xib; sourceTree = "<group>"; };
 		828DBD432416B12400A89A89 /* OpenURL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenURL.h; sourceTree = "<group>"; };
 		828DBD442416B12400A89A89 /* OpenURL.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenURL.m; sourceTree = "<group>"; };
 		828DBD572417C2E300A89A89 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/MainMenu.strings"; sourceTree = "<group>"; };
@@ -184,6 +186,13 @@
 		82C2C1D5242CFE3800F5261C /* NSData+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MD5.h"; sourceTree = "<group>"; };
 		82C2C5062409191400485064 /* SMVideoTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMVideoTime.h; sourceTree = "<group>"; };
 		82C2C5072409191400485064 /* SMVideoTime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMVideoTime.m; sourceTree = "<group>"; };
+		82CFFF4B2430A2D6000445EF /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
+		82CFFF4D2430A2D6000445EF /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
+		82CFFF4F2430A2D6000445EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MASPreferencesWindow.xib; sourceTree = "<group>"; };
+		82CFFF502430A2D6000445EF /* MASPreferencesWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesWindowController.h; sourceTree = "<group>"; };
+		82CFFF512430A2D6000445EF /* MASPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferences.h; sourceTree = "<group>"; };
+		82CFFF522430A2D6000445EF /* MASPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASPreferencesWindowController.m; sourceTree = "<group>"; };
+		82CFFF532430A2D6000445EF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		82E7AD55242124580033993D /* SMSliderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMSliderCell.h; sourceTree = "<group>"; };
 		82E7AD56242124580033993D /* SMSliderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMSliderCell.m; sourceTree = "<group>"; };
 		82E7AD5B242209070033993D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Base; path = Base.lproj/Credits.rtf; sourceTree = "<group>"; };
@@ -403,6 +412,7 @@
 		826AB8342406C0D400B87C63 /* Util */ = {
 			isa = PBXGroup;
 			children = (
+				82CFFF4A2430A2D6000445EF /* MASPreferences */,
 				82C2C1B5242CC54000F5261C /* AFNetworking */,
 				828DBD602418271100A89A89 /* Masonry */,
 				826AB8352406C12500B87C63 /* SMCommon.h */,
@@ -436,7 +446,6 @@
 			children = (
 				828DBD3D241688D200A89A89 /* Preference.h */,
 				828DBD3E241688D200A89A89 /* Preference.m */,
-				828DBD3F241688D200A89A89 /* Preference.xib */,
 				8228D9A0241E6BC200734908 /* PreferenceGeneral.h */,
 				8228D9A1241E6BC200734908 /* PreferenceGeneral.m */,
 				8228D9A2241E6BC200734908 /* PreferenceGeneral.xib */,
@@ -538,6 +547,28 @@
 			path = Extends;
 			sourceTree = "<group>";
 		};
+		82CFFF4A2430A2D6000445EF /* MASPreferences */ = {
+			isa = PBXGroup;
+			children = (
+				82CFFF4B2430A2D6000445EF /* LICENSE.md */,
+				82CFFF4C2430A2D6000445EF /* Framework */,
+				82CFFF532430A2D6000445EF /* README.md */,
+			);
+			path = MASPreferences;
+			sourceTree = "<group>";
+		};
+		82CFFF4C2430A2D6000445EF /* Framework */ = {
+			isa = PBXGroup;
+			children = (
+				82CFFF4D2430A2D6000445EF /* MASPreferencesViewController.h */,
+				82CFFF4E2430A2D6000445EF /* MASPreferencesWindow.xib */,
+				82CFFF502430A2D6000445EF /* MASPreferencesWindowController.h */,
+				82CFFF512430A2D6000445EF /* MASPreferences.h */,
+				82CFFF522430A2D6000445EF /* MASPreferencesWindowController.m */,
+			);
+			path = Framework;
+			sourceTree = "<group>";
+		};
 		82E9A45C24030AEA000DB7F3 = {
 			isa = PBXGroup;
 			children = (
@@ -565,6 +596,7 @@
 				82C2C1D3242CFE3800F5261C /* Extends */,
 				82C16A5124251689002DF9CF /* Models */,
 				82E9A49524030B51000DB7F3 /* Deps */,
+				82023C5A2414D4FC00B0B8BC /* SMCore.h */,
 				82E9A52A24030C1F000DB7F3 /* Assets */,
 				826AB8342406C0D400B87C63 /* Util */,
 				82E9A5412403947E000DB7F3 /* Window */,
@@ -849,7 +881,6 @@
 		82E9A5412403947E000DB7F3 /* Window */ = {
 			isa = PBXGroup;
 			children = (
-				82023C5A2414D4FC00B0B8BC /* SMCore.h */,
 				82023C5B2414D4FC00B0B8BC /* SMCore.m */,
 				824384F7241D28B300A1A218 /* Menu */,
 				828DBD422416B0A100A89A89 /* Common */,
@@ -981,12 +1012,14 @@
 				824384F0241CE62800A1A218 /* Welcome.xib in Resources */,
 				82E9A46C24030AEE000DB7F3 /* Assets.xcassets in Resources */,
 				8243850A241E357F00A1A218 /* Localizable.strings in Resources */,
-				828DBD41241688D200A89A89 /* Preference.xib in Resources */,
+				82CFFF552430A2D6000445EF /* MASPreferencesWindow.xib in Resources */,
 				82E7AD5A242209070033993D /* Credits.rtf in Resources */,
 				826AB8392407C0DF00B87C63 /* input.conf in Resources */,
 				8228D9A9241EB5C200734908 /* PreferenceNetwork.xib in Resources */,
 				82E9A46F24030AEE000DB7F3 /* MainMenu.xib in Resources */,
+				82CFFF572430A2D6000445EF /* README.md in Resources */,
 				82FBC09424120C66002E8ABD /* Player.xib in Resources */,
+				82CFFF542430A2D6000445EF /* LICENSE.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1019,6 +1052,7 @@
 				8228D9A3241E6BC200734908 /* PreferenceGeneral.m in Sources */,
 				828DBD7C2418271100A89A89 /* MASCompositeConstraint.m in Sources */,
 				82023C5C2414D4FC00B0B8BC /* SMCore.m in Sources */,
+				82CFFF562430A2D6000445EF /* MASPreferencesWindowController.m in Sources */,
 				82C16A54242516AD002DF9CF /* SMPlayerInfo.m in Sources */,
 				82C2C1C6242CC54000F5261C /* AFURLSessionManager.m in Sources */,
 				828DBD812418271100A89A89 /* MASConstraint.m in Sources */,
@@ -1115,6 +1149,14 @@
 				8243850D241E358300A1A218 /* zh-Hans */,
 			);
 			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		82CFFF4E2430A2D6000445EF /* MASPreferencesWindow.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				82CFFF4F2430A2D6000445EF /* en */,
+			);
+			name = MASPreferencesWindow.xib;
 			sourceTree = "<group>";
 		};
 		82E7AD5C242209070033993D /* Credits.rtf */ = {
