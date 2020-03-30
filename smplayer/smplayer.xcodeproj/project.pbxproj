@@ -49,6 +49,8 @@
 		82C2C1CF242CEA4D00F5261C /* SMSubtitleShooter.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C2C1CE242CEA4D00F5261C /* SMSubtitleShooter.m */; };
 		82C2C1D6242CFE3800F5261C /* NSData+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C2C1D4242CFE3800F5261C /* NSData+MD5.m */; };
 		82C2C5082409191400485064 /* SMVideoTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C2C5072409191400485064 /* SMVideoTime.m */; };
+		82C9B6EB2431C10A00B5A314 /* PreferenceCodec.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C9B6E92431C10A00B5A314 /* PreferenceCodec.m */; };
+		82C9B6EC2431C10A00B5A314 /* PreferenceCodec.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82C9B6EA2431C10A00B5A314 /* PreferenceCodec.xib */; };
 		82CFFF542430A2D6000445EF /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 82CFFF4B2430A2D6000445EF /* LICENSE.md */; };
 		82CFFF552430A2D6000445EF /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82CFFF4E2430A2D6000445EF /* MASPreferencesWindow.xib */; };
 		82CFFF562430A2D6000445EF /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CFFF522430A2D6000445EF /* MASPreferencesWindowController.m */; };
@@ -186,6 +188,9 @@
 		82C2C1D5242CFE3800F5261C /* NSData+MD5.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+MD5.h"; sourceTree = "<group>"; };
 		82C2C5062409191400485064 /* SMVideoTime.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMVideoTime.h; sourceTree = "<group>"; };
 		82C2C5072409191400485064 /* SMVideoTime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMVideoTime.m; sourceTree = "<group>"; };
+		82C9B6E82431C10A00B5A314 /* PreferenceCodec.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferenceCodec.h; sourceTree = "<group>"; };
+		82C9B6E92431C10A00B5A314 /* PreferenceCodec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferenceCodec.m; sourceTree = "<group>"; };
+		82C9B6EA2431C10A00B5A314 /* PreferenceCodec.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferenceCodec.xib; sourceTree = "<group>"; };
 		82CFFF4B2430A2D6000445EF /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		82CFFF4D2430A2D6000445EF /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
 		82CFFF4F2430A2D6000445EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MASPreferencesWindow.xib; sourceTree = "<group>"; };
@@ -452,6 +457,9 @@
 				8228D9A5241EB5C200734908 /* PreferenceNetwork.h */,
 				8228D9A6241EB5C200734908 /* PreferenceNetwork.m */,
 				8228D9A7241EB5C200734908 /* PreferenceNetwork.xib */,
+				82C9B6E82431C10A00B5A314 /* PreferenceCodec.h */,
+				82C9B6E92431C10A00B5A314 /* PreferenceCodec.m */,
+				82C9B6EA2431C10A00B5A314 /* PreferenceCodec.xib */,
 			);
 			path = Preference;
 			sourceTree = "<group>";
@@ -1013,6 +1021,7 @@
 				82E9A46C24030AEE000DB7F3 /* Assets.xcassets in Resources */,
 				8243850A241E357F00A1A218 /* Localizable.strings in Resources */,
 				82CFFF552430A2D6000445EF /* MASPreferencesWindow.xib in Resources */,
+				82C9B6EC2431C10A00B5A314 /* PreferenceCodec.xib in Resources */,
 				82E7AD5A242209070033993D /* Credits.rtf in Resources */,
 				826AB8392407C0DF00B87C63 /* input.conf in Resources */,
 				8228D9A9241EB5C200734908 /* PreferenceNetwork.xib in Resources */,
@@ -1073,6 +1082,7 @@
 				82C16A5724262B52002DF9CF /* MpvHelper.m in Sources */,
 				82C2C1C8242CC54000F5261C /* AFNetworkReachabilityManager.m in Sources */,
 				828DBD40241688D200A89A89 /* Preference.m in Sources */,
+				82C9B6EB2431C10A00B5A314 /* PreferenceCodec.m in Sources */,
 				828DBD7E2418271100A89A89 /* MASLayoutConstraint.m in Sources */,
 				828DBD822418271100A89A89 /* MASViewConstraint.m in Sources */,
 				82C2C1D6242CFE3800F5261C /* NSData+MD5.m in Sources */,

@@ -94,6 +94,7 @@
 {
     NSArray *listVC = @[
         [[PreferenceGeneral alloc] init],
+        [[PreferenceCodec alloc] init],
         [[PreferenceNetwork alloc] init],
     ];
     
