@@ -16,13 +16,27 @@
         <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
             <rect key="frame" x="0.0" y="0.0" width="500" height="341"/>
             <subviews>
-                <view id="Z1n-ic-1rN">
-                    <rect key="frame" x="20" y="148" width="460" height="46"/>
-                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="FFh-8K-kcT">
+                    <rect key="frame" x="20" y="171" width="460" height="160"/>
                     <subviews>
-                        <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YN3-XI-4Ax">
-                            <rect key="frame" x="214" y="9" width="178" height="25"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CQ9-Jr-9dt">
+                            <rect key="frame" x="1" y="134" width="61" height="16"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" title="Behavior:" id="QsS-fX-GWZ">
+                                <font key="font" usesAppearanceFont="YES"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zLn-fb-uYY">
+                            <rect key="frame" x="118" y="134" width="102" height="16"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" title="When launched:" id="DTJ-Xr-xuc">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YN3-XI-4Ax">
+                            <rect key="frame" x="219" y="129" width="178" height="25"/>
                             <popUpButtonCell key="cell" type="push" title="Show welcome window" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="D6l-6z-0Z3" id="6PT-Bu-kJ4">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -35,66 +49,26 @@
                                 </menu>
                             </popUpButtonCell>
                         </popUpButton>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zLn-fb-uYY">
-                            <rect key="frame" x="65" y="15" width="102" height="16"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            <textFieldCell key="cell" lineBreakMode="clipping" title="When launched:" id="DTJ-Xr-xuc">
-                                <font key="font" metaFont="system"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
                     </subviews>
-                </view>
-                <box title="Behavior" translatesAutoresizingMaskIntoConstraints="NO" id="dsk-Sq-ps0">
-                    <rect key="frame" x="17" y="272" width="466" height="64"/>
-                    <view key="contentView" id="avy-Dp-aaP">
-                        <rect key="frame" x="3" y="3" width="460" height="46"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <popUpButton verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EFi-Tf-RMo">
-                                <rect key="frame" x="214" y="9" width="178" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <popUpButtonCell key="cell" type="push" title="Show welcome window" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="v4K-Nn-Qkq" id="99k-13-hVh">
-                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                    <menu key="menu" id="LMH-7n-Q9Z">
-                                        <items>
-                                            <menuItem title="Show welcome window" state="on" id="v4K-Nn-Qkq"/>
-                                            <menuItem title="Show open file panel" id="jm9-1B-jEG"/>
-                                            <menuItem title="Do nothing" id="FQl-6g-0Pu"/>
-                                        </items>
-                                    </menu>
-                                </popUpButtonCell>
-                            </popUpButton>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7zb-JU-C8X">
-                                <rect key="frame" x="65" y="15" width="102" height="16"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <textFieldCell key="cell" lineBreakMode="clipping" title="When launched:" id="DDO-uF-QYk">
-                                    <font key="font" metaFont="system"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
-                        </subviews>
-                    </view>
                     <constraints>
-                        <constraint firstAttribute="height" constant="60" id="vuJ-aS-cgC"/>
+                        <constraint firstItem="CQ9-Jr-9dt" firstAttribute="leading" secondItem="FFh-8K-kcT" secondAttribute="leading" constant="3" id="5l0-yx-tol"/>
+                        <constraint firstItem="zLn-fb-uYY" firstAttribute="leading" secondItem="FFh-8K-kcT" secondAttribute="leading" constant="120" id="MFi-ra-QkW"/>
+                        <constraint firstAttribute="width" constant="460" id="TxU-c3-kQG"/>
+                        <constraint firstItem="zLn-fb-uYY" firstAttribute="top" secondItem="FFh-8K-kcT" secondAttribute="top" constant="10" id="Wgh-l7-TCe"/>
+                        <constraint firstItem="YN3-XI-4Ax" firstAttribute="leading" secondItem="zLn-fb-uYY" secondAttribute="trailing" constant="3" id="ZG1-qH-zUX"/>
+                        <constraint firstAttribute="height" constant="160" id="kLo-Pc-xE8"/>
+                        <constraint firstItem="CQ9-Jr-9dt" firstAttribute="top" secondItem="FFh-8K-kcT" secondAttribute="top" constant="10" id="mFb-rN-wh3"/>
+                        <constraint firstItem="YN3-XI-4Ax" firstAttribute="centerY" secondItem="zLn-fb-uYY" secondAttribute="centerY" id="mcl-31-3Fa"/>
                     </constraints>
-                </box>
+                </customView>
             </subviews>
             <constraints>
-                <constraint firstAttribute="trailing" secondItem="dsk-Sq-ps0" secondAttribute="trailing" constant="20" id="Bhd-ij-Hej"/>
+                <constraint firstAttribute="trailing" secondItem="FFh-8K-kcT" secondAttribute="trailing" constant="20" id="kfz-hj-c5e"/>
+                <constraint firstItem="FFh-8K-kcT" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="lNh-Ne-pYP"/>
                 <constraint firstAttribute="width" constant="500" id="lcf-M2-6J7"/>
-                <constraint firstItem="dsk-Sq-ps0" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="rkL-Dr-zzG"/>
-                <constraint firstItem="dsk-Sq-ps0" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="5" id="yeC-Bb-PfB"/>
+                <constraint firstItem="FFh-8K-kcT" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="10" id="nBY-Ch-7kO"/>
             </constraints>
             <point key="canvasLocation" x="149" y="266.5"/>
-        </customView>
-        <customView id="NgY-3t-bgH">
-            <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <point key="canvasLocation" x="169" y="554"/>
         </customView>
     </objects>
 </document>

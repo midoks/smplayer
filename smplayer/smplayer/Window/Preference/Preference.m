@@ -35,34 +35,5 @@ static dispatch_once_t _instance_once;
     self = [super init];
     return self;
 }
--(id)initWithWindow:(NSWindow *)window
-{
-    if (self = [super initWithWindow:window]) {
-        [self loadWindow];
-    }
-    return self;
-}
 
-- (void)windowDidLoad {
-    [super windowDidLoad];
-    self.window.movableByWindowBackground = YES;
-    self.window.level = NSFloatingWindowLevel;
-
-}
-
-
-
-#pragma mark -
-
-NSString *const kFocusedAdvancedControlIndex = @"FocusedAdvancedControlIndex";
-
-- (NSInteger)focusedAdvancedControlIndex
-{
-    return [[NSUserDefaults standardUserDefaults] integerForKey:kFocusedAdvancedControlIndex];
-}
-
-- (void)setFocusedAdvancedControlIndex:(NSInteger)focusedAdvancedControlIndex
-{
-    [[NSUserDefaults standardUserDefaults] setInteger:focusedAdvancedControlIndex forKey:kFocusedAdvancedControlIndex];
-}
 @end
