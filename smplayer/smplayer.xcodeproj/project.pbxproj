@@ -53,6 +53,8 @@
 		82C9B6EC2431C10A00B5A314 /* PreferenceCodec.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82C9B6EA2431C10A00B5A314 /* PreferenceCodec.xib */; };
 		82C9B6F02431F6B500B5A314 /* PreferenceSubtitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C9B6EE2431F6B500B5A314 /* PreferenceSubtitle.m */; };
 		82C9B6F12431F6B500B5A314 /* PreferenceSubtitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82C9B6EF2431F6B500B5A314 /* PreferenceSubtitle.xib */; };
+		82C9B6FD2432582700B5A314 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82C9B6F8243257B100B5A314 /* Sparkle.framework */; };
+		82C9B6FE2432582700B5A314 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 82C9B6F8243257B100B5A314 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		82CFFF542430A2D6000445EF /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 82CFFF4B2430A2D6000445EF /* LICENSE.md */; };
 		82CFFF552430A2D6000445EF /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82CFFF4E2430A2D6000445EF /* MASPreferencesWindow.xib */; };
 		82CFFF562430A2D6000445EF /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CFFF522430A2D6000445EF /* MASPreferencesWindowController.m */; };
@@ -97,6 +99,20 @@
 			remoteInfo = smplayer;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		82C9B6FF2432582700B5A314 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				82C9B6FE2432582700B5A314 /* Sparkle.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		82023C522413ADA700B0B8BC /* Welcome.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Welcome.h; sourceTree = "<group>"; };
@@ -196,6 +212,7 @@
 		82C9B6ED2431F6B500B5A314 /* PreferenceSubtitle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferenceSubtitle.h; sourceTree = "<group>"; };
 		82C9B6EE2431F6B500B5A314 /* PreferenceSubtitle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferenceSubtitle.m; sourceTree = "<group>"; };
 		82C9B6EF2431F6B500B5A314 /* PreferenceSubtitle.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferenceSubtitle.xib; sourceTree = "<group>"; };
+		82C9B6F8243257B100B5A314 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		82CFFF4B2430A2D6000445EF /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		82CFFF4D2430A2D6000445EF /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
 		82CFFF4F2430A2D6000445EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MASPreferencesWindow.xib; sourceTree = "<group>"; };
@@ -374,6 +391,7 @@
 				82E9A52124030B52000DB7F3 /* libavutil.a in Frameworks */,
 				82E9A52624030B52000DB7F3 /* libmpv.1.dylib in Frameworks */,
 				82E9A52924030B52000DB7F3 /* libswscale.a in Frameworks */,
+				82C9B6FD2432582700B5A314 /* Sparkle.framework in Frameworks */,
 				82E9A52524030B52000DB7F3 /* libavformat.a in Frameworks */,
 				82E9A52324030B52000DB7F3 /* libavcodec.a in Frameworks */,
 			);
@@ -446,6 +464,7 @@
 		826AB83A2408229000B87C63 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				82C9B6F8243257B100B5A314 /* Sparkle.framework */,
 				826AB83B2408229000B87C63 /* CoreAudioKit.framework */,
 			);
 			name = Frameworks;
@@ -928,6 +947,7 @@
 				82E9A46124030AEA000DB7F3 /* Sources */,
 				82E9A46224030AEA000DB7F3 /* Frameworks */,
 				82E9A46324030AEA000DB7F3 /* Resources */,
+				82C9B6FF2432582700B5A314 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1320,6 +1340,10 @@
 				CODE_SIGN_ENTITLEMENTS = smplayer/smplayer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/smplayer/Deps/include";
 				INFOPLIST_FILE = smplayer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1344,6 +1368,10 @@
 				CODE_SIGN_ENTITLEMENTS = smplayer/smplayer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				HEADER_SEARCH_PATHS = "$(PROJECT_DIR)/smplayer/Deps/include";
 				INFOPLIST_FILE = smplayer/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
