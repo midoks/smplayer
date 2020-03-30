@@ -11,6 +11,7 @@
 #import "PreferenceGeneral.h"
 #import "PreferenceNetwork.h"
 #import "PreferenceCodec.h"
+#import "PreferenceSubtitle.h"
 
 NS_ASSUME_NONNULL_BEGIN
 

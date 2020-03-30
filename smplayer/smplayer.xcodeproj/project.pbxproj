@@ -51,6 +51,8 @@
 		82C2C5082409191400485064 /* SMVideoTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C2C5072409191400485064 /* SMVideoTime.m */; };
 		82C9B6EB2431C10A00B5A314 /* PreferenceCodec.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C9B6E92431C10A00B5A314 /* PreferenceCodec.m */; };
 		82C9B6EC2431C10A00B5A314 /* PreferenceCodec.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82C9B6EA2431C10A00B5A314 /* PreferenceCodec.xib */; };
+		82C9B6F02431F6B500B5A314 /* PreferenceSubtitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C9B6EE2431F6B500B5A314 /* PreferenceSubtitle.m */; };
+		82C9B6F12431F6B500B5A314 /* PreferenceSubtitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82C9B6EF2431F6B500B5A314 /* PreferenceSubtitle.xib */; };
 		82CFFF542430A2D6000445EF /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 82CFFF4B2430A2D6000445EF /* LICENSE.md */; };
 		82CFFF552430A2D6000445EF /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82CFFF4E2430A2D6000445EF /* MASPreferencesWindow.xib */; };
 		82CFFF562430A2D6000445EF /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CFFF522430A2D6000445EF /* MASPreferencesWindowController.m */; };
@@ -191,6 +193,9 @@
 		82C9B6E82431C10A00B5A314 /* PreferenceCodec.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferenceCodec.h; sourceTree = "<group>"; };
 		82C9B6E92431C10A00B5A314 /* PreferenceCodec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferenceCodec.m; sourceTree = "<group>"; };
 		82C9B6EA2431C10A00B5A314 /* PreferenceCodec.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferenceCodec.xib; sourceTree = "<group>"; };
+		82C9B6ED2431F6B500B5A314 /* PreferenceSubtitle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferenceSubtitle.h; sourceTree = "<group>"; };
+		82C9B6EE2431F6B500B5A314 /* PreferenceSubtitle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferenceSubtitle.m; sourceTree = "<group>"; };
+		82C9B6EF2431F6B500B5A314 /* PreferenceSubtitle.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferenceSubtitle.xib; sourceTree = "<group>"; };
 		82CFFF4B2430A2D6000445EF /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		82CFFF4D2430A2D6000445EF /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
 		82CFFF4F2430A2D6000445EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MASPreferencesWindow.xib; sourceTree = "<group>"; };
@@ -460,6 +465,9 @@
 				82C9B6E82431C10A00B5A314 /* PreferenceCodec.h */,
 				82C9B6E92431C10A00B5A314 /* PreferenceCodec.m */,
 				82C9B6EA2431C10A00B5A314 /* PreferenceCodec.xib */,
+				82C9B6ED2431F6B500B5A314 /* PreferenceSubtitle.h */,
+				82C9B6EE2431F6B500B5A314 /* PreferenceSubtitle.m */,
+				82C9B6EF2431F6B500B5A314 /* PreferenceSubtitle.xib */,
 			);
 			path = Preference;
 			sourceTree = "<group>";
@@ -1016,6 +1024,7 @@
 			files = (
 				828DBD3C2416886E00A89A89 /* Web.xib in Resources */,
 				8228D9A4241E6BC200734908 /* PreferenceGeneral.xib in Resources */,
+				82C9B6F12431F6B500B5A314 /* PreferenceSubtitle.xib in Resources */,
 				824384FB241D3A5A00A1A218 /* OpenURL.xib in Resources */,
 				824384F0241CE62800A1A218 /* Welcome.xib in Resources */,
 				82E9A46C24030AEE000DB7F3 /* Assets.xcassets in Resources */,
@@ -1094,6 +1103,7 @@
 				828DBD7D2418271100A89A89 /* MASConstraintMaker.m in Sources */,
 				82E9A46A24030AEA000DB7F3 /* AppDelegate.m in Sources */,
 				828DBD7B2418271100A89A89 /* ViewController+MASAdditions.m in Sources */,
+				82C9B6F02431F6B500B5A314 /* PreferenceSubtitle.m in Sources */,
 				828DBD3B2416886E00A89A89 /* Web.m in Sources */,
 				82394283241BA9EB006B7049 /* SMLastHistoryModel.m in Sources */,
 				82E7AD6124226FFE0033993D /* MenuActionHandler.m in Sources */,
