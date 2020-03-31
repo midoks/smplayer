@@ -31,6 +31,12 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
+                            <menuItem title="Check For Update..." id="8So-Ld-MUc">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="checkForUpdates:" target="24n-7X-cD3" id="HAf-V8-bOT"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Preferences…" keyEquivalent="," id="BOF-NM-1cW">
                                 <connections>
                                     <action selector="showPreference:" target="Voe-Tx-rLC" id="FuO-CF-xZi"/>
@@ -463,5 +469,6 @@
                 <outlet property="volumeIndicator" destination="qfL-cv-sFC" id="oSF-jM-ONs"/>
             </connections>
         </customObject>
+        <customObject id="24n-7X-cD3" customClass="SUUpdater"/>
     </objects>
 </document>
