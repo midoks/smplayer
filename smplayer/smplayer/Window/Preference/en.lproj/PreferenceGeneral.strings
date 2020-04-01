@@ -1,0 +1,75 @@
+
+/* Class = "NSTextFieldCell"; title = "Options:"; ObjectID = "0cZ-GS-kMY"; */
+"0cZ-GS-kMY.title" = "Options:";
+
+/* Class = "NSButtonCell"; title = "Keep window open after playback finishes"; ObjectID = "56n-3c-RpW"; */
+"56n-3c-RpW.title" = "Keep window open after playback finishes";
+
+/* Class = "NSButtonCell"; title = "Resume last playback position"; ObjectID = "6aZ-rU-fRe"; */
+"6aZ-rU-fRe.title" = "Resume last playback position";
+
+/* Class = "NSMenuItem"; title = "Weekly"; ObjectID = "6rn-H2-gG9"; */
+"6rn-H2-gG9.title" = "Weekly";
+
+/* Class = "NSMenuItem"; title = "Show open file panel"; ObjectID = "6tk-sa-ybb"; */
+"6tk-sa-ybb.title" = "Show open file panel";
+
+/* Class = "NSMenuItem"; title = "Do nothing"; ObjectID = "7LD-ex-yyt"; */
+"7LD-ex-yyt.title" = "Do nothing";
+
+/* Class = "NSButtonCell"; title = "Save to"; ObjectID = "7fl-Nt-psY"; */
+"7fl-Nt-psY.title" = "Save to";
+
+/* Class = "NSTextFieldCell"; title = "Format:"; ObjectID = "BHj-xV-hgL"; */
+"BHj-xV-hgL.title" = "Format:";
+
+/* Class = "NSTextFieldCell"; title = "/path/to/screenshot/folder"; ObjectID = "CFB-L2-e1u"; */
+"CFB-L2-e1u.title" = "/path/to/screenshot/folder";
+
+/* Class = "NSMenuItem"; title = "Hourly"; ObjectID = "Cn1-zs-gzs"; */
+"Cn1-zs-gzs.title" = "Hourly";
+
+/* Class = "NSMenuItem"; title = "Show welcome window"; ObjectID = "D6l-6z-0Z3"; */
+"D6l-6z-0Z3.title" = "Show welcome window";
+
+/* Class = "NSTextFieldCell"; title = "When launched:"; ObjectID = "DTJ-Xr-xuc"; */
+"DTJ-Xr-xuc.title" = "When launched:";
+
+/* Class = "NSMenuItem"; title = "Monthly"; ObjectID = "IQg-4B-Irw"; */
+"IQg-4B-Irw.title" = "Monthly";
+
+/* Class = "NSMenuItem"; title = "JPEG(.jpg)"; ObjectID = "KbZ-qO-z37"; */
+"KbZ-qO-z37.title" = "JPEG(.jpg)";
+
+/* Class = "NSTextFieldCell"; title = "Behavior:"; ObjectID = "QsS-fX-GWZ"; */
+"QsS-fX-GWZ.title" = "Behavior:";
+
+/* Class = "NSTextFieldCell"; title = "Screenshots:"; ObjectID = "SGc-uq-Rzi"; */
+"SGc-uq-Rzi.title" = "Screenshots:";
+
+/* Class = "NSButtonCell"; title = "Check for updates"; ObjectID = "SaJ-1d-yWy"; */
+"SaJ-1d-yWy.title" = "Check for updates";
+
+/* Class = "NSTextFieldCell"; title = "Destination:"; ObjectID = "SbU-rQ-uxs"; */
+"SbU-rQ-uxs.title" = "Destination:";
+
+/* Class = "NSButtonCell"; title = "Copy to clipboard"; ObjectID = "Ux0-WC-xee"; */
+"Ux0-WC-xee.title" = "Copy to clipboard";
+
+/* Class = "NSButtonCell"; title = "Quit after all windows are closed"; ObjectID = "eup-qz-zs5"; */
+"eup-qz-zs5.title" = "Quit after all windows are closed";
+
+/* Class = "NSMenuItem"; title = "JPEG(.jpeg)"; ObjectID = "spE-qu-AiN"; */
+"spE-qu-AiN.title" = "JPEG(.jpeg)";
+
+/* Class = "NSButtonCell"; title = "Include subtitles"; ObjectID = "uXN-Y5-nRQ"; */
+"uXN-Y5-nRQ.title" = "Include subtitles";
+
+/* Class = "NSButtonCell"; title = "Always open media in new window"; ObjectID = "ulH-Ye-OeU"; */
+"ulH-Ye-OeU.title" = "Always open media in new window";
+
+/* Class = "NSMenuItem"; title = "Daily"; ObjectID = "y4d-Va-18V"; */
+"y4d-Va-18V.title" = "Daily";
+
+/* Class = "NSMenuItem"; title = "PNG"; ObjectID = "ymx-Ju-s06"; */
+"ymx-Ju-s06.title" = "PNG";

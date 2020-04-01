@@ -33,7 +33,8 @@
 
 - (NSString *)toolbarItemLabel
 {
-    return NSLocalizedString(@"Subtitle", nil);
+    return NSLocalizedString(@"preference.subtitle", nil);
+    
 }
 
 @end

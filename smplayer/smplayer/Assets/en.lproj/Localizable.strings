@@ -26,3 +26,10 @@
 "menu.audio_delay" = "Audio Delay: %.2fs";
 
 
+//preference
+"preference.title" = "Preferences";
+"preference.general" = "General";
+"preference.codec" = "Video/Audio";
+"preference.subtitle" = "Subtitle";
+"preference.network" = "Network";
+

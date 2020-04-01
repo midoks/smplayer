@@ -1,0 +1,75 @@
+
+/* Class = "NSTextFieldCell"; title = "Options:"; ObjectID = "0cZ-GS-kMY"; */
+"0cZ-GS-kMY.title" = "选项:";
+
+/* Class = "NSButtonCell"; title = "Keep window open after playback finishes"; ObjectID = "56n-3c-RpW"; */
+"56n-3c-RpW.title" = "播放完成后保持窗口打开";
+
+/* Class = "NSButtonCell"; title = "Resume last playback position"; ObjectID = "6aZ-rU-fRe"; */
+"6aZ-rU-fRe.title" = "自动恢复上次播放进度";
+
+/* Class = "NSMenuItem"; title = "Weekly"; ObjectID = "6rn-H2-gG9"; */
+"6rn-H2-gG9.title" = "每周";
+
+/* Class = "NSMenuItem"; title = "Show open file panel"; ObjectID = "6tk-sa-ybb"; */
+"6tk-sa-ybb.title" = "显示打开文件对话框";
+
+/* Class = "NSMenuItem"; title = "Do nothing"; ObjectID = "7LD-ex-yyt"; */
+"7LD-ex-yyt.title" = "无";
+
+/* Class = "NSButtonCell"; title = "Save to"; ObjectID = "7fl-Nt-psY"; */
+"7fl-Nt-psY.title" = "保存至";
+
+/* Class = "NSTextFieldCell"; title = "Format:"; ObjectID = "BHj-xV-hgL"; */
+"BHj-xV-hgL.title" = "格式:";
+
+/* Class = "NSTextFieldCell"; title = "/path/to/screenshot/folder"; ObjectID = "CFB-L2-e1u"; */
+"CFB-L2-e1u.title" = "/path/to/screenshot/folder";
+
+/* Class = "NSMenuItem"; title = "Hourly"; ObjectID = "Cn1-zs-gzs"; */
+"Cn1-zs-gzs.title" = "每小时";
+
+/* Class = "NSMenuItem"; title = "Show welcome window"; ObjectID = "D6l-6z-0Z3"; */
+"D6l-6z-0Z3.title" = "显示欢迎窗口";
+
+/* Class = "NSTextFieldCell"; title = "When launched:"; ObjectID = "DTJ-Xr-xuc"; */
+"DTJ-Xr-xuc.title" = "启动后:";
+
+/* Class = "NSMenuItem"; title = "Monthly"; ObjectID = "IQg-4B-Irw"; */
+"IQg-4B-Irw.title" = "每月";
+
+/* Class = "NSMenuItem"; title = "JPEG(.jpg)"; ObjectID = "KbZ-qO-z37"; */
+"KbZ-qO-z37.title" = "JPEG(.jpg)";
+
+/* Class = "NSTextFieldCell"; title = "Behavior:"; ObjectID = "QsS-fX-GWZ"; */
+"QsS-fX-GWZ.title" = "行为:";
+
+/* Class = "NSTextFieldCell"; title = "Screenshots:"; ObjectID = "SGc-uq-Rzi"; */
+"SGc-uq-Rzi.title" = "截图:";
+
+/* Class = "NSButtonCell"; title = "Check for updates"; ObjectID = "SaJ-1d-yWy"; */
+"SaJ-1d-yWy.title" = "自动检查更新";
+
+/* Class = "NSTextFieldCell"; title = "Destination:"; ObjectID = "SbU-rQ-uxs"; */
+"SbU-rQ-uxs.title" = "位置:";
+
+/* Class = "NSButtonCell"; title = "Copy to clipboard"; ObjectID = "Ux0-WC-xee"; */
+"Ux0-WC-xee.title" = "复制到粘贴板";
+
+/* Class = "NSButtonCell"; title = "Quit after all windows are closed"; ObjectID = "eup-qz-zs5"; */
+"eup-qz-zs5.title" = "没有打开的窗口时退出";
+
+/* Class = "NSMenuItem"; title = "JPEG(.jpeg)"; ObjectID = "spE-qu-AiN"; */
+"spE-qu-AiN.title" = "JPEG(.jpeg)";
+
+/* Class = "NSButtonCell"; title = "Include subtitles"; ObjectID = "uXN-Y5-nRQ"; */
+"uXN-Y5-nRQ.title" = "包括字幕";
+
+/* Class = "NSButtonCell"; title = "Always open media in new window"; ObjectID = "ulH-Ye-OeU"; */
+"ulH-Ye-OeU.title" = "总是在新窗口打开文件";
+
+/* Class = "NSMenuItem"; title = "Daily"; ObjectID = "y4d-Va-18V"; */
+"y4d-Va-18V.title" = "每天";
+
+/* Class = "NSMenuItem"; title = "PNG"; ObjectID = "ymx-Ju-s06"; */
+"ymx-Ju-s06.title" = "PNG";

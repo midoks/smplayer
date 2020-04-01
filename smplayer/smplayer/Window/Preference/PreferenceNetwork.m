@@ -41,7 +41,7 @@
 
 - (NSString *)toolbarItemLabel
 {
-    return NSLocalizedString(@"Network", nil);
+    return NSLocalizedString(@"preference.network", nil);
 }
 
 @end

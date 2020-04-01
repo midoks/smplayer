@@ -38,7 +38,7 @@
 
 - (NSString *)toolbarItemLabel
 {
-    return NSLocalizedString(@"General", @"");
+    return NSLocalizedString(@"preference.general", @"");
 }
 
 @end

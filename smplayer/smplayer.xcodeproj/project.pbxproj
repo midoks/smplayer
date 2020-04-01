@@ -11,9 +11,7 @@
 		82023C5C2414D4FC00B0B8BC /* SMCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 82023C5B2414D4FC00B0B8BC /* SMCore.m */; };
 		82023C5F2415678C00B0B8BC /* OpenFileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82023C5E2415678C00B0B8BC /* OpenFileView.m */; };
 		8228D9A3241E6BC200734908 /* PreferenceGeneral.m in Sources */ = {isa = PBXBuildFile; fileRef = 8228D9A1241E6BC200734908 /* PreferenceGeneral.m */; };
-		8228D9A4241E6BC200734908 /* PreferenceGeneral.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8228D9A2241E6BC200734908 /* PreferenceGeneral.xib */; };
 		8228D9A8241EB5C200734908 /* PreferenceNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 8228D9A6241EB5C200734908 /* PreferenceNetwork.m */; };
-		8228D9A9241EB5C200734908 /* PreferenceNetwork.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8228D9A7241EB5C200734908 /* PreferenceNetwork.xib */; };
 		82394280241AAC25006B7049 /* SMLastHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8239427F241AAC24006B7049 /* SMLastHistory.m */; };
 		82394283241BA9EB006B7049 /* SMLastHistoryModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 82394282241BA9EA006B7049 /* SMLastHistoryModel.m */; };
 		824384F0241CE62800A1A218 /* Welcome.xib in Resources */ = {isa = PBXBuildFile; fileRef = 824384F2241CE62800A1A218 /* Welcome.xib */; };
@@ -59,6 +57,8 @@
 		82CFFF552430A2D6000445EF /* MASPreferencesWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82CFFF4E2430A2D6000445EF /* MASPreferencesWindow.xib */; };
 		82CFFF562430A2D6000445EF /* MASPreferencesWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = 82CFFF522430A2D6000445EF /* MASPreferencesWindowController.m */; };
 		82CFFF572430A2D6000445EF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 82CFFF532430A2D6000445EF /* README.md */; };
+		82D2EC6B2434CF050046C63F /* PreferenceGeneral.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82D2EC6D2434CF050046C63F /* PreferenceGeneral.xib */; };
+		82D2EC722434D7CD0046C63F /* PreferenceNetwork.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82D2EC742434D7CD0046C63F /* PreferenceNetwork.xib */; };
 		82E7AD57242124580033993D /* SMSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E7AD56242124580033993D /* SMSliderCell.m */; };
 		82E7AD5A242209070033993D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 82E7AD5C242209070033993D /* Credits.rtf */; };
 		82E7AD6124226FFE0033993D /* MenuActionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E7AD6024226FFC0033993D /* MenuActionHandler.m */; };
@@ -123,10 +123,8 @@
 		82023C5E2415678C00B0B8BC /* OpenFileView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenFileView.m; sourceTree = "<group>"; };
 		8228D9A0241E6BC200734908 /* PreferenceGeneral.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferenceGeneral.h; sourceTree = "<group>"; };
 		8228D9A1241E6BC200734908 /* PreferenceGeneral.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferenceGeneral.m; sourceTree = "<group>"; };
-		8228D9A2241E6BC200734908 /* PreferenceGeneral.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferenceGeneral.xib; sourceTree = "<group>"; };
 		8228D9A5241EB5C200734908 /* PreferenceNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferenceNetwork.h; sourceTree = "<group>"; };
 		8228D9A6241EB5C200734908 /* PreferenceNetwork.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferenceNetwork.m; sourceTree = "<group>"; };
-		8228D9A7241EB5C200734908 /* PreferenceNetwork.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferenceNetwork.xib; sourceTree = "<group>"; };
 		8239427E241AAC24006B7049 /* SMLastHistory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMLastHistory.h; sourceTree = "<group>"; };
 		8239427F241AAC24006B7049 /* SMLastHistory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMLastHistory.m; sourceTree = "<group>"; };
 		82394281241BA9EA006B7049 /* SMLastHistoryModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMLastHistoryModel.h; sourceTree = "<group>"; };
@@ -220,6 +218,12 @@
 		82CFFF512430A2D6000445EF /* MASPreferences.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferences.h; sourceTree = "<group>"; };
 		82CFFF522430A2D6000445EF /* MASPreferencesWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MASPreferencesWindowController.m; sourceTree = "<group>"; };
 		82CFFF532430A2D6000445EF /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		82D2EC6C2434CF050046C63F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreferenceGeneral.xib; sourceTree = "<group>"; };
+		82D2EC6F2434CF0C0046C63F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PreferenceGeneral.strings; sourceTree = "<group>"; };
+		82D2EC712434CF0F0046C63F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PreferenceGeneral.strings"; sourceTree = "<group>"; };
+		82D2EC732434D7CD0046C63F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreferenceNetwork.xib; sourceTree = "<group>"; };
+		82D2EC762434D8590046C63F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PreferenceNetwork.strings; sourceTree = "<group>"; };
+		82D2EC782434D85A0046C63F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PreferenceNetwork.strings"; sourceTree = "<group>"; };
 		82E7AD55242124580033993D /* SMSliderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMSliderCell.h; sourceTree = "<group>"; };
 		82E7AD56242124580033993D /* SMSliderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMSliderCell.m; sourceTree = "<group>"; };
 		82E7AD5B242209070033993D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Base; path = Base.lproj/Credits.rtf; sourceTree = "<group>"; };
@@ -477,10 +481,10 @@
 				828DBD3E241688D200A89A89 /* Preference.m */,
 				8228D9A0241E6BC200734908 /* PreferenceGeneral.h */,
 				8228D9A1241E6BC200734908 /* PreferenceGeneral.m */,
-				8228D9A2241E6BC200734908 /* PreferenceGeneral.xib */,
+				82D2EC6D2434CF050046C63F /* PreferenceGeneral.xib */,
 				8228D9A5241EB5C200734908 /* PreferenceNetwork.h */,
 				8228D9A6241EB5C200734908 /* PreferenceNetwork.m */,
-				8228D9A7241EB5C200734908 /* PreferenceNetwork.xib */,
+				82D2EC742434D7CD0046C63F /* PreferenceNetwork.xib */,
 				82C9B6E82431C10A00B5A314 /* PreferenceCodec.h */,
 				82C9B6E92431C10A00B5A314 /* PreferenceCodec.m */,
 				82C9B6EA2431C10A00B5A314 /* PreferenceCodec.xib */,
@@ -1043,7 +1047,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				828DBD3C2416886E00A89A89 /* Web.xib in Resources */,
-				8228D9A4241E6BC200734908 /* PreferenceGeneral.xib in Resources */,
+				82D2EC6B2434CF050046C63F /* PreferenceGeneral.xib in Resources */,
 				82C9B6F12431F6B500B5A314 /* PreferenceSubtitle.xib in Resources */,
 				824384FB241D3A5A00A1A218 /* OpenURL.xib in Resources */,
 				824384F0241CE62800A1A218 /* Welcome.xib in Resources */,
@@ -1053,7 +1057,7 @@
 				82C9B6EC2431C10A00B5A314 /* PreferenceCodec.xib in Resources */,
 				82E7AD5A242209070033993D /* Credits.rtf in Resources */,
 				826AB8392407C0DF00B87C63 /* input.conf in Resources */,
-				8228D9A9241EB5C200734908 /* PreferenceNetwork.xib in Resources */,
+				82D2EC722434D7CD0046C63F /* PreferenceNetwork.xib in Resources */,
 				82E9A46F24030AEE000DB7F3 /* MainMenu.xib in Resources */,
 				82CFFF572430A2D6000445EF /* README.md in Resources */,
 				82FBC09424120C66002E8ABD /* Player.xib in Resources */,
@@ -1197,6 +1201,26 @@
 				82CFFF4F2430A2D6000445EF /* en */,
 			);
 			name = MASPreferencesWindow.xib;
+			sourceTree = "<group>";
+		};
+		82D2EC6D2434CF050046C63F /* PreferenceGeneral.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				82D2EC6C2434CF050046C63F /* Base */,
+				82D2EC6F2434CF0C0046C63F /* en */,
+				82D2EC712434CF0F0046C63F /* zh-Hans */,
+			);
+			name = PreferenceGeneral.xib;
+			sourceTree = "<group>";
+		};
+		82D2EC742434D7CD0046C63F /* PreferenceNetwork.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				82D2EC732434D7CD0046C63F /* Base */,
+				82D2EC762434D8590046C63F /* en */,
+				82D2EC782434D85A0046C63F /* zh-Hans */,
+			);
+			name = PreferenceNetwork.xib;
 			sourceTree = "<group>";
 		};
 		82E7AD5C242209070033993D /* Credits.rtf */ = {

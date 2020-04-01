@@ -37,7 +37,7 @@
 
 - (NSString *)toolbarItemLabel
 {
-    return NSLocalizedString(@"Codec", nil);
+    return NSLocalizedString(@"preference.codec", @"");
 }
 
 @end

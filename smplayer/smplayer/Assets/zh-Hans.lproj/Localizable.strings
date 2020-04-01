@@ -24,3 +24,10 @@
 
 "menu.volume" = "音量: %d";
 "menu.audio_delay" = "音频延迟: %.2f秒";
+
+//preference
+"preference.title" = "偏好设置";
+"preference.general" = "通用";
+"preference.codec" = "视频/音频";
+"preference.subtitle" = "字幕";
+"preference.network" = "网络";
