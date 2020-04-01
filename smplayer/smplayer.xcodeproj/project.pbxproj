@@ -48,9 +48,7 @@
 		82C2C1D6242CFE3800F5261C /* NSData+MD5.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C2C1D4242CFE3800F5261C /* NSData+MD5.m */; };
 		82C2C5082409191400485064 /* SMVideoTime.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C2C5072409191400485064 /* SMVideoTime.m */; };
 		82C9B6EB2431C10A00B5A314 /* PreferenceCodec.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C9B6E92431C10A00B5A314 /* PreferenceCodec.m */; };
-		82C9B6EC2431C10A00B5A314 /* PreferenceCodec.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82C9B6EA2431C10A00B5A314 /* PreferenceCodec.xib */; };
 		82C9B6F02431F6B500B5A314 /* PreferenceSubtitle.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C9B6EE2431F6B500B5A314 /* PreferenceSubtitle.m */; };
-		82C9B6F12431F6B500B5A314 /* PreferenceSubtitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82C9B6EF2431F6B500B5A314 /* PreferenceSubtitle.xib */; };
 		82C9B6FD2432582700B5A314 /* Sparkle.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 82C9B6F8243257B100B5A314 /* Sparkle.framework */; };
 		82C9B6FE2432582700B5A314 /* Sparkle.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 82C9B6F8243257B100B5A314 /* Sparkle.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		82CFFF542430A2D6000445EF /* LICENSE.md in Resources */ = {isa = PBXBuildFile; fileRef = 82CFFF4B2430A2D6000445EF /* LICENSE.md */; };
@@ -59,6 +57,8 @@
 		82CFFF572430A2D6000445EF /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 82CFFF532430A2D6000445EF /* README.md */; };
 		82D2EC6B2434CF050046C63F /* PreferenceGeneral.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82D2EC6D2434CF050046C63F /* PreferenceGeneral.xib */; };
 		82D2EC722434D7CD0046C63F /* PreferenceNetwork.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82D2EC742434D7CD0046C63F /* PreferenceNetwork.xib */; };
+		82D2EC792434E3750046C63F /* PreferenceCodec.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82D2EC7B2434E3750046C63F /* PreferenceCodec.xib */; };
+		82D2EC802434E6220046C63F /* PreferenceSubtitle.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82D2EC822434E6220046C63F /* PreferenceSubtitle.xib */; };
 		82E7AD57242124580033993D /* SMSliderCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E7AD56242124580033993D /* SMSliderCell.m */; };
 		82E7AD5A242209070033993D /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 82E7AD5C242209070033993D /* Credits.rtf */; };
 		82E7AD6124226FFE0033993D /* MenuActionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 82E7AD6024226FFC0033993D /* MenuActionHandler.m */; };
@@ -206,10 +206,8 @@
 		82C2C5072409191400485064 /* SMVideoTime.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMVideoTime.m; sourceTree = "<group>"; };
 		82C9B6E82431C10A00B5A314 /* PreferenceCodec.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferenceCodec.h; sourceTree = "<group>"; };
 		82C9B6E92431C10A00B5A314 /* PreferenceCodec.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferenceCodec.m; sourceTree = "<group>"; };
-		82C9B6EA2431C10A00B5A314 /* PreferenceCodec.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferenceCodec.xib; sourceTree = "<group>"; };
 		82C9B6ED2431F6B500B5A314 /* PreferenceSubtitle.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferenceSubtitle.h; sourceTree = "<group>"; };
 		82C9B6EE2431F6B500B5A314 /* PreferenceSubtitle.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferenceSubtitle.m; sourceTree = "<group>"; };
-		82C9B6EF2431F6B500B5A314 /* PreferenceSubtitle.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PreferenceSubtitle.xib; sourceTree = "<group>"; };
 		82C9B6F8243257B100B5A314 /* Sparkle.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Sparkle.framework; sourceTree = "<group>"; };
 		82CFFF4B2430A2D6000445EF /* LICENSE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = LICENSE.md; sourceTree = "<group>"; };
 		82CFFF4D2430A2D6000445EF /* MASPreferencesViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MASPreferencesViewController.h; sourceTree = "<group>"; };
@@ -224,6 +222,12 @@
 		82D2EC732434D7CD0046C63F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreferenceNetwork.xib; sourceTree = "<group>"; };
 		82D2EC762434D8590046C63F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PreferenceNetwork.strings; sourceTree = "<group>"; };
 		82D2EC782434D85A0046C63F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PreferenceNetwork.strings"; sourceTree = "<group>"; };
+		82D2EC7A2434E3750046C63F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreferenceCodec.xib; sourceTree = "<group>"; };
+		82D2EC7D2434E37B0046C63F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PreferenceCodec.strings; sourceTree = "<group>"; };
+		82D2EC7F2434E37E0046C63F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PreferenceCodec.strings"; sourceTree = "<group>"; };
+		82D2EC812434E6220046C63F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/PreferenceSubtitle.xib; sourceTree = "<group>"; };
+		82D2EC842434E6280046C63F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/PreferenceSubtitle.strings; sourceTree = "<group>"; };
+		82D2EC862434E62B0046C63F /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/PreferenceSubtitle.strings"; sourceTree = "<group>"; };
 		82E7AD55242124580033993D /* SMSliderCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMSliderCell.h; sourceTree = "<group>"; };
 		82E7AD56242124580033993D /* SMSliderCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMSliderCell.m; sourceTree = "<group>"; };
 		82E7AD5B242209070033993D /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = Base; path = Base.lproj/Credits.rtf; sourceTree = "<group>"; };
@@ -487,10 +491,10 @@
 				82D2EC742434D7CD0046C63F /* PreferenceNetwork.xib */,
 				82C9B6E82431C10A00B5A314 /* PreferenceCodec.h */,
 				82C9B6E92431C10A00B5A314 /* PreferenceCodec.m */,
-				82C9B6EA2431C10A00B5A314 /* PreferenceCodec.xib */,
+				82D2EC7B2434E3750046C63F /* PreferenceCodec.xib */,
 				82C9B6ED2431F6B500B5A314 /* PreferenceSubtitle.h */,
 				82C9B6EE2431F6B500B5A314 /* PreferenceSubtitle.m */,
-				82C9B6EF2431F6B500B5A314 /* PreferenceSubtitle.xib */,
+				82D2EC822434E6220046C63F /* PreferenceSubtitle.xib */,
 			);
 			path = Preference;
 			sourceTree = "<group>";
@@ -1048,13 +1052,13 @@
 			files = (
 				828DBD3C2416886E00A89A89 /* Web.xib in Resources */,
 				82D2EC6B2434CF050046C63F /* PreferenceGeneral.xib in Resources */,
-				82C9B6F12431F6B500B5A314 /* PreferenceSubtitle.xib in Resources */,
+				82D2EC802434E6220046C63F /* PreferenceSubtitle.xib in Resources */,
 				824384FB241D3A5A00A1A218 /* OpenURL.xib in Resources */,
 				824384F0241CE62800A1A218 /* Welcome.xib in Resources */,
 				82E9A46C24030AEE000DB7F3 /* Assets.xcassets in Resources */,
 				8243850A241E357F00A1A218 /* Localizable.strings in Resources */,
 				82CFFF552430A2D6000445EF /* MASPreferencesWindow.xib in Resources */,
-				82C9B6EC2431C10A00B5A314 /* PreferenceCodec.xib in Resources */,
+				82D2EC792434E3750046C63F /* PreferenceCodec.xib in Resources */,
 				82E7AD5A242209070033993D /* Credits.rtf in Resources */,
 				826AB8392407C0DF00B87C63 /* input.conf in Resources */,
 				82D2EC722434D7CD0046C63F /* PreferenceNetwork.xib in Resources */,
@@ -1221,6 +1225,26 @@
 				82D2EC782434D85A0046C63F /* zh-Hans */,
 			);
 			name = PreferenceNetwork.xib;
+			sourceTree = "<group>";
+		};
+		82D2EC7B2434E3750046C63F /* PreferenceCodec.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				82D2EC7A2434E3750046C63F /* Base */,
+				82D2EC7D2434E37B0046C63F /* en */,
+				82D2EC7F2434E37E0046C63F /* zh-Hans */,
+			);
+			name = PreferenceCodec.xib;
+			sourceTree = "<group>";
+		};
+		82D2EC822434E6220046C63F /* PreferenceSubtitle.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				82D2EC812434E6220046C63F /* Base */,
+				82D2EC842434E6280046C63F /* en */,
+				82D2EC862434E62B0046C63F /* zh-Hans */,
+			);
+			name = PreferenceSubtitle.xib;
 			sourceTree = "<group>";
 		};
 		82E7AD5C242209070033993D /* Credits.rtf */ = {

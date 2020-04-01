@@ -1,0 +1,66 @@
+
+/* Class = "NSTextFieldCell"; title = "Number of threads:"; ObjectID = "0R9-rT-5gr"; */
+"0R9-rT-5gr.title" = "Number of threads:";
+
+/* Class = "NSTextFieldCell"; title = "Maximum volume:"; ObjectID = "1X3-3E-9fR"; */
+"1X3-3E-9fR.title" = "Maximum volume:";
+
+/* Class = "NSTextFieldCell"; title = "Video:"; ObjectID = "5l8-kR-bFP"; */
+"5l8-kR-bFP.title" = "Video:";
+
+/* Class = "NSButtonCell"; title = "Initial volume:"; ObjectID = "7fO-yQ-hjs"; */
+"7fO-yQ-hjs.title" = "Initial volume:";
+
+/* Class = "NSTextFieldCell"; title = "Preferred audio device:"; ObjectID = "CQl-82-R0s"; */
+"CQl-82-R0s.title" = "Preferred audio device:";
+
+/* Class = "NSTextFieldCell"; title = "Audio:"; ObjectID = "HQJ-cQ-hXt"; */
+"HQJ-cQ-hXt.title" = "Audio:";
+
+/* Class = "NSMenuItem"; title = "Disabled"; ObjectID = "JQX-go-WHd"; */
+"JQX-go-WHd.title" = "Disabled";
+
+/* Class = "NSMenuItem"; title = "Item 1"; ObjectID = "Jhk-sG-Sdl"; */
+"Jhk-sG-Sdl.title" = "Item 1";
+
+/* Class = "NSTextFieldCell"; title = "(100-1000)"; ObjectID = "On9-US-DSR"; */
+"On9-US-DSR.title" = "(100-1000)";
+
+/* Class = "NSMenuItem"; title = "Item 3"; ObjectID = "Stx-od-hDb"; */
+"Stx-od-hDb.title" = "Item 3";
+
+/* Class = "NSTextFieldCell"; title = "Default: 0 (Auto)"; ObjectID = "TVk-le-X1E"; */
+"TVk-le-X1E.title" = "Default: 0 (Auto)";
+
+/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "ULf-Jb-qOK"; */
+"ULf-Jb-qOK.title" = "Label";
+
+/* Class = "NSButtonCell"; title = "DTS"; ObjectID = "a4n-zv-fSA"; */
+"a4n-zv-fSA.title" = "DTS";
+
+/* Class = "NSButtonCell"; title = "AC3"; ObjectID = "cHH-NM-rVw"; */
+"cHH-NM-rVw.title" = "AC3";
+
+/* Class = "NSMenuItem"; title = "Item 2"; ObjectID = "gti-0N-vEk"; */
+"gti-0N-vEk.title" = "Item 2";
+
+/* Class = "NSButtonCell"; title = "DTS-HD"; ObjectID = "iaq-q1-aJU"; */
+"iaq-q1-aJU.title" = "DTS-HD";
+
+/* Class = "NSTextFieldCell"; title = "Default: 0 (Auto)"; ObjectID = "j7V-8i-5B5"; */
+"j7V-8i-5B5.title" = "Default: 0 (Auto)";
+
+/* Class = "NSTextFieldCell"; title = "S/PDIF output:"; ObjectID = "kWj-oN-Ck5"; */
+"kWj-oN-Ck5.title" = "S/PDIF output:";
+
+/* Class = "NSMenuItem"; title = "Auto(Copy)"; ObjectID = "myK-nd-uMr"; */
+"myK-nd-uMr.title" = "Auto(Copy)";
+
+/* Class = "NSTextFieldCell"; title = "Number of threads:"; ObjectID = "oEY-TX-J3w"; */
+"oEY-TX-J3w.title" = "Number of threads:";
+
+/* Class = "NSMenuItem"; title = "Auto"; ObjectID = "tAs-hO-sxD"; */
+"tAs-hO-sxD.title" = "Auto";
+
+/* Class = "NSTextFieldCell"; title = "Hardware decoder:"; ObjectID = "zcL-is-FIL"; */
+"zcL-is-FIL.title" = "Hardware decoder:";

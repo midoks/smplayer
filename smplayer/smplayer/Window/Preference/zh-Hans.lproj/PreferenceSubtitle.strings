@@ -1,0 +1,102 @@
+
+/* Class = "NSBox"; title = "Align"; ObjectID = "7ch-UO-aXE"; */
+"7ch-UO-aXE.title" = "对齐";
+
+/* Class = "NSButtonCell"; title = "Search online subtitles automatically"; ObjectID = "7xJ-OG-FdL"; */
+"7xJ-OG-FdL.title" = "自动搜索在线字幕";
+
+/* Class = "NSButtonCell"; title = "Italic"; ObjectID = "Cua-dY-Hew"; */
+"Cua-dY-Hew.title" = "斜体";
+
+/* Class = "NSTextFieldCell"; title = "Background:"; ObjectID = "Czd-lf-mgf"; */
+"Czd-lf-mgf.title" = "背景:";
+
+/* Class = "NSTextFieldCell"; title = "Text subtitles:"; ObjectID = "I4E-OY-5UJ"; */
+"I4E-OY-5UJ.title" = "文本字幕:";
+
+/* Class = "NSTextFieldCell"; title = "Y:"; ObjectID = "JEh-jm-ECz"; */
+"JEh-jm-ECz.title" = "Y:";
+
+/* Class = "NSBox"; title = "Font"; ObjectID = "KC7-a6-gqr"; */
+"KC7-a6-gqr.title" = "字体";
+
+/* Class = "NSButtonCell"; title = "Display subtitles in letterboxes while in full screen"; ObjectID = "KOF-1E-0Ma"; */
+"KOF-1E-0Ma.title" = "全屏时将字幕显示在黑边";
+
+/* Class = "NSTextFieldCell"; title = "X:"; ObjectID = "M23-xj-BtT"; */
+"M23-xj-BtT.title" = "X:";
+
+/* Class = "NSTextFieldCell"; title = "X:"; ObjectID = "QJM-nW-TAS"; */
+"QJM-nW-TAS.title" = "X:";
+
+/* Class = "NSMenuItem"; title = "shooter.cn"; ObjectID = "RdX-4r-1Dk"; */
+"RdX-4r-1Dk.title" = "shooter.cn";
+
+/* Class = "NSTextFieldCell"; title = "Vertical position:"; ObjectID = "S8t-kb-BqP"; */
+"S8t-kb-BqP.title" = "垂直位置:";
+
+/* Class = "NSMenuItem"; title = "Left"; ObjectID = "TcC-7t-ncV"; */
+"TcC-7t-ncV.title" = "左";
+
+/* Class = "NSButtonCell"; title = "choose"; ObjectID = "YLb-fy-jCr"; */
+"YLb-fy-jCr.title" = "选择";
+
+/* Class = "NSTextFieldCell"; title = "Size:"; ObjectID = "af5-ph-GKi"; */
+"af5-ph-GKi.title" = "字号:";
+
+/* Class = "NSTextFieldCell"; title = "Y:"; ObjectID = "bie-5E-OTA"; */
+"bie-5E-OTA.title" = "Y:";
+
+/* Class = "NSTextFieldCell"; title = "Online Subtitles:"; ObjectID = "eZN-wK-X1g"; */
+"eZN-wK-X1g.title" = "在线字幕:";
+
+/* Class = "NSTextFieldCell"; title = "Download subtitles from:"; ObjectID = "f5f-Ir-ant"; */
+"f5f-Ir-ant.title" = "自动下载字幕来源:";
+
+/* Class = "NSTextFieldCell"; title = "Font"; ObjectID = "fv0-7Q-8qt"; */
+"fv0-7Q-8qt.title" = "字体";
+
+/* Class = "NSMenuItem"; title = "Center"; ObjectID = "hLg-bv-29J"; */
+"hLg-bv-29J.title" = "中间";
+
+/* Class = "NSTextFieldCell"; title = "Size:"; ObjectID = "hVf-SH-mqQ"; */
+"hVf-SH-mqQ.title" = "字号:";
+
+/* Class = "NSBox"; title = "Border"; ObjectID = "i2R-1i-GZa"; */
+"i2R-1i-GZa.title" = "边框";
+
+/* Class = "NSMenuItem"; title = "Top"; ObjectID = "jcI-rX-rmd"; */
+"jcI-rX-rmd.title" = "顶部";
+
+/* Class = "NSTextFieldCell"; title = "Position:"; ObjectID = "lOY-DC-7In"; */
+"lOY-DC-7In.title" = "位置:";
+
+/* Class = "NSTextFieldCell"; title = "Color:"; ObjectID = "lei-Uu-PaJ"; */
+"lei-Uu-PaJ.title" = "颜色:";
+
+/* Class = "NSButtonCell"; title = "Scale subtitles with window size"; ObjectID = "n5U-IV-Y4M"; */
+"n5U-IV-Y4M.title" = "字幕大小谁窗口缩放";
+
+/* Class = "NSMenuItem"; title = "Right"; ObjectID = "p74-70-AsY"; */
+"p74-70-AsY.title" = "右";
+
+/* Class = "NSTextFieldCell"; title = "%"; ObjectID = "uuW-uw-OGC"; */
+"uuW-uw-OGC.title" = "%";
+
+/* Class = "NSTextFieldCell"; title = "Label"; ObjectID = "vFn-pL-kBR"; */
+"vFn-pL-kBR.title" = "Label";
+
+/* Class = "NSMenuItem"; title = "Center"; ObjectID = "wNG-f2-cEz"; */
+"wNG-f2-cEz.title" = "中间";
+
+/* Class = "NSTextFieldCell"; title = "Color:"; ObjectID = "xDz-Ju-xCn"; */
+"xDz-Ju-xCn.title" = "颜色:";
+
+/* Class = "NSButtonCell"; title = "Bold"; ObjectID = "xJp-Sv-P2V"; */
+"xJp-Sv-P2V.title" = "粗体";
+
+/* Class = "NSMenuItem"; title = "Bottom"; ObjectID = "xsv-Db-Lg2"; */
+"xsv-Db-Lg2.title" = "底部";
+
+/* Class = "NSBox"; title = "Box"; ObjectID = "zv1-nf-0lq"; */
+"zv1-nf-0lq.title" = "边距";
