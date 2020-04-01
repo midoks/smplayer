@@ -18,6 +18,9 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Preference : NSObject
 
 + (id)Instance;
+
+-(void)sync;
+-(void)demo;
 @end
 
 NS_ASSUME_NONNULL_END

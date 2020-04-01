@@ -43,11 +43,14 @@
                                 <menu key="menu" id="Bx4-G1-rJg">
                                     <items>
                                         <menuItem title="Show welcome window" state="on" id="D6l-6z-0Z3"/>
-                                        <menuItem title="Show open file panel" id="6tk-sa-ybb"/>
-                                        <menuItem title="Do nothing" id="7LD-ex-yyt"/>
+                                        <menuItem title="Show open file panel" tag="1" id="6tk-sa-ybb"/>
+                                        <menuItem title="Do nothing" tag="2" id="7LD-ex-yyt"/>
                                     </items>
                                 </menu>
                             </popUpButtonCell>
+                            <connections>
+                                <binding destination="6po-mG-7ON" name="selectedTag" keyPath="values.actionAfterLaunch" id="CAH-ey-AoI"/>
+                            </connections>
                         </popUpButton>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y9S-Rg-IaK">
                             <rect key="frame" x="118" y="98" width="231" height="18"/>
@@ -120,7 +123,7 @@
                         <constraint firstItem="YN3-XI-4Ax" firstAttribute="leading" secondItem="zLn-fb-uYY" secondAttribute="trailing" constant="10" id="ZG1-qH-zUX"/>
                         <constraint firstItem="Kfn-ZX-ty8" firstAttribute="leading" secondItem="FFh-8K-kcT" secondAttribute="leading" constant="120" id="cFD-yA-cmw"/>
                         <constraint firstItem="qJR-Ng-Fk9" firstAttribute="leading" secondItem="Kfn-ZX-ty8" secondAttribute="trailing" constant="10" id="eDg-2U-uzw"/>
-                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YN3-XI-4Ax" secondAttribute="trailing" symbolic="YES" id="fE0-d1-lhc"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YN3-XI-4Ax" secondAttribute="trailing" constant="20" symbolic="YES" id="fE0-d1-lhc"/>
                         <constraint firstItem="Y9S-Rg-IaK" firstAttribute="leading" secondItem="FFh-8K-kcT" secondAttribute="leading" constant="120" id="hZh-QG-Zr4"/>
                         <constraint firstAttribute="height" constant="150" id="kLo-Pc-xE8"/>
                         <constraint firstItem="zLn-fb-uYY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CQ9-Jr-9dt" secondAttribute="trailing" constant="8" symbolic="YES" id="l8Y-du-wAk"/>
@@ -268,6 +271,7 @@
             </constraints>
             <point key="canvasLocation" x="149" y="279.5"/>
         </customView>
+        <userDefaultsController representsSharedInstance="YES" id="6po-mG-7ON"/>
     </objects>
     <resources>
         <image name="NSRevealFreestandingTemplate" width="14" height="14"/>

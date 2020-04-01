@@ -33,7 +33,28 @@ static dispatch_once_t _instance_once;
 
 -(id)init{
     self = [super init];
+    
+    
+    [[self standardUserDefaults] registerDefaults:@{
+        @"actionAfterLaunch":@0,
+    }];
     return self;
 }
+
+-(NSUserDefaults *)standardUserDefaults {
+    return [NSUserDefaults standardUserDefaults];
+}
+
+-(void)demo{
+    NSUserDefaults *nd = [self standardUserDefaults];
+    NSLog(@"demo:%@", [nd objectForKey:@"actionAfterLaunch"]);
+    
+    
+}
+
+-(void)sync{
+    [[self standardUserDefaults] synchronize];
+}
+
 
 @end

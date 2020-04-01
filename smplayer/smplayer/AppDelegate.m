@@ -17,6 +17,7 @@
 #import <Sparkle/SUUpdater.h>
 
 #import "AppDelegate.h"
+#import "Preference.h"
 
 @interface AppDelegate ()
 {
@@ -36,11 +37,13 @@
     
     [self initPrefencesWindow];
     
+    [[Preference Instance] demo];
     
     [[SUUpdater sharedUpdater] checkForUpdatesInBackground];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
+    [[Preference Instance] sync];
 }
 
 
