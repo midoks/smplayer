@@ -68,6 +68,9 @@
 /* Class = "NSMenuItem"; title = "Preferences…"; ObjectID = "BOF-NM-1cW"; */
 "BOF-NM-1cW.title" = "偏好设置…";
 
+/* Class = "NSMenuItem"; title = "Check For Update..."; ObjectID = "8So-Ld-MUc"; */
+"8So-Ld-MUc.title" = "检查更新...";
+
 /* Class = "NSMenuItem"; title = "\tLeft to Right"; ObjectID = "BgM-ve-c93"; */
 "BgM-ve-c93.title" = "\tLeft to Right";
 
@@ -323,7 +326,6 @@
 /* Class = "NSMenuItem"; title = "Reset Audio Delay"; ObjectID = "y3c-ZA-l0L"; */
 "y3c-ZA-l0L.title" = "重置音频延迟";
 
-
 //subtitle
 /* Class = "NSMenuItem"; title = "Find Online Subtitles…"; ObjectID = "pdn-1e-f12"; */
 "pdn-1e-f12.title" = "查找在线字幕...";
@@ -342,16 +344,5 @@
 
 /* Class = "NSMenuItem"; title = "Font..."; ObjectID = "Cd0-R1-bDh"; */
 "Cd0-R1-bDh.title" = "字体...";
-
-
-
-
-
-
-
-
-
-
-
 
 

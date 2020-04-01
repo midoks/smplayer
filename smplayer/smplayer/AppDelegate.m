@@ -14,6 +14,7 @@
 #import "MASPreferences.h"
 #import "Preference.h"
 
+#import <Sparkle/SUUpdater.h>
 
 #import "AppDelegate.h"
 
@@ -34,6 +35,9 @@
     [_menuList bindMenuItems];
     
     [self initPrefencesWindow];
+    
+    
+    [[SUUpdater sharedUpdater] checkForUpdatesInBackground];
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {

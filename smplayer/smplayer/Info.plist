@@ -4,8 +4,80 @@
 <dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
-	<key>LSApplicationCategoryType</key>
-	<string>public.app-category.video</string>
+	<key>CFBundleDisplayName</key>
+	<string></string>
+	<key>CFBundleDocumentTypes</key>
+	<array>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>avi</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>AVI media</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Default</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>qt</string>
+				<string>mov</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>QuickTime media</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Default</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>flv</string>
+				<string>f4v</string>
+				<string>f4p</string>
+				<string>f4a</string>
+				<string>f4b</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Flash Video file</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Default</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>m3u8</string>
+				<string>m3u</string>
+				<string>pls</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>Playlist</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Default</string>
+		</dict>
+		<dict>
+			<key>CFBundleTypeExtensions</key>
+			<array>
+				<string>mp4</string>
+				<string>m4v</string>
+				<string>m4b</string>
+			</array>
+			<key>CFBundleTypeName</key>
+			<string>MPEG-4 video</string>
+			<key>CFBundleTypeRole</key>
+			<string>Viewer</string>
+			<key>LSHandlerRank</key>
+			<string>Default</string>
+		</dict>
+	</array>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIconFile</key>
@@ -16,12 +88,10 @@
 	<string>6.0</string>
 	<key>CFBundleName</key>
 	<string>$(PRODUCT_NAME)</string>
-	<key>NSSupportsAutomaticGraphicsSwitching</key>
-	<true/>
 	<key>CFBundlePackageType</key>
 	<string>$(PRODUCT_BUNDLE_PACKAGE_TYPE)</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.0</string>
+	<string>$(MARKETING_VERSION)</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>
@@ -37,8 +107,16 @@
 			</array>
 		</dict>
 	</array>
+	<key>CFBundleVersion</key>
+	<string>$(CURRENT_PROJECT_VERSION)</string>
+	<key>LSApplicationCategoryType</key>
+	<string>public.app-category.video</string>
+	<key>LSMinimumSystemVersion</key>
+	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
 		<key>assrt.net</key>
 		<dict>
 			<key>NSExceptionAllowsInsecureHTTPLoads</key>
@@ -47,95 +125,23 @@
 			<true/>
 		</dict>
 	</dict>
-	<key>CFBundleVersion</key>
-	<string>1</string>
-	<key>LSMinimumSystemVersion</key>
-	<string>$(MACOSX_DEPLOYMENT_TARGET)</string>
 	<key>NSHumanReadableCopyright</key>
 	<string>Copyright © 2020 midoks. All rights reserved.</string>
 	<key>NSMainNibFile</key>
 	<string>MainMenu</string>
 	<key>NSPrincipalClass</key>
 	<string>NSApplication</string>
+	<key>NSSupportsAutomaticGraphicsSwitching</key>
+	<true/>
 	<key>NSSupportsAutomaticTermination</key>
 	<true/>
 	<key>NSSupportsSuddenTermination</key>
 	<true/>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<false/>
-	<key>CFBundleDocumentTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleTypeName</key>
-			<string>AVI media</string>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>avi</string>
-			</array>
-			<key>CFBundleTypeRole</key>
-			<string>Viewer</string>
-			<key>LSHandlerRank</key>
-			<string>Default</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeName</key>
-			<string>QuickTime media</string>
-			<key>CFBundleTypeRole</key>
-			<string>Viewer</string>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>qt</string>
-				<string>mov</string>
-			</array>
-			<key>LSHandlerRank</key>
-			<string>Default</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>flv</string>
-				<string>f4v</string>
-				<string>f4p</string>
-				<string>f4a</string>
-				<string>f4b</string>
-			</array>
-			<key>CFBundleTypeRole</key>
-			<string>Viewer</string>
-			<key>CFBundleTypeName</key>
-			<string>Flash Video file</string>
-			<key>LSHandlerRank</key>
-			<string>Default</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Viewer</string>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>m3u8</string>
-				<string>m3u</string>
-				<string>pls</string>
-			</array>
-			<key>CFBundleTypeName</key>
-			<string>Playlist</string>
-			<key>LSHandlerRank</key>
-			<string>Default</string>
-		</dict>
-		<dict>
-			<key>CFBundleTypeName</key>
-			<string>MPEG-4 video</string>
-			<key>LSHandlerRank</key>
-			<string>Default</string>
-			<key>CFBundleTypeRole</key>
-			<string>Viewer</string>
-			<key>CFBundleTypeExtensions</key>
-			<array>
-				<string>mp4</string>
-				<string>m4v</string>
-				<string>m4b</string>
-			</array>
-		</dict>
-	</array>
+	<key>SUFeedURL</key>
+	<string>http://test.cc/app/appcast.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>z+TdvTjjAQP5vcM3mhAzpfTNEnkaoJ3GhHWz3NQ5EwY=</string>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>

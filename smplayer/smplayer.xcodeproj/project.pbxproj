@@ -1340,6 +1340,7 @@
 				CODE_SIGN_ENTITLEMENTS = smplayer/smplayer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1356,6 +1357,7 @@
 					"$(SRCROOT)/smplayer/Deps/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.midoks.smplayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1368,6 +1370,7 @@
 				CODE_SIGN_ENTITLEMENTS = smplayer/smplayer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1384,6 +1387,7 @@
 					"$(SRCROOT)/smplayer/Deps/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
+				MARKETING_VERSION = 0.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.midoks.smplayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
