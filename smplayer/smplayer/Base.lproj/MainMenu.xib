@@ -83,9 +83,19 @@
                                     <action selector="openFile:" target="Voe-Tx-rLC" id="DeA-3B-h3M"/>
                                 </connections>
                             </menuItem>
-                            <menuItem title="Open URL..." keyEquivalent="n" id="Was-JA-tGl">
+                            <menuItem title="Open in New Window…" tag="1" keyEquivalent="n" id="k1e-Fw-h8Q">
+                                <connections>
+                                    <action selector="openFile:" target="Voe-Tx-rLC" id="foM-fV-spX"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Open URL..." keyEquivalent="O" id="Was-JA-tGl">
                                 <connections>
                                     <action selector="openFileURL:" target="Voe-Tx-rLC" id="ny0-ao-bFg"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Open URL in New Window…" tag="1" keyEquivalent="N" id="AjJ-sT-clj">
+                                <connections>
+                                    <action selector="openFileURL:" target="Voe-Tx-rLC" id="ubP-wE-w8Q"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Open Recent" id="tXI-mr-wws">
@@ -433,6 +443,7 @@
                 <outlet property="decreaseVolume" destination="zwv-ag-T72" id="UaC-vU-USn"/>
                 <outlet property="decreaseVolumeSlightly" destination="lXI-Yr-cg1" id="H0k-O8-TDj"/>
                 <outlet property="doubleSize" destination="Mbu-O6-hEc" id="ywW-23-U5Y"/>
+                <outlet property="file" destination="bib-Uj-vzu" id="ufR-Gl-fge"/>
                 <outlet property="findOnlineSub" destination="pdn-1e-f12" id="55i-ju-wux"/>
                 <outlet property="fitToScreen" destination="GMl-WG-ss8" id="cGk-8b-V6E"/>
                 <outlet property="forward" destination="kZ9-tQ-p1B" id="axy-Yf-4Ol"/>
@@ -449,6 +460,10 @@
                 <outlet property="mute" destination="5Mi-uZ-vn2" id="lKm-Bf-PFQ"/>
                 <outlet property="nextFrame" destination="hJc-WO-W9K" id="Nz4-uh-3cA"/>
                 <outlet property="normalSize" destination="EHh-dc-kry" id="UHq-kF-MyX"/>
+                <outlet property="open" destination="IAo-SY-fd9" id="Ms3-uV-8Ju"/>
+                <outlet property="openAlternative" destination="k1e-Fw-h8Q" id="HY4-Fw-nXv"/>
+                <outlet property="openURL" destination="Was-JA-tGl" id="MFE-6p-xPs"/>
+                <outlet property="openURLAlternative" destination="AjJ-sT-clj" id="s3A-US-wzN"/>
                 <outlet property="pause" destination="P6T-2W-cHo" id="PXc-oc-jQ3"/>
                 <outlet property="playback" destination="6XL-4X-DBu" id="qpD-1T-Yy3"/>
                 <outlet property="prevFrame" destination="DWs-r6-Str" id="xm9-0F-QIT"/>

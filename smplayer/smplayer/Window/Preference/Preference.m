@@ -34,9 +34,9 @@ static dispatch_once_t _instance_once;
 -(id)init{
     self = [super init];
     
-    
     [[self standardUserDefaults] registerDefaults:@{
-        @"actionAfterLaunch":@0,
+        SM_PGG_ActionAfterLaunch:@0,
+        SM_PGC_VideoThreads:@0,
     }];
     return self;
 }
@@ -47,13 +47,18 @@ static dispatch_once_t _instance_once;
 
 -(void)demo{
     NSUserDefaults *nd = [self standardUserDefaults];
-    NSLog(@"demo:%@", [nd objectForKey:@"actionAfterLaunch"]);
-    
+    NSLog(@"demo:%@", [nd objectForKey:SM_PGG_ActionAfterLaunch]);
     
 }
 
 -(void)sync{
     [[self standardUserDefaults] synchronize];
+}
+
+#pragma mark - GET
+-(BOOL)boolForKey:(NSString *)key
+{
+    return [[self standardUserDefaults] boolForKey:key];
 }
 
 

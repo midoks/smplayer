@@ -30,20 +30,25 @@
 @implementation AppDelegate
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
-
-    [[[SMCore Instance] first] showWindow:self];
     
     [_menuList bindMenuItems];
-    
     [self initPrefencesWindow];
     
-    [[Preference Instance] demo];
     
-    [[SUUpdater sharedUpdater] checkForUpdatesInBackground];
+    [[[SMCore Instance] first] showWindow:self];
+    
+
+    if([[Preference Instance] boolForKey:SM_PGG_AutomaticallyChecksForUpdates]){
+        [[SUUpdater sharedUpdater] checkForUpdatesInBackground];
+    }
+
 }
 
 - (void)applicationWillTerminate:(NSNotification *)aNotification {
-    [[Preference Instance] sync];
+}
+
+-(BOOL)applicationShouldTerminateAfterLastWindowClosed:(NSApplication *)sender{
+    return [[Preference Instance] boolForKey:SM_PGG_QuitWhenNoOpenedWindow];
 }
 
 

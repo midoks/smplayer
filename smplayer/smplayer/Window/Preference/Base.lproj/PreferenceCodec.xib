@@ -46,6 +46,9 @@
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
+                            <connections>
+                                <binding destination="feC-Kb-Xgb" name="value" keyPath="values.videoThreads" id="uLk-XU-nNv"/>
+                            </connections>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="KdE-49-zHA">
                             <rect key="frame" x="118" y="32" width="120" height="16"/>
@@ -72,7 +75,7 @@
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9T7-Q8-bBU">
                             <rect key="frame" x="309" y="55" width="92" height="14"/>
                             <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Default: 0 (Auto)" id="TVk-le-X1E">
-                                <font key="font" metaFont="message" size="11"/>
+                                <font key="font" metaFont="controlContent" size="11"/>
                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -80,7 +83,7 @@
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Onz-YF-xPd">
                             <rect key="frame" x="118" y="10" width="33" height="14"/>
                             <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Label" id="ULf-Jb-qOK">
-                                <font key="font" metaFont="message" size="11"/>
+                                <font key="font" metaFont="controlContent" size="11"/>
                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -169,7 +172,7 @@
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QLH-ib-AYu">
                             <rect key="frame" x="343" y="77" width="64" height="14"/>
                             <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="(100-1000)" id="On9-US-DSR">
-                                <font key="font" metaFont="message" size="11"/>
+                                <font key="font" metaFont="controlContent" size="11"/>
                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -199,7 +202,7 @@
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pdk-uH-4e7">
                             <rect key="frame" x="343" y="54" width="92" height="14"/>
                             <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Default: 0 (Auto)" id="j7V-8i-5B5">
-                                <font key="font" metaFont="message" size="11"/>
+                                <font key="font" metaFont="controlContent" size="11"/>
                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -314,5 +317,6 @@
             </constraints>
             <point key="canvasLocation" x="139" y="134"/>
         </customView>
+        <userDefaultsController representsSharedInstance="YES" id="feC-Kb-Xgb"/>
     </objects>
 </document>

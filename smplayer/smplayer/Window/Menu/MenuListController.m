@@ -9,8 +9,18 @@
 #import "MenuListController.h"
 #import "MenuActionHandler.h"
 #import "SMCore.h"
+#import "Preference.h"
 
 @interface MenuListController()<NSMenuDelegate>
+
+
+//file
+@property (weak) IBOutlet NSMenu *file;
+@property (weak) IBOutlet NSMenuItem *open;
+@property (weak) IBOutlet NSMenuItem *openAlternative;
+@property (weak) IBOutlet NSMenuItem *openURL;
+@property (weak) IBOutlet NSMenuItem *openURLAlternative;
+
 
 // playback
 @property (weak) IBOutlet NSMenu *playback;
@@ -73,6 +83,9 @@
 @implementation MenuListController
 
 -(void)bindMenuItems{
+    
+    //file
+    _file.delegate = self;
     
     // playback
     _playback.delegate = self;
@@ -168,6 +181,22 @@
     _findOnlineSub.action = @selector(findOnlineSub:);
 }
 
+#pragma mark - update menu
+-(void)updateFileMenu{
+    
+    if ([[Preference Instance] boolForKey:SM_PGG_AlwaysOpenInNewWindow]){
+        _open.hidden = YES;
+        _openURL.hidden = YES;
+        _openAlternative.hidden = NO;
+        _openURLAlternative.hidden = NO;
+    } else {
+        _open.hidden = NO;
+        _openURL.hidden = NO;
+        _openAlternative.hidden = YES;
+        _openURLAlternative.hidden = YES;
+    }
+}
+
 -(void)updatePlaybackMenu{
     _pause.title = [[SMCore Instance] player].info.isPause ?
             NSLocalizedString(@"menu.pause",nil):
@@ -188,7 +217,9 @@
 
 #pragma mark - NSMenuDelegate
 -(void)menuWillOpen:(NSMenu *)menu{
-    if (menu == _playback){
+    if (menu == _file){
+        [self updateFileMenu];
+    } else if (menu == _playback){
         [self updatePlaybackMenu];
     } else if (menu == _audio){
         [self updateAudioMenu];

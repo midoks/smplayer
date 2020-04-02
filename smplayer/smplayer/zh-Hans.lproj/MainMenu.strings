@@ -345,4 +345,9 @@
 /* Class = "NSMenuItem"; title = "Font..."; ObjectID = "Cd0-R1-bDh"; */
 "Cd0-R1-bDh.title" = "字体...";
 
+/* Class = "NSMenuItem"; title = "Open in New Window…"; ObjectID = "k1e-Fw-h8Q"; */
+"k1e-Fw-h8Q.title" = "在新窗口打开...";
+
+/* Class = "NSMenuItem"; title = "Open URL in New Window…"; ObjectID = "AjJ-sT-clj"; */
+"AjJ-sT-clj.title" = "在新窗口打开 URL...";
 

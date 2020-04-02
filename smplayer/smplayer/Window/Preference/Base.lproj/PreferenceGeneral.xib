@@ -58,6 +58,9 @@
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <binding destination="6po-mG-7ON" name="value" keyPath="values.alwaysOpenInNewWindow" id="lTI-HK-9uO"/>
+                            </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fk7-TI-G63">
                             <rect key="frame" x="118" y="76" width="219" height="18"/>
@@ -65,6 +68,9 @@
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <binding destination="6po-mG-7ON" name="value" keyPath="values.quitWhenNoOpenedWindow" id="Mgu-EB-NGP"/>
+                            </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="da2-Kl-cur">
                             <rect key="frame" x="118" y="54" width="277" height="18"/>
@@ -72,6 +78,9 @@
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <binding destination="6po-mG-7ON" name="value" keyPath="values.keepOpenOnFileEnd" id="tVD-Lp-vO7"/>
+                            </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wlY-Ka-vph">
                             <rect key="frame" x="118" y="32" width="206" height="18"/>
@@ -79,6 +88,9 @@
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <binding destination="6po-mG-7ON" name="value" keyPath="values.resumeLastPosition" id="LMX-PU-tHU"/>
+                            </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kfn-ZX-ty8">
                             <rect key="frame" x="118" y="10" width="134" height="18"/>
@@ -86,6 +98,9 @@
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <binding destination="6po-mG-7ON" name="value" keyPath="values.automaticallyChecksForUpdates" id="8tf-08-WFY"/>
+                            </connections>
                         </button>
                         <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qJR-Ng-Fk9">
                             <rect key="frame" x="258" y="4" width="87" height="25"/>
@@ -163,6 +178,9 @@
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <binding destination="6po-mG-7ON" name="value" keyPath="values.screenshotSaveToFile" id="PIj-gZ-ZiV"/>
+                            </connections>
                         </button>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lXd-mh-FMJ">
                             <rect key="frame" x="191" y="101" width="164" height="16"/>
@@ -171,6 +189,9 @@
                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
+                            <connections>
+                                <binding destination="6po-mG-7ON" name="value" keyPath="values.screenShotFolder" id="HJS-en-q8Q"/>
+                            </connections>
                         </textField>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="nrQ-1Z-Zyv">
                             <rect key="frame" x="363" y="102" width="14" height="14"/>
@@ -195,11 +216,14 @@
                                 <menu key="menu" id="E3P-5P-yDP">
                                     <items>
                                         <menuItem title="PNG" state="on" id="ymx-Ju-s06"/>
-                                        <menuItem title="JPEG(.jpg)" id="KbZ-qO-z37"/>
-                                        <menuItem title="JPEG(.jpeg)" id="spE-qu-AiN"/>
+                                        <menuItem title="JPEG(.jpg)" tag="1" id="KbZ-qO-z37"/>
+                                        <menuItem title="JPEG(.jpeg)" tag="1" id="spE-qu-AiN"/>
                                     </items>
                                 </menu>
                             </popUpButtonCell>
+                            <connections>
+                                <binding destination="6po-mG-7ON" name="selectedTag" keyPath="values.screenShotFormat" id="NRZ-CE-ejE"/>
+                            </connections>
                         </popUpButton>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eLg-mQ-mR1">
                             <rect key="frame" x="118" y="50" width="130" height="18"/>
@@ -207,6 +231,9 @@
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <binding destination="6po-mG-7ON" name="value" keyPath="values.screenshotCopyToClipboard" id="iG3-jX-88o"/>
+                            </connections>
                         </button>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zgV-Bv-gAw">
                             <rect key="frame" x="118" y="28" width="56" height="16"/>
@@ -222,6 +249,9 @@
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <binding destination="6po-mG-7ON" name="value" keyPath="values.screenShotIncludeSubtitle" id="BbD-lP-d87"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>
@@ -248,7 +278,7 @@
                         <constraint firstItem="hF1-sc-a37" firstAttribute="top" secondItem="9cW-8a-C85" secondAttribute="top" constant="10" id="hV5-Aj-crf"/>
                         <constraint firstAttribute="height" constant="150" id="iRh-rv-Avi"/>
                         <constraint firstItem="hF1-sc-a37" firstAttribute="leading" secondItem="9cW-8a-C85" secondAttribute="leading" constant="120" id="lSv-Eb-zQ0"/>
-                        <constraint firstItem="nrQ-1Z-Zyv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lXd-mh-FMJ" secondAttribute="trailing" symbolic="YES" id="umi-cS-Q8A"/>
+                        <constraint firstItem="nrQ-1Z-Zyv" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="lXd-mh-FMJ" secondAttribute="trailing" constant="8" symbolic="YES" id="umi-cS-Q8A"/>
                         <constraint firstItem="qxu-TT-aEU" firstAttribute="leading" secondItem="9cW-8a-C85" secondAttribute="leading" constant="3" id="vIi-eP-VhN"/>
                         <constraint firstItem="xMQ-NR-jra" firstAttribute="top" secondItem="hF1-sc-a37" secondAttribute="bottom" constant="8" id="vkw-Yb-TAE"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="yVm-b4-oXT" secondAttribute="trailing" constant="20" symbolic="YES" id="wj1-I8-cqa"/>
