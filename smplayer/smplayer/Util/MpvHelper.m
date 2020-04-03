@@ -10,11 +10,9 @@
 #import "SMCommon.h"
 #import "SMLastHistory.h"
 
+#import "Player.h"
 #import "MpvHelper.h"
 
-//#import "SMVideoLayer.h"
-
-//@class SMVideoLayer;
 
 static void wakeup(void *);
 static void *get_proc_address(void *ctx, const char *name);
@@ -38,6 +36,8 @@ static void *get_proc_address(void *ctx, const char *name)
     mpv_handle *mpv;
     mpv_render_context *sm_render_context;
 }
+
+@property (nonatomic,strong) Player *player;
 @property (nonatomic, weak) NSTimer *asyncPlayerTimer;
 @property  dispatch_queue_t queue;
 @property BOOL switchVoice;
@@ -54,8 +54,13 @@ static void *get_proc_address(void *ctx, const char *name)
 -(id)init{
     self = [super init];
     if (self){
-        
     }
+    return self;
+}
+
+-(id)init:(Player*)player{
+    self = [self init];
+    _player = player;
     return self;
 }
 
@@ -64,6 +69,11 @@ static void *get_proc_address(void *ctx, const char *name)
     mpv_set_wakeup_callback(mpv, wakeup, (__bridge void *) self);
     const char *cmd[] = {"loadfile", path.UTF8String, NULL};
     check_error(mpv_command(mpv, cmd));
+}
+
+-(void)renderMPV{
+    [self initMPV];
+    [self initVideoRender];
 }
 
 -(void)initMPV{
@@ -82,10 +92,11 @@ static void *get_proc_address(void *ctx, const char *name)
     mpv_set_property_string(mpv, "keepaspect", "yes");
     mpv_set_property_string(mpv, "gpu-hwdec-interop", "auto");
     
-    check_error( mpv_set_option_string(mpv, "hwdec", "videotoolbox"));
 #ifdef ENABLE_LEGACY_GPU_SUPPORT
-//    check_error( mpv_set_option_string(mpv, "hwdec-image-format", "uyvy422"));
+    check_error( mpv_set_option_string(mpv, "hwdec", "videotoolbox"));
+    check_error( mpv_set_option_string(mpv, "hwdec-image-format", "uyvy422"));
 #endif
+    
     mpv_request_log_messages(mpv, "warn");
     check_error(mpv_initialize(mpv));
 }
@@ -129,14 +140,14 @@ static void wakeup(void *context) {
 -(void)handleEvent:(mpv_event *)event
 {
     switch (event->event_id) {
-            //        case MPV_EVENT_SHUTDOWN: {
-            //            if (mpv){
-            ////                mpv_detach_destroy(mpv);
-            //                mpv = NULL;
-            //            }
-            //            NSLog(@"event-MPV_EVENT_SHUTDOWN: shutdown");
-            //            break;
-            //        }
+        case MPV_EVENT_SHUTDOWN: {
+            if (mpv){
+                mpv_detach_destroy(mpv);
+                mpv = NULL;
+            }
+            NSLog(@"event-MPV_EVENT_SHUTDOWN: shutdown");
+            break;
+        }
         case MPV_EVENT_START_FILE:{
             dispatch_async(dispatch_get_main_queue(), ^{
                 [self fileStart];
@@ -153,12 +164,12 @@ static void wakeup(void *context) {
         case MPV_EVENT_PROPERTY_CHANGE:{
             NSLog(@"MPV_EVENT_PROPERTY_CHANGE");
             NSLog(@"%@", event);
-//
-//            let dataOpaquePtr = OpaquePointer(event.pointee.data)
-//            if let property = UnsafePointer<mpv_event_property>(dataOpaquePtr)?.pointee {
-//              let propertyName = String(cString: property.name)
-//              handlePropertyChange(propertyName, property)
-//            }
+            //
+            //            let dataOpaquePtr = OpaquePointer(event.pointee.data)
+            //            if let property = UnsafePointer<mpv_event_property>(dataOpaquePtr)?.pointee {
+            //              let propertyName = String(cString: property.name)
+            //              handlePropertyChange(propertyName, property)
+            //            }
             
             break;
         }
@@ -172,6 +183,10 @@ static void wakeup(void *context) {
             });
             break;
         }
+        case MPV_EVENT_IDLE:{
+            [[SMCore Instance] player].info.isIdle = YES;
+            break;
+        }
         default:{
             NSLog(@"event-default: %s\n", mpv_event_name(event->event_id));
             break;
@@ -180,8 +195,9 @@ static void wakeup(void *context) {
 }
 
 static void render_context_callback(void *ctx) {
+    MpvHelper *this = (__bridge MpvHelper *)ctx;
     dispatch_async(dispatch_get_main_queue(), ^{
-        [[[SMCore Instance] player].videoView.smLayer display];
+        [this->_player.videoView.smLayer display];
     });
 }
 
@@ -215,18 +231,18 @@ static void render_context_callback(void *ctx) {
 
 -(void)fileStart{
     NSLog(@"fileStart");
+    [_player.info setIsValid:NO];
 }
 
 -(void)fileLoad{
     
-    [[[SMCore Instance] player].info setIsPause:NO];
+    [_player.info setIsPause:NO];
     
     double w = [self mpvGetDouble:@"width"];
     double h = [self mpvGetDouble:@"height"];
     
-    [[[SMCore Instance] player].info setWidth:w];
-    [[[SMCore Instance] player].info setHeight:h];
-    
+    [_player.info setWidth:w];
+    [_player.info setHeight:h];
     
     // init window
     NSSize screenSize = [NSApp mainWindow].screen.visibleFrame.size;
@@ -238,7 +254,7 @@ static void render_context_callback(void *ctx) {
     
     
     self->_videoDuration = [self mpvGetDouble:@"duration"];
-    [[[SMCore Instance] player] videoStart:[[SMVideoTime alloc] initTime:self->_videoDuration]];
+    [_player videoStart:[[SMVideoTime alloc] initTime:self->_videoDuration]];
     
     NSURL *urlFile = [NSURL fileURLWithPath:self->_currentPath isDirectory:NO];
     [[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL:urlFile];
@@ -254,7 +270,7 @@ static void render_context_callback(void *ctx) {
     }
     _videoPos = pos;
     // [[SMLastHistory Instance] add:[NSURL fileURLWithPath:self->_currentPath isDirectory:NO] duration:_videoPos];
-    [[[SMCore Instance] player] videoPos:[[SMVideoTime alloc] initTime:pos]];
+    [_player videoPos:[[SMVideoTime alloc] initTime:pos]];
 }
 
 -(void)closeVideo{
@@ -279,7 +295,7 @@ static void render_context_callback(void *ctx) {
 
 -(void)setVoice:(double)value{
     if (mpv) {
-        [[[SMCore Instance] player].info setVolume:value];
+        [_player.info setVolume:value];
         double data = value;
         mpv_set_property_async(mpv, 0, "volume", MPV_FORMAT_DOUBLE, &data);
     }
@@ -287,7 +303,7 @@ static void render_context_callback(void *ctx) {
 
 -(void)stop{
     if (mpv) {
-        [[[SMCore Instance] player].info setIsPause:YES];
+        [_player.info setIsPause:YES];
         _switchVideo = NO;
         int data = 1;
         mpv_set_property(mpv, "pause", MPV_FORMAT_FLAG, &data);
@@ -307,7 +323,7 @@ static void render_context_callback(void *ctx) {
 -(void)start{
     if (mpv) {
         _switchVideo = YES;
-        [[[SMCore Instance] player].info setIsPause:NO];
+        [_player.info setIsPause:NO];
         int data = 0;
         mpv_set_property(mpv, "pause", MPV_FORMAT_FLAG, &data);
     }

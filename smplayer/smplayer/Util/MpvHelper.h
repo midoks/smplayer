@@ -16,6 +16,7 @@
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
 
+@class Player;
 
 #import <Foundation/Foundation.h>
 
@@ -31,6 +32,10 @@ typedef NS_ENUM(NSUInteger, SMSeek) {
 
 @property mpv_render_context *context;
 
+
+-(id)init:(Player*)player;
+
+-(void)renderMPV;
 -(void)initMPV;
 -(void)initVideoRender;
 -(BOOL)shouldRenderUpdateFrame;

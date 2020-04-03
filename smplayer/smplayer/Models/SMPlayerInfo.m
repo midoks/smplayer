@@ -14,7 +14,10 @@
     self = [super init];
     if (self){
         _isPause = NO;
+        _isIdle = NO;
+        _isValid = YES;
         _playSpeed = 1;
+        
         _audioDelay = 0;
         _width = 0;
         _height = 0;

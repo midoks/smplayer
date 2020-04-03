@@ -10,6 +10,8 @@
 #import "SMCommon.h"
 #import "SMCore.h"
 
+#import "Player.h"
+
 #import "SMVideoLayer.h"
 
 @interface SMVideoLayer()
@@ -17,6 +19,8 @@
     CGLContextObj _cglContext;
     CGLPixelFormatObj _cglPixelFormat;
 }
+
+@property (nonatomic,strong) Player *player;
 @end
 
 @implementation SMVideoLayer
@@ -27,7 +31,6 @@
         [self setAsynchronous:NO];
         [self setAutoresizingMask:NSViewWidthSizable|NSViewHeightSizable];
 
-        
         _cglPixelFormat = [self copyCGLPixelFormatForDisplayMask:0];
         if (!_cglPixelFormat) {
             NSLog(@"Failed to create CGLPixelFormatObj");
@@ -47,6 +50,10 @@
     return self;
 }
 
+
+-(void)initPlayer:(Player*)player{
+    _player = player;
+}
 
 - (CGLPixelFormatObj)copyCGLPixelFormatForDisplayMask:(uint32_t)mask {
     CGLPixelFormatAttribute att1[] = {
@@ -102,17 +109,19 @@
 
 - (BOOL)canDrawInCGLContext:(CGLContextObj)ctx pixelFormat:(CGLPixelFormatObj)pf forLayerTime:(CFTimeInterval)t displayTime:(const CVTimeStamp *)ts {
     
-    [[[SMCore Instance] player].uninitLock lock];
+    [_player.uninitLock lock];
     
-    BOOL result = [[[SMCore Instance] player].mpv shouldRenderUpdateFrame];
-    [[[SMCore Instance] player].uninitLock unlock];
+    BOOL result = [_player.mpv shouldRenderUpdateFrame];
+    
+    [_player.uninitLock unlock];
     
     return result;
 }
 
 - (void)drawInCGLContext:(CGLContextObj)ctx pixelFormat:(CGLPixelFormatObj)pf forLayerTime:(CFTimeInterval)t displayTime:(const CVTimeStamp *)ts {
     
-    [[[SMCore Instance] player].uninitLock lock];
+    [_player.uninitLock lock];
+    
     static GLint dims[] = { 0, 0, 0, 0 };
     glGetIntegerv(GL_VIEWPORT, dims);
     
@@ -129,10 +138,10 @@
         {0}
     };
     
-    mpv_render_context_render([[SMCore Instance] player].mpv.context, params);
+    mpv_render_context_render(_player.mpv.context, params);
     CGLFlushDrawable(_cglContext);
  
-    [[[SMCore Instance] player].uninitLock unlock];
+    [_player.uninitLock unlock];
 }
 
 - (CGLContextObj)copyCGLContextForPixelFormat:(CGLPixelFormatObj)pf {

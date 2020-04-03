@@ -49,13 +49,11 @@ static dispatch_once_t _instance_once;
     self.window.titlebarAppearsTransparent = YES;
     self.window.titleVisibility = NSWindowTitleHidden;
     
-    
     [_urlStackView setVisibilityPriority:NSStackViewVisibilityPriorityNotVisible forView:_httpPrexTextField];
     
+    [_urlTextField setStringValue:@""];
     _urlTextField.delegate = self;
     _openBtn.enabled = NO;
-    
-    
 }
 
 - (IBAction)cancelBtnAction:(id)sender {
@@ -76,6 +74,7 @@ static dispatch_once_t _instance_once;
     if ([list containsObject:ext]){
         [[[SMCore Instance] player] showWindow:self];
         [[[SMCore Instance] player] openVideo:url];
+        
         [self.window close];
         [[[SMCore Instance] first] close];
     } else{

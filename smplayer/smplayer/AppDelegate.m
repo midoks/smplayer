@@ -120,8 +120,16 @@
     [_preferenceWindow showWindow:nil];
 }
 
-- (IBAction)openFile:(id)sender {
-    [[[SMCore Instance] player] openSelectVideo:^{
+- (IBAction)openFile:(NSMenuItem *)sender {
+    
+    Player *player;
+    if (sender.tag == 1){
+        player = [[SMCore Instance] newPlayer];
+    } else {
+        player = [[SMCore Instance] player];
+    }
+    
+    [player openSelectVideo:^{
         [[[SMCore Instance] first] close];
     }];
 }

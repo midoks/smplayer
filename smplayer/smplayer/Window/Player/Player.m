@@ -139,14 +139,15 @@ static dispatch_once_t _instance_once;
     self.titleBarView.layerContentsRedrawPolicy = NSViewLayerContentsRedrawOnSetNeedsDisplay;
     
     _videoView = [[SMVideoView alloc] initWithFrame:self.window.contentView.frame];
+    [_videoView.smLayer initPlayer:self];
     [self.window.contentView addSubview:_videoView positioned:NSWindowBelow relativeTo:nil];
     
-    _mpv = [[MpvHelper alloc] init];
-    [_mpv initMPV];
-    [_mpv initVideoRender];
+    _mpv = [[MpvHelper alloc] init:self];
+    [_mpv renderMPV];
 }
 
 -(void)initFragToolbarView{
+    
     // NSImageNameTouchBarTextListTemplate,NSImageNameTouchBarFolderTemplate
     
     //    NSButton *list = [[NSButton alloc] initWithFrame:CGRectMake(0, 0, 24, 24)];
@@ -350,8 +351,8 @@ static dispatch_once_t _instance_once;
     
     _isOnTop = !_isOnTop;
 
-////        self.window.collectionBehavior = NSWindowCollectionBehaviorFullScreenAuxiliary;
-////        self.window.collectionBehavior = NSWindowCollectionBehaviorFullScreenPrimary;
+///        self.window.collectionBehavior = NSWindowCollectionBehaviorFullScreenAuxiliary;
+///        self.window.collectionBehavior = NSWindowCollectionBehaviorFullScreenPrimary;
     
     self.window.level = _isOnTop?NSFloatingWindowLevel:NSNormalWindowLevel;
     self.window.collectionBehavior = NSWindowCollectionBehaviorFullScreenPrimary;

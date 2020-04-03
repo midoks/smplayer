@@ -14,6 +14,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property NSURL *currentURL;
 @property  BOOL isPause;
+@property BOOL isIdle;
+@property BOOL isValid;
+
 @property  double playSpeed;
 @property  double audioDelay;
 

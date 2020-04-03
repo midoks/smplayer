@@ -36,8 +36,11 @@ static dispatch_once_t _instance_once;
     
     [[self standardUserDefaults] registerDefaults:@{
         SM_PGG_ActionAfterLaunch:@0,
-        SM_PGC_VideoThreads:@0,
+        SM_PGG_ScreenshotSaveToFile:@YES,
         SM_PGG_ScreenShotFolder:@"~/Pictures/Screenshots",
+        SM_PGG_ScreenShotIncludeSubtitle:@YES,
+        SM_PGC_VideoThreads:@0,
+        
         SM_PGN_EnableCache:@YES,
         SM_PGN_DefaultCacheSize:@153600,
         SM_PGN_SecPrefech:@100,

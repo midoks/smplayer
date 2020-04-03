@@ -16,10 +16,13 @@
 @interface SMCore()
 {
     Welcome *welcome;
-    Player *player;
     Web *web;
     Preference *preference;
 }
+
+@property (nonatomic,strong) Player* nowPlayer;
+//@property (nonatomic,strong) NSMutableArray<Player*>* playerList;
+@property (nonatomic,assign) NSInteger playerCount;
 
 
 @end
@@ -39,9 +42,13 @@ static dispatch_once_t _instance_once;
     self = [super init];
     if (self){
         self->welcome = [Welcome Instance];
-        self->player = [Player Instance];
         self->web = [Web Instance];
         self->preference = [Preference Instance];
+        
+        Player *p = [Player Instance];
+//        _playerList = [[NSMutableArray alloc] initWithObjects:p, nil];
+        _playerCount = 1;
+        _nowPlayer = p;
     }
     return self;
 }
@@ -51,7 +58,18 @@ static dispatch_once_t _instance_once;
 }
 
 -(Player *)player{
-    return self->player;
+    return _nowPlayer;
+}
+
+-(Player *)newPlayer{
+    if ([[Preference Instance] boolForKey:SM_PGG_AlwaysOpenInNewWindow]){
+        Player *newPlayer = [[Player alloc] init];
+//        [_playerList addObject:newPlayer];
+        _playerCount += 1;
+        _nowPlayer = newPlayer;
+        return newPlayer;
+    }
+    return nil;
 }
 
 -(Web *)web{

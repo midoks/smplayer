@@ -9,10 +9,12 @@
 #import <Cocoa/Cocoa.h>
 #import <QuartzCore/QuartzCore.h>
 
+@class Player;
 NS_ASSUME_NONNULL_BEGIN
 
 @interface SMVideoLayer : CAOpenGLLayer
 
+-(void)initPlayer:(Player*)player;
 @end
 
 NS_ASSUME_NONNULL_END

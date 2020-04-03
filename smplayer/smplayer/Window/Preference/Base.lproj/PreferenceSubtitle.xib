@@ -381,7 +381,7 @@
                             </constraints>
                         </box>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Itl-gC-DLJ">
-                            <rect key="frame" x="118" y="58" width="101" height="16"/>
+                            <rect key="frame" x="118" y="58" width="106" height="16"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Vertical position:" id="S8t-kb-BqP">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -389,7 +389,7 @@
                             </textFieldCell>
                         </textField>
                         <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="di9-eh-3tN">
-                            <rect key="frame" x="227" y="56" width="80" height="21"/>
+                            <rect key="frame" x="232" y="56" width="80" height="21"/>
                             <constraints>
                                 <constraint firstAttribute="width" constant="80" id="Qh1-tU-kEa"/>
                             </constraints>
@@ -400,7 +400,7 @@
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="DEv-1a-miT">
-                            <rect key="frame" x="313" y="58" width="15" height="16"/>
+                            <rect key="frame" x="312" y="58" width="15" height="16"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="%" id="uuW-uw-OGC">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -437,7 +437,7 @@
                         <constraint firstItem="Itl-gC-DLJ" firstAttribute="top" secondItem="zv1-nf-0lq" secondAttribute="bottom" constant="10" id="OFr-CJ-cUE"/>
                         <constraint firstItem="di9-eh-3tN" firstAttribute="centerY" secondItem="Itl-gC-DLJ" secondAttribute="centerY" id="PbV-Sc-XoW"/>
                         <constraint firstAttribute="trailing" secondItem="zv1-nf-0lq" secondAttribute="trailing" constant="10" id="RBW-jd-V7h"/>
-                        <constraint firstItem="DEv-1a-miT" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="di9-eh-3tN" secondAttribute="trailing" constant="8" symbolic="YES" id="U0I-GT-0WM"/>
+                        <constraint firstItem="DEv-1a-miT" firstAttribute="leading" secondItem="di9-eh-3tN" secondAttribute="trailing" constant="2" id="U0I-GT-0WM"/>
                         <constraint firstAttribute="height" constant="190" id="UO4-jI-1A8"/>
                         <constraint firstItem="5yM-B0-UJt" firstAttribute="leading" secondItem="qYq-9I-0dk" secondAttribute="leading" constant="120" id="ZEj-ZD-CaG"/>
                         <constraint firstItem="zv1-nf-0lq" firstAttribute="top" secondItem="7ch-UO-aXE" secondAttribute="bottom" constant="8" id="bDx-rs-rXs"/>

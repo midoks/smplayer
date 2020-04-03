@@ -20,6 +20,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(Welcome *)first;
 -(Player *)player;
+-(Player *)newPlayer;
 -(Web *)web;
 -(Preference *)preference;
 
