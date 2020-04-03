@@ -45,9 +45,14 @@ typedef NS_ENUM(NSUInteger, SMAlertStyle) {
       style:(NSAlertStyle)style
  delayedTime:(double)delayedTime;
 
+#pragma mark - Panel
 +(void)quickPromptPanel:(NSString *)key
                  option:(SMAlertStyle)option
                callback:(void(^)(NSString *inputValue))callback;
++(void)quickOpenPanel:(NSString *)title
+            chooseDir:(BOOL)chooseDir
+                  dir:(NSURL * _Nonnull)dir
+             callback:(void(^)(NSURL *url))callback;
 
 
 +(BOOL)isMouseEvent:(NSEvent *)event views:(NSArray<NSView *> *)views;

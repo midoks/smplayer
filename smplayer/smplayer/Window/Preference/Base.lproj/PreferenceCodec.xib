@@ -41,7 +41,7 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="60" id="lZJ-JU-EaN"/>
                             </constraints>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="0" drawsBackground="YES" id="azJ-1E-BTL">
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="0" drawsBackground="YES" id="azJ-1E-BTL">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -66,16 +66,19 @@
                                 <menu key="menu" id="YMr-lN-hJA">
                                     <items>
                                         <menuItem title="Disabled" state="on" id="JQX-go-WHd"/>
-                                        <menuItem title="Auto" id="tAs-hO-sxD"/>
-                                        <menuItem title="Auto(Copy)" id="myK-nd-uMr"/>
+                                        <menuItem title="Auto" tag="1" id="tAs-hO-sxD"/>
+                                        <menuItem title="Auto(Copy)" tag="2" id="myK-nd-uMr"/>
                                     </items>
                                 </menu>
                             </popUpButtonCell>
+                            <connections>
+                                <binding destination="feC-Kb-Xgb" name="selectedTag" keyPath="values.hardwareDecoder" id="jD7-2I-ZwG"/>
+                            </connections>
                         </popUpButton>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9T7-Q8-bBU">
                             <rect key="frame" x="309" y="55" width="92" height="14"/>
                             <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Default: 0 (Auto)" id="TVk-le-X1E">
-                                <font key="font" metaFont="controlContent" size="11"/>
+                                <font key="font" metaFont="message" size="11"/>
                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -83,7 +86,7 @@
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Onz-YF-xPd">
                             <rect key="frame" x="118" y="10" width="33" height="14"/>
                             <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Label" id="ULf-Jb-qOK">
-                                <font key="font" metaFont="controlContent" size="11"/>
+                                <font key="font" metaFont="message" size="11"/>
                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -141,11 +144,14 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="60" id="MW0-oy-zAk"/>
                             </constraints>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="fU0-dB-ld0">
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="fU0-dB-ld0">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
+                            <connections>
+                                <binding destination="feC-Kb-Xgb" name="value" keyPath="values.initialVolume" id="OI7-1A-3Nt"/>
+                            </connections>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wQL-u8-zeu">
                             <rect key="frame" x="118" y="79" width="149" height="16"/>
@@ -163,16 +169,19 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="60" id="Av6-ZU-vc1"/>
                             </constraints>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Dd2-fz-PPp">
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Dd2-fz-PPp">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
+                            <connections>
+                                <binding destination="feC-Kb-Xgb" name="value" keyPath="values.maxVolume" id="JHM-ty-gH2"/>
+                            </connections>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QLH-ib-AYu">
                             <rect key="frame" x="343" y="77" width="64" height="14"/>
                             <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="(100-1000)" id="On9-US-DSR">
-                                <font key="font" metaFont="controlContent" size="11"/>
+                                <font key="font" metaFont="message" size="11"/>
                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -193,16 +202,19 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="60" id="KuW-tE-btw"/>
                             </constraints>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Zga-7a-5bU">
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="Zga-7a-5bU">
                                 <font key="font" usesAppearanceFont="YES"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
+                            <connections>
+                                <binding destination="feC-Kb-Xgb" name="value" keyPath="values.audioThreads" id="5wO-Ea-KVX"/>
+                            </connections>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pdk-uH-4e7">
                             <rect key="frame" x="343" y="54" width="92" height="14"/>
                             <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Default: 0 (Auto)" id="j7V-8i-5B5">
-                                <font key="font" metaFont="controlContent" size="11"/>
+                                <font key="font" metaFont="message" size="11"/>
                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -224,6 +236,9 @@
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <binding destination="feC-Kb-Xgb" name="value" keyPath="values.spdifAC3" id="eyC-CO-snt"/>
+                            </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yLJ-m4-I3p">
                             <rect key="frame" x="322" y="28" width="48" height="18"/>
@@ -231,6 +246,9 @@
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <binding destination="feC-Kb-Xgb" name="value" keyPath="values.spdifDTS" id="V68-ro-lrK"/>
+                            </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="w5q-Z6-Npv">
                             <rect key="frame" x="371" y="28" width="73" height="18"/>
@@ -238,6 +256,9 @@
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <binding destination="feC-Kb-Xgb" name="value" keyPath="values.spdifDTSHD" id="JYE-rE-dYi"/>
+                            </connections>
                         </button>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NpF-xE-LSU">
                             <rect key="frame" x="118" y="7" width="149" height="16"/>

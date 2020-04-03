@@ -6,9 +6,10 @@
 //  Copyright © 2020 midoks. All rights reserved.
 //
 
-#import "PreferenceGeneral.h"
-
 #import "SMCommon.h"
+#import "Preference.h"
+
+#import "PreferenceGeneral.h"
 
 @interface PreferenceGeneral ()
 
@@ -23,6 +24,20 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+}
+
+
+-(IBAction)choooseScreenshotPathAction:(id)sender
+{
+    
+    NSString *path = [[Preference Instance] stringForKey:SM_PGG_ScreenShotFolder];
+    [SMCommon quickOpenPanel:@"Choose screenshot save path"
+                   chooseDir:YES
+                         dir:[NSURL URLWithString:path]
+                    callback:^(NSURL * _Nonnull url) {
+        [[Preference Instance] setString:[url path] key:SM_PGG_ScreenShotFolder];
+        [[Preference Instance] sync];
+    }];
 }
 
 #pragma mark - MASPreferencesViewController

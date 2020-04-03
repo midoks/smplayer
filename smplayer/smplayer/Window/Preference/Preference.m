@@ -37,6 +37,10 @@ static dispatch_once_t _instance_once;
     [[self standardUserDefaults] registerDefaults:@{
         SM_PGG_ActionAfterLaunch:@0,
         SM_PGC_VideoThreads:@0,
+        SM_PGG_ScreenShotFolder:@"~/Pictures/Screenshots",
+        SM_PGN_EnableCache:@YES,
+        SM_PGN_DefaultCacheSize:@153600,
+        SM_PGN_SecPrefech:@100,
     }];
     return self;
 }
@@ -55,10 +59,24 @@ static dispatch_once_t _instance_once;
     [[self standardUserDefaults] synchronize];
 }
 
+#pragma mark - SET
+-(void)setString:(NSString *)value key:(NSString*)key{
+    [[self standardUserDefaults] setValue:value forKey:key];
+}
+
+-(void)setBool:(BOOL)value key:(NSString*)key{
+    [[self standardUserDefaults] setBool:value forKey:key];
+}
+
 #pragma mark - GET
 -(BOOL)boolForKey:(NSString *)key
 {
     return [[self standardUserDefaults] boolForKey:key];
+}
+
+-(NSString *)stringForKey:(NSString *)key
+{
+    return [[self standardUserDefaults] stringForKey:key];
 }
 
 

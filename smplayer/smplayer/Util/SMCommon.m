@@ -51,6 +51,7 @@
     }
 }
 
+#pragma mark - Panel
 +(void)quickPromptPanel:(NSString *)key
             option:(SMAlertStyle)option
                callback:(void(^)(NSString *inputValue))callback
@@ -79,6 +80,28 @@
         if ([alert runModal]){
             callback([input stringValue]);
         }
+    }
+}
+
++(void)quickOpenPanel:(NSString *)title
+                chooseDir:(BOOL)chooseDir
+                  dir:(NSURL * _Nonnull )dir
+             callback:(void(^)(NSURL *url))callback
+{
+    NSOpenPanel *panel = [[NSOpenPanel alloc] init];
+    panel.title = title;
+    panel.canCreateDirectories = NO;
+    panel.canChooseFiles = !chooseDir;
+    panel.canChooseDirectories = chooseDir;
+    panel.allowsMultipleSelection = NO;
+    panel.level =  NSModalPanelWindowLevel;
+    
+    if (!dir){
+        panel.directoryURL = dir;
+    }
+    
+    if([panel runModal]){
+        callback([panel URL]);
     }
 }
 
