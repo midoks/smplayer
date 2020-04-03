@@ -12,7 +12,7 @@
 #import "SMCore.h"
 #import "MenuListController.h"
 #import "MenuActionHandler.h"
-
+#import "MpvHelper.h"
 #import "SMPlayerInfo.h"
 #import "Player.h"
 
@@ -139,8 +139,11 @@ static dispatch_once_t _instance_once;
     self.titleBarView.layerContentsRedrawPolicy = NSViewLayerContentsRedrawOnSetNeedsDisplay;
     
     _videoView = [[SMVideoView alloc] initWithFrame:self.window.contentView.frame];
-    _videoView.smLayer.videoDelegate = self;
     [self.window.contentView addSubview:_videoView positioned:NSWindowBelow relativeTo:nil];
+    
+    _mpv = [[MpvHelper alloc] init];
+    [_mpv initMPV];
+    [_mpv initVideoRender];
 }
 
 -(void)initFragToolbarView{
@@ -200,7 +203,7 @@ static dispatch_once_t _instance_once;
         
         [panel beginWithCompletionHandler:^(NSModalResponse result) {
             if (result){
-                [self->_videoView.smLayer openVideo:[[panel URL] path]];
+                [self->_mpv openVideo:[[panel URL] path]];
             }
         }];
     }];
@@ -208,40 +211,40 @@ static dispatch_once_t _instance_once;
 
 /// 声音关闭开启按钮
 - (IBAction)voiceSwitchAction:(id)sender {
-    [_videoView.smLayer toggleVoice];
+    [_mpv toggleVoice];
 }
 
 /// 音量改变按钮
 - (IBAction)voiceChangeAction:(id)sender {
-    [_videoView.smLayer setVoice:[_flagVolumeSliderView.stringValue doubleValue]];
+    [_mpv setVoice:[_flagVolumeSliderView.stringValue doubleValue]];
 }
 
 /// 播放暂停按钮
 - (IBAction)playAction:(NSButton *)sender {
     if (sender.state == NSControlStateValueOff){
-        [_videoView.smLayer resume];
+        [_mpv resume];
     } else if (sender.state == NSControlStateValueOn){
-        [_videoView.smLayer stop];
+        [_mpv stop];
     }
 }
 
 - (IBAction)leftButtonAction:(NSButton *)sender {
     if (!isFileLoaded){return;}
     
-    [_videoView.smLayer seek:@"-5" option:SMSeekRelative];
+//    [_videoView.smLayer seek:@"-5" option:SMSeekRelative];
 }
 
 - (IBAction)rightButtonAction:(NSButton *)sender {
     if (!isFileLoaded){return;}
     
-    [_videoView.smLayer seek:@"+5" option:SMSeekRelative];
+//    [_videoView.smLayer seek:@"+5" option:SMSeekRelative];
 }
 
 - (IBAction)videoChangeAction:(id)sender {
     if (!isFileLoaded){return;}
     
     NSString *sliderValue = [self.flagTimelineSliderView stringValue];
-    [_videoView.smLayer seek:sliderValue option:SMSeekAbsolute];
+    [_mpv seek:sliderValue option:SMSeekAbsolute];
 }
 
 
@@ -253,7 +256,7 @@ static dispatch_once_t _instance_once;
 -(BOOL)prepareForDragOperation:(id<NSDraggingInfo>)sender {
     NSPasteboard *zPasteboard = [sender draggingPasteboard];
     NSArray *files = [zPasteboard propertyListForType:NSFilenamesPboardType];
-    [_videoView.smLayer openVideo:[files objectAtIndex:0]];
+    [_mpv openVideo:[files objectAtIndex:0]];
     return YES;
 }
 
@@ -261,7 +264,7 @@ static dispatch_once_t _instance_once;
 -(void)openVideo:(NSString *)path {
     _info.currentURL = [NSURL fileURLWithPath:path];
     windowTitle = _info.currentURL.lastPathComponent;
-    [_videoView.smLayer openVideo:path];
+    [_mpv openVideo:path];
 }
 
 -(void)openVideo:(NSString *)path seek:(double)seek{
@@ -397,7 +400,7 @@ static dispatch_once_t _instance_once;
 }
 
 -(void)windowWillClose:(NSNotification *)notification{
-    [_videoView.smLayer closeVideo];
+    [_mpv closeVideo];
 }
 
 
@@ -472,7 +475,7 @@ static dispatch_once_t _instance_once;
     }
 }
 
-#pragma mark - SMVideoViewDelegate
+#pragma mark - UI
 -(void)videoStart:(SMVideoTime *)duration{
     [self.flagTimelineSliderView setMaxValue:[duration doubleValue]];
     [self.flagTimelineRightView setStringValue:[duration getString]];
@@ -487,7 +490,7 @@ static dispatch_once_t _instance_once;
 -(void)fileLoaded{
     isFileLoaded = YES;
     
-    [self->_videoView.smLayer seek:videoSeek option:SMSeekRelative];
+//    [self->_videoView.smLayer seek:videoSeek option:SMSeekRelative];
 }
 @end
 

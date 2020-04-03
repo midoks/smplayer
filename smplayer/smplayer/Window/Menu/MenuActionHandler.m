@@ -23,37 +23,37 @@
 
 #pragma mark - Action
 -(void)pauseAction:(NSMenuItem *)sender{
-    [[[SMCore Instance] player].videoView.smLayer toggleVideo];
+    [[[SMCore Instance] player].mpv toggleVideo];
 }
 
 -(void)stepAction:(NSMenuItem *)sender{
     if (sender.tag == 0){
-        [[[SMCore Instance] player].videoView.smLayer seek:@"+5" option:SMSeekNormal];
+//        [[[SMCore Instance] player].videoView.smLayer seek:@"+5" option:SMSeekNormal];
     } else if (sender.tag == 1){
-        [[[SMCore Instance] player].videoView.smLayer seek:@"-5" option:SMSeekNormal];
+//        [[[SMCore Instance] player].videoView.smLayer seek:@"-5" option:SMSeekNormal];
     }
 }
 
 -(void)stepFrameAction:(NSMenuItem *)sender{
-    if (![[SMCore Instance] player].videoView.smLayer.info.isPause){
-        [[[SMCore Instance] player].videoView.smLayer stop];
+    if (![[SMCore Instance] player].info.isPause){
+        [[[SMCore Instance] player].mpv stop];
     }
     
     if (sender.tag == 0){
-        [[[SMCore Instance] player].videoView.smLayer frameStep:YES];
+        [[[SMCore Instance] player].mpv frameStep:YES];
     } else if (sender.tag == 1) {
-        [[[SMCore Instance] player].videoView.smLayer frameStep:NO];
+        [[[SMCore Instance] player].mpv frameStep:NO];
     }
 }
 
 -(void)jumpToBeginAction:(NSMenuItem *)sender{
-    [[[SMCore Instance] player].videoView.smLayer seek:@"0" option:SMSeekAbsolute];
+//    [[[SMCore Instance] player].videoView.smLayer seek:@"0" option:SMSeekAbsolute];
 }
 
 -(void)jumpToAction:(NSMenuItem *)sender{
     [SMCommon quickPromptPanel:@"jump_to" option:SMAlertRunModelStyle callback:^(NSString *inputValue) {
         SMVideoTime *vtime = [[SMVideoTime alloc] initTimeWithString:inputValue];
-        [[[SMCore Instance] player].videoView.smLayer seek:[vtime stringValue] option:SMSeekAbsolute];
+        [[[SMCore Instance] player].mpv seek:[vtime stringValue] option:SMSeekAbsolute];
     }];
 }
 
@@ -68,7 +68,7 @@
 }
 
 -(void)snapshotAction:(NSMenuItem *)sender{
-    [[[SMCore Instance] player].videoView.smLayer screenshot];
+    [[[SMCore Instance] player].mpv screenshot];
 }
 
 -(void)openScreenshotFolderAction:(NSMenuItem *)sender{
@@ -80,23 +80,23 @@
 -(void)volumeChange:(NSMenuItem *)sender{
     int volumeDelta = [sender.representedObject intValue];
     int newVolume = volumeDelta + [[SMCore Instance] player].info.volume;
-    [[[SMCore Instance] player].videoView.smLayer setVoice:newVolume];
+    [[[SMCore Instance] player].mpv setVoice:newVolume];
 }
 
 -(void)volumeMute:(NSMenuItem *)sender{
-    [[[SMCore Instance] player].videoView.smLayer toggleVoice];
+    [[[SMCore Instance] player].mpv toggleVoice];
 }
 
 -(void)audioDelayChange:(NSMenuItem *)sender{
     double delayDelta = [sender.representedObject doubleValue];
     double newDelay = delayDelta + [[SMCore Instance] player].info.audioDelay;
     [[SMCore Instance] player].info.audioDelay = newDelay;
-    [[[SMCore Instance] player].videoView.smLayer setAudioDelay:newDelay];
+    [[[SMCore Instance] player].mpv setAudioDelay:newDelay];
 }
 
 -(void)audioDelayReset:(NSMenuItem *)sender{
     [[SMCore Instance] player].info.audioDelay = 0;
-    [[[SMCore Instance] player].videoView.smLayer setAudioDelay:0];
+    [[[SMCore Instance] player].mpv setAudioDelay:0];
 }
 
 // subtitle
@@ -106,7 +106,7 @@
         NSLog(@"%lu,%@",index,path);
         
         if (index == 1){
-            [[[SMCore Instance] player].videoView.smLayer loadSubtitle:path];
+            [[[SMCore Instance] player].mpv loadSubtitle:path];
         }
     }];
 }

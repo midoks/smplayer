@@ -16,7 +16,7 @@
 
 @implementation SMVideoView
 
-- (id)initWithFrame:(NSRect)frame{
+- (id)initWithFrame:(NSRect)frame {
     self = [super initWithFrame:frame];
     if (self) {
         

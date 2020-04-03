@@ -8,16 +8,19 @@
 
 #import <Cocoa/Cocoa.h>
 #import <Carbon/Carbon.h>
+#import "SMPlayerInfo.h"
+#import "MpvHelper.h"
 
 #import "SMVideoView.h"
-#import "SMPlayerInfo.h"
+
 
 
 NS_ASSUME_NONNULL_BEGIN
 
 //NSWindowController
-@interface Player : NSWindowController<NSWindowDelegate,SMVideoLayerDelegate>
+@interface Player : NSWindowController<NSWindowDelegate>
 
+@property (nonatomic, strong) MpvHelper *mpv;
 @property (nonatomic, strong) NSLock* uninitLock;
 @property (nonatomic,strong) SMVideoView *videoView;
 @property (nonatomic,strong) SMPlayerInfo* info;
@@ -26,6 +29,9 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)openVideo:(NSString *)path;
 -(void)openVideo:(NSString *)path seek:(double)seek;
 -(void)openSelectVideo:(void(^)(void))cmd;
+
+-(void)videoStart:(SMVideoTime *)duration;
+-(void)videoPos:(SMVideoTime *)pos;
 
 // menu
 -(void)menuChangeWindowSize:(NSMenuItem *)sender;
