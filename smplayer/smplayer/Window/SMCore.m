@@ -20,6 +20,8 @@
     Web *web;
     Preference *preference;
 }
+
+
 @end
 
 @implementation SMCore

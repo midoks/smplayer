@@ -67,13 +67,15 @@ static void *get_proc_address(void *ctx, const char *name)
 }
 
 -(void)initMPV{
-    NSLog(@"initMPV");
     _queue = dispatch_queue_create("mpv", DISPATCH_QUEUE_SERIAL);
     mpv = mpv_create();
     if (!mpv) {
         NSLog(@"%@", @"failed creating context");
         exit(-1);
     }
+    
+    mpv_set_option_string(mpv,"reset-on-next-file","ab-loop-a,ab-loop-b");
+    
     
     //libmpv,gpu,opengl
     mpv_set_property_string(mpv, "vo", "libmpv");
@@ -82,7 +84,7 @@ static void *get_proc_address(void *ctx, const char *name)
     
     check_error( mpv_set_option_string(mpv, "hwdec", "videotoolbox"));
 #ifdef ENABLE_LEGACY_GPU_SUPPORT
-    check_error( mpv_set_option_string(mpv, "hwdec-image-format", "uyvy422"));
+//    check_error( mpv_set_option_string(mpv, "hwdec-image-format", "uyvy422"));
 #endif
     mpv_request_log_messages(mpv, "warn");
     check_error(mpv_initialize(mpv));
@@ -148,20 +150,28 @@ static void wakeup(void *context) {
             break;
         }
             
-            //        case MPV_EVENT_PROPERTY_CHANGE:{
-            //            NSLog(@"MPV_EVENT_PROPERTY_CHANGE");
-            //            break;
-            //        }
-            //        case MPV_EVENT_LOG_MESSAGE: {
-            //            struct mpv_event_log_message *msg = (struct mpv_event_log_message *)event->data;
-            //            printf("[%s] %s: %s", msg->prefix, msg->level, msg->text);
-            //            break;
-            //        }
-            //        case MPV_EVENT_VIDEO_RECONFIG: {
-            //            dispatch_async(dispatch_get_main_queue(), ^{
-            //            });
-            //            break;
-            //        }
+        case MPV_EVENT_PROPERTY_CHANGE:{
+            NSLog(@"MPV_EVENT_PROPERTY_CHANGE");
+            NSLog(@"%@", event);
+//
+//            let dataOpaquePtr = OpaquePointer(event.pointee.data)
+//            if let property = UnsafePointer<mpv_event_property>(dataOpaquePtr)?.pointee {
+//              let propertyName = String(cString: property.name)
+//              handlePropertyChange(propertyName, property)
+//            }
+            
+            break;
+        }
+        case MPV_EVENT_LOG_MESSAGE: {
+            struct mpv_event_log_message *msg = (struct mpv_event_log_message *)event->data;
+            printf("[%s] %s: %s", msg->prefix, msg->level, msg->text);
+            break;
+        }
+        case MPV_EVENT_VIDEO_RECONFIG: {
+            dispatch_async(dispatch_get_main_queue(), ^{
+            });
+            break;
+        }
         default:{
             NSLog(@"event-default: %s\n", mpv_event_name(event->event_id));
             break;
@@ -208,8 +218,6 @@ static void render_context_callback(void *ctx) {
 }
 
 -(void)fileLoad{
-    NSLog(@"fileLoad:%@",@"........");
-    //    _switchVideo = YES;
     
     [[[SMCore Instance] player].info setIsPause:NO];
     
@@ -299,7 +307,7 @@ static void render_context_callback(void *ctx) {
 -(void)start{
     if (mpv) {
         _switchVideo = YES;
-       [[[SMCore Instance] player].info setIsPause:NO];
+        [[[SMCore Instance] player].info setIsPause:NO];
         int data = 0;
         mpv_set_property(mpv, "pause", MPV_FORMAT_FLAG, &data);
     }

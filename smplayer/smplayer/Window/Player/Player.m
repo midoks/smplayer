@@ -231,13 +231,12 @@ static dispatch_once_t _instance_once;
 - (IBAction)leftButtonAction:(NSButton *)sender {
     if (!isFileLoaded){return;}
     
-//    [_videoView.smLayer seek:@"-5" option:SMSeekRelative];
+    [_mpv seek:@"-5" option:SMSeekRelative];
 }
 
 - (IBAction)rightButtonAction:(NSButton *)sender {
     if (!isFileLoaded){return;}
-    
-//    [_videoView.smLayer seek:@"+5" option:SMSeekRelative];
+    [_mpv seek:@"+5" option:SMSeekRelative];
 }
 
 - (IBAction)videoChangeAction:(id)sender {
@@ -476,6 +475,10 @@ static dispatch_once_t _instance_once;
 }
 
 #pragma mark - UI
+-(void)asyncUI{
+    
+}
+
 -(void)videoStart:(SMVideoTime *)duration{
     [self.flagTimelineSliderView setMaxValue:[duration doubleValue]];
     [self.flagTimelineRightView setStringValue:[duration getString]];
@@ -489,8 +492,7 @@ static dispatch_once_t _instance_once;
 #pragma mark - NSNotificationCenter
 -(void)fileLoaded{
     isFileLoaded = YES;
-    
-//    [self->_videoView.smLayer seek:videoSeek option:SMSeekRelative];
+    [self->_mpv seek:videoSeek option:SMSeekRelative];
 }
 @end
 
