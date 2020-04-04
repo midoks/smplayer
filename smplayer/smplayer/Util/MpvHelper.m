@@ -71,6 +71,47 @@ static void *get_proc_address(void *ctx, const char *name)
     check_error(mpv_command(mpv, cmd));
 }
 
+-(void)setUserOption:(NSString *)key
+              option:(SMUserOption)option
+                name:(NSString*)name
+{
+    [self setUserOption:key option:option name:name sync:false];
+}
+-(void)setUserOption:(NSString *)key
+              option:(SMUserOption)option
+                name:(NSString*)name
+                sync:(BOOL)sync
+{
+    int32_t code = 0;
+    switch(option){
+        case SMInt:{
+            NSInteger value = [[Preference Instance] integerForKey:key];
+            int64_t i = (int64_t)value;
+            code = mpv_set_option(mpv, name.UTF8String, MPV_FORMAT_INT64, &i);
+            break;
+        }
+        case SMFloat:{
+            break;
+        }
+        case SMString:{
+            NSString *value = [[Preference Instance] stringForKey:key];
+            code = mpv_set_option_string(mpv, name.UTF8String, value.UTF8String);
+            break;
+        }
+        case SMColor:{
+            NSString *value = [[Preference Instance] colorForKey:key];
+            code = mpv_set_option_string(mpv, name.UTF8String, value.UTF8String);
+            if (code < 0) {
+               code = mpv_set_option_string(mpv, name.UTF8String, value.UTF8String);
+            }
+            break;
+        }
+        case SMOther:{
+            break;
+        }
+    }
+}
+
 -(void)renderMPV{
     [self initMPV];
     [self initVideoRender];
@@ -83,6 +124,14 @@ static void *get_proc_address(void *ctx, const char *name)
         NSLog(@"%@", @"failed creating context");
         exit(-1);
     }
+    
+    //subtitle
+    [self setUserOption:SM_PGS_SubTextFont option:SMString name:@"sub-font"];
+    [self setUserOption:SM_PGS_SubTextSize option:SMInt name:@"sub-font-size"];
+    
+    [self setUserOption:SM_PGS_SubTextColor option:SMColor name:@"sub-color"];
+    [self setUserOption:SM_PGS_SubBgColor option:SMColor name:@"sub-back-color"];
+    
     
     mpv_set_option_string(mpv,"reset-on-next-file","ab-loop-a,ab-loop-b");
     

@@ -110,6 +110,7 @@
 // subtitle
 -(void)findOnlineSub:(NSMenuItem *)sender{
     NSLog(@"findOnlineSub...");
+    NSLog(@"%@", _player);
     [[SMSubtitle Instance] get:_player.info.currentURL callback:^(NSUInteger index, NSURL * _Nonnull path) {
         NSLog(@"%lu,%@",index,path);
         

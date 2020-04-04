@@ -79,15 +79,17 @@ NS_ASSUME_NONNULL_BEGIN
 + (id)Instance;
 
 -(void)sync;
--(void)demo;
 
 #pragma mark - SET
 -(void)setString:(NSString *)value key:(NSString*)key;
 -(void)setBool:(BOOL)value key:(NSString*)key;
+-(void)setInteger:(NSInteger)value key:(NSString *)key;
 
 #pragma mark - GET
 -(BOOL)boolForKey:(NSString *)key;
 -(NSString *)stringForKey:(NSString *)key;
+-(NSInteger)integerForKey:(NSString *)key;
+-(NSString *)colorForKey:(NSString *)key;
 
 @end
 

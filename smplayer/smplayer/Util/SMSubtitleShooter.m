@@ -86,8 +86,13 @@ static dispatch_once_t _instance_once;
 -(void)request:(NSURL *)url
       callback:(void(^)(NSUInteger index, NSURL *path))callback
 {
-    NSDictionary *reqInfoData = [self hash:url];
+    if([[url path] isEqualToString:@""]){
+        return;
+    }
     
+    NSDictionary *reqInfoData = [self hash:url];
+    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/octet-stream"];
+    NSLog(@"url:%@\nargs:%@", url, reqInfoData);
     [manager POST:apiPath parameters:reqInfoData progress:^(NSProgress * uploadProgress) {
     } success:^(NSURLSessionDataTask * task, id responseObject) {
         NSArray *data = responseObject;
@@ -101,7 +106,7 @@ static dispatch_once_t _instance_once;
         }
         
     } failure:^(NSURLSessionDataTask * task, NSError * error) {
-        NSLog(@"error:%@",error);
+        NSLog(@"error:%@", [error localizedDescription]);
     }];
 }
 
@@ -113,6 +118,8 @@ static dispatch_once_t _instance_once;
 {
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
+    
+//    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/octet-stream"];
     
     NSURL *URL = [NSURL URLWithString:url];
     NSURLRequest *request = [NSURLRequest requestWithURL:URL];

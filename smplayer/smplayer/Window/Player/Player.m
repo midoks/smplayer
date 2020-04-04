@@ -267,6 +267,7 @@ static dispatch_once_t _instance_once;
 #pragma mark - Public Methods
 -(void)openVideo:(NSString *)path {
     _info.currentURL = [NSURL fileURLWithPath:path];
+    NSLog(@"_info.currentURL:%@", _info.currentURL);
     windowTitle = _info.currentURL.lastPathComponent;
     [_mpv openVideo:path];
 }

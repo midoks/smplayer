@@ -75,7 +75,7 @@
 "lei-Uu-PaJ.title" = "颜色:";
 
 /* Class = "NSButtonCell"; title = "Scale subtitles with window size"; ObjectID = "n5U-IV-Y4M"; */
-"n5U-IV-Y4M.title" = "字幕大小谁窗口缩放";
+"n5U-IV-Y4M.title" = "字幕大小随窗口缩放";
 
 /* Class = "NSMenuItem"; title = "Right"; ObjectID = "p74-70-AsY"; */
 "p74-70-AsY.title" = "右";

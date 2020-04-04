@@ -16,7 +16,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do view setup here.
+}
+
+
+-(void)chooseSubFontAction{
+    
 }
 
 #pragma mark - MASPreferencesViewController

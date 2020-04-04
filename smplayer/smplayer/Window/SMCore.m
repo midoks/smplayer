@@ -66,7 +66,6 @@ static dispatch_once_t _instance_once;
 //
 //    }
     
-    
     if ([[Preference Instance] boolForKey:SM_PGG_AlwaysOpenInNewWindow]){
         Player *newPlayer = [[Player alloc] init];
         [_playerList addObject:newPlayer];
@@ -74,7 +73,7 @@ static dispatch_once_t _instance_once;
         _nowPlayer = newPlayer;
         return newPlayer;
     }
-    return nil;
+    return _nowPlayer;
 }
 
 -(Player *)activePlayer{

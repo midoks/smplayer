@@ -28,6 +28,17 @@ typedef NS_ENUM(NSUInteger, SMSeek) {
     SMSeekRelative = 2
 };
 
+
+typedef NS_ENUM(NSUInteger, SMUserOption) {
+    SMInt,
+    SMFloat,
+    SMString,
+    SMColor,
+    SMOther,
+};
+
+
+
 @interface MpvHelper : NSObject
 
 @property mpv_render_context *context;
