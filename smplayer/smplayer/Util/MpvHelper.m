@@ -9,7 +9,7 @@
 #import "SMCore.h"
 #import "SMCommon.h"
 #import "SMLastHistory.h"
-
+#import "SMOptionObserverInfo.h"
 #import "Player.h"
 #import "MpvHelper.h"
 
@@ -37,6 +37,8 @@ static void *get_proc_address(void *ctx, const char *name)
     mpv_render_context *sm_render_context;
 }
 
+@property (nonatomic) NSMutableDictionary<NSString *,SMOptionObserverInfo*> *optionObserver;
+
 @property (nonatomic,strong) Player *player;
 @property (nonatomic, weak) NSTimer *asyncPlayerTimer;
 @property  dispatch_queue_t queue;
@@ -54,6 +56,7 @@ static void *get_proc_address(void *ctx, const char *name)
 -(id)init{
     self = [super init];
     if (self){
+        _optionObserver = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -75,12 +78,22 @@ static void *get_proc_address(void *ctx, const char *name)
               option:(SMUserOption)option
                 name:(NSString*)name
 {
-    [self setUserOption:key option:option name:name sync:false];
+    [self setUserOption:key option:option name:name sync:YES callback:NULL];
 }
+
+-(void)setUserOption:(NSString *)key
+              option:(SMUserOption)option
+                name:(NSString*)name
+            callback:(NSString* (^)(NSString *key))callback
+{
+    [self setUserOption:key option:option name:name sync:YES callback:callback];
+}
+
 -(void)setUserOption:(NSString *)key
               option:(SMUserOption)option
                 name:(NSString*)name
                 sync:(BOOL)sync
+            callback:(NSString* (^)(NSString *key))callback
 {
     int32_t code = 0;
     switch(option){
@@ -93,6 +106,11 @@ static void *get_proc_address(void *ctx, const char *name)
         case SMFloat:{
             break;
         }
+        case SMBool:{
+            BOOL value = [[Preference Instance] boolForKey:key];
+            code = mpv_set_option_string(mpv, name.UTF8String, value?"yes":"no");
+            break;
+        }
         case SMString:{
             NSString *value = [[Preference Instance] stringForKey:key];
             code = mpv_set_option_string(mpv, name.UTF8String, value.UTF8String);
@@ -102,14 +120,73 @@ static void *get_proc_address(void *ctx, const char *name)
             NSString *value = [[Preference Instance] colorForKey:key];
             code = mpv_set_option_string(mpv, name.UTF8String, value.UTF8String);
             if (code < 0) {
-               code = mpv_set_option_string(mpv, name.UTF8String, value.UTF8String);
+                code = mpv_set_option_string(mpv, name.UTF8String, value.UTF8String);
             }
             break;
         }
         case SMOther:{
+            if (callback){
+                NSString *value = callback(key);
+                code = mpv_set_option_string(mpv, name.UTF8String, value.UTF8String);
+            } else {
+                code = 0;
+            }
             break;
         }
     }
+    
+    if (sync){
+        [[NSUserDefaults standardUserDefaults] addObserver:self
+                                                forKeyPath:key
+                                                   options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
+                                                   context:nil];
+        
+    
+        _optionObserver[key] = [[SMOptionObserverInfo alloc] init:key name:name option:option callback:callback];
+        
+    }
+}
+
+-(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
+    
+    SMOptionObserverInfo *info = _optionObserver[keyPath];
+    NSLog(@"%@:%@",keyPath,info);
+    
+    switch (info.option){
+            case SMInt:{
+                NSInteger value = [[Preference Instance] integerForKey:keyPath];
+                [self setInt:info.name value:value];
+                break;
+            }
+            case SMFloat:{
+                float value = [[Preference Instance]  floatForKey:keyPath];
+                [self setDouble:info.name value:value];
+                break;
+            }
+            case SMBool:{
+                BOOL value = [[Preference Instance] boolForKey:keyPath];
+                [self setFlag:info.name flag:value];
+                break;
+            }
+            case SMString:{
+                NSString *value = [[Preference Instance] stringForKey:keyPath];
+                [self setString:info.name value:value];
+                break;
+            }
+            case SMColor:{
+                NSString *color = [[Preference Instance] colorForKey:keyPath];
+                [self setString:info.name value:color];
+                break;
+            }
+            case SMOther:{
+                if (info.callback){
+                    NSString *value = info.callback(info.key);
+                    [self setString:info.name value:value];
+                }
+                break;
+            }
+    }
+
 }
 
 -(void)renderMPV{
@@ -132,9 +209,33 @@ static void *get_proc_address(void *ctx, const char *name)
     [self setUserOption:SM_PGS_SubTextColor option:SMColor name:@"sub-color"];
     [self setUserOption:SM_PGS_SubBgColor option:SMColor name:@"sub-back-color"];
     
+    [self setUserOption:SM_PGS_SubBold option:SMBool name:@"sub-bold"];
+    [self setUserOption:SM_PGS_SubItalic option:SMBool name:@"sub-italic"];
+    
+    [self setUserOption:SM_PGS_SubBorderSize option:SMInt name:@"sub-border-size"];
+    [self setUserOption:SM_PGS_SubBorderColor option:SMColor name:@"sub-border-color"];
+    
+    [self setUserOption:SM_PGS_SubAlignX option:SMOther name:@"sub-align-x" callback:^NSString *(NSString *key) {
+        NSInteger index = [[Preference Instance] integerForKey:key];
+        return [[Preference Instance] subAlignXToString:index];
+    }];
+    
+    [self setUserOption:SM_PGS_SubAlignY option:SMOther name:@"sub-align-y" callback:^NSString *(NSString *key) {
+        NSInteger index = [[Preference Instance] integerForKey:key];
+        return [[Preference Instance] subAlignYToString:index];
+    }];
+    
+    [self setUserOption:SM_PGS_SubMarginX option:SMInt name:@"sub-margin-x"];
+    [self setUserOption:SM_PGS_SubMarginY option:SMInt name:@"sub-margin-y"];
+    
+    [self setUserOption:SM_PGS_SubPos option:SMInt name:@"sub-pos"];
+    
+    [self setUserOption:SM_PGS_DisplayInLetterBox option:SMBool name:@"sub-use-margins"];
+    [self setUserOption:SM_PGS_DisplayInLetterBox option:SMBool name:@"sub-ass-force-margins"];
+    
+    [self setUserOption:SM_PGS_SubScaleWithWindow option:SMBool name:@"sub-scale-by-window"];
     
     mpv_set_option_string(mpv,"reset-on-next-file","ab-loop-a,ab-loop-b");
-    
     
     //libmpv,gpu,opengl
     mpv_set_property_string(mpv, "vo", "libmpv");
@@ -196,7 +297,7 @@ static void wakeup(void *context) {
         }
         case MPV_EVENT_PROPERTY_CHANGE:{
             NSLog(@"MPV_EVENT_PROPERTY_CHANGE");
-//            NSLog(@"ccc:%ld", event->event_id);
+            //            NSLog(@"ccc:%ld", event->event_id);
             //
             //            let dataOpaquePtr = OpaquePointer(event.pointee.data)
             //            if let property = UnsafePointer<mpv_event_property>(dataOpaquePtr)?.pointee {
@@ -269,17 +370,40 @@ static void render_context_callback(void *ctx) {
     return (int)data;
 }
 
+-(void)setInt:(NSString *)name value:(NSInteger)value{
+    int64_t data;
+    data = value;
+    mpv_set_property(mpv, name.UTF8String, MPV_FORMAT_INT64, &data);
+}
+
 -(double)getDouble:(NSString *)name {
     int64_t data;
     mpv_get_property(mpv, name.UTF8String, MPV_FORMAT_INT64, &data);
     return (double)data;
 }
 
+-(void)setDouble:(NSString *)name value:(double)value{
+    double data;
+    data = value;
+    mpv_set_property(mpv, name.UTF8String, MPV_FORMAT_DOUBLE, &data);
+}
+
+-(void)setString:(NSString *)name value:(NSString *)value{
+    mpv_set_property_string(mpv, name.UTF8String, value.UTF8String);
+}
+
 -(BOOL)getFlag:(NSString *)name{
     int64_t data;
-    mpv_get_property(mpv, name.UTF8String, MPV_FORMAT_INT64, &data);
-    NSLog(@"getFlag:%lld", data);
+    mpv_get_property(mpv, name.UTF8String, MPV_FORMAT_FLAG, &data);
+    NSLog(@"getFlag:%d",(int)data);
     return data > 0;
+}
+
+-(void)setFlag:(NSString *)name flag:(BOOL)flag{
+    int data;
+    data = flag?1:0;
+    NSLog(@"setFlag:%d",data);
+    mpv_set_property(mpv, name.UTF8String, MPV_FORMAT_FLAG, &data);
 }
 
 -(BOOL)shouldRenderUpdateFrame{
@@ -341,8 +465,12 @@ static void render_context_callback(void *ctx) {
 }
 
 -(void)toggleVideo{
-    if(mpv){
-        _switchVideo ? [self stop] : [self resume];
+    if([self getFlag:@"pause"]){
+        NSLog(@"stop");
+        [self stop];
+    } else {
+        NSLog(@"start");
+        [self start];
     }
 }
 
@@ -372,12 +500,12 @@ static void render_context_callback(void *ctx) {
 }
 
 -(void)resume{
-    if(![self getFlag:@"eof-reached"]){
-        NSLog(@"eof-reached");
-        NSString *d = @"0";
-        [self seek:d option:SMSeekNormal];
-    }
-    
+//    if(![self getFlag:@"eof-reached"]){
+//        NSLog(@"eof-reached");
+//        NSString *d = @"0";
+//        [self seek:d option:SMSeekNormal];
+//    }
+//
     [self start];
 }
 

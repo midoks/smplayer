@@ -77,8 +77,11 @@ NS_ASSUME_NONNULL_BEGIN
 @interface Preference : NSObject
 
 + (id)Instance;
-
 -(void)sync;
+
+#pragma mark - Public Methods
+-(NSString *)subAlignXToString:(NSInteger)index;
+-(NSString *)subAlignYToString:(NSInteger)index;
 
 #pragma mark - SET
 -(void)setString:(NSString *)value key:(NSString*)key;
@@ -87,8 +90,9 @@ NS_ASSUME_NONNULL_BEGIN
 
 #pragma mark - GET
 -(BOOL)boolForKey:(NSString *)key;
--(NSString *)stringForKey:(NSString *)key;
+-(float)floatForKey:(NSString *)key;
 -(NSInteger)integerForKey:(NSString *)key;
+-(NSString *)stringForKey:(NSString *)key;
 -(NSString *)colorForKey:(NSString *)key;
 
 @end

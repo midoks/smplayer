@@ -42,7 +42,7 @@
 "YLb-fy-jCr.title" = "选择";
 
 /* Class = "NSTextFieldCell"; title = "Size:"; ObjectID = "af5-ph-GKi"; */
-"af5-ph-GKi.title" = "字号:";
+"af5-ph-GKi.title" = "子号:";
 
 /* Class = "NSTextFieldCell"; title = "Y:"; ObjectID = "bie-5E-OTA"; */
 "bie-5E-OTA.title" = "Y:";
@@ -60,7 +60,7 @@
 "hLg-bv-29J.title" = "中间";
 
 /* Class = "NSTextFieldCell"; title = "Size:"; ObjectID = "hVf-SH-mqQ"; */
-"hVf-SH-mqQ.title" = "字号:";
+"hVf-SH-mqQ.title" = "大小:";
 
 /* Class = "NSBox"; title = "Border"; ObjectID = "i2R-1i-GZa"; */
 "i2R-1i-GZa.title" = "边框";
@@ -100,3 +100,6 @@
 
 /* Class = "NSBox"; title = "Box"; ObjectID = "zv1-nf-0lq"; */
 "zv1-nf-0lq.title" = "边距";
+
+
+

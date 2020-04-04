@@ -94,7 +94,7 @@ static dispatch_once_t _instance_once;
     
     // responder chain | for menu action
     self.window.initialFirstResponder = nil;
-    _menuActionHandler = [[MenuActionHandler alloc] init];
+    _menuActionHandler = [[MenuActionHandler alloc] init:self];
     NSResponder *wr = self.window.nextResponder;
     self.window.nextResponder = _menuActionHandler;
     _menuActionHandler.nextResponder = wr;

@@ -198,11 +198,11 @@
 }
 
 -(void)updatePlaybackMenu{
-    _pause.title = [[SMCore Instance] activePlayer].info.isPause ?
+    _pause.title = [[SMCore Instance] player].info.isPause ?
             NSLocalizedString(@"menu.pause",nil):
             NSLocalizedString(@"menu.resume",nil);
     
-    _speedIndicator.title = [NSString stringWithFormat:NSLocalizedString(@"menu.speed",nil), [[SMCore Instance] activePlayer].info.playSpeed];
+    _speedIndicator.title = [NSString stringWithFormat:NSLocalizedString(@"menu.speed",nil), [[SMCore Instance] player].info.playSpeed];
 }
 
 -(void)updateAudioMenu{

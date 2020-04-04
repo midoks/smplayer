@@ -45,10 +45,9 @@ static dispatch_once_t _instance_once;
         self->web = [Web Instance];
         self->preference = [Preference Instance];
         
-        Player *p = [Player Instance];
-        _playerList = [[NSMutableArray alloc] initWithObjects:p, nil];
+        _nowPlayer = [Player Instance];
+        _playerList = [[NSMutableArray alloc] initWithObjects:_nowPlayer, nil];
         _playerCount = 1;
-        _nowPlayer = p;
     }
     return self;
 }
@@ -58,10 +57,12 @@ static dispatch_once_t _instance_once;
 }
 
 -(Player *)player{
+//    NSLog(@"player...:%@",_nowPlayer.info);
     return _nowPlayer;
 }
 
 -(Player *)newPlayer{
+    NSLog(@"new:::player");
 //    for (Player *p in _playerList) {
 //
 //    }
@@ -77,9 +78,9 @@ static dispatch_once_t _instance_once;
 }
 
 -(Player *)activePlayer{
-    if([[NSApp mainWindow] isKindOfClass:[Player class]]){
-        return (Player *)[NSApp mainWindow];
-    }
+//    if([[NSApp mainWindow] isKindOfClass:[Player class]]){
+//        return (Player *)[NSApp mainWindow];
+//    }
     return _nowPlayer;
 }
 

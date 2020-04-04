@@ -31,6 +31,7 @@ typedef NS_ENUM(NSUInteger, SMSeek) {
 
 typedef NS_ENUM(NSUInteger, SMUserOption) {
     SMInt,
+    SMBool,
     SMFloat,
     SMString,
     SMColor,
@@ -47,8 +48,6 @@ typedef NS_ENUM(NSUInteger, SMUserOption) {
 -(id)init:(Player*)player;
 
 -(void)renderMPV;
--(void)initMPV;
--(void)initVideoRender;
 -(BOOL)shouldRenderUpdateFrame;
 
 -(void)openVideo:(NSString *)path;

@@ -44,10 +44,20 @@ static dispatch_once_t _instance_once;
         
         SM_PGS_SubTextFont:@"sans-serif",
         SM_PGS_SubTextSize:@55,
+        SM_PGS_SubBold:@YES,
+        SM_PGS_SubItalic:@NO,
         SM_PGS_SubTextColor:[NSKeyedArchiver archivedDataWithRootObject:[NSColor whiteColor]],
         SM_PGS_SubBgColor:[NSKeyedArchiver archivedDataWithRootObject:[NSColor clearColor]],
+        SM_PGS_SubBorderSize:@3,
+        SM_PGS_SubBorderColor:[NSKeyedArchiver archivedDataWithRootObject:[NSColor clearColor]],
+        SM_PGS_SubAlignX:@1,
+        SM_PGS_SubAlignY:@2,
+        SM_PGS_SubMarginX:@25,
+        SM_PGS_SubMarginY:@22,
+        SM_PGS_SubPos:@100,
+        SM_PGS_DisplayInLetterBox:@YES,
+        SM_PGS_SubScaleWithWindow:@YES,
         SM_PGS_AutoSearchOnlineSub:@YES,
-        
         
         SM_PGN_EnableCache:@YES,
         SM_PGN_DefaultCacheSize:@153600,
@@ -62,6 +72,17 @@ static dispatch_once_t _instance_once;
 
 -(void)sync{
     [[self standardUserDefaults] synchronize];
+}
+
+#pragma mark - Public Methods
+-(NSString *)subAlignXToString:(NSInteger)index{
+    NSArray *list = @[@"left",@"center",@"right"];
+    return [list objectAtIndex:index];
+}
+
+-(NSString *)subAlignYToString:(NSInteger)index{
+    NSArray *list = @[@"top",@"center",@"bottom"];
+    return [list objectAtIndex:index];
 }
 
 #pragma mark - SET
@@ -81,6 +102,10 @@ static dispatch_once_t _instance_once;
 #pragma mark - GET
 -(BOOL)boolForKey:(NSString *)key{
     return [[self standardUserDefaults] boolForKey:key];
+}
+
+-(float)floatForKey:(NSString *)key{
+    return [[self standardUserDefaults] floatForKey:key];
 }
 
 -(NSString *)stringForKey:(NSString *)key{
