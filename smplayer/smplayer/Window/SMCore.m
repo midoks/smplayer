@@ -62,6 +62,11 @@ static dispatch_once_t _instance_once;
 }
 
 -(Player *)newPlayer{
+//    for (Player *p in _playerList) {
+//
+//    }
+    
+    
     if ([[Preference Instance] boolForKey:SM_PGG_AlwaysOpenInNewWindow]){
         Player *newPlayer = [[Player alloc] init];
 //        [_playerList addObject:newPlayer];

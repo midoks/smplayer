@@ -140,6 +140,23 @@ static void wakeup(void *context) {
 -(void)handleEvent:(mpv_event *)event
 {
     switch (event->event_id) {
+        case MPV_EVENT_LOG_MESSAGE: {
+            struct mpv_event_log_message *msg = (struct mpv_event_log_message *)event->data;
+            printf("[%s] %s: %s", msg->prefix, msg->level, msg->text);
+            break;
+        }
+        case MPV_EVENT_PROPERTY_CHANGE:{
+            NSLog(@"MPV_EVENT_PROPERTY_CHANGE");
+//            NSLog(@"ccc:%ld", event->event_id);
+            //
+            //            let dataOpaquePtr = OpaquePointer(event.pointee.data)
+            //            if let property = UnsafePointer<mpv_event_property>(dataOpaquePtr)?.pointee {
+            //              let propertyName = String(cString: property.name)
+            //              handlePropertyChange(propertyName, property)
+            //            }
+            
+            break;
+        }
         case MPV_EVENT_SHUTDOWN: {
             if (mpv){
                 mpv_detach_destroy(mpv);
@@ -161,23 +178,11 @@ static void wakeup(void *context) {
             break;
         }
             
-        case MPV_EVENT_PROPERTY_CHANGE:{
-            NSLog(@"MPV_EVENT_PROPERTY_CHANGE");
-            NSLog(@"%@", event);
-            //
-            //            let dataOpaquePtr = OpaquePointer(event.pointee.data)
-            //            if let property = UnsafePointer<mpv_event_property>(dataOpaquePtr)?.pointee {
-            //              let propertyName = String(cString: property.name)
-            //              handlePropertyChange(propertyName, property)
-            //            }
+        case MPV_EVENT_PLAYBACK_RESTART:{
+            NSLog(@"MPV_EVENT_PLAYBACK_RESTART");
+            break;
+        }
             
-            break;
-        }
-        case MPV_EVENT_LOG_MESSAGE: {
-            struct mpv_event_log_message *msg = (struct mpv_event_log_message *)event->data;
-            printf("[%s] %s: %s", msg->prefix, msg->level, msg->text);
-            break;
-        }
         case MPV_EVENT_VIDEO_RECONFIG: {
             dispatch_async(dispatch_get_main_queue(), ^{
             });
@@ -202,19 +207,19 @@ static void render_context_callback(void *ctx) {
 }
 
 #pragma mark - MPV Public Methods
--(int)mpvGetInt:(NSString *)name {
+-(int)getInt:(NSString *)name {
     int64_t data;
     mpv_get_property(mpv, name.UTF8String, MPV_FORMAT_INT64, &data);
     return (int)data;
 }
 
--(double)mpvGetDouble:(NSString *)name {
+-(double)getDouble:(NSString *)name {
     int64_t data;
     mpv_get_property(mpv, name.UTF8String, MPV_FORMAT_INT64, &data);
     return (double)data;
 }
 
--(BOOL)mpvGetFlag:(NSString *)name{
+-(BOOL)getFlag:(NSString *)name{
     int64_t data;
     mpv_get_property(mpv, name.UTF8String, MPV_FORMAT_INT64, &data);
     NSLog(@"getFlag:%lld", data);
@@ -238,8 +243,8 @@ static void render_context_callback(void *ctx) {
     
     [_player.info setIsPause:NO];
     
-    double w = [self mpvGetDouble:@"width"];
-    double h = [self mpvGetDouble:@"height"];
+    double w = [self getDouble:@"width"];
+    double h = [self getDouble:@"height"];
     
     [_player.info setWidth:w];
     [_player.info setHeight:h];
@@ -253,7 +258,7 @@ static void render_context_callback(void *ctx) {
     self.asyncPlayerTimer  = timer;
     
     
-    self->_videoDuration = [self mpvGetDouble:@"duration"];
+    self->_videoDuration = [self getDouble:@"duration"];
     [_player videoStart:[[SMVideoTime alloc] initTime:self->_videoDuration]];
     
     NSURL *urlFile = [NSURL fileURLWithPath:self->_currentPath isDirectory:NO];
@@ -264,7 +269,7 @@ static void render_context_callback(void *ctx) {
 
 
 -(void)videoDurationAction{
-    double pos = [self mpvGetDouble:@"time-pos"];
+    double pos = [self getDouble:@"time-pos"];
     if (pos>_videoDuration){
         pos = _videoDuration;
     }
@@ -311,7 +316,7 @@ static void render_context_callback(void *ctx) {
 }
 
 -(void)resume{
-    if(![self mpvGetFlag:@"eof-reached"]){
+    if(![self getFlag:@"eof-reached"]){
         NSLog(@"eof-reached");
         NSString *d = @"0";
         [self seek:d option:SMSeekNormal];
