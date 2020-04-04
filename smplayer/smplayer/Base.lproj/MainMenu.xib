@@ -374,7 +374,7 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Record" id="dnQ-rd-vpB">
+                <menuItem title="Record" hidden="YES" id="dnQ-rd-vpB">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Record" id="KJ5-V0-Bot">
                         <items>

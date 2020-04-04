@@ -40,7 +40,23 @@
 #define SM_PGC_SpdifDTS @"spdifDTS"
 #define SM_PGC_SpdifDTSHD @"spdifDTSHD"
 
-
+#pragma mark - preference subtitle
+#define SM_PGS_SubTextFont @"subTextFont"
+#define SM_PGS_SubTextSize @"subTextSize"
+#define SM_PGS_SubBold @"subBold"
+#define SM_PGS_SubItalic @"subItalic"
+#define SM_PGS_SubTextColor @"subTextColor"
+#define SM_PGS_SubBgColor @"subBgColor"
+#define SM_PGS_SubBorderSize @"subBorderSize"
+#define SM_PGS_SubBorderColor @"subBorderColor"
+#define SM_PGS_SubAlignX @"subAlignX"
+#define SM_PGS_SubAlignY @"subAlignY"
+#define SM_PGS_SubMarginX @"subMarginX"
+#define SM_PGS_SubMarginY @"subMarginY"
+#define SM_PGS_SubPos @"subPos"
+#define SM_PGS_DisplayInLetterBox @"displayInLetterBox"
+#define SM_PGS_SubScaleWithWindow @"subScaleWithWindow"
+#define SM_PGS_AutoSearchOnlineSub @"autoSearchOnlineSub"
 
 
 #pragma mark - preference network

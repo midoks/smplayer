@@ -49,6 +49,9 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.10000000000000001" colorSpace="custom" customColorSpace="sRGB"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
+                                        <connections>
+                                            <binding destination="j7B-8C-HKT" name="value" keyPath="values.subTextFont" id="LEC-Rz-Idr"/>
+                                        </connections>
                                     </textField>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="6Y2-4S-aaU">
                                         <rect key="frame" x="260" y="51" width="65" height="27"/>
@@ -75,6 +78,9 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
+                                        <connections>
+                                            <binding destination="j7B-8C-HKT" name="value" keyPath="values.subTextSize" id="Djl-Yn-g8w"/>
+                                        </connections>
                                     </textField>
                                     <button verticalHuggingPriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="Obv-hb-Kk2">
                                         <rect key="frame" x="90" y="35" width="46" height="18"/>
@@ -82,6 +88,9 @@
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="message" size="11"/>
                                         </buttonCell>
+                                        <connections>
+                                            <binding destination="j7B-8C-HKT" name="value" keyPath="values.subBold" id="FlE-DY-5s6"/>
+                                        </connections>
                                     </button>
                                     <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="4Y4-wn-4eI">
                                         <rect key="frame" x="137" y="35" width="48" height="18"/>
@@ -89,6 +98,9 @@
                                             <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                             <font key="font" metaFont="message" size="11"/>
                                         </buttonCell>
+                                        <connections>
+                                            <binding destination="j7B-8C-HKT" name="value" keyPath="values.subItalic" id="Rp4-9f-ICA"/>
+                                        </connections>
                                     </button>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Laj-P5-nJb">
                                         <rect key="frame" x="8" y="15" width="36" height="12"/>
@@ -104,6 +116,13 @@
                                             <constraint firstAttribute="height" constant="18" id="9dX-xw-G1I"/>
                                         </constraints>
                                         <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <binding destination="j7B-8C-HKT" name="value" keyPath="values.subTextColor" id="hoy-NQ-Le7">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">NSUnarchiveFromData</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
                                     </colorWell>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qXD-aa-CaR">
                                         <rect key="frame" x="91" y="14" width="70" height="14"/>
@@ -120,6 +139,13 @@
                                             <constraint firstAttribute="width" constant="35" id="pzq-ra-6Fs"/>
                                         </constraints>
                                         <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <binding destination="j7B-8C-HKT" name="value" keyPath="values.subBgColor" id="6uD-XD-BCx">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">NSUnarchiveFromData</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
                                     </colorWell>
                                 </subviews>
                                 <constraints>
@@ -164,15 +190,18 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <subviews>
                                     <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="YA6-AN-3Gf">
-                                        <rect key="frame" x="8" y="13" width="39" height="14"/>
+                                        <rect key="frame" x="8" y="13" width="40" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="36" id="6yR-xy-PUr"/>
+                                        </constraints>
                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Size:" id="hVf-SH-mqQ">
                                             <font key="font" metaFont="message" size="11"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
                                     </textField>
-                                    <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="siT-nI-fce">
-                                        <rect key="frame" x="55" y="11" width="35" height="18"/>
+                                    <textField verticalHuggingPriority="750" verticalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="siT-nI-fce">
+                                        <rect key="frame" x="46" y="10" width="35" height="19"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="35" id="xgH-sL-BbL"/>
                                         </constraints>
@@ -181,9 +210,15 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
+                                        <connections>
+                                            <binding destination="j7B-8C-HKT" name="value" keyPath="values.subBorderSize" id="s8W-Vr-Oo0"/>
+                                        </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="f1P-oE-UrS">
-                                        <rect key="frame" x="100" y="13" width="36" height="14"/>
+                                        <rect key="frame" x="91" y="13" width="40" height="14"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="36" id="NgC-b1-yq3"/>
+                                        </constraints>
                                         <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Color:" id="xDz-Ju-xCn">
                                             <font key="font" metaFont="message" size="11"/>
                                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -191,26 +226,31 @@
                                         </textFieldCell>
                                     </textField>
                                     <colorWell translatesAutoresizingMaskIntoConstraints="NO" id="MMP-z6-hpM">
-                                        <rect key="frame" x="148" y="11" width="35" height="18"/>
+                                        <rect key="frame" x="129" y="11" width="35" height="18"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="18" id="ObP-Mv-7Kx"/>
                                             <constraint firstAttribute="width" constant="35" id="UVo-Rl-Gbz"/>
                                         </constraints>
                                         <color key="color" red="0.05813049898" green="0.055541899059999997" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <binding destination="j7B-8C-HKT" name="value" keyPath="values.subBorderColor" id="6Hg-hS-i54">
+                                                <dictionary key="options">
+                                                    <string key="NSValueTransformerName">NSUnarchiveFromData</string>
+                                                </dictionary>
+                                            </binding>
+                                        </connections>
                                     </colorWell>
                                 </subviews>
                                 <constraints>
                                     <constraint firstItem="YA6-AN-3Gf" firstAttribute="leading" secondItem="9WI-TN-NVT" secondAttribute="leading" constant="10" id="6hD-Fa-UvO"/>
+                                    <constraint firstItem="siT-nI-fce" firstAttribute="top" secondItem="9WI-TN-NVT" secondAttribute="top" constant="7" id="9Nh-IP-G0K"/>
+                                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MMP-z6-hpM" secondAttribute="trailing" constant="147" id="C1Q-I6-wZy"/>
                                     <constraint firstItem="MMP-z6-hpM" firstAttribute="centerY" secondItem="f1P-oE-UrS" secondAttribute="centerY" id="C5D-Hy-jr3"/>
-                                    <constraint firstItem="siT-nI-fce" firstAttribute="top" secondItem="9WI-TN-NVT" secondAttribute="top" constant="7" id="Jga-py-Gc0"/>
-                                    <constraint firstItem="MMP-z6-hpM" firstAttribute="centerX" secondItem="9WI-TN-NVT" secondAttribute="centerX" id="OTj-Xm-oVZ"/>
                                     <constraint firstItem="f1P-oE-UrS" firstAttribute="centerY" secondItem="siT-nI-fce" secondAttribute="centerY" id="Tzz-OZ-gQ2"/>
-                                    <constraint firstItem="YA6-AN-3Gf" firstAttribute="baseline" secondItem="siT-nI-fce" secondAttribute="baseline" id="YFa-Y9-eU5"/>
                                     <constraint firstItem="siT-nI-fce" firstAttribute="centerY" secondItem="YA6-AN-3Gf" secondAttribute="centerY" id="hb8-J7-WtR"/>
-                                    <constraint firstItem="siT-nI-fce" firstAttribute="leading" relation="lessThanOrEqual" secondItem="YA6-AN-3Gf" secondAttribute="trailing" constant="10" id="lGF-S7-xqj"/>
-                                    <constraint firstItem="MMP-z6-hpM" firstAttribute="leading" secondItem="f1P-oE-UrS" secondAttribute="trailing" constant="14" id="nGc-lO-AUD"/>
+                                    <constraint firstItem="siT-nI-fce" firstAttribute="leading" secondItem="YA6-AN-3Gf" secondAttribute="trailing" id="lGF-S7-xqj"/>
+                                    <constraint firstItem="MMP-z6-hpM" firstAttribute="leading" secondItem="f1P-oE-UrS" secondAttribute="trailing" id="nGc-lO-AUD"/>
                                     <constraint firstItem="f1P-oE-UrS" firstAttribute="leading" secondItem="siT-nI-fce" secondAttribute="trailing" constant="12" id="pqK-Rv-dYa"/>
-                                    <constraint firstItem="siT-nI-fce" firstAttribute="baseline" secondItem="f1P-oE-UrS" secondAttribute="baseline" id="vdI-IA-jDc"/>
                                 </constraints>
                             </view>
                             <constraints>
@@ -276,6 +316,9 @@
                                                 </items>
                                             </menu>
                                         </popUpButtonCell>
+                                        <connections>
+                                            <binding destination="j7B-8C-HKT" name="selectedTag" keyPath="values.subAlignX" id="e5H-ed-Kd4"/>
+                                        </connections>
                                     </popUpButton>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vOb-ee-pfU">
                                         <rect key="frame" x="139" y="8" width="14" height="14"/>
@@ -301,6 +344,9 @@
                                                 </items>
                                             </menu>
                                         </popUpButtonCell>
+                                        <connections>
+                                            <binding destination="j7B-8C-HKT" name="selectedTag" keyPath="values.subAlignY" id="2jW-aA-6iY"/>
+                                        </connections>
                                     </popUpButton>
                                 </subviews>
                                 <constraints>
@@ -320,7 +366,7 @@
                                 <constraint firstAttribute="height" constant="44" id="M8x-t8-R9N"/>
                             </constraints>
                         </box>
-                        <box title="Box" translatesAutoresizingMaskIntoConstraints="NO" id="zv1-nf-0lq">
+                        <box title="Margin" translatesAutoresizingMaskIntoConstraints="NO" id="zv1-nf-0lq">
                             <rect key="frame" x="117" y="80" width="336" height="48"/>
                             <view key="contentView" id="ArB-2f-qgA">
                                 <rect key="frame" x="3" y="3" width="330" height="30"/>
@@ -344,6 +390,9 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
+                                        <connections>
+                                            <binding destination="j7B-8C-HKT" name="value" keyPath="values.subMarginX" id="0wD-g1-vLX"/>
+                                        </connections>
                                     </textField>
                                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="3q2-Np-C8V">
                                         <rect key="frame" x="139" y="8" width="14" height="14"/>
@@ -363,6 +412,9 @@
                                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                                         </textFieldCell>
+                                        <connections>
+                                            <binding destination="j7B-8C-HKT" name="value" keyPath="values.subMarginY" id="8FS-dc-kwT"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>
@@ -398,6 +450,9 @@
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
+                            <connections>
+                                <binding destination="j7B-8C-HKT" name="value" keyPath="values.subPos" id="bNl-kM-SFg"/>
+                            </connections>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="DEv-1a-miT">
                             <rect key="frame" x="312" y="58" width="15" height="16"/>
@@ -413,6 +468,9 @@
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <binding destination="j7B-8C-HKT" name="value" keyPath="values.displayInLetterBox" id="tsp-ge-01A"/>
+                            </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="5yM-B0-UJt">
                             <rect key="frame" x="118" y="10" width="217" height="18"/>
@@ -420,6 +478,9 @@
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <binding destination="j7B-8C-HKT" name="value" keyPath="values.subScaleWithWindow" id="2Cp-Gv-bY7"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>
@@ -488,6 +549,9 @@
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <binding destination="j7B-8C-HKT" name="value" keyPath="values.autoSearchOnlineSub" id="P5t-YT-2Zs"/>
+                            </connections>
                         </button>
                     </subviews>
                     <constraints>
@@ -526,5 +590,6 @@
             </constraints>
             <point key="canvasLocation" x="132" y="268.5"/>
         </customView>
+        <userDefaultsController representsSharedInstance="YES" id="j7B-8C-HKT"/>
     </objects>
 </document>
