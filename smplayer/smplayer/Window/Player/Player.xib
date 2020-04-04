@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="15705" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="15705"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -18,6 +18,7 @@
                 <outlet property="fragToolbarView" destination="5GU-o6-Sdc" id="GzK-Dg-0ij"/>
                 <outlet property="fragVolumeView" destination="qaV-zr-t9f" id="YKA-Qb-0be"/>
                 <outlet property="oscTopView" destination="XtT-TH-TbO" id="dD1-Gf-huQ"/>
+                <outlet property="playBtn" destination="j39-0i-fuv" id="d0P-f2-Uhd"/>
                 <outlet property="timeControlView" destination="362-61-0Gb" id="MX3-Ji-Mqy"/>
                 <outlet property="titleBarView" destination="LK1-Ec-bhA" id="Fj2-cQ-dBA"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="vu8-Ih-cWc"/>
@@ -203,7 +204,7 @@
                         <constraint firstAttribute="width" constant="46" id="ixc-Hc-csA"/>
                     </constraints>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="--:--" id="S2o-ea-K31">
-                        <font key="font" metaFont="message" size="11"/>
+                        <font key="font" metaFont="controlContent" size="11"/>
                         <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>

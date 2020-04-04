@@ -38,6 +38,7 @@
 @property (weak) IBOutlet NSView *fragVolumeView;
 @property (weak) IBOutlet NSSlider *flagVolumeSliderView;
 
+
 @property (weak) IBOutlet NSView *fragControlView;
 @property (weak) IBOutlet NSStackView *fragToolbarView;
 @property (weak) IBOutlet NSView *flagTimelineView;
@@ -46,6 +47,9 @@
 @property (weak) IBOutlet NSTextField *flagTimelineLeftView;
 @property (weak) IBOutlet NSTextField *flagTimelineRightView;
 @property (weak) IBOutlet NSSlider *flagTimelineSliderView;
+
+
+@property (weak) IBOutlet NSButton *playBtn;
 
 @end
 
@@ -269,12 +273,11 @@ static dispatch_once_t _instance_once;
 
 -(void)openVideo:(NSString *)path seek:(double)seek{
     [self openVideo:path];
-    videoSeek = [NSString stringWithFormat:@"%f", seek];
+//    videoSeek = [NSString stringWithFormat:@"%f", seek];
 }
 
 -(void)openSelectVideo:(void(^)(void))cmd{
     NSOpenPanel *panel = [NSOpenPanel openPanel];
-    [panel setPrompt: @"选择"];
     [panel setCanChooseDirectories:NO];
     [panel setCanChooseFiles:YES];
     [panel setCanCreateDirectories:YES];

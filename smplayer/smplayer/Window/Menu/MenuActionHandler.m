@@ -10,10 +10,12 @@
 #import "SMCommon.h"
 #import "SMVideoTime.h"
 #import "SMSubtitle.h"
-
+#import "Player.h"
 #import "MenuActionHandler.h"
 
-
+@interface MenuActionHandler()
+@property (nonatomic,strong) Player *player;
+@end
 
 @implementation MenuActionHandler
 
@@ -21,54 +23,60 @@
     return [super initWithCoder:coder];
 }
 
+-(id)init:(Player *)player{
+    self = [super init];
+    _player = player;
+    return self;
+}
+
 #pragma mark - Action
 -(void)pauseAction:(NSMenuItem *)sender{
-    [[[SMCore Instance] player].mpv toggleVideo];
+    [_player.mpv toggleVideo];
 }
 
 -(void)stepAction:(NSMenuItem *)sender{
     if (sender.tag == 0){
-//        [[[SMCore Instance] player].videoView.smLayer seek:@"+5" option:SMSeekNormal];
+        [_player.mpv seek:@"+5" option:SMSeekNormal];
     } else if (sender.tag == 1){
-//        [[[SMCore Instance] player].videoView.smLayer seek:@"-5" option:SMSeekNormal];
+        [_player.mpv seek:@"-5" option:SMSeekNormal];
     }
 }
 
 -(void)stepFrameAction:(NSMenuItem *)sender{
-    if (![[SMCore Instance] player].info.isPause){
-        [[[SMCore Instance] player].mpv stop];
+    if (!_player.info.isPause){
+        [_player.mpv stop];
     }
     
     if (sender.tag == 0){
-        [[[SMCore Instance] player].mpv frameStep:YES];
+        [_player.mpv frameStep:YES];
     } else if (sender.tag == 1) {
-        [[[SMCore Instance] player].mpv frameStep:NO];
+        [_player.mpv frameStep:NO];
     }
 }
 
 -(void)jumpToBeginAction:(NSMenuItem *)sender{
-//    [[[SMCore Instance] player].videoView.smLayer seek:@"0" option:SMSeekAbsolute];
+    [_player.mpv seek:@"0" option:SMSeekAbsolute];
 }
 
 -(void)jumpToAction:(NSMenuItem *)sender{
     [SMCommon quickPromptPanel:@"jump_to" option:SMAlertRunModelStyle callback:^(NSString *inputValue) {
         SMVideoTime *vtime = [[SMVideoTime alloc] initTimeWithString:inputValue];
-        [[[SMCore Instance] player].mpv seek:[vtime stringValue] option:SMSeekAbsolute];
+        [self->_player.mpv seek:[vtime stringValue] option:SMSeekAbsolute];
     }];
 }
 
 -(void)speedChange:(NSMenuItem *)sender{
     if (sender.tag == 5) {
-        [[[SMCore Instance] player].videoView.smLayer setSpeed:1];
+        [_player.mpv setSpeed:1];
         return;
     }
     
     double speed =  [sender.representedObject doubleValue];
-    [[[SMCore Instance] player].videoView.smLayer setSpeed:speed];
+    [_player.mpv setSpeed:speed];
 }
 
 -(void)snapshotAction:(NSMenuItem *)sender{
-    [[[SMCore Instance] player].mpv screenshot];
+    [_player.mpv screenshot];
 }
 
 -(void)openScreenshotFolderAction:(NSMenuItem *)sender{
@@ -79,34 +87,34 @@
 //audio
 -(void)volumeChange:(NSMenuItem *)sender{
     int volumeDelta = [sender.representedObject intValue];
-    int newVolume = volumeDelta + [[SMCore Instance] player].info.volume;
-    [[[SMCore Instance] player].mpv setVoice:newVolume];
+    int newVolume = volumeDelta + _player.info.volume;
+    [_player.mpv setVoice:newVolume];
 }
 
 -(void)volumeMute:(NSMenuItem *)sender{
-    [[[SMCore Instance] player].mpv toggleVoice];
+    [_player.mpv toggleVoice];
 }
 
 -(void)audioDelayChange:(NSMenuItem *)sender{
     double delayDelta = [sender.representedObject doubleValue];
-    double newDelay = delayDelta + [[SMCore Instance] player].info.audioDelay;
-    [[SMCore Instance] player].info.audioDelay = newDelay;
-    [[[SMCore Instance] player].mpv setAudioDelay:newDelay];
+    double newDelay = delayDelta + _player.info.audioDelay;
+    _player.info.audioDelay = newDelay;
+    [_player.mpv setAudioDelay:newDelay];
 }
 
 -(void)audioDelayReset:(NSMenuItem *)sender{
-    [[SMCore Instance] player].info.audioDelay = 0;
-    [[[SMCore Instance] player].mpv setAudioDelay:0];
+    _player.info.audioDelay = 0;
+    [_player.mpv setAudioDelay:0];
 }
 
 // subtitle
 -(void)findOnlineSub:(NSMenuItem *)sender{
     NSLog(@"findOnlineSub...");
-    [[SMSubtitle Instance] get:[[SMCore Instance] player].info.currentURL callback:^(NSUInteger index, NSURL * _Nonnull path) {
+    [[SMSubtitle Instance] get:_player.info.currentURL callback:^(NSUInteger index, NSURL * _Nonnull path) {
         NSLog(@"%lu,%@",index,path);
         
         if (index == 1){
-            [[[SMCore Instance] player].mpv loadSubtitle:path];
+            [self->_player.mpv loadSubtitle:path];
         }
     }];
 }

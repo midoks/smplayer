@@ -21,7 +21,7 @@
 }
 
 @property (nonatomic,strong) Player* nowPlayer;
-//@property (nonatomic,strong) NSMutableArray<Player*>* playerList;
+@property (nonatomic,strong) NSMutableArray<Player*>* playerList;
 @property (nonatomic,assign) NSInteger playerCount;
 
 
@@ -46,7 +46,7 @@ static dispatch_once_t _instance_once;
         self->preference = [Preference Instance];
         
         Player *p = [Player Instance];
-//        _playerList = [[NSMutableArray alloc] initWithObjects:p, nil];
+        _playerList = [[NSMutableArray alloc] initWithObjects:p, nil];
         _playerCount = 1;
         _nowPlayer = p;
     }
@@ -69,12 +69,19 @@ static dispatch_once_t _instance_once;
     
     if ([[Preference Instance] boolForKey:SM_PGG_AlwaysOpenInNewWindow]){
         Player *newPlayer = [[Player alloc] init];
-//        [_playerList addObject:newPlayer];
+        [_playerList addObject:newPlayer];
         _playerCount += 1;
         _nowPlayer = newPlayer;
         return newPlayer;
     }
     return nil;
+}
+
+-(Player *)activePlayer{
+    if([[NSApp mainWindow] isKindOfClass:[Player class]]){
+        return (Player *)[NSApp mainWindow];
+    }
+    return _nowPlayer;
 }
 
 -(Web *)web{

@@ -47,6 +47,7 @@ typedef NS_ENUM(NSUInteger, SMSeek) {
 -(void)resume;
 -(void)setAudioDelay:(double)delay;
 -(void)setVoice:(double)value;
+-(void)setSpeed:(double)speed;
 -(void)toggleVoice;
 -(void)toggleVideo;
 -(void)seek:(NSString *)second option:(SMSeek)option;

@@ -8,9 +8,13 @@
 
 #import <Cocoa/Cocoa.h>
 
+@class Player;
+
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MenuActionHandler : NSResponder
+
+-(id)init:(Player *)player;
 
 // playback
 -(void)pauseAction:(NSMenuItem *)sender;

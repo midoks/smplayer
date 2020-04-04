@@ -182,14 +182,21 @@ static void wakeup(void *context) {
             NSLog(@"MPV_EVENT_PLAYBACK_RESTART");
             break;
         }
-            
+        case MPV_EVENT_PAUSE:{
+            NSLog(@"MPV_EVENT_PAUSE");
+            break;
+        }
+        case MPV_EVENT_UNPAUSE:{
+            NSLog(@"MPV_EVENT_UNPAUSE");
+            break;
+        }
         case MPV_EVENT_VIDEO_RECONFIG: {
             dispatch_async(dispatch_get_main_queue(), ^{
             });
             break;
         }
         case MPV_EVENT_IDLE:{
-            [[SMCore Instance] player].info.isIdle = YES;
+            _player.info.isIdle = YES;
             break;
         }
         default:{

@@ -198,17 +198,17 @@
 }
 
 -(void)updatePlaybackMenu{
-    _pause.title = [[SMCore Instance] player].info.isPause ?
+    _pause.title = [[SMCore Instance] activePlayer].info.isPause ?
             NSLocalizedString(@"menu.pause",nil):
             NSLocalizedString(@"menu.resume",nil);
     
-    _speedIndicator.title = [NSString stringWithFormat:NSLocalizedString(@"menu.speed",nil), [[SMCore Instance] player].info.playSpeed];
+    _speedIndicator.title = [NSString stringWithFormat:NSLocalizedString(@"menu.speed",nil), [[SMCore Instance] activePlayer].info.playSpeed];
 }
 
 -(void)updateAudioMenu{
-    _volumeIndicator.title = [NSString stringWithFormat:NSLocalizedString(@"menu.volume",nil), (int)[[SMCore Instance] player].info.volume];
+    _volumeIndicator.title = [NSString stringWithFormat:NSLocalizedString(@"menu.volume",nil), (int)[[SMCore Instance] activePlayer].info.volume];
     
-    _audioDelayIndicator.title = [NSString stringWithFormat:NSLocalizedString(@"menu.audio_delay",nil), [[SMCore Instance] player].info.audioDelay];
+    _audioDelayIndicator.title = [NSString stringWithFormat:NSLocalizedString(@"menu.audio_delay",nil), [[SMCore Instance] activePlayer].info.audioDelay];
 }
 
 -(void)updateSubtitleMenu{
