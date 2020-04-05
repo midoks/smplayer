@@ -8,6 +8,14 @@
 
 #import "SMControlView.h"
 
+@interface SMControlView()
+
+@property (weak) IBOutlet NSLayoutConstraint *xConstraint;
+@property (weak) IBOutlet NSLayoutConstraint *yConstraint;
+
+
+@end
+
 @implementation SMControlView
 
 -(void)awakeFromNib{

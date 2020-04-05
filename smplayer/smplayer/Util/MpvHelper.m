@@ -389,6 +389,24 @@ static void render_context_callback(void *ctx) {
     });
 }
 
+#pragma mark - MPV Node Methods
+-(mpv_node *)nodeCreate:(id)obj{
+    mpv_node *node = NULL;
+    
+    if (obj == nil){
+        node->format = MPV_FORMAT_NONE;
+        return node;
+    }
+    
+//    switch(obj){
+//            
+//    }
+    
+    return node;
+}
+
+
+#pragma mark - MPV Private Methods
 -(void)getNode:(NSString *)name {
     mpv_node *node;
     mpv_get_property(mpv, name.UTF8String, MPV_FORMAT_NODE, &node);
@@ -396,7 +414,10 @@ static void render_context_callback(void *ctx) {
     mpv_free_node_contents(node);
     
     NSLog(@"www");
-    
+}
+
+-(void)getScreenshot:(NSString *) args{
+    [self nodeCreate:@[@"screenshot-raw", args]];
 }
 
 #pragma mark - MPV Public Methods
@@ -618,12 +639,19 @@ static void render_context_callback(void *ctx) {
 }
 
 -(void)screenshot{
+    NSString *option =  [[Preference Instance] boolForKey:SM_PGG_ScreenShotIncludeSubtitle]? @"subtitles" : @"video";
     BOOL tookScreenshot = NO;
-    
-    
-    if (mpv){
-        const char *args[] = {"screenshot", "video", NULL};
-        mpv_command(mpv, args);
+    int code = 0;
+    NSLog(@"eee");
+    if ([[Preference Instance] boolForKey:SM_PGG_ScreenshotSaveToFile]){
+        const char *args[] = {"screenshot", option.UTF8String, NULL};
+        code = mpv_command(mpv, args);
+        
+        NSLog(@"eee:%d",code);
+        tookScreenshot = YES;
+    }
+    if (code < 0){
+        NSLog(@"ffff");
     }
     
     if (tookScreenshot){
