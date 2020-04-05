@@ -73,3 +73,6 @@
 
 /* Class = "NSMenuItem"; title = "PNG"; ObjectID = "ymx-Ju-s06"; */
 "ymx-Ju-s06.title" = "PNG";
+
+/* Class = "NSMenuItem"; title = "Ok to Open"; ObjectID = "Z8S-ZH-RG2"; */
+"Z8S-ZH-RG2.title" = "完成后打开";

@@ -29,6 +29,8 @@
 #define SM_PGG_ScreenShotIncludeSubtitle @"screenShotIncludeSubtitle"
 #define SM_PGG_ScreenShotFormat @"screenShotFormat"
 #define SM_PGG_ScreenShotFolder @"screenShotFolder"
+#define SM_PGG_ScreenshotOkToOpen @"screenshotOkToOpen"
+
 
 #pragma mark - preference codec(video/audio)
 #define SM_PGC_VideoThreads @"videoThreads"

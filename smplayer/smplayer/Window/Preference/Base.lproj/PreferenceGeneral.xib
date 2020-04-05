@@ -173,7 +173,10 @@
                             </textFieldCell>
                         </textField>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xMQ-NR-jra">
-                            <rect key="frame" x="118" y="80" width="67" height="18"/>
+                            <rect key="frame" x="118" y="80" width="69" height="18"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="65" id="AKC-zw-dFQ"/>
+                            </constraints>
                             <buttonCell key="cell" type="check" title="Save to" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="7fl-Nt-psY">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -183,7 +186,7 @@
                             </connections>
                         </button>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lXd-mh-FMJ">
-                            <rect key="frame" x="189" y="81" width="164" height="16"/>
+                            <rect key="frame" x="188" y="81" width="164" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="Owc-4N-B4b"/>
                             </constraints>
@@ -197,7 +200,7 @@
                             </connections>
                         </textField>
                         <button horizontalHuggingPriority="252" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="nrQ-1Z-Zyv">
-                            <rect key="frame" x="359" y="82" width="14" height="14"/>
+                            <rect key="frame" x="358" y="82" width="14" height="14"/>
                             <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRevealFreestandingTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="y8d-ry-Er7">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -240,7 +243,7 @@
                             </textFieldCell>
                         </textField>
                         <button horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yVm-b4-oXT">
-                            <rect key="frame" x="118" y="10" width="120" height="18"/>
+                            <rect key="frame" x="118" y="10" width="119" height="18"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="Wy6-dn-Qmu"/>
                             </constraints>
@@ -258,6 +261,9 @@
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
                             </buttonCell>
+                            <connections>
+                                <binding destination="6po-mG-7ON" name="value" keyPath="values.screenshotOkToOpen" id="diZ-jv-qyf"/>
+                            </connections>
                         </button>
                         <button horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="eLg-mQ-mR1">
                             <rect key="frame" x="239" y="10" width="130" height="18"/>
@@ -271,7 +277,7 @@
                         </button>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="lXd-mh-FMJ" firstAttribute="leading" secondItem="xMQ-NR-jra" secondAttribute="trailing" constant="8" symbolic="YES" id="2b9-kn-8DY"/>
+                        <constraint firstItem="lXd-mh-FMJ" firstAttribute="leading" secondItem="xMQ-NR-jra" secondAttribute="trailing" constant="5" id="2b9-kn-8DY"/>
                         <constraint firstItem="NqT-Ap-1Fq" firstAttribute="centerY" secondItem="I4g-jB-4tB" secondAttribute="centerY" constant="2" id="58b-qb-rx9"/>
                         <constraint firstItem="I4g-jB-4tB" firstAttribute="top" secondItem="xMQ-NR-jra" secondAttribute="bottom" constant="8" id="5Ux-Jw-J4s"/>
                         <constraint firstItem="nrQ-1Z-Zyv" firstAttribute="centerY" secondItem="lXd-mh-FMJ" secondAttribute="centerY" id="8fQ-Xq-udQ"/>
@@ -283,8 +289,8 @@
                         <constraint firstItem="xMQ-NR-jra" firstAttribute="leading" secondItem="9cW-8a-C85" secondAttribute="leading" constant="120" id="Svk-kt-uUu"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="cpk-RC-NAb" secondAttribute="trailing" constant="1" id="TG6-jw-IaB"/>
                         <constraint firstItem="yVm-b4-oXT" firstAttribute="top" secondItem="zgV-Bv-gAw" secondAttribute="bottom" constant="8" id="Tzh-1v-Q8O"/>
-                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="nrQ-1Z-Zyv" secondAttribute="trailing" constant="20" symbolic="YES" id="Zfg-Sz-Lqy"/>
-                        <constraint firstItem="eLg-mQ-mR1" firstAttribute="leading" secondItem="yVm-b4-oXT" secondAttribute="trailing" constant="5" id="a7c-PE-g9Y"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="nrQ-1Z-Zyv" secondAttribute="trailing" constant="5" id="Zfg-Sz-Lqy"/>
+                        <constraint firstItem="eLg-mQ-mR1" firstAttribute="leading" secondItem="yVm-b4-oXT" secondAttribute="trailing" constant="6" id="a7c-PE-g9Y"/>
                         <constraint firstItem="qxu-TT-aEU" firstAttribute="baseline" secondItem="hF1-sc-a37" secondAttribute="baseline" id="aPN-lH-d8x"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="hF1-sc-a37" secondAttribute="trailing" constant="20" symbolic="YES" id="bDL-BF-zrf"/>
                         <constraint firstItem="zgV-Bv-gAw" firstAttribute="top" secondItem="I4g-jB-4tB" secondAttribute="bottom" constant="8" id="dkn-tP-Qj5"/>
