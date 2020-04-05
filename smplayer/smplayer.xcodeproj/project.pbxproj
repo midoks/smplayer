@@ -456,10 +456,6 @@
 				828DBD602418271100A89A89 /* Masonry */,
 				826AB8352406C12500B87C63 /* SMCommon.h */,
 				826AB8362406C12500B87C63 /* SMCommon.m */,
-				82C2C5062409191400485064 /* SMVideoTime.h */,
-				82C2C5072409191400485064 /* SMVideoTime.m */,
-				8239427E241AAC24006B7049 /* SMLastHistory.h */,
-				8239427F241AAC24006B7049 /* SMLastHistory.m */,
 				82C16A5524262B52002DF9CF /* MpvHelper.h */,
 				82C16A5624262B52002DF9CF /* MpvHelper.m */,
 				82C2C1CA242CE9F600F5261C /* SMSubtitle.h */,
@@ -557,10 +553,14 @@
 			children = (
 				82394281241BA9EA006B7049 /* SMLastHistoryModel.h */,
 				82394282241BA9EA006B7049 /* SMLastHistoryModel.m */,
+				8239427E241AAC24006B7049 /* SMLastHistory.h */,
+				8239427F241AAC24006B7049 /* SMLastHistory.m */,
 				82C16A52242516AD002DF9CF /* SMPlayerInfo.h */,
 				82C16A53242516AD002DF9CF /* SMPlayerInfo.m */,
 				82C51B8B243907D90023A105 /* SMOptionObserverInfo.h */,
 				82C51B8C243907D90023A105 /* SMOptionObserverInfo.m */,
+				82C2C5062409191400485064 /* SMVideoTime.h */,
+				82C2C5072409191400485064 /* SMVideoTime.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
