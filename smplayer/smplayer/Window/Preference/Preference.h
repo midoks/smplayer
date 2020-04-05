@@ -83,6 +83,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSString *)subAlignXToString:(NSInteger)index;
 -(NSString *)subAlignYToString:(NSInteger)index;
 -(NSString *)hardwareDecoderOptionToString:(NSInteger)index;
+-(NSString *)rtspTransportationOptionToString:(NSInteger)index;
 
 #pragma mark - SET
 -(void)setString:(NSString *)value key:(NSString*)key;

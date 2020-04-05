@@ -141,52 +141,49 @@ static void *get_proc_address(void *ctx, const char *name)
                                                    options:NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld
                                                    context:nil];
         
-    
+        
         _optionObserver[key] = [[SMOptionObserverInfo alloc] init:key name:name option:option callback:callback];
         
     }
 }
 
 -(void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSKeyValueChangeKey,id> *)change context:(void *)context{
-    
     SMOptionObserverInfo *info = _optionObserver[keyPath];
-    NSLog(@"%@:%@",keyPath,info);
-    
     switch (info.option){
-            case SMInt:{
-                NSInteger value = [[Preference Instance] integerForKey:keyPath];
-                [self setInt:info.name value:value];
-                break;
-            }
-            case SMFloat:{
-                float value = [[Preference Instance]  floatForKey:keyPath];
-                [self setDouble:info.name value:value];
-                break;
-            }
-            case SMBool:{
-                BOOL value = [[Preference Instance] boolForKey:keyPath];
-                [self setFlag:info.name flag:value];
-                break;
-            }
-            case SMString:{
-                NSString *value = [[Preference Instance] stringForKey:keyPath];
+        case SMInt:{
+            NSInteger value = [[Preference Instance] integerForKey:keyPath];
+            [self setInt:info.name value:value];
+            break;
+        }
+        case SMFloat:{
+            float value = [[Preference Instance]  floatForKey:keyPath];
+            [self setDouble:info.name value:value];
+            break;
+        }
+        case SMBool:{
+            BOOL value = [[Preference Instance] boolForKey:keyPath];
+            [self setFlag:info.name flag:value];
+            break;
+        }
+        case SMString:{
+            NSString *value = [[Preference Instance] stringForKey:keyPath];
+            [self setString:info.name value:value];
+            break;
+        }
+        case SMColor:{
+            NSString *color = [[Preference Instance] colorForKey:keyPath];
+            [self setString:info.name value:color];
+            break;
+        }
+        case SMOther:{
+            if (info.callback){
+                NSString *value = info.callback(info.key);
                 [self setString:info.name value:value];
-                break;
             }
-            case SMColor:{
-                NSString *color = [[Preference Instance] colorForKey:keyPath];
-                [self setString:info.name value:color];
-                break;
-            }
-            case SMOther:{
-                if (info.callback){
-                    NSString *value = info.callback(info.key);
-                    [self setString:info.name value:value];
-                }
-                break;
-            }
+            break;
+        }
     }
-
+    
 }
 
 -(void)renderMPV{
@@ -194,15 +191,8 @@ static void *get_proc_address(void *ctx, const char *name)
     [self initVideoRender];
 }
 
--(void)initMPV{
-    _queue = dispatch_queue_create("mpv", DISPATCH_QUEUE_SERIAL);
-    mpv = mpv_create();
-    if (!mpv) {
-        NSLog(@"%@", @"failed creating context");
-        exit(-1);
-    }
-    
-    //subtitle
+
+-(void)optionSubtitleSet{
     [self setUserOption:SM_PGS_SubTextFont option:SMString name:@"sub-font"];
     [self setUserOption:SM_PGS_SubTextSize option:SMInt name:@"sub-font-size"];
     
@@ -229,11 +219,47 @@ static void *get_proc_address(void *ctx, const char *name)
     [self setUserOption:SM_PGS_SubMarginY option:SMInt name:@"sub-margin-y"];
     
     [self setUserOption:SM_PGS_SubPos option:SMInt name:@"sub-pos"];
-    
     [self setUserOption:SM_PGS_DisplayInLetterBox option:SMBool name:@"sub-use-margins"];
     [self setUserOption:SM_PGS_DisplayInLetterBox option:SMBool name:@"sub-ass-force-margins"];
-    
     [self setUserOption:SM_PGS_SubScaleWithWindow option:SMBool name:@"sub-scale-by-window"];
+}
+
+-(void)optionNetworkSet{
+    [self setUserOption:SM_PGN_EnableCache option:SMOther name:@"cache" callback:^NSString *(NSString *key) {
+        return [[Preference Instance] boolForKey:key]?  @"yes" : @" no";
+    }];
+    
+    [self setUserOption:SM_PGN_DefaultCacheSize option:SMOther name:@"demuxer-max-bytes" callback:^NSString *(NSString *key) {
+        NSInteger index = [[Preference Instance] integerForKey:key];
+        return  [NSString stringWithFormat:@"%ldKiB",index];
+    }];
+    [self setUserOption:SM_PGN_SecPrefech option:SMInt name:@"cache-secs"];
+    [self setUserOption:SM_PGN_UserAgent option:SMString name:@"user-agent"];
+    
+    [self setUserOption:SM_PGN_TransportRTSPThrough option:SMOther name:@"rtsp-transport" callback:^NSString *(NSString *key) {
+        NSInteger index =  [[Preference Instance] integerForKey:SM_PGN_TransportRTSPThrough];
+        return [[Preference Instance] rtspTransportationOptionToString:index];
+    }];
+    
+    [self setUserOption:SM_PGN_YtdlEnabled option:SMBool name:@"ytdl"];
+    [self setUserOption:SM_PGN_YtdlRawOptions option:SMString name:@"ytdl-raw-options"];
+}
+
+-(void)initMPV{
+    _queue = dispatch_queue_create("mpv", DISPATCH_QUEUE_SERIAL);
+    mpv = mpv_create();
+    if (!mpv) {
+        NSLog(@"%@", @"failed creating context");
+        exit(-1);
+    }
+    
+    //subtitle
+    [self optionSubtitleSet];
+    //network
+    [self optionNetworkSet];
+    
+    
+    
     
     mpv_set_option_string(mpv,"reset-on-next-file","ab-loop-a,ab-loop-b");
     
@@ -370,7 +396,7 @@ static void render_context_callback(void *ctx) {
     mpv_free_node_contents(node);
     
     NSLog(@"www");
-
+    
 }
 
 #pragma mark - MPV Public Methods
@@ -510,12 +536,12 @@ static void render_context_callback(void *ctx) {
 }
 
 -(void)resume{
-//    if(![self getFlag:@"eof-reached"]){
-//        NSLog(@"eof-reached");
-//        NSString *d = @"0";
-//        [self seek:d option:SMSeekNormal];
-//    }
-//
+    //    if(![self getFlag:@"eof-reached"]){
+    //        NSLog(@"eof-reached");
+    //        NSString *d = @"0";
+    //        [self seek:d option:SMSeekNormal];
+    //    }
+    //
     [self start];
 }
 

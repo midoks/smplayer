@@ -66,6 +66,8 @@ static dispatch_once_t _instance_once;
         SM_PGN_EnableCache:@YES,
         SM_PGN_DefaultCacheSize:@153600,
         SM_PGN_SecPrefech:@100,
+        SM_PGN_TransportRTSPThrough:@1,
+        SM_PGN_YtdlEnabled:@NO,
     }];
     return self;
 }
@@ -93,6 +95,12 @@ static dispatch_once_t _instance_once;
     NSArray *list = @[@"no",@"auto",@"auto-copy"];
     return [list objectAtIndex:index];
 }
+
+-(NSString *)rtspTransportationOptionToString:(NSInteger)index{
+    NSArray *list = @[@"lavf",@"tcp",@"udp",@"http"];
+    return [list objectAtIndex:index];
+}
+
 
 #pragma mark - SET
 -(void)setString:(NSString *)value key:(NSString*)key{
