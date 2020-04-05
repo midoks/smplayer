@@ -363,6 +363,16 @@ static void render_context_callback(void *ctx) {
     });
 }
 
+-(void)getNode:(NSString *)name {
+    mpv_node *node;
+    mpv_get_property(mpv, name.UTF8String, MPV_FORMAT_NODE, &node);
+    
+    mpv_free_node_contents(node);
+    
+    NSLog(@"www");
+
+}
+
 #pragma mark - MPV Public Methods
 -(int)getInt:(NSString *)name {
     int64_t data;

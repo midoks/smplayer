@@ -41,6 +41,10 @@ static dispatch_once_t _instance_once;
         SM_PGG_ScreenShotIncludeSubtitle:@YES,
         
         SM_PGC_VideoThreads:@0,
+        SM_PGC_HardwareDecoder:@1,
+        SM_PGC_InitialVolume:@60,
+        SM_PGC_MaxVolume:@100,
+        SM_PGC_AudioThreads:@0,
         
         SM_PGS_SubTextFont:@"sans-serif",
         SM_PGS_SubTextSize:@55,
@@ -82,6 +86,11 @@ static dispatch_once_t _instance_once;
 
 -(NSString *)subAlignYToString:(NSInteger)index{
     NSArray *list = @[@"top",@"center",@"bottom"];
+    return [list objectAtIndex:index];
+}
+
+-(NSString *)hardwareDecoderOptionToString:(NSInteger)index{
+    NSArray *list = @[@"no",@"auto",@"auto-copy"];
     return [list objectAtIndex:index];
 }
 

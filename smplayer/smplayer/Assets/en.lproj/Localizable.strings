@@ -33,3 +33,8 @@
 "preference.subtitle" = "Subtitle";
 "preference.network" = "Network";
 
+
+"hwdec.no" = "Disable hardware decoding.";
+"hwdec.auto" = "Enable hardware decoding. However, most of the video filters won't work properly.";
+"hwdec.auto-copy" = "Enable hardware decoding. It will consume double the memory but work with video filters.";
+

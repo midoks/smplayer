@@ -82,6 +82,7 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Public Methods
 -(NSString *)subAlignXToString:(NSInteger)index;
 -(NSString *)subAlignYToString:(NSInteger)index;
+-(NSString *)hardwareDecoderOptionToString:(NSInteger)index;
 
 #pragma mark - SET
 -(void)setString:(NSString *)value key:(NSString*)key;

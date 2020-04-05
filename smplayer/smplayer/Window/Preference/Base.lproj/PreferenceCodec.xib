@@ -8,6 +8,8 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="PreferenceCodec">
             <connections>
+                <outlet property="audioDevicePopUp" destination="C8d-Az-S7J" id="TGF-iv-S1n"/>
+                <outlet property="hwdecDescriptionTextField" destination="Onz-YF-xPd" id="bcy-yh-Buc"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
             </connections>
         </customObject>
@@ -41,7 +43,7 @@
                             <constraints>
                                 <constraint firstAttribute="width" constant="60" id="lZJ-JU-EaN"/>
                             </constraints>
-                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" title="0" drawsBackground="YES" id="azJ-1E-BTL">
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" refusesFirstResponder="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="azJ-1E-BTL">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
@@ -59,7 +61,7 @@
                             </textFieldCell>
                         </textField>
                         <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="mbE-GT-Kvh">
-                            <rect key="frame" x="242" y="27" width="103" height="25"/>
+                            <rect key="frame" x="239" y="27" width="108" height="25"/>
                             <popUpButtonCell key="cell" type="push" title="Disabled" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="JQX-go-WHd" id="N3U-YO-G3Q">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -72,21 +74,25 @@
                                 </menu>
                             </popUpButtonCell>
                             <connections>
+                                <action selector="hwdecAction:" target="-2" id="c5e-hN-0sH"/>
                                 <binding destination="feC-Kb-Xgb" name="selectedTag" keyPath="values.hardwareDecoder" id="jD7-2I-ZwG"/>
                             </connections>
                         </popUpButton>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="9T7-Q8-bBU">
                             <rect key="frame" x="309" y="55" width="92" height="14"/>
                             <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Default: 0 (Auto)" id="TVk-le-X1E">
-                                <font key="font" metaFont="message" size="11"/>
+                                <font key="font" metaFont="label" size="11"/>
                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Onz-YF-xPd">
-                            <rect key="frame" x="118" y="10" width="33" height="14"/>
+                            <rect key="frame" x="118" y="10" width="204" height="14"/>
+                            <constraints>
+                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="8sw-vF-zoo"/>
+                            </constraints>
                             <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Label" id="ULf-Jb-qOK">
-                                <font key="font" metaFont="message" size="11"/>
+                                <font key="font" metaFont="label" size="11"/>
                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -99,8 +105,8 @@
                         <constraint firstItem="kwn-Gq-DZ5" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="JZh-cc-9uE" secondAttribute="trailing" constant="75" id="66p-vE-vcq"/>
                         <constraint firstItem="9T7-Q8-bBU" firstAttribute="leading" secondItem="LJA-mp-33K" secondAttribute="trailing" constant="10" id="H1U-PX-mBT"/>
                         <constraint firstItem="LJA-mp-33K" firstAttribute="centerY" secondItem="kwn-Gq-DZ5" secondAttribute="centerY" constant="2" id="Log-LG-2ya"/>
-                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Onz-YF-xPd" secondAttribute="trailing" constant="311" id="N55-vj-UWz"/>
-                        <constraint firstItem="mbE-GT-Kvh" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KdE-49-zHA" secondAttribute="trailing" constant="8" symbolic="YES" id="OIx-kZ-Ijx"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="Onz-YF-xPd" secondAttribute="trailing" constant="10" id="N55-vj-UWz"/>
+                        <constraint firstItem="mbE-GT-Kvh" firstAttribute="leading" secondItem="KdE-49-zHA" secondAttribute="trailing" constant="5" id="OIx-kZ-Ijx"/>
                         <constraint firstItem="kwn-Gq-DZ5" firstAttribute="top" secondItem="pOG-lx-Fk1" secondAttribute="top" constant="3" id="Oun-cq-XcD"/>
                         <constraint firstItem="Onz-YF-xPd" firstAttribute="leading" secondItem="pOG-lx-Fk1" secondAttribute="leading" constant="120" id="VZg-ae-SX7"/>
                         <constraint firstItem="9T7-Q8-bBU" firstAttribute="centerY" secondItem="kwn-Gq-DZ5" secondAttribute="centerY" constant="2" id="Z2K-hv-Lih"/>
@@ -108,7 +114,7 @@
                         <constraint firstItem="KdE-49-zHA" firstAttribute="top" secondItem="kwn-Gq-DZ5" secondAttribute="bottom" constant="8" id="bZY-cQ-b0p"/>
                         <constraint firstItem="JZh-cc-9uE" firstAttribute="top" secondItem="pOG-lx-Fk1" secondAttribute="top" constant="3" id="eQn-dc-Ld8"/>
                         <constraint firstItem="KdE-49-zHA" firstAttribute="leading" secondItem="pOG-lx-Fk1" secondAttribute="leading" constant="120" id="jJ3-yG-j0n"/>
-                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mbE-GT-Kvh" secondAttribute="trailing" constant="118" id="k3Q-FR-o9T"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="mbE-GT-Kvh" secondAttribute="trailing" constant="10" id="k3Q-FR-o9T"/>
                         <constraint firstItem="kwn-Gq-DZ5" firstAttribute="leading" secondItem="pOG-lx-Fk1" secondAttribute="leading" constant="120" id="koH-6d-K8j"/>
                         <constraint firstAttribute="width" constant="460" id="lcQ-g0-D5d"/>
                         <constraint firstAttribute="height" constant="75" id="qNI-G1-YqG"/>
@@ -181,7 +187,7 @@
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="QLH-ib-AYu">
                             <rect key="frame" x="343" y="77" width="64" height="14"/>
                             <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="(100-1000)" id="On9-US-DSR">
-                                <font key="font" metaFont="message" size="11"/>
+                                <font key="font" metaFont="label" size="11"/>
                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
@@ -214,7 +220,7 @@
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pdk-uH-4e7">
                             <rect key="frame" x="343" y="54" width="92" height="14"/>
                             <textFieldCell key="cell" controlSize="small" lineBreakMode="clipping" title="Default: 0 (Auto)" id="j7V-8i-5B5">
-                                <font key="font" metaFont="message" size="11"/>
+                                <font key="font" metaFont="label" size="11"/>
                                 <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
                                 <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                             </textFieldCell>
