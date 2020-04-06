@@ -108,7 +108,9 @@ static dispatch_once_t _instance_once;
     self.minWindowSize = NSMakeSize(300, 180);
     
     // view setting
-//    self.window.movableByWindowBackground = YES;
+    
+    // need to deal with controlView, so we handle it manually
+    // self.window.movableByWindowBackground = YES;
     self.window.styleMask |= NSWindowStyleMaskFullSizeContentView;
     self.window.appearance =  [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
     self.window.titleVisibility = NSWindowTitleVisible;
@@ -179,20 +181,24 @@ static dispatch_once_t _instance_once;
     // control view
     [_oscTopView addView:_fragVolumeView inGravity:NSStackViewGravityLeading];
     [_oscTopView setVisibilityPriority:NSStackViewVisibilityPriorityDetachOnlyIfNecessary forView:_fragVolumeView];
-    
+
     [_oscTopView addView:_fragControlView inGravity:NSStackViewGravityCenter];
-    [_oscTopView setVisibilityPriority:NSStackViewVisibilityPriorityDetachOnlyIfNecessary forView:_fragControlView];
     
     [self initFragToolbarView];
     [_oscTopView addView:_fragToolbarView inGravity:NSStackViewGravityTrailing];
     [_oscTopView setVisibilityPriority:NSStackViewVisibilityPriorityDetachOnlyIfNecessary forView:_fragToolbarView];
-    
-    // timeline 
+    [_oscTopView setClippingResistancePriority:NSLayoutPriorityDefaultLow forOrientation:NSLayoutConstraintOrientationHorizontal];
+
+    // timeline
     NSRect newFrame = NSMakeRect(_flagTimelineView.frame.origin.x, _flagTimelineView.frame.origin.y, _timeControlView.frame.size.width, _flagTimelineView.frame.size.height);
-    
+
     _flagTimelineView.frame = newFrame;
     [_timeControlView addSubview:_flagTimelineView];
     
+    // constraints
+//    [SMCommon quickConstraints:@[@"H:|[v]|",@"V:|[v]|"] view:@{@"v":_flagTimelineView}];
+//    [SMCommon quickConstraints:@[@"H:|-(>=0)-[v]-(>=0)-|"] view:@{@"v":_fragControlView}];
+    [SMCommon quickConstraints:@[@"H:|-(>=10)-[v]-(>=10)-|"] view:@{@"v":_controlView}];
 }
 
 #pragma mark - IBAction
@@ -275,7 +281,7 @@ static dispatch_once_t _instance_once;
 
 -(void)openVideo:(NSString *)path seek:(double)seek{
     [self openVideo:path];
-//    videoSeek = [NSString stringWithFormat:@"%f", seek];
+    videoSeek = [NSString stringWithFormat:@"%f", seek];
 }
 
 -(void)openSelectVideo:(void(^)(void))cmd{
@@ -374,9 +380,7 @@ static dispatch_once_t _instance_once;
     //    [self->player.smLayer windowScale:aspect];
     //    return CGSizeMake(frameSize.width, newHeight);
     
-    [_uninitLock lock];
     [_videoView.smLayer display];
-    [_uninitLock unlock];
     
     if (frameSize.height <= _minWindowSize.height || frameSize.width <= _minWindowSize.width ){
         CGFloat wAspect = self.window.frame.size.width/self.window.frame.size.height;
@@ -469,6 +473,11 @@ static dispatch_once_t _instance_once;
         [[NSApp mainWindow] toggleFullScreen:event];
     }
 }
+
+-(void)mouseDragged:(NSEvent *)event{
+    [self.window performWindowDragWithEvent:event];
+}
+
 -(void)mouseMoved:(NSEvent *)event{
     [self showToolbar];
     

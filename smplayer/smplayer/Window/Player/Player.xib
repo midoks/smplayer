@@ -34,31 +34,34 @@
                 <rect key="frame" x="0.0" y="0.0" width="640" height="400"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
-                    <visualEffectView blendingMode="withinWindow" material="popover" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="yrm-bz-zb6" customClass="SMControlView">
+                    <visualEffectView wantsLayer="YES" horizontalCompressionResistancePriority="250" verticalCompressionResistancePriority="250" blendingMode="withinWindow" material="popover" state="active" id="yrm-bz-zb6" customClass="SMControlView">
                         <rect key="frame" x="100" y="30" width="440" height="67"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
                             <stackView orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="XtT-TH-TbO" userLabel="Osc Top View">
-                                <rect key="frame" x="12" y="38" width="416" height="24"/>
+                                <rect key="frame" x="12" y="33" width="416" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="ZGj-m5-9I1"/>
                                 </constraints>
                             </stackView>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="362-61-0Gb" userLabel="Time Control View">
-                                <rect key="frame" x="5" y="10" width="430" height="24"/>
+                                <rect key="frame" x="5" y="5" width="430" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="24" id="xxS-Gr-v3Q"/>
+                                    <constraint firstAttribute="height" constant="24" id="yrv-vU-CUE"/>
                                 </constraints>
                             </customView>
                         </subviews>
                         <constraints>
                             <constraint firstItem="362-61-0Gb" firstAttribute="leading" secondItem="yrm-bz-zb6" secondAttribute="leading" constant="5" id="3s7-Y1-rTC"/>
+                            <constraint firstAttribute="width" constant="440" id="3z1-Mz-asx"/>
                             <constraint firstAttribute="trailing" secondItem="362-61-0Gb" secondAttribute="trailing" constant="5" id="83Q-3e-B1B"/>
-                            <constraint firstItem="XtT-TH-TbO" firstAttribute="top" secondItem="yrm-bz-zb6" secondAttribute="top" constant="5" id="DTV-sW-41N"/>
-                            <constraint firstAttribute="width" constant="440" id="Q9k-MS-sCM"/>
+                            <constraint firstItem="XtT-TH-TbO" firstAttribute="top" secondItem="yrm-bz-zb6" secondAttribute="top" constant="10" id="DTV-sW-41N"/>
+                            <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="362-61-0Gb" secondAttribute="bottom" constant="1" id="LUJ-AC-ECS"/>
                             <constraint firstAttribute="height" constant="67" id="QaM-8t-9u1"/>
                             <constraint firstItem="362-61-0Gb" firstAttribute="top" secondItem="XtT-TH-TbO" secondAttribute="bottom" constant="4.5" id="Rxb-p2-W2g"/>
                             <constraint firstItem="XtT-TH-TbO" firstAttribute="leading" secondItem="yrm-bz-zb6" secondAttribute="leading" constant="12" id="Z4t-gf-9in"/>
                             <constraint firstAttribute="trailing" secondItem="XtT-TH-TbO" secondAttribute="trailing" constant="12" id="qMT-bu-Hxw"/>
+                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="200" id="tUI-7b-j8m"/>
                         </constraints>
                         <connections>
                             <outlet property="xConstraint" destination="QsG-X2-xZ4" id="EGd-bi-bqe"/>
@@ -208,7 +211,7 @@
                         <constraint firstAttribute="width" constant="46" id="ixc-Hc-csA"/>
                     </constraints>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="--:--" id="S2o-ea-K31">
-                        <font key="font" metaFont="message" size="11"/>
+                        <font key="font" metaFont="label" size="11"/>
                         <color key="textColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>

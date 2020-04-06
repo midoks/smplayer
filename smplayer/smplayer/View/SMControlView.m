@@ -36,7 +36,7 @@
 -(void)mouseDown:(NSEvent *)event{
     self.isDragging = YES;
     
-    _mousePosRelatedToView = [event locationInWindow];
+    _mousePosRelatedToView = NSEvent.mouseLocation;
     _mousePosRelatedToView.x -= self.frame.origin.x;
     _mousePosRelatedToView.y -= self.frame.origin.y;
 }
@@ -44,7 +44,8 @@
 -(void)mouseDragged:(NSEvent *)event{
     
     CGPoint mousePos = _mousePosRelatedToView;
-    CGPoint nowLocation = [event locationInWindow];
+    CGPoint nowLocation = NSEvent.mouseLocation;
+    
     CGPoint newOrigin = CGPointMake(nowLocation.x - mousePos.x, nowLocation.y-mousePos.y);
     
     CGFloat xMax = self.window.frame.size.width - self.frame.size.width - 20;

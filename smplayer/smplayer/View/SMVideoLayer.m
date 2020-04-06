@@ -33,12 +33,12 @@
 
         _cglPixelFormat = [self copyCGLPixelFormatForDisplayMask:0];
         if (!_cglPixelFormat) {
-            NSLog(@"Failed to create CGLPixelFormatObj");
+            NSLog(@"failed to create copyCGLPixelFormatForDisplayMask");
             return nil;
         }
         CGLError err = CGLCreateContext(_cglPixelFormat, nil, &_cglContext);
         if (!_cglContext) {
-            NSLog(@"Failed to create CGLContextObj %d", err);
+            NSLog(@"failed to create CGLCreateContext %d", err);
             return nil;
         }
         GLint i = 1;
@@ -122,25 +122,36 @@
     
     [_player.uninitLock lock];
     
+    CGLLockContext(ctx);
+    CGLSetCurrentContext(ctx);
+    
     static GLint dims[] = { 0, 0, 0, 0 };
     glGetIntegerv(GL_VIEWPORT, dims);
     
     GLint i = 0;
     glGetIntegerv(GL_DRAW_FRAMEBUFFER_BINDING, &i);
     
-    mpv_render_param params[] = {
-        {MPV_RENDER_PARAM_OPENGL_FBO, &(mpv_opengl_fbo){
-            .fbo = i,
-            .w = self.frame.size.width,
-            .h = self.frame.size.height,
-        }},
-        {MPV_RENDER_PARAM_FLIP_Y, &(int){1}},
-        {0}
-    };
+    if(_player.mpv){
+        mpv_render_param params[] = {
+            {MPV_RENDER_PARAM_OPENGL_FBO, &(mpv_opengl_fbo){
+                .fbo = i,
+                .w = self.frame.size.width,
+                .h = self.frame.size.height,
+            }},
+            {MPV_RENDER_PARAM_FLIP_Y, &(int){1}},
+            {0}
+        };
+        
+        mpv_render_context_render(_player.mpv.context, params);
+        CGLFlushDrawable(_cglContext);
+    } else {
+        glClearColor(0, 0, 0, 1);
+        glClear((GLbitfield)(GL_COLOR_BUFFER_BIT));
+    }
     
-    mpv_render_context_render(_player.mpv.context, params);
-    CGLFlushDrawable(_cglContext);
- 
+    glFlush();
+    CGLUnlockContext(ctx);
+    
     [_player.uninitLock unlock];
 }
 
