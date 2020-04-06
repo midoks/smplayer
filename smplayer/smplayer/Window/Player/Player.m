@@ -457,7 +457,7 @@ static dispatch_once_t _instance_once;
 
 #pragma mark - Mouse Event
 -(void)scrollWheel:(NSEvent *)event{
-    NSLog(@"asdf:%@",event);
+//    NSLog(@"asdf:%@",event);
 }
 
 -(void)mouseEntered:(NSEvent *)event {

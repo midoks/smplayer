@@ -34,8 +34,24 @@
 -(void)viewWillAppear{
     [_audioDevicePopUp removeAllItems];
     
-    [[[SMCore Instance] player].mpv getNode:@"audio-device-list"];
+    NSMutableArray *list = [[[SMCore Instance] player].mpv getNode:@"audio-device-list"];
+    NSString *audioDevice = [[Preference Instance] stringForKey:SM_PGC_AudioDevice];
+    for (NSDictionary *info in list){
+        NSString *title = [NSString stringWithFormat:@"[%@] %@", [info objectForKey:@"description"], [info objectForKey:@"name"] ];
+        [_audioDevicePopUp addItemWithTitle:title];
+        _audioDevicePopUp.lastItem.representedObject = info;
+        
+        if ([audioDevice isEqualToString:[info objectForKey:@"name"]]){
+            [_audioDevicePopUp selectItem:_audioDevicePopUp.lastItem];
+        }
+    }
 }
+
+-(IBAction)audioDeviceAction:(NSMenuItem *)sender{
+    NSString *name = [sender.representedObject objectForKey:@"name"];
+    [[Preference Instance] setString:name key:SM_PGC_AudioDevice];
+}
+
 
 -(IBAction)hwdecAction:(id)sender{
     [self updateHwdecDescription];

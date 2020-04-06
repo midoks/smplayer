@@ -405,15 +405,82 @@ static void render_context_callback(void *ctx) {
     return node;
 }
 
+//-(BOOL)nodeParse_MPV_FORMAT_FLAG:(mpv_node)node {
+//    return (node.u.flag != 0);
+//}
+//
+//-(NSString *)nodeParse_MPV_FORMAT_STRING:(mpv_node)node {
+//    return [NSString stringWithCString:node.u.string encoding:NSUTF8StringEncoding];
+//}
+
+-(id)nodeParse:(mpv_node)node {
+    int node_num = 0;
+    mpv_node *c_node_ptr;
+    mpv_node_list *map = NULL;
+    NSString *v = NULL;
+    NSString *k = NULL;
+    NSMutableDictionary * dict= [[NSMutableDictionary alloc] init];
+    NSMutableArray *nList = [[NSMutableArray alloc] init];
+    
+    switch (node.format) {
+        case MPV_FORMAT_FLAG:
+            v = [NSString stringWithFormat:@"%d",node.u.flag];
+            return v;
+        case MPV_FORMAT_STRING:
+            v = [NSString stringWithCString:node.u.string encoding:NSUTF8StringEncoding];
+            return v;
+        case MPV_FORMAT_INT64:
+            v = [NSString stringWithFormat:@"%lld",node.u.int64];
+            return v;
+        case MPV_FORMAT_DOUBLE:
+            v = [NSString stringWithFormat:@"%f",node.u.double_];
+            return v;
+        case MPV_FORMAT_NODE_ARRAY:
+            node_num = node.u.list->num;
+            c_node_ptr = node.u.list->values;
+            for (int i=0; i<node_num;i++){
+                dict = [self nodeParse:*c_node_ptr];
+                c_node_ptr++;
+                [nList addObject:dict];
+            }
+            return nList;
+        case MPV_FORMAT_NODE_MAP:
+            map = node.u.list;
+            if (map->num == 0){
+               return dict;
+            }
+            if (map->keys == NULL){
+                return dict;
+            }
+            c_node_ptr = map->values;
+            char **node_key = map->keys;
+            
+            for (int i=0; i<map->num;i++){
+                v = [self nodeParse:*c_node_ptr];
+                k = [NSString stringWithCString:*node_key encoding:NSUTF8StringEncoding];
+                dict[k] = v;
+                c_node_ptr++;
+                node_key++;
+            }
+            return dict;
+        case MPV_FORMAT_BYTE_ARRAY:
+            break;
+        case MPV_FORMAT_NONE:
+            break;
+        default:
+            break;
+    }
+    return @"";
+}
+
 
 #pragma mark - MPV Private Methods
--(void)getNode:(NSString *)name {
-    mpv_node *node;
+-(id)getNode:(NSString *)name {
+    mpv_node node ;
     mpv_get_property(mpv, name.UTF8String, MPV_FORMAT_NODE, &node);
-    
-    mpv_free_node_contents(node);
-    
-    NSLog(@"www");
+    NSMutableArray *list = [self nodeParse:node];
+    mpv_free_node_contents(&node);
+    return list;
 }
 
 -(void)getScreenshot:(NSString *) args{
@@ -494,9 +561,10 @@ static void render_context_callback(void *ctx) {
     [[NSRunLoop currentRunLoop] addTimer:timer forMode:NSDefaultRunLoopMode];
     self.asyncPlayerTimer  = timer;
     
-    
     self->_videoDuration = [self getDouble:@"duration"];
-    [_player videoStart:[[SMVideoTime alloc] initTime:self->_videoDuration]];
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self->_player videoStart:[[SMVideoTime alloc] initTime:self->_videoDuration]];
+    });
     
     NSURL *urlFile = [NSURL fileURLWithPath:self->_currentPath isDirectory:NO];
     [[NSDocumentController sharedDocumentController] noteNewRecentDocumentURL:urlFile];
@@ -512,7 +580,11 @@ static void render_context_callback(void *ctx) {
     }
     _videoPos = pos;
     // [[SMLastHistory Instance] add:[NSURL fileURLWithPath:self->_currentPath isDirectory:NO] duration:_videoPos];
-    [_player videoPos:[[SMVideoTime alloc] initTime:pos]];
+    
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [self->_player videoPos:[[SMVideoTime alloc] initTime:pos]];
+    });
+    
 }
 
 -(void)closeVideo{

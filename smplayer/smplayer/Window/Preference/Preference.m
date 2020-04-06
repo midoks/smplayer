@@ -45,6 +45,7 @@ static dispatch_once_t _instance_once;
         SM_PGC_InitialVolume:@60,
         SM_PGC_MaxVolume:@100,
         SM_PGC_AudioThreads:@0,
+        SM_PGC_AudioDevice:@"auto",
         
         SM_PGS_SubTextFont:@"sans-serif",
         SM_PGS_SubTextSize:@55,
@@ -65,7 +66,7 @@ static dispatch_once_t _instance_once;
         
         SM_PGN_EnableCache:@YES,
         SM_PGN_DefaultCacheSize:@153600,
-        SM_PGN_SecPrefech:@100,
+        SM_PGN_SecPrefech:@36000,
         SM_PGN_TransportRTSPThrough:@1,
         SM_PGN_YtdlEnabled:@NO,
     }];

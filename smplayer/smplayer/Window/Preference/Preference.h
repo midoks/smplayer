@@ -38,9 +38,12 @@
 #define SM_PGC_InitialVolume @"initialVolume"
 #define SM_PGC_MaxVolume @"maxVolume"
 #define SM_PGC_AudioThreads @"audioThreads"
+#define SM_PGC_AudioDevice @"audioDevice"
 #define SM_PGC_SpdifAC3 @"spdifAC3"
 #define SM_PGC_SpdifDTS @"spdifDTS"
 #define SM_PGC_SpdifDTSHD @"spdifDTSHD"
+
+
 
 #pragma mark - preference subtitle
 #define SM_PGS_SubTextFont @"subTextFont"

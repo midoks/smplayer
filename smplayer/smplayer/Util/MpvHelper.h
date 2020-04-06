@@ -49,7 +49,7 @@ typedef NS_ENUM(NSUInteger, SMUserOption) {
 
 -(void)renderMPV;
 -(BOOL)shouldRenderUpdateFrame;
--(void)getNode:(NSString *)name;
+-(id)getNode:(NSString *)name;
 
 -(void)openVideo:(NSString *)path;
 -(void)closeVideo;

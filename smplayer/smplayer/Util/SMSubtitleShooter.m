@@ -91,8 +91,7 @@ static dispatch_once_t _instance_once;
     }
     
     NSDictionary *reqInfoData = [self hash:url];
-    manager.responseSerializer.acceptableContentTypes = [NSSet setWithObject:@"application/octet-stream"];
-    NSLog(@"url:%@\nargs:%@", url, reqInfoData);
+//    NSLog(@"url:%@\nargs:%@", url, reqInfoData);
     [manager POST:apiPath parameters:reqInfoData progress:^(NSProgress * uploadProgress) {
     } success:^(NSURLSessionDataTask * task, id responseObject) {
         NSArray *data = responseObject;
