@@ -76,6 +76,7 @@ typedef NS_ENUM(NSUInteger, SMAlertStyle) {
 +(NSSize)satisfyMinSizeWithSameAspectRatio:(NSSize)from to:(NSSize)to;
 +(NSSize)satisfyMaxSizeWithSameAspectRatio:(NSSize)from to:(NSSize)to;
 
++(NSPoint)pointConstrained:(NSPoint)point to:(NSRect)to;
 #pragma mark - algorithm
 +(NSString *)md5:(NSString *)toStr;
 @end

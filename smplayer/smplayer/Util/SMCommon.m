@@ -252,6 +252,25 @@
 }
 
 
++(CGFloat)inRange:(CGFloat)v min:(CGFloat)min max:(CGFloat)max{
+    if (v<min){
+        return min;
+    } else if (v>max){
+        return max;
+    } else {
+        return v;
+    }
+}
+
++(NSPoint)pointConstrained:(NSPoint)point to:(NSRect)to
+{
+    CGFloat x = [self inRange:point.x min:NSMinX(to) max:NSMaxX(to)];
+    CGFloat y = [self inRange:point.y min:NSMinY(to) max:NSMaxY(to)];
+    return NSMakePoint(x, y);
+}
+
+
+#pragma mark - algorithm
 
 +(NSString *)md5:(NSString *)toStr{
     const char *cStr = [toStr UTF8String];

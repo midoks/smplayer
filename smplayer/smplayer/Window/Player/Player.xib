@@ -60,6 +60,10 @@
                             <constraint firstItem="XtT-TH-TbO" firstAttribute="leading" secondItem="yrm-bz-zb6" secondAttribute="leading" constant="12" id="Z4t-gf-9in"/>
                             <constraint firstAttribute="trailing" secondItem="XtT-TH-TbO" secondAttribute="trailing" constant="12" id="qMT-bu-Hxw"/>
                         </constraints>
+                        <connections>
+                            <outlet property="xConstraint" destination="QsG-X2-xZ4" id="EGd-bi-bqe"/>
+                            <outlet property="yConstraint" destination="t1b-Hu-tlQ" id="O1a-yR-xhc"/>
+                        </connections>
                     </visualEffectView>
                     <visualEffectView wantsLayer="YES" blendingMode="withinWindow" material="titlebar" state="active" translatesAutoresizingMaskIntoConstraints="NO" id="LK1-Ec-bhA" userLabel="Title Bar View">
                         <rect key="frame" x="0.0" y="378" width="640" height="22"/>
@@ -70,8 +74,8 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="LK1-Ec-bhA" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="GjS-bx-QO1"/>
-                    <constraint firstItem="yrm-bz-zb6" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" id="QsG-X2-xZ4"/>
-                    <constraint firstAttribute="bottom" secondItem="yrm-bz-zb6" secondAttribute="bottom" constant="30" id="t1b-Hu-tlQ"/>
+                    <constraint firstItem="yrm-bz-zb6" firstAttribute="centerX" secondItem="se5-gp-TjO" secondAttribute="centerX" priority="249" id="QsG-X2-xZ4"/>
+                    <constraint firstAttribute="bottom" secondItem="yrm-bz-zb6" secondAttribute="bottom" priority="249" constant="30" id="t1b-Hu-tlQ"/>
                     <constraint firstAttribute="trailing" secondItem="LK1-Ec-bhA" secondAttribute="trailing" id="tvh-Uq-YBr"/>
                     <constraint firstItem="LK1-Ec-bhA" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="u2P-tU-aHg"/>
                 </constraints>
@@ -194,8 +198,8 @@
                     <rect key="frame" x="256" y="5" width="50" height="12"/>
                     <textFieldCell key="cell" lineBreakMode="clipping" refusesFirstResponder="YES" alignment="center" title="--:--" id="4Uf-Kn-K6c">
                         <font key="font" size="11" name="HelveticaNeue"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
-                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                        <color key="textColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
                 <textField horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Pbd-pY-WcV" userLabel="LLabel">
@@ -204,8 +208,8 @@
                         <constraint firstAttribute="width" constant="46" id="ixc-Hc-csA"/>
                     </constraints>
                     <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" title="--:--" id="S2o-ea-K31">
-                        <font key="font" metaFont="label" size="11"/>
-                        <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
+                        <font key="font" metaFont="message" size="11"/>
+                        <color key="textColor" name="systemGrayColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>

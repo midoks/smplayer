@@ -108,7 +108,7 @@ static dispatch_once_t _instance_once;
     self.minWindowSize = NSMakeSize(300, 180);
     
     // view setting
-    self.window.movableByWindowBackground = YES;
+//    self.window.movableByWindowBackground = YES;
     self.window.styleMask |= NSWindowStyleMaskFullSizeContentView;
     self.window.appearance =  [NSAppearance appearanceNamed:NSAppearanceNameVibrantDark];
     self.window.titleVisibility = NSWindowTitleVisible;
@@ -192,6 +192,7 @@ static dispatch_once_t _instance_once;
     
     _flagTimelineView.frame = newFrame;
     [_timeControlView addSubview:_flagTimelineView];
+    
 }
 
 #pragma mark - IBAction
