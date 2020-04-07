@@ -29,6 +29,7 @@
 #define SM_PGG_ScreenShotIncludeSubtitle @"screenShotIncludeSubtitle"
 #define SM_PGG_ScreenShotFormat @"screenShotFormat"
 #define SM_PGG_ScreenShotFolder @"screenShotFolder"
+#define SM_PGG_ScreenShotTemplate @"screenShotTemplate"
 #define SM_PGG_ScreenshotOkToOpen @"screenshotOkToOpen"
 
 
@@ -89,6 +90,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(NSString *)subAlignYToString:(NSInteger)index;
 -(NSString *)hardwareDecoderOptionToString:(NSInteger)index;
 -(NSString *)rtspTransportationOptionToString:(NSInteger)index;
+-(NSString *)screenshotFormatToString:(NSInteger)index;
 
 #pragma mark - SET
 -(void)setString:(NSString *)value key:(NSString*)key;

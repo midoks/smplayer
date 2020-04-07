@@ -82,7 +82,8 @@
 }
 
 -(void)openScreenshotFolderAction:(NSMenuItem *)sender{
-    
+    NSString *ssDir = [[Preference Instance] stringForKey:SM_PGG_ScreenShotFolder];
+    [[NSWorkspace sharedWorkspace] openURL:[NSURL fileURLWithPath:ssDir]];
 }
 
 

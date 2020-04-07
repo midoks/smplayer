@@ -104,6 +104,8 @@ static void *get_proc_address(void *ctx, const char *name)
             break;
         }
         case SMFloat:{
+            float value = [[Preference Instance] floatForKey:key];
+            code = mpv_set_option(mpv, name.UTF8String, MPV_FORMAT_DOUBLE, &value);
             break;
         }
         case SMBool:{
@@ -191,6 +193,25 @@ static void *get_proc_address(void *ctx, const char *name)
     [self initVideoRender];
 }
 
+-(void)optionGerenralSet{
+    
+    [self setUserOption:SM_PGG_ScreenShotFolder option:SMOther name:@"screenshot-directory" callback:^NSString *(NSString *key) {
+        NSString *screenshotPath = [[Preference Instance] stringForKey:key];
+        return screenshotPath.stringByExpandingTildeInPath;
+    }];
+    
+    [self setUserOption:SM_PGG_ScreenShotFormat option:SMOther name:@"screenshot-format" callback:^NSString *(NSString *key) {
+        NSInteger index = [[Preference Instance] integerForKey:key];
+        return [[Preference Instance] screenshotFormatToString:index];
+    }];
+    [self setUserOption:SM_PGG_ScreenShotTemplate option:SMString name:@"screenshot-template"];
+    
+    [self setUserOption:SM_PGG_KeepOpenOnFileEnd option:SMOther name:@"keep-open" callback:^NSString *(NSString *key) {
+        BOOL keepOpen = [[Preference Instance] boolForKey:key];
+        return keepOpen ? @"yes":@"no";
+    }];
+    
+}
 
 -(void)optionSubtitleSet{
     [self setUserOption:SM_PGS_SubTextFont option:SMString name:@"sub-font"];
@@ -253,13 +274,12 @@ static void *get_proc_address(void *ctx, const char *name)
         exit(-1);
     }
     
-    //subtitle
+    // gerenral
+    [self optionGerenralSet];
+    // subtitle
     [self optionSubtitleSet];
-    //network
+    // network
     [self optionNetworkSet];
-    
-    
-    
     
     mpv_set_option_string(mpv,"reset-on-next-file","ab-loop-a,ab-loop-b");
     
@@ -390,28 +410,28 @@ static void render_context_callback(void *ctx) {
 }
 
 #pragma mark - MPV Node Methods
--(mpv_node *)nodeCreate:(id)obj{
-    mpv_node *node = NULL;
+-(mpv_node )nodeCreate:(id)obj{
+    mpv_node node;
     
     if (obj == nil){
-        node->format = MPV_FORMAT_NONE;
+        node.format = MPV_FORMAT_NONE;
         return node;
     }
     
-//    switch(obj){
-//            
+    NSLog(@"obj:%@",obj);
+    NSLog(@"obj-type:%@",[obj types]);
+    
+//    switch (obj) {
+//        case <#constant#>:
+//            <#statements#>
+//            break;
+//
+//        default:
+//            break;
 //    }
     
     return node;
 }
-
-//-(BOOL)nodeParse_MPV_FORMAT_FLAG:(mpv_node)node {
-//    return (node.u.flag != 0);
-//}
-//
-//-(NSString *)nodeParse_MPV_FORMAT_STRING:(mpv_node)node {
-//    return [NSString stringWithCString:node.u.string encoding:NSUTF8StringEncoding];
-//}
 
 -(id)nodeParse:(mpv_node)node {
     int node_num = 0;
@@ -714,21 +734,25 @@ static void render_context_callback(void *ctx) {
     NSString *option =  [[Preference Instance] boolForKey:SM_PGG_ScreenShotIncludeSubtitle]? @"subtitles" : @"video";
     BOOL tookScreenshot = NO;
     int code = 0;
-    NSLog(@"eee");
     if ([[Preference Instance] boolForKey:SM_PGG_ScreenshotSaveToFile]){
         const char *args[] = {"screenshot", option.UTF8String, NULL};
         code = mpv_command(mpv, args);
-        
-        NSLog(@"eee:%d",code);
         tookScreenshot = YES;
     }
     if (code < 0){
-        NSLog(@"ffff");
+//        NSLog(@"ffff");
     }
     
     if (tookScreenshot){
-        [[NSPasteboard generalPasteboard] clearContents];
-        //        [[NSPasteboard generalPasteboard] writeObjects:[]];
+        //   [[NSPasteboard generalPasteboard] clearContents];
+        //   [[NSPasteboard generalPasteboard] writeObjects:[]];
+    }
+    
+    if (tookScreenshot){
+        if ([[Preference Instance] boolForKey:SM_PGG_ScreenshotOkToOpen]){
+            NSString *file = [[Preference Instance] stringForKey:SM_PGG_ScreenShotFolder];
+            [[NSWorkspace sharedWorkspace] openURL:[NSURL fileURLWithPath:file]];
+        }
     }
 }
 

@@ -36,9 +36,13 @@ static dispatch_once_t _instance_once;
     
     [[self standardUserDefaults] registerDefaults:@{
         SM_PGG_ActionAfterLaunch:@0,
+        SM_PGG_KeepOpenOnFileEnd:@YES,
         SM_PGG_ScreenshotSaveToFile:@YES,
         SM_PGG_ScreenShotFolder:@"~/Pictures/Screenshots",
+        SM_PGG_ScreenShotTemplate:@"%F-%n",
         SM_PGG_ScreenShotIncludeSubtitle:@YES,
+        SM_PGG_ScreenshotOkToOpen:@YES,
+        
         
         SM_PGC_VideoThreads:@0,
         SM_PGC_HardwareDecoder:@1,
@@ -99,6 +103,11 @@ static dispatch_once_t _instance_once;
 
 -(NSString *)rtspTransportationOptionToString:(NSInteger)index{
     NSArray *list = @[@"lavf",@"tcp",@"udp",@"http"];
+    return [list objectAtIndex:index];
+}
+
+-(NSString *)screenshotFormatToString:(NSInteger)index{
+    NSArray *list = @[@"png",@"jpg",@"jpeg",@"ppm",@"pgm",@"pgmyuv",@"tga"];
     return [list objectAtIndex:index];
 }
 
