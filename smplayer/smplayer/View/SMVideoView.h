@@ -16,7 +16,6 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SMVideoView : NSView
 
 @property (nonatomic, strong) SMVideoLayer *smLayer;
-@property NSSize videoSize;
 
 @end
 

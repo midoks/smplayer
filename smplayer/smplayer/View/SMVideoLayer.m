@@ -164,5 +164,33 @@
     [CATransaction flush];
 }
 
+-(void)draw{
+    if (!_player.info.isPause){
+        return;
+    }
+    
+    [_player.uninitLock lock];
+    
+    if(_player.mpv){
+        GLint i = 0;
+        mpv_render_param params[] = {
+            {MPV_RENDER_PARAM_OPENGL_FBO, &(mpv_opengl_fbo){
+                .fbo = i,
+                .w = self.frame.size.width,
+                .h = self.frame.size.height,
+            }},
+            {MPV_RENDER_PARAM_FLIP_Y, &(int){1}},
+            {0}
+        };
+        
+        mpv_render_context_render(_player.mpv.context, params);
+        CGLFlushDrawable(_cglContext);
+    } else {
+        glClearColor(0, 0, 0, 1);
+        glClear((GLbitfield)(GL_COLOR_BUFFER_BIT));
+    }
+
+    [_player.uninitLock unlock];
+}
 
 @end

@@ -34,19 +34,21 @@ static void *get_proc_address(void *ctx, const char *name)
 
 @interface MpvHelper(){
     mpv_handle *mpv;
-    mpv_render_context *sm_render_context;
 }
 
 @property (nonatomic) NSMutableDictionary<NSString *,SMOptionObserverInfo*> *optionObserver;
 
 @property (nonatomic,strong) Player *player;
 @property (nonatomic, weak) NSTimer *asyncPlayerTimer;
+@property (nonatomic,strong) NSString *clientName;
 @property  dispatch_queue_t queue;
 @property BOOL switchVoice;
 @property BOOL switchVideo;
 @property double videoDuration;
 @property double videoPos;
 @property NSString *currentPath;
+
+@property (nonatomic,strong) NSDictionary* observeProperties;
 
 @end
 
@@ -57,6 +59,9 @@ static void *get_proc_address(void *ctx, const char *name)
     self = [super init];
     if (self){
         _optionObserver = [[NSMutableDictionary alloc] init];
+        _observeProperties = @{
+            @"pause":[NSString stringWithFormat:@"%d", MPV_FORMAT_FLAG],
+        };
     }
     return self;
 }
@@ -68,6 +73,7 @@ static void *get_proc_address(void *ctx, const char *name)
 }
 
 -(void)openVideo:(NSString *)path {
+    _player.info.currentURL = [NSURL fileURLWithPath:path];
     _currentPath = path;
     mpv_set_wakeup_callback(mpv, wakeup, (__bridge void *) self);
     const char *cmd[] = {"loadfile", path.UTF8String, NULL};
@@ -245,6 +251,16 @@ static void *get_proc_address(void *ctx, const char *name)
     [self setUserOption:SM_PGS_SubScaleWithWindow option:SMBool name:@"sub-scale-by-window"];
 }
 
+-(void)optionCodecSet{
+    [self setUserOption:SM_PGC_AudioThreads option:SMInt name:@"ad-lavc-threads"];
+    [self setUserOption:SM_PGC_VideoThreads option:SMInt name:@"vd-lavc-threads"];
+    
+    [self setUserOption:SM_PGC_HardwareDecoder option:SMOther name:@"hwdec" callback:^NSString *(NSString *key) {
+        NSInteger index = [[Preference Instance] integerForKey:key];
+        return [[Preference Instance] hardwareDecoderOptionToString:index];
+    }];
+}
+
 -(void)optionNetworkSet{
     [self setUserOption:SM_PGN_EnableCache option:SMOther name:@"cache" callback:^NSString *(NSString *key) {
         return [[Preference Instance] boolForKey:key]?  @"yes" : @" no";
@@ -269,29 +285,36 @@ static void *get_proc_address(void *ctx, const char *name)
 -(void)initMPV{
     _queue = dispatch_queue_create("mpv", DISPATCH_QUEUE_SERIAL);
     mpv = mpv_create();
-    if (!mpv) {
-        NSLog(@"%@", @"failed creating context");
-        exit(-1);
-    }
+    
+    const char *cname = mpv_client_name(mpv);
+    _clientName =  [NSString stringWithUTF8String:cname];
     
     // gerenral
     [self optionGerenralSet];
     // subtitle
     [self optionSubtitleSet];
+    // codec
+    [self optionCodecSet];
     // network
     [self optionNetworkSet];
     
     mpv_set_option_string(mpv,"reset-on-next-file","ab-loop-a,ab-loop-b");
     
+    
+    for (NSString *key in [_observeProperties allKeys] ) {
+        NSString *val = [_observeProperties objectForKey:key];
+        mpv_observe_property(mpv,0,key.UTF8String,[val intValue]);
+    }
+    
     //libmpv,gpu,opengl
     mpv_set_property_string(mpv, "vo", "libmpv");
     mpv_set_property_string(mpv, "keepaspect", "yes");
-    mpv_set_property_string(mpv, "gpu-hwdec-interop", "auto");
+//    mpv_set_property_string(mpv, "gpu-hwdec-interop", "no");
     
-#ifdef ENABLE_LEGACY_GPU_SUPPORT
-    check_error( mpv_set_option_string(mpv, "hwdec", "videotoolbox"));
-    check_error( mpv_set_option_string(mpv, "hwdec-image-format", "uyvy422"));
-#endif
+//#ifdef ENABLE_LEGACY_GPU_SUPPORT
+//    check_error( mpv_set_option_string(mpv, "hwdec", "videotoolbox"));
+//    check_error( mpv_set_option_string(mpv, "hwdec-image-format", "uyvy422"));
+//#endif
     
     mpv_request_log_messages(mpv, "warn");
     check_error(mpv_initialize(mpv));
@@ -410,7 +433,7 @@ static void render_context_callback(void *ctx) {
 }
 
 #pragma mark - MPV Node Methods
--(mpv_node )nodeCreate:(id)obj{
+-(mpv_node)nodeCreate:(NSObject *)obj{
     mpv_node node;
     
     if (obj == nil){
@@ -418,17 +441,76 @@ static void render_context_callback(void *ctx) {
         return node;
     }
     
-    NSLog(@"obj:%@",obj);
-    NSLog(@"obj-type:%@",[obj types]);
+    NSString *stype = [[obj class] description];
     
-//    switch (obj) {
-//        case <#constant#>:
-//            <#statements#>
+//    NSLog(@"stype:%@", stype);
+    if ([stype isEqualToString:@"__NSCFNumber"]){
+        node.format = MPV_FORMAT_INT64;
+        node.u.int64 = [[NSString stringWithFormat:@"%@", obj] integerValue];
+    } else if ([stype isEqualToString:@"__NSAD"]) {
+        node.format = MPV_FORMAT_DOUBLE;
+        node.u.double_ = [[NSString stringWithFormat:@"%@", obj] doubleValue];
+    } else if( [stype isEqualToString:@"__NSCFBoolean"]) {
+        node.format = MPV_FORMAT_FLAG;
+        node.u.flag = (obj) ? 1 : 0;
+    }else if ([stype isEqualToString:@"__NSCFConstantString"]){
+        node.format = MPV_FORMAT_STRING;
+        node.u.string = (char *)[NSString stringWithFormat:@"%@", obj].UTF8String;
+    } else if ([stype isEqualToString:@"__NSArrayI"]){
+        node.format = MPV_FORMAT_NODE_ARRAY;
+        NSArray *data = (NSArray *)obj;
+        NSUInteger data_count = [data count];
+    
+        mpv_node *node_ptr = alloca(sizeof(mpv_node)*data_count);
+        mpv_node *node_iptr = node_ptr;
+        
+        for (int i=0; i<data_count; i++) {
+            mpv_node ww_node = [self nodeCreate:[data objectAtIndex:i]];
+            node_iptr = &ww_node;
 //            break;
-//
-//        default:
-//            break;
-//    }
+            node_iptr++;
+        }
+        
+        mpv_node_list nodelist;
+        nodelist.num = (int)data_count;
+        nodelist.values = node_ptr;
+        
+        mpv_node_list *nodelist_ptr = alloca(sizeof(mpv_node_list));
+        nodelist_ptr = &nodelist;
+        
+        node.u.list = nodelist_ptr;;
+        
+    } else if ([stype isEqualToString:@"__NSSingleEntryDictionaryI"]){
+        node.format = MPV_FORMAT_NODE_MAP;
+        
+        NSDictionary *obj_dic = (NSDictionary *)obj;
+        NSUInteger obj_dic_num = [obj_dic count];
+        
+        mpv_node *value_ptr = alloca(sizeof(mpv_node)*obj_dic_num);
+        char **key_ptr = alloca(sizeof(char)*obj_dic_num);
+        
+        mpv_node *value_iptr = value_ptr;
+        char **key_iptr = key_ptr;
+        
+        
+        for (NSObject *s in obj_dic) {
+            mpv_node dic_node = [self nodeCreate:[obj_dic objectForKey:s]];
+            value_iptr  = &dic_node;
+            key_iptr =  (char **)[NSString stringWithFormat:@"%@", s].UTF8String;
+            
+            value_iptr++;
+            key_iptr++;
+        }
+        
+        mpv_node_list list;
+        list.num = (int)obj_dic_num;
+        list.keys = key_ptr;
+        list.values = value_ptr;
+        
+        node.u.list = &list;
+    } else {
+        node.format = MPV_FORMAT_NONE;
+    }
     
     return node;
 }
@@ -495,6 +577,11 @@ static void render_context_callback(void *ctx) {
 
 
 #pragma mark - MPV Private Methods
+
+-(void)command{
+    
+}
+
 -(id)getNode:(NSString *)name {
     mpv_node node ;
     mpv_get_property(mpv, name.UTF8String, MPV_FORMAT_NODE, &node);
@@ -504,7 +591,15 @@ static void render_context_callback(void *ctx) {
 }
 
 -(void)getScreenshot:(NSString *) args{
-    [self nodeCreate:@[@"screenshot-raw", args]];
+    mpv_node node_args = [self nodeCreate:@[@"screenshot-raw", args]];
+    mpv_node result;
+    
+    mpv_command_node(mpv, &node_args, &result);
+    id data = [self nodeParse:result];
+    mpv_free_node_contents(&result);
+    
+    NSLog(@"ssss:%@", args);
+    NSLog(@"ss:%@", data);
 }
 
 #pragma mark - MPV Public Methods
@@ -744,6 +839,7 @@ static void render_context_callback(void *ctx) {
     
     if (tookScreenshot){
         if ([[Preference Instance] boolForKey:SM_PGG_ScreenshotCopyToClipboard]){
+//            [self getScreenshot:option];
             //   [[NSPasteboard generalPasteboard] clearContents];
             //   [[NSPasteboard generalPasteboard] writeObjects:[]];
         }

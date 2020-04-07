@@ -261,7 +261,7 @@
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="TH6-ZD-xId"/>
-                            <menuItem title="Take a Screenshot" id="CYg-rT-PiL">
+                            <menuItem title="Take a Screenshot" keyEquivalent="s" id="CYg-rT-PiL">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
                             <menuItem title="Go to Screenshot Folder" id="fhv-vn-faU">

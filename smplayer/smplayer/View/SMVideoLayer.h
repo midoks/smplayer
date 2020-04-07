@@ -15,6 +15,8 @@ NS_ASSUME_NONNULL_BEGIN
 @interface SMVideoLayer : CAOpenGLLayer
 
 -(void)initPlayer:(Player*)player;
+
+-(void)draw;
 @end
 
 NS_ASSUME_NONNULL_END

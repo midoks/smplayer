@@ -273,9 +273,7 @@ static dispatch_once_t _instance_once;
 
 #pragma mark - Public Methods
 -(void)openVideo:(NSString *)path {
-    _info.currentURL = [NSURL fileURLWithPath:path];
-    NSLog(@"_info.currentURL:%@", _info.currentURL);
-    windowTitle = _info.currentURL.lastPathComponent;
+    windowTitle = [NSURL fileURLWithPath:path].lastPathComponent;
     [_mpv openVideo:path];
 }
 
@@ -373,15 +371,17 @@ static dispatch_once_t _instance_once;
 #pragma mark - NSWindowDelegate
 -(NSSize)windowWillResize:(NSWindow *)sender toSize:(NSSize)frameSize
 {
-    //    NSSize vs = player.videoSize;
-    //    CGFloat aspect = vs.width / vs.height;
-    //    CGFloat newHeight = frameSize.width / aspect;
-    //
-    //    [self->player.smLayer windowScale:aspect];
-    //    return CGSizeMake(frameSize.width, newHeight);
+
+//        NSSize vs = CGSizeMake(_info.width, _info.height);
+//        CGFloat aspect = vs.width / vs.height;
+//        CGFloat newHeight = frameSize.width / aspect;
+//        return CGSizeMake(frameSize.width, newHeight);
     
-    [_videoView.smLayer display];
-    
+//    NSLog(@"winSize:%@", NSStringFromSize(self.window.frame.size));
+//    NSLog(@"frameSize:%@", NSStringFromSize(frameSize));
+
+    [_videoView.smLayer draw];
+
     if (frameSize.height <= _minWindowSize.height || frameSize.width <= _minWindowSize.width ){
         CGFloat wAspect = self.window.frame.size.width/self.window.frame.size.height;
         CGFloat mAspect = _minWindowSize.width/_minWindowSize.height;
