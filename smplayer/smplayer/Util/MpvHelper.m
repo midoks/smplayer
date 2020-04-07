@@ -739,13 +739,14 @@ static void render_context_callback(void *ctx) {
         code = mpv_command(mpv, args);
         tookScreenshot = YES;
     }
-    if (code < 0){
-//        NSLog(@"ffff");
-    }
+    
+    if (code < 0){}
     
     if (tookScreenshot){
-        //   [[NSPasteboard generalPasteboard] clearContents];
-        //   [[NSPasteboard generalPasteboard] writeObjects:[]];
+        if ([[Preference Instance] boolForKey:SM_PGG_ScreenshotCopyToClipboard]){
+            //   [[NSPasteboard generalPasteboard] clearContents];
+            //   [[NSPasteboard generalPasteboard] writeObjects:[]];
+        }
     }
     
     if (tookScreenshot){
