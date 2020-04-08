@@ -73,11 +73,13 @@ static dispatch_once_t _instance_once;
         SM_PGS_SubScaleWithWindow:@YES,
         SM_PGS_AutoSearchOnlineSub:@YES,
         
+        // network
         SM_PGN_EnableCache:@YES,
         SM_PGN_DefaultCacheSize:@153600,
         SM_PGN_SecPrefech:@36000,
         SM_PGN_TransportRTSPThrough:@1,
         SM_PGN_YtdlEnabled:@NO,
+        SM_PGN_UserAgent:@"",
     }];
     return self;
 }

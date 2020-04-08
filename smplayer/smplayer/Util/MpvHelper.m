@@ -76,7 +76,7 @@ static void *get_proc_address(void *ctx, const char *name)
 -(void)openVideo:(NSString *)path {
     _player.info.currentURL = [NSURL fileURLWithPath:path];
     _currentPath = path;
-    mpv_set_wakeup_callback(mpv, wakeup, (__bridge void *) self);
+    
     const char *cmd[] = {"loadfile", path.UTF8String, NULL};
     check_error(mpv_command(mpv, cmd));
 }
@@ -323,7 +323,7 @@ static void *get_proc_address(void *ctx, const char *name)
     //libmpv,gpu,opengl
     mpv_set_property_string(mpv, "vo", "libmpv");
     mpv_set_property_string(mpv, "keepaspect", "yes");
-    //    mpv_set_property_string(mpv, "gpu-hwdec-interop", "no");
+    mpv_set_property_string(mpv, "gpu-hwdec-interop", "auto");
     
     //#ifdef ENABLE_LEGACY_GPU_SUPPORT
     //    check_error( mpv_set_option_string(mpv, "hwdec", "videotoolbox"));
@@ -334,6 +334,8 @@ static void *get_proc_address(void *ctx, const char *name)
     check_error(mpv_initialize(mpv));
     
     _mpvVersion = [self getString:@"mpv-version"];
+    
+    mpv_set_wakeup_callback(mpv, wakeup, (__bridge void *) self);
 }
 
 -(void)initVideoRender{
@@ -674,7 +676,7 @@ static void render_context_callback(void *ctx) {
 #pragma mark - Event Methods
 
 -(void)fileStart{
-    NSLog(@"fileStart");
+//    NSLog(@"fileStart");
     [_player.info setIsValid:NO];
 }
 

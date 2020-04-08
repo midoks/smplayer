@@ -249,11 +249,12 @@ static dispatch_once_t _instance_once;
     [_mpv seek:@"+5" option:SMSeekRelative];
 }
 
-- (IBAction)videoChangeAction:(id)sender {
+- (IBAction)videoChangeAction:(NSSlider *)sender {
     if (!isFileLoaded){return;}
-    
+//    [_mpv stop];
     NSString *sliderValue = [self.flagTimelineSliderView stringValue];
     [_mpv seek:sliderValue option:SMSeekAbsolute];
+//    [_mpv start];
 }
 
 
