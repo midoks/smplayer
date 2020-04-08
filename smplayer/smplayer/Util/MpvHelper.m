@@ -35,12 +35,14 @@ static void *get_proc_address(void *ctx, const char *name)
 @interface MpvHelper(){
     mpv_handle *mpv;
 }
+@property (nonatomic,strong) NSString *clientName;
+@property (nonatomic,strong) NSString *mpvVersion;
 
 @property (nonatomic) NSMutableDictionary<NSString *,SMOptionObserverInfo*> *optionObserver;
-
 @property (nonatomic,strong) Player *player;
 @property (nonatomic, weak) NSTimer *asyncPlayerTimer;
-@property (nonatomic,strong) NSString *clientName;
+
+
 @property  dispatch_queue_t queue;
 
 @property double videoDuration;
@@ -321,15 +323,17 @@ static void *get_proc_address(void *ctx, const char *name)
     //libmpv,gpu,opengl
     mpv_set_property_string(mpv, "vo", "libmpv");
     mpv_set_property_string(mpv, "keepaspect", "yes");
-//    mpv_set_property_string(mpv, "gpu-hwdec-interop", "no");
+    //    mpv_set_property_string(mpv, "gpu-hwdec-interop", "no");
     
-//#ifdef ENABLE_LEGACY_GPU_SUPPORT
-//    check_error( mpv_set_option_string(mpv, "hwdec", "videotoolbox"));
-//    check_error( mpv_set_option_string(mpv, "hwdec-image-format", "uyvy422"));
-//#endif
+    //#ifdef ENABLE_LEGACY_GPU_SUPPORT
+    //    check_error( mpv_set_option_string(mpv, "hwdec", "videotoolbox"));
+    //    check_error( mpv_set_option_string(mpv, "hwdec-image-format", "uyvy422"));
+    //#endif
     
     mpv_request_log_messages(mpv, "warn");
     check_error(mpv_initialize(mpv));
+    
+    _mpvVersion = [self getString:@"mpv-version"];
 }
 
 -(void)initVideoRender{
@@ -396,13 +400,13 @@ static void wakeup(void *context) {
         }
         case MPV_EVENT_FILE_LOADED:{
             dispatch_async(dispatch_get_main_queue(), ^{
-                [self fileLoad];
+                [self fileLoaded];
             });
             break;
         }
             
         case MPV_EVENT_PLAYBACK_RESTART:{
-            NSLog(@"MPV_EVENT_PLAYBACK_RESTART");
+            [_player syncUI:SM_SO_TIME];
             break;
         }
         case MPV_EVENT_VIDEO_RECONFIG: {
@@ -414,7 +418,7 @@ static void wakeup(void *context) {
             break;
         }
         default:{
-            NSLog(@"event-default: %s\n", mpv_event_name(event->event_id));
+            //            NSLog(@"event-default: %s\n", mpv_event_name(event->event_id));
             break;
         }
     }
@@ -422,9 +426,9 @@ static void wakeup(void *context) {
 
 static void render_context_callback(void *ctx) {
     MpvHelper *this = (__bridge MpvHelper *)ctx;
-//    dispatch_async(dispatch_get_main_queue(), ^{
-//        [this->_player.videoView.smLayer display];
-//    });
+    //    dispatch_async(dispatch_get_main_queue(), ^{
+    //        [this->_player.videoView.smLayer display];
+    //    });
     dispatch_async(this.queue, ^{
         [this->_player.videoView.smLayer display];
     });
@@ -432,7 +436,7 @@ static void render_context_callback(void *ctx) {
 
 #pragma mark - mpv_event_property
 -(void)handlePropertyChange:(mpv_event_property*)property {
-    NSLog(@"property->name:%s", property->name);
+    //    NSLog(@"property->name:%s", property->name);
     
     if (strncmp(property->name,"pause",strlen("pause"))==0){
         bool *b = property->data;
@@ -441,7 +445,7 @@ static void render_context_callback(void *ctx) {
         } else {
             [_player.info setIsPause:NO];
         }
-        [_player asyncUI:SM_SO_PlayButton];
+        [_player syncUI:SM_SO_PlayButton];
     }
 }
 
@@ -456,7 +460,7 @@ static void render_context_callback(void *ctx) {
     
     NSString *stype = [[obj class] description];
     
-//    NSLog(@"stype:%@", stype);
+    //    NSLog(@"stype:%@", stype);
     if ([stype isEqualToString:@"__NSCFNumber"]){
         node.format = MPV_FORMAT_INT64;
         node.u.int64 = [[NSString stringWithFormat:@"%@", obj] integerValue];
@@ -473,14 +477,14 @@ static void render_context_callback(void *ctx) {
         node.format = MPV_FORMAT_NODE_ARRAY;
         NSArray *data = (NSArray *)obj;
         NSUInteger data_count = [data count];
-    
+        
         mpv_node *node_ptr = alloca(sizeof(mpv_node)*data_count);
         mpv_node *node_iptr = node_ptr;
         
         for (int i=0; i<data_count; i++) {
             mpv_node ww_node = [self nodeCreate:[data objectAtIndex:i]];
             node_iptr = &ww_node;
-//            break;
+            //            break;
             node_iptr++;
         }
         
@@ -562,7 +566,7 @@ static void render_context_callback(void *ctx) {
         case MPV_FORMAT_NODE_MAP:
             map = node.u.list;
             if (map->num == 0){
-               return dict;
+                return dict;
             }
             if (map->keys == NULL){
                 return dict;
@@ -608,11 +612,11 @@ static void render_context_callback(void *ctx) {
     mpv_node result;
     
     mpv_command_node(mpv, &node_args, &result);
-//    id data = [self nodeParse:result];
+    //    id data = [self nodeParse:result];
     mpv_free_node_contents(&result);
     
-//    NSLog(@"ssss:%@", args);
-//    NSLog(@"ss:%@", data);
+    //    NSLog(@"ssss:%@", args);
+    //    NSLog(@"ss:%@", data);
 }
 
 #pragma mark - MPV Public Methods
@@ -635,9 +639,14 @@ static void render_context_callback(void *ctx) {
 }
 
 -(void)setDouble:(NSString *)name value:(double)value{
-//    double data;
-//    data = value;
+    //    double data;
+    //    data = value;
     mpv_set_property(mpv, name.UTF8String, MPV_FORMAT_DOUBLE, &value);
+}
+
+-(NSString *)getString:(NSString *)name{
+    char *value = mpv_get_property_string(mpv, name.UTF8String);
+    return [NSString stringWithUTF8String:value];
 }
 
 -(void)setString:(NSString *)name value:(NSString *)value{
@@ -669,15 +678,14 @@ static void render_context_callback(void *ctx) {
     [_player.info setIsValid:NO];
 }
 
--(void)fileLoad{
-    
-    [_player.info setIsPause:NO];
+-(void)fileLoaded{
     
     double w = [self getDouble:@"width"];
     double h = [self getDouble:@"height"];
     
     [_player.info setWidth:w];
     [_player.info setHeight:h];
+    [_player.info setIsPause:NO];
     
     // init window
     NSSize screenSize = [NSApp mainWindow].screen.visibleFrame.size;
@@ -734,28 +742,18 @@ static void render_context_callback(void *ctx) {
 }
 
 -(void)setVoice:(double)value{
-
-        [_player.info setVolume:value];
-        double data = value;
-        mpv_set_property_async(mpv, 0, "volume", MPV_FORMAT_DOUBLE, &data);
+    
+    [_player.info setVolume:value];
+    double data = value;
+    mpv_set_property_async(mpv, 0, "volume", MPV_FORMAT_DOUBLE, &data);
     
 }
 
 -(void)stop{
-        [_player.info setIsPause:YES];
-        int data = 1;
-        mpv_set_property(mpv, "pause", MPV_FORMAT_FLAG, &data);
+    [_player.info setIsPause:YES];
+    int data = 1;
+    mpv_set_property(mpv, "pause", MPV_FORMAT_FLAG, &data);
     
-}
-
--(void)resume{
-    //    if(![self getFlag:@"eof-reached"]){
-    //        NSLog(@"eof-reached");
-    //        NSString *d = @"0";
-    //        [self seek:d option:SMSeekNormal];
-    //    }
-    //
-    [self start];
 }
 
 -(void)start{
@@ -774,23 +772,23 @@ static void render_context_callback(void *ctx) {
 }
 
 -(void)seek:(NSString *)second option:(SMSeek)option{
-    if (self->mpv){
-        const char *args[] = {"seek", second.UTF8String, "exact", NULL};
-        switch (option) {
-            case SMSeekNormal:
-                args[2] = "exact";
-                break;
-            case SMSeekRelative:
-                args[2] = "relative+exact";
-                break;
-            case SMSeekAbsolute:
-                args[2] = "absolute+exact";
-                break;
-            default:
-                break;
-        }
-        mpv_command(self->mpv, args);
+    
+    const char *args[] = {"seek", second.UTF8String, "exact", NULL};
+    switch (option) {
+        case SMSeekNormal:
+            args[2] = "exact";
+            break;
+        case SMSeekRelative:
+            args[2] = "relative+exact";
+            break;
+        case SMSeekAbsolute:
+            args[2] = "absolute+exact";
+            break;
+        default:
+            break;
     }
+    mpv_command(self->mpv, args);
+    
 }
 
 -(void)windowScale:(double)scale{
@@ -815,17 +813,16 @@ static void render_context_callback(void *ctx) {
 }
 
 -(void)setSpeed:(double)speed{
-    if (mpv){
-        double data = speed;
-        mpv_set_property(mpv, "speed", MPV_FORMAT_DOUBLE, &data);
-    }
+    double data = speed;
+    mpv_set_property(mpv, "speed", MPV_FORMAT_DOUBLE, &data);
+    
 }
 
 -(void)setAudioDelay:(double)delay{
-    if (mpv){
-        double data = delay;
-        mpv_set_property(mpv, "audio-delay", MPV_FORMAT_DOUBLE, &data);
-    }
+    
+    double data = delay;
+    mpv_set_property(mpv, "audio-delay", MPV_FORMAT_DOUBLE, &data);
+    
 }
 
 -(void)screenshot{
@@ -841,7 +838,7 @@ static void render_context_callback(void *ctx) {
     
     if (tookScreenshot){
         if ([[Preference Instance] boolForKey:SM_PGG_ScreenshotCopyToClipboard]){
-//            [self getScreenshot:option];
+            //            [self getScreenshot:option];
             //   [[NSPasteboard generalPasteboard] clearContents];
             //   [[NSPasteboard generalPasteboard] writeObjects:[]];
         }

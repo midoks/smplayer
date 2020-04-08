@@ -103,6 +103,7 @@ static dispatch_once_t _instance_once;
     windowTitle = @"";
     isFileLoaded = NO;
     _isOnTop = NO;
+    videoSeek = @"0";
     self.isFullScreen = NO;
     
     self.minWindowSize = NSMakeSize(300, 180);
@@ -124,6 +125,7 @@ static dispatch_once_t _instance_once;
     
     // save video base info
     _info = [[SMPlayerInfo alloc] init];
+//    self.uninitLock = [[NSLock alloc] init];
 }
 
 -(void)regEvent{
@@ -233,11 +235,7 @@ static dispatch_once_t _instance_once;
 
 /// 播放暂停按钮
 - (IBAction)playAction:(NSButton *)sender {
-    if (sender.state == NSControlStateValueOff){
-        [_mpv resume];
-    } else if (sender.state == NSControlStateValueOn){
-        [_mpv stop];
-    }
+    [_mpv toggleVideo];
 }
 
 - (IBAction)leftButtonAction:(NSButton *)sender {
@@ -278,8 +276,8 @@ static dispatch_once_t _instance_once;
 }
 
 -(void)openVideo:(NSString *)path seek:(double)seek{
-    [self openVideo:path];
     videoSeek = [NSString stringWithFormat:@"%f", seek];
+    [self openVideo:path];    
 }
 
 -(void)openSelectVideo:(void(^)(void))cmd{
@@ -380,7 +378,7 @@ static dispatch_once_t _instance_once;
 //    NSLog(@"winSize:%@", NSStringFromSize(self.window.frame.size));
 //    NSLog(@"frameSize:%@", NSStringFromSize(frameSize));
 
-    [_videoView.smLayer draw];
+//    [_videoView.smLayer display];
 
     if (frameSize.height <= _minWindowSize.height || frameSize.width <= _minWindowSize.width ){
         CGFloat wAspect = self.window.frame.size.width/self.window.frame.size.height;
@@ -490,8 +488,26 @@ static dispatch_once_t _instance_once;
 }
 
 #pragma mark - UI
--(void)asyncUI{
-    
+-(void)syncUI:(SMSyncOption)option{
+    switch (option) {
+        case SM_SO_TIME:{
+            break;
+        }
+        case SM_SO_PlayButton:{
+            BOOL pause = [_mpv getFlag:@"pause"];
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [self updatePlayButton:pause?NSControlStateValueOn:NSControlStateValueOff];
+            });
+            break;
+        }
+        default:{
+            break;
+        }
+    }
+}
+
+-(void)updatePlayButton:(NSControlStateValue)state{
+    [_playBtn setState:state];
 }
 
 -(void)videoStart:(SMVideoTime *)duration{

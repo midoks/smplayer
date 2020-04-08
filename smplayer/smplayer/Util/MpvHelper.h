@@ -60,12 +60,11 @@ typedef NS_ENUM(NSUInteger, SMUserOption) {
 -(BOOL)getFlag:(NSString *)name;
 -(void)setFlag:(NSString *)name flag:(BOOL)flag;
 
-#pragma mark - public method - 
+#pragma mark - public method -
 -(void)openVideo:(NSString *)path;
 -(void)closeVideo;
 -(void)start;
 -(void)stop;
--(void)resume;
 -(void)setAudioDelay:(double)delay;
 -(void)setVoice:(double)value;
 -(void)setSpeed:(double)speed;

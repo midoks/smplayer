@@ -42,7 +42,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)menuAlwaysOnTop:(NSMenuItem *)sender;
 
 // UI
--(void)asyncUI:(SMSyncOption)option;
+-(void)syncUI:(SMSyncOption)option;
 @end
 
 NS_ASSUME_NONNULL_END
