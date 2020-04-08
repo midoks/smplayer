@@ -31,8 +31,6 @@
 
 #pragma mark - Action
 -(void)pauseAction:(NSMenuItem *)sender{
-    NSLog(@"pauseAction");
-    NSLog(@"player:%@", _player);
     [_player.mpv toggleVideo];
 }
 
