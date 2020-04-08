@@ -6,7 +6,7 @@
             <title>0.0.2</title>
             <pubDate>Thu, 09 Apr 2020 05:28:29 +0800</pubDate>
             <sparkle:minimumSystemVersion>10.13</sparkle:minimumSystemVersion>
-            <enclosure url="https://github.com/midoks/smplayer/releases/download/0.0.2/smplayer.dmg" sparkle:version="2" sparkle:shortVersionString="0.0.2" length="2279424" type="application/octet-stream" sparkle:edSignature="AUeXpTjXWdOPSA2DFs4lE+aae1hJpBk5cpK0T0l0vidNgdQIA3dNgOyV8aTEj+xEbABI3v+pnpQUW5n3PQSBAg=="/>
+            <enclosure url="https://github.com/midoks/smplayer/releases/download/0.0.2/smplayer.dmg" sparkle:version="1" sparkle:shortVersionString="0.0.2" length="2279424" type="application/octet-stream" sparkle:edSignature="AUeXpTjXWdOPSA2DFs4lE+aae1hJpBk5cpK0T0l0vidNgdQIA3dNgOyV8aTEj+xEbABI3v+pnpQUW5n3PQSBAg=="/>
         </item>
     </channel>
 </rss>
