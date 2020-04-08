@@ -13,7 +13,10 @@
 
 #import "SMVideoView.h"
 
-
+typedef NS_ENUM(NSUInteger, SMSyncOption) {
+    SM_SO_TIME,
+    SM_SO_PlayButton,
+};
 
 NS_ASSUME_NONNULL_BEGIN
 
@@ -37,6 +40,9 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)menuChangeWindowSize:(NSMenuItem *)sender;
 -(void)menuToggleFullScreen:(NSMenuItem *)sender;
 -(void)menuAlwaysOnTop:(NSMenuItem *)sender;
+
+// UI
+-(void)asyncUI:(SMSyncOption)option;
 @end
 
 NS_ASSUME_NONNULL_END

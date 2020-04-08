@@ -42,8 +42,7 @@ static void *get_proc_address(void *ctx, const char *name)
 @property (nonatomic, weak) NSTimer *asyncPlayerTimer;
 @property (nonatomic,strong) NSString *clientName;
 @property  dispatch_queue_t queue;
-@property BOOL switchVoice;
-@property BOOL switchVideo;
+
 @property double videoDuration;
 @property double videoPos;
 @property NSString *currentPath;
@@ -191,7 +190,6 @@ static void *get_proc_address(void *ctx, const char *name)
             break;
         }
     }
-    
 }
 
 -(void)renderMPV{
@@ -259,6 +257,20 @@ static void *get_proc_address(void *ctx, const char *name)
         NSInteger index = [[Preference Instance] integerForKey:key];
         return [[Preference Instance] hardwareDecoderOptionToString:index];
     }];
+    
+    NSMutableArray *spdif = [[NSMutableArray alloc] init];
+    if ([[Preference Instance] boolForKey:SM_PGC_SpdifAC3]){
+        [spdif addObject:@"ac3"];
+    }
+    if ([[Preference Instance] boolForKey:SM_PGC_SpdifDTS]){
+        [spdif addObject:@"dts"];
+    }
+    if ([[Preference Instance] boolForKey:SM_PGC_SpdifDTSHD]){
+        [spdif addObject:@"dts-hd"];
+    }
+    [self setString:@"audio-spdif" value:[spdif componentsJoinedByString:@","]];
+    
+    [self setUserOption:SM_PGC_AudioDevice option:SMString name:@"audio-device"];
 }
 
 -(void)optionNetworkSet{
@@ -365,15 +377,8 @@ static void wakeup(void *context) {
             break;
         }
         case MPV_EVENT_PROPERTY_CHANGE:{
-            NSLog(@"MPV_EVENT_PROPERTY_CHANGE");
-            //            NSLog(@"ccc:%ld", event->event_id);
-            //
-            //            let dataOpaquePtr = OpaquePointer(event.pointee.data)
-            //            if let property = UnsafePointer<mpv_event_property>(dataOpaquePtr)?.pointee {
-            //              let propertyName = String(cString: property.name)
-            //              handlePropertyChange(propertyName, property)
-            //            }
-            
+            mpv_event_property *property = event->data;
+            [self handlePropertyChange:property];
             break;
         }
         case MPV_EVENT_SHUTDOWN: {
@@ -381,7 +386,6 @@ static void wakeup(void *context) {
                 mpv_detach_destroy(mpv);
                 mpv = NULL;
             }
-            NSLog(@"event-MPV_EVENT_SHUTDOWN: shutdown");
             break;
         }
         case MPV_EVENT_START_FILE:{
@@ -401,17 +405,8 @@ static void wakeup(void *context) {
             NSLog(@"MPV_EVENT_PLAYBACK_RESTART");
             break;
         }
-        case MPV_EVENT_PAUSE:{
-            NSLog(@"MPV_EVENT_PAUSE");
-            break;
-        }
-        case MPV_EVENT_UNPAUSE:{
-            NSLog(@"MPV_EVENT_UNPAUSE");
-            break;
-        }
         case MPV_EVENT_VIDEO_RECONFIG: {
-            dispatch_async(dispatch_get_main_queue(), ^{
-            });
+            NSLog(@"MPV_EVENT_VIDEO_RECONFIG");
             break;
         }
         case MPV_EVENT_IDLE:{
@@ -427,9 +422,27 @@ static void wakeup(void *context) {
 
 static void render_context_callback(void *ctx) {
     MpvHelper *this = (__bridge MpvHelper *)ctx;
-    dispatch_async(dispatch_get_main_queue(), ^{
+//    dispatch_async(dispatch_get_main_queue(), ^{
+//        [this->_player.videoView.smLayer display];
+//    });
+    dispatch_async(this.queue, ^{
         [this->_player.videoView.smLayer display];
     });
+}
+
+#pragma mark - mpv_event_property
+-(void)handlePropertyChange:(mpv_event_property*)property {
+    NSLog(@"property->name:%s", property->name);
+    
+    if (strncmp(property->name,"pause",strlen("pause"))==0){
+        bool *b = property->data;
+        if (*b){
+            [_player.info setIsPause:YES];
+        } else {
+            [_player.info setIsPause:NO];
+        }
+        [_player asyncUI:SM_SO_PlayButton];
+    }
 }
 
 #pragma mark - MPV Node Methods
@@ -595,11 +608,11 @@ static void render_context_callback(void *ctx) {
     mpv_node result;
     
     mpv_command_node(mpv, &node_args, &result);
-    id data = [self nodeParse:result];
+//    id data = [self nodeParse:result];
     mpv_free_node_contents(&result);
     
-    NSLog(@"ssss:%@", args);
-    NSLog(@"ss:%@", data);
+//    NSLog(@"ssss:%@", args);
+//    NSLog(@"ss:%@", data);
 }
 
 #pragma mark - MPV Public Methods
@@ -622,9 +635,9 @@ static void render_context_callback(void *ctx) {
 }
 
 -(void)setDouble:(NSString *)name value:(double)value{
-    double data;
-    data = value;
-    mpv_set_property(mpv, name.UTF8String, MPV_FORMAT_DOUBLE, &data);
+//    double data;
+//    data = value;
+    mpv_set_property(mpv, name.UTF8String, MPV_FORMAT_DOUBLE, &value);
 }
 
 -(void)setString:(NSString *)name value:(NSString *)value{
@@ -634,14 +647,12 @@ static void render_context_callback(void *ctx) {
 -(BOOL)getFlag:(NSString *)name{
     int64_t data;
     mpv_get_property(mpv, name.UTF8String, MPV_FORMAT_FLAG, &data);
-    NSLog(@"getFlag:%d",(int)data);
-    return data > 0;
+    return (int)data > 0;
 }
 
 -(void)setFlag:(NSString *)name flag:(BOOL)flag{
     int data;
-    data = flag?1:0;
-    NSLog(@"setFlag:%d",data);
+    data = flag ? 1 : 0;
     mpv_set_property(mpv, name.UTF8String, MPV_FORMAT_FLAG, &data);
 }
 
@@ -710,37 +721,31 @@ static void render_context_callback(void *ctx) {
 
 -(void)toggleVideo{
     if([self getFlag:@"pause"]){
-        NSLog(@"stop");
-        [self stop];
-    } else {
-        NSLog(@"start");
         [self start];
+    } else {
+        [self stop];
     }
 }
 
 -(void)toggleVoice{
-    if (mpv) {
-        int data = _switchVoice ? 0 : 1;
-        _switchVoice = data;
-        mpv_set_property(mpv, "mute", MPV_FORMAT_FLAG, &data);
-    }
+    BOOL mute = [self getFlag:@"mute"];
+    int data = mute ? 0 : 1;
+    mpv_set_property(mpv, "mute", MPV_FORMAT_FLAG, &data);
 }
 
 -(void)setVoice:(double)value{
-    if (mpv) {
+
         [_player.info setVolume:value];
         double data = value;
         mpv_set_property_async(mpv, 0, "volume", MPV_FORMAT_DOUBLE, &data);
-    }
+    
 }
 
 -(void)stop{
-    if (mpv) {
         [_player.info setIsPause:YES];
-        _switchVideo = NO;
         int data = 1;
         mpv_set_property(mpv, "pause", MPV_FORMAT_FLAG, &data);
-    }
+    
 }
 
 -(void)resume{
@@ -755,7 +760,6 @@ static void render_context_callback(void *ctx) {
 
 -(void)start{
     if (mpv) {
-        _switchVideo = YES;
         [_player.info setIsPause:NO];
         int data = 0;
         mpv_set_property(mpv, "pause", MPV_FORMAT_FLAG, &data);
@@ -763,7 +767,6 @@ static void render_context_callback(void *ctx) {
 }
 
 -(void)quit{
-    _switchVideo = NO;
     if (mpv) {
         const char *args[] = {"quit", NULL};
         mpv_command(mpv, args);
@@ -834,8 +837,7 @@ static void render_context_callback(void *ctx) {
         code = mpv_command(mpv, args);
         tookScreenshot = YES;
     }
-    
-    if (code < 0){}
+    if (code < 0){return;}
     
     if (tookScreenshot){
         if ([[Preference Instance] boolForKey:SM_PGG_ScreenshotCopyToClipboard]){

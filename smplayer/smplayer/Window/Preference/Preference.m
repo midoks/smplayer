@@ -50,6 +50,11 @@ static dispatch_once_t _instance_once;
         SM_PGC_MaxVolume:@100,
         SM_PGC_AudioThreads:@0,
         SM_PGC_AudioDevice:@"auto",
+        SM_PGC_SpdifDTS:@YES,
+        SM_PGC_SpdifAC3:@YES,
+        SM_PGC_SpdifDTSHD:@YES,
+        
+        
         
         SM_PGS_SubTextFont:@"sans-serif",
         SM_PGS_SubTextSize:@55,

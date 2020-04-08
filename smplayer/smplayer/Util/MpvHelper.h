@@ -51,6 +51,16 @@ typedef NS_ENUM(NSUInteger, SMUserOption) {
 -(BOOL)shouldRenderUpdateFrame;
 -(id)getNode:(NSString *)name;
 
+#pragma mark - mpv cmd -
+-(int)getInt:(NSString *)name;
+-(void)setInt:(NSString *)name value:(NSInteger)value;
+-(double)getDouble:(NSString *)name;
+-(void)setDouble:(NSString *)name value:(double)value;
+-(void)setString:(NSString *)name value:(NSString *)value;
+-(BOOL)getFlag:(NSString *)name;
+-(void)setFlag:(NSString *)name flag:(BOOL)flag;
+
+#pragma mark - public method - 
 -(void)openVideo:(NSString *)path;
 -(void)closeVideo;
 -(void)start;
