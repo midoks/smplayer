@@ -10,7 +10,7 @@
 
 <p align=center>
 <a href="https://github.com/midoks/smplayer/releases">Releases</a> ·
-<a href="https://github.com/midoks/smplayer/blob/master/README_EN.md">EN</a>
+<a href="https://github.com/midoks/smplayer/blob/master/README_CN.md">中文</a>
 </p>
 
 
