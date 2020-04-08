@@ -16,3 +16,7 @@
 
 ---
 
+## Features
+
+* 基于[mpv](https://github.com/mpv-player/mpv),将提供一个使用简单而功能丰富的播放器。
+

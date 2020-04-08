@@ -16,3 +16,7 @@
 
 ---
 
+## Features
+
+* Based on [mpv](https://github.com/mpv-player/mpv), a player with simple use and rich functions will be provided
+
