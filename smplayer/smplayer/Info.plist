@@ -153,7 +153,7 @@
 	<key>NSSupportsSuddenTermination</key>
 	<true/>
 	<key>SUFeedURL</key>
-	<string>http://test.cc/app/appcast.xml</string>
+	<string>https://raw.githubusercontent.com/midoks/smplayer/master/app/appcast.xml</string>
 	<key>SUPublicEDKey</key>
 	<string>z+TdvTjjAQP5vcM3mhAzpfTNEnkaoJ3GhHWz3NQ5EwY=</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
