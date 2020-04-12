@@ -148,7 +148,7 @@
 #pragma mark - Record
 
 -(IBAction)recordScreen:(id)sender{
-    RecordScreen *rs = [[RecordScreen alloc] init];
+    RecordScreen *rs = [RecordScreen Instance];
     [rs showWindow:self];
 }
 

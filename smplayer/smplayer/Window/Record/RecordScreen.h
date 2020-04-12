@@ -11,7 +11,7 @@
 NS_ASSUME_NONNULL_BEGIN
 
 @interface RecordScreen : NSWindowController
-
++ (id)Instance;
 @end
 
 NS_ASSUME_NONNULL_END
