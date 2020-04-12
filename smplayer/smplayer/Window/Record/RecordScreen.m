@@ -10,6 +10,8 @@
 
 @interface RecordScreen ()
 
+@property (weak) IBOutlet  NSView *contentView;
+
 @end
 
 @implementation RecordScreen
@@ -32,6 +34,7 @@ static dispatch_once_t _instance_once;
     [super windowDidLoad];
     
     self.window.movableByWindowBackground = YES;
+    self.contentView.layer.cornerRadius = 5;
 }
 
 

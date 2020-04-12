@@ -8,40 +8,76 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="RecordScreen">
             <connections>
+                <outlet property="contentView" destination="1se-0R-bgr" id="lJB-Aj-TH1"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
-            <windowStyleMask key="styleMask" closable="YES" miniaturizable="YES" resizable="YES"/>
+        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" titlebarAppearsTransparent="YES" titleVisibility="hidden" id="F0z-JX-Cv5">
+            <windowStyleMask key="styleMask" titled="YES" fullSizeContentView="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+            <rect key="contentRect" x="196" y="240" width="368" height="52"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                <rect key="frame" x="0.0" y="0.0" width="368" height="48"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="BvS-5J-ubB">
-                        <rect key="frame" x="20" y="125" width="13" height="20"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSStopProgressTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="wLP-tE-jtb">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="winClose:" target="-2" id="gxG-No-A1U"/>
-                        </connections>
-                    </button>
+                    <customView translatesAutoresizingMaskIntoConstraints="NO" id="1se-0R-bgr">
+                        <rect key="frame" x="0.0" y="0.0" width="368" height="48"/>
+                        <subviews>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BvS-5J-ubB">
+                                <rect key="frame" x="12" y="15" width="14" height="18"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="n7d-5c-pQV"/>
+                                </constraints>
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSStopProgressFreestandingTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="wLP-tE-jtb">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="winClose:" target="-2" id="gxG-No-A1U"/>
+                                </connections>
+                            </button>
+                            <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="1we-wn-QYq">
+                                <rect key="frame" x="47" y="9" width="26" height="30"/>
+                                <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSTouchBarFolderCopyToTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="S3G-Ci-H9J">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                            </button>
+                            <box horizontalHuggingPriority="750" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="teL-vW-jk9">
+                                <rect key="frame" x="34" y="0.0" width="5" height="48"/>
+                            </box>
+                        </subviews>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="48" id="1Vs-Go-hlU"/>
+                            <constraint firstItem="1we-wn-QYq" firstAttribute="leading" secondItem="teL-vW-jk9" secondAttribute="trailing" constant="10" id="6gX-Za-7QE"/>
+                            <constraint firstItem="BvS-5J-ubB" firstAttribute="leading" secondItem="1se-0R-bgr" secondAttribute="leading" constant="12" id="K30-wn-cHr"/>
+                            <constraint firstItem="teL-vW-jk9" firstAttribute="top" secondItem="1se-0R-bgr" secondAttribute="top" id="e0H-ZV-Kn2"/>
+                            <constraint firstItem="1we-wn-QYq" firstAttribute="centerY" secondItem="1se-0R-bgr" secondAttribute="centerY" id="fb6-v5-sS2"/>
+                            <constraint firstItem="teL-vW-jk9" firstAttribute="leading" secondItem="BvS-5J-ubB" secondAttribute="trailing" constant="10" id="kEQ-cN-Yi6"/>
+                            <constraint firstItem="BvS-5J-ubB" firstAttribute="centerY" secondItem="1se-0R-bgr" secondAttribute="centerY" id="qz7-Xf-I4w"/>
+                            <constraint firstAttribute="bottom" secondItem="teL-vW-jk9" secondAttribute="bottom" id="uoe-zQ-dto"/>
+                            <constraint firstItem="1we-wn-QYq" firstAttribute="leading" secondItem="teL-vW-jk9" secondAttribute="trailing" constant="10" id="y9H-Bu-Nca"/>
+                        </constraints>
+                    </customView>
                 </subviews>
+                <constraints>
+                    <constraint firstAttribute="trailing" secondItem="1se-0R-bgr" secondAttribute="trailing" id="195-4h-wx1"/>
+                    <constraint firstItem="1se-0R-bgr" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" id="6B8-7a-GJJ"/>
+                    <constraint firstAttribute="bottom" secondItem="1se-0R-bgr" secondAttribute="bottom" id="YM4-8j-2gf"/>
+                    <constraint firstItem="1se-0R-bgr" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" id="neK-yU-zy9"/>
+                </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="140" y="147"/>
+            <point key="canvasLocation" x="76" y="72"/>
         </window>
     </objects>
     <resources>
-        <image name="NSStopProgressTemplate" width="11" height="11"/>
+        <image name="NSStopProgressFreestandingTemplate" width="14" height="14"/>
+        <image name="NSTouchBarFolderCopyToTemplate" width="26" height="30"/>
     </resources>
 </document>
