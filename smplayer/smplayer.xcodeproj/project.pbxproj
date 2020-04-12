@@ -10,6 +10,8 @@
 		82023C552413ADA800B0B8BC /* Welcome.m in Sources */ = {isa = PBXBuildFile; fileRef = 82023C532413ADA700B0B8BC /* Welcome.m */; };
 		82023C5C2414D4FC00B0B8BC /* SMCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 82023C5B2414D4FC00B0B8BC /* SMCore.m */; };
 		82023C5F2415678C00B0B8BC /* OpenFileView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82023C5E2415678C00B0B8BC /* OpenFileView.m */; };
+		8217ADE02443444300AB4B67 /* RecordScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 8217ADDE2443444300AB4B67 /* RecordScreen.m */; };
+		8217ADE12443444300AB4B67 /* RecordScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8217ADDF2443444300AB4B67 /* RecordScreen.xib */; };
 		8228D9A3241E6BC200734908 /* PreferenceGeneral.m in Sources */ = {isa = PBXBuildFile; fileRef = 8228D9A1241E6BC200734908 /* PreferenceGeneral.m */; };
 		8228D9A8241EB5C200734908 /* PreferenceNetwork.m in Sources */ = {isa = PBXBuildFile; fileRef = 8228D9A6241EB5C200734908 /* PreferenceNetwork.m */; };
 		82394280241AAC25006B7049 /* SMLastHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 8239427F241AAC24006B7049 /* SMLastHistory.m */; };
@@ -122,6 +124,9 @@
 		82023C5B2414D4FC00B0B8BC /* SMCore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMCore.m; sourceTree = "<group>"; };
 		82023C5D2415678C00B0B8BC /* OpenFileView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenFileView.h; sourceTree = "<group>"; };
 		82023C5E2415678C00B0B8BC /* OpenFileView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenFileView.m; sourceTree = "<group>"; };
+		8217ADDD2443444300AB4B67 /* RecordScreen.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RecordScreen.h; sourceTree = "<group>"; };
+		8217ADDE2443444300AB4B67 /* RecordScreen.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RecordScreen.m; sourceTree = "<group>"; };
+		8217ADDF2443444300AB4B67 /* RecordScreen.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RecordScreen.xib; sourceTree = "<group>"; };
 		8228D9A0241E6BC200734908 /* PreferenceGeneral.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferenceGeneral.h; sourceTree = "<group>"; };
 		8228D9A1241E6BC200734908 /* PreferenceGeneral.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PreferenceGeneral.m; sourceTree = "<group>"; };
 		8228D9A5241EB5C200734908 /* PreferenceNetwork.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PreferenceNetwork.h; sourceTree = "<group>"; };
@@ -435,6 +440,16 @@
 				824384F2241CE62800A1A218 /* Welcome.xib */,
 			);
 			path = Welcome;
+			sourceTree = "<group>";
+		};
+		8217ADDA244343B500AB4B67 /* Record */ = {
+			isa = PBXGroup;
+			children = (
+				8217ADDD2443444300AB4B67 /* RecordScreen.h */,
+				8217ADDE2443444300AB4B67 /* RecordScreen.m */,
+				8217ADDF2443444300AB4B67 /* RecordScreen.xib */,
+			);
+			path = Record;
 			sourceTree = "<group>";
 		};
 		824384F7241D28B300A1A218 /* Menu */ = {
@@ -928,6 +943,7 @@
 		82E9A5412403947E000DB7F3 /* Window */ = {
 			isa = PBXGroup;
 			children = (
+				8217ADDA244343B500AB4B67 /* Record */,
 				82023C5A2414D4FC00B0B8BC /* SMCore.h */,
 				82023C5B2414D4FC00B0B8BC /* SMCore.m */,
 				824384F7241D28B300A1A218 /* Menu */,
@@ -1056,6 +1072,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				828DBD3C2416886E00A89A89 /* Web.xib in Resources */,
+				8217ADE12443444300AB4B67 /* RecordScreen.xib in Resources */,
 				82D2EC6B2434CF050046C63F /* PreferenceGeneral.xib in Resources */,
 				82D2EC802434E6220046C63F /* PreferenceSubtitle.xib in Resources */,
 				824384FB241D3A5A00A1A218 /* OpenURL.xib in Resources */,
@@ -1137,6 +1154,7 @@
 				828DBD7D2418271100A89A89 /* MASConstraintMaker.m in Sources */,
 				82E9A46A24030AEA000DB7F3 /* AppDelegate.m in Sources */,
 				828DBD7B2418271100A89A89 /* ViewController+MASAdditions.m in Sources */,
+				8217ADE02443444300AB4B67 /* RecordScreen.m in Sources */,
 				82C9B6F02431F6B500B5A314 /* PreferenceSubtitle.m in Sources */,
 				828DBD3B2416886E00A89A89 /* Web.m in Sources */,
 				82394283241BA9EB006B7049 /* SMLastHistoryModel.m in Sources */,
@@ -1411,7 +1429,7 @@
 					"$(SRCROOT)/smplayer/Deps/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.0.2;
+				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.midoks.smplayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -1441,7 +1459,7 @@
 					"$(SRCROOT)/smplayer/Deps/lib",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.13;
-				MARKETING_VERSION = 0.0.2;
+				MARKETING_VERSION = 0.0.3;
 				PRODUCT_BUNDLE_IDENTIFIER = com.midoks.smplayer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

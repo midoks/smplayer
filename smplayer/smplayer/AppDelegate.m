@@ -19,6 +19,8 @@
 #import "AppDelegate.h"
 #import "Preference.h"
 
+#import "RecordScreen.h"
+
 @interface AppDelegate ()
 {
     NSWindowController *_preferenceWindow;
@@ -141,6 +143,13 @@
 - (IBAction)openGithub:(id)sender {
     NSURL *url = [NSURL URLWithString:SM_AUTHOR_URL];
     [[NSWorkspace sharedWorkspace] openURL:url];
+}
+
+#pragma mark - Record
+
+-(IBAction)recordScreen:(id)sender{
+    RecordScreen *rs = [[RecordScreen alloc] init];
+    [rs showWindow:self];
 }
 
 @end

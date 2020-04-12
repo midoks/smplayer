@@ -374,12 +374,15 @@
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Record" hidden="YES" id="dnQ-rd-vpB">
+                <menuItem title="Record" id="dnQ-rd-vpB">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Record" id="KJ5-V0-Bot">
                         <items>
                             <menuItem title="New Record Screen" id="DKD-qo-4AU">
                                 <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="recordScreen:" target="Voe-Tx-rLC" id="1JB-zB-fru"/>
+                                </connections>
                             </menuItem>
                         </items>
                     </menu>
