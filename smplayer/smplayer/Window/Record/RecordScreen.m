@@ -44,4 +44,8 @@ static dispatch_once_t _instance_once;
     [self.window close];
 }
 
+-(IBAction)winStart:(id)sender{
+    NSLog(@"start");
+}
+
 @end
