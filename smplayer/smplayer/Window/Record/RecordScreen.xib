@@ -66,7 +66,7 @@
                                     <font key="font" metaFont="system"/>
                                 </buttonCell>
                                 <connections>
-                                    <action selector="winStart:" target="-2" id="mAA-2i-K57"/>
+                                    <action selector="startRecording:" target="-2" id="D9D-BP-Nmd"/>
                                 </connections>
                             </button>
                         </subviews>
