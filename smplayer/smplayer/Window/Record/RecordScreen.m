@@ -91,8 +91,16 @@ static dispatch_once_t _instance_once;
     [self.window close];
 }
 
--(IBAction)startRecording:(id)sender{
-    NSLog(@"start");
+-(IBAction)startRecording:(NSButton *)sender{
+    NSString *title = [sender title];
+    
+    if ([title isEqualToString:@"start"]){
+        [sender setTitle:@"stop"];
+        [self.captureSession startRunning];
+    } else {
+        [sender setTitle:@"start"];
+        [self.captureSession stopRunning];
+    }
 }
 
 
