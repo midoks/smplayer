@@ -351,3 +351,8 @@
 /* Class = "NSMenuItem"; title = "Open URL in New Window…"; ObjectID = "AjJ-sT-clj"; */
 "AjJ-sT-clj.title" = "在新窗口打开 URL...";
 
+/* Class = "NSMenuItem"; title = "Resources"; ObjectID = "XaO-Y1-9eB"; */
+"XaO-Y1-9eB.title" = "资源";
+
+/* Class = "NSMenuItem"; title = "Add"; ObjectID = "Sz8-rx-WRE"; */
+"Sz8-rx-WRE.title" = "添加";

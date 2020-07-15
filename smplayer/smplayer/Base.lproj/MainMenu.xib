@@ -391,9 +391,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Resources" id="XaO-Y1-9eB">
                         <items>
-                            <menuItem title="None" id="m05-q2-smW">
-                                <modifierMask key="keyEquivalentModifierMask"/>
-                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="lt6-rj-hqh"/>
                             <menuItem title="Add" id="Sz8-rx-WRE">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                             </menuItem>
