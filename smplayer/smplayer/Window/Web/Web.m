@@ -54,6 +54,7 @@ static dispatch_once_t _instance_once;
     self.window.titleVisibility = NSWindowTitleHidden;
     self.window.titlebarAppearsTransparent = YES;
     
+    [self.window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenAuxiliary];
     
     NSButton *zoomBtn = [self.window standardWindowButton:NSWindowZoomButton];
     NSView *s = [zoomBtn superview];
