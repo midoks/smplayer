@@ -147,6 +147,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8256D0C925BB529F007009AA /* Style */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
 		82C47D6F25B96F21004F8DB2 = {
 			isa = PBXGroup;
 			children = (
@@ -204,6 +211,7 @@
 		82C47DAB25B96F69004F8DB2 /* Web */ = {
 			isa = PBXGroup;
 			children = (
+				8256D0C925BB529F007009AA /* Style */,
 				82C47DC725B97127004F8DB2 /* Web.xib */,
 				82C47DC525B97127004F8DB2 /* Web.h */,
 				82C47DC625B97127004F8DB2 /* Web.m */,

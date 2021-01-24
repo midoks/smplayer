@@ -14,11 +14,19 @@
 }
 
 @property (weak) IBOutlet  NSTableView *listTableView;
-@property (weak) IBOutlet NSView *wTitleBarView;
+@property (weak) NSView *wTitleBarView;
+@property (weak) IBOutlet NSView *wTopView;
+@property (weak) IBOutlet NSView *wContentView;
+@property (strong) IBOutlet NSStackView *titleBarSVView;
+
 @property (weak) IBOutlet NSStackView *wTitleBarStackView;
 @property (strong) IBOutlet NSView *wTitleBarStackLeftView;
 @property (strong) IBOutlet NSView *wTitleBarStackCenterView;
 @property (strong) IBOutlet NSView *wTitleBarStackRightView;
+@property (weak) IBOutlet NSStackView *wTopViewSView;
+@property (weak) IBOutlet NSView *titleBarLeftView;
+@property (strong) IBOutlet NSSearchField *wSearchView;
+
 
 @end
 
@@ -66,22 +74,32 @@ static dispatch_once_t _instance_once;
 
 
 -(void)windowWillEnterFullScreen:(NSNotification *)notification{
-    //    [self setTitleBarView:self.window.frame.size];
     NSLog(@"ddd");
 }
 
 -(void)windowWillExitFullScreen:(NSNotification *)notification{
     NSLog(@"ddd exit");
-    //    [self setTitleBarView:self.window.frame.size];
 }
 
 -(void)setTitleBarBtnView:(NSSize)size{
     
-//    titleBarView.wantsLayer = YES;
-//    titleBarView.layer.backgroundColor = [NSColor grayColor].CGColor;
-
+    
+    
+    
+    _wTopView.wantsLayer = YES;
+    _wTopView.layer.backgroundColor = [NSColor whiteColor].CGColor;
+    
+    _wContentView.wantsLayer = YES;
+    _wContentView.layer.backgroundColor = [NSColor whiteColor].CGColor;
+    
+    NSShadow *shadow = [[NSShadow alloc] init];
+    [shadow setShadowColor:[NSColor grayColor]];
+    [shadow setShadowOffset:NSMakeSize(10, 10)];
+    [_wTopView setFrame:NSMakeRect(0, 0, _wTopView.frame.size.width, 50)];
+    [_wTopView setShadow:shadow];
+    
     [titleBarView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(@20);
+        make.left.equalTo(@15);
         make.right.equalTo(@0);
         make.top.equalTo(@0);
         make.height.mas_equalTo(60);
@@ -98,7 +116,6 @@ static dispatch_once_t _instance_once;
     }
 }
 
-
 -(void)initTitleBarView{
     _wTitleBarView.wantsLayer = YES;
     _wTitleBarView.layer.backgroundColor = [NSColor whiteColor].CGColor;
@@ -106,6 +123,9 @@ static dispatch_once_t _instance_once;
     self.wTitleBarStackLeftView.wantsLayer = YES;
     self.wTitleBarStackLeftView.layer.backgroundColor = [NSColor blueColor].CGColor;
     
+    
+    [_wTitleBarView addSubview:_titleBarSVView];
+    _titleBarSVView.layer.backgroundColor =[NSColor redColor].CGColor;
     [_wTitleBarStackView addView:_wTitleBarStackLeftView inGravity:NSStackViewGravityLeading];
     [_wTitleBarStackView setVisibilityPriority:NSStackViewVisibilityPriorityMustHold forView:_wTitleBarStackLeftView];
     
@@ -135,7 +155,7 @@ static dispatch_once_t _instance_once;
 #pragma mark - NSTableViewDelegate, NSTableViewDataSource
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView{
 //    NSLog(@"numberOfRowsInTableView");
-    return 3;
+    return 100;
 }
 
 
