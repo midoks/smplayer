@@ -17,15 +17,6 @@
 @property (weak) NSView *wTitleBarView;
 @property (weak) IBOutlet NSView *wTopView;
 @property (weak) IBOutlet NSView *wContentView;
-@property (strong) IBOutlet NSStackView *titleBarSVView;
-
-@property (weak) IBOutlet NSStackView *wTitleBarStackView;
-@property (strong) IBOutlet NSView *wTitleBarStackLeftView;
-@property (strong) IBOutlet NSView *wTitleBarStackCenterView;
-@property (strong) IBOutlet NSView *wTitleBarStackRightView;
-@property (weak) IBOutlet NSStackView *wTopViewSView;
-@property (weak) IBOutlet NSView *titleBarLeftView;
-@property (strong) IBOutlet NSSearchField *wSearchView;
 
 
 @end
@@ -83,9 +74,6 @@ static dispatch_once_t _instance_once;
 
 -(void)setTitleBarBtnView:(NSSize)size{
     
-    
-    
-    
     _wTopView.wantsLayer = YES;
     _wTopView.layer.backgroundColor = [NSColor whiteColor].CGColor;
     
@@ -119,21 +107,7 @@ static dispatch_once_t _instance_once;
 -(void)initTitleBarView{
     _wTitleBarView.wantsLayer = YES;
     _wTitleBarView.layer.backgroundColor = [NSColor whiteColor].CGColor;
-    
-    self.wTitleBarStackLeftView.wantsLayer = YES;
-    self.wTitleBarStackLeftView.layer.backgroundColor = [NSColor blueColor].CGColor;
-    
-    
-    [_wTitleBarView addSubview:_titleBarSVView];
-    _titleBarSVView.layer.backgroundColor =[NSColor redColor].CGColor;
-    [_wTitleBarStackView addView:_wTitleBarStackLeftView inGravity:NSStackViewGravityLeading];
-    [_wTitleBarStackView setVisibilityPriority:NSStackViewVisibilityPriorityMustHold forView:_wTitleBarStackLeftView];
-    
-    [_wTitleBarStackView addView:_wTitleBarStackCenterView inGravity:NSStackViewGravityTrailing];
-    [_wTitleBarStackView setVisibilityPriority:NSStackViewVisibilityPriorityMustHold forView:_wTitleBarStackCenterView];
-    
-//    [_wTitleBarStackView addView:_wTitleBarStackRightView inGravity:NSStackViewGravityTrailing];
-//    [_wTitleBarStackView setVisibilityPriority:NSStackViewVisibilityPriorityDetachOnlyIfNecessary forView:_wTitleBarStackRightView];
+
 }
 
 
@@ -146,9 +120,6 @@ static dispatch_once_t _instance_once;
     self.listTableView.dataSource = self;
     
     NSLog(@"initTableView");
-//    self.listTableView.gridColor = [NSColor blueColor];
-//    [self.listTableView reloadData];
-    
 }
 
 

@@ -22,11 +22,11 @@
             <rect key="contentRect" x="196" y="240" width="254" height="320"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" autoresizesSubviews="NO" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="488" height="364"/>
+                <rect key="frame" x="0.0" y="0.0" width="400" height="364"/>
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="9vw-wY-uEp" userLabel="root">
-                        <rect key="frame" x="0.0" y="0.0" width="488" height="364"/>
+                        <rect key="frame" x="0.0" y="0.0" width="400" height="364"/>
                         <subviews>
                             <customView translatesAutoresizingMaskIntoConstraints="NO" id="ESl-YH-Z1A" userLabel="leftView">
                                 <rect key="frame" x="0.0" y="0.0" width="120" height="364"/>
@@ -116,10 +116,10 @@
                                 </constraints>
                             </customView>
                             <customView autoresizesSubviews="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PbN-L6-FWC" userLabel="topView">
-                                <rect key="frame" x="120" y="304" width="368" height="60"/>
+                                <rect key="frame" x="120" y="304" width="280" height="60"/>
                                 <subviews>
                                     <stackView orientation="horizontal" alignment="centerY" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZE8-Ix-R5q">
-                                        <rect key="frame" x="0.0" y="0.0" width="368" height="60"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="60"/>
                                         <beginningViews>
                                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6QM-aM-6Ae">
                                                 <rect key="frame" x="0.0" y="14" width="32" height="32"/>
@@ -131,11 +131,8 @@
                                             </imageView>
                                         </beginningViews>
                                         <middleViews>
-                                            <searchField wantsLayer="YES" verticalHuggingPriority="750" misplaced="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C86-Ao-h2M">
-                                                <rect key="frame" x="40" y="19" width="288" height="22"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="200" id="J06-aG-ONX"/>
-                                                </constraints>
+                                            <searchField wantsLayer="YES" verticalHuggingPriority="750" fixedFrame="YES" textCompletion="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C86-Ao-h2M">
+                                                <rect key="frame" x="40" y="19" width="200" height="22"/>
                                                 <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="QiT-0f-iFD">
                                                     <font key="font" metaFont="system"/>
                                                     <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
@@ -144,24 +141,13 @@
                                             </searchField>
                                         </middleViews>
                                         <endViews>
-                                            <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="z4A-mq-j3Q" userLabel="rightView">
-                                                <rect key="frame" x="336" y="0.0" width="32" height="60"/>
-                                                <subviews>
-                                                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="pXo-5q-TNI">
-                                                        <rect key="frame" x="91" y="23" width="14" height="14"/>
-                                                        <buttonCell key="cell" type="bevel" alternateTitle="刷新" bezelStyle="rounded" image="NSRefreshFreestandingTemplate" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="xkZ-Fr-7jd">
-                                                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                                            <font key="font" metaFont="system"/>
-                                                        </buttonCell>
-                                                    </button>
-                                                </subviews>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="60" id="SeU-tq-QIM"/>
-                                                    <constraint firstAttribute="width" constant="120" id="YmB-iq-7HV"/>
-                                                    <constraint firstItem="pXo-5q-TNI" firstAttribute="centerY" secondItem="z4A-mq-j3Q" secondAttribute="centerY" id="h21-DT-Mds"/>
-                                                    <constraint firstAttribute="trailing" secondItem="pXo-5q-TNI" secondAttribute="trailing" constant="15" id="yIV-ig-Luv"/>
-                                                </constraints>
-                                            </customView>
+                                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pXo-5q-TNI">
+                                                <rect key="frame" x="266" y="23" width="14" height="14"/>
+                                                <buttonCell key="cell" type="bevel" alternateTitle="刷新" bezelStyle="rounded" image="NSRefreshFreestandingTemplate" imagePosition="overlaps" alignment="center" imageScaling="proportionallyDown" inset="2" id="xkZ-Fr-7jd">
+                                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                                    <font key="font" metaFont="system"/>
+                                                </buttonCell>
+                                            </button>
                                         </endViews>
                                         <constraints>
                                             <constraint firstItem="6QM-aM-6Ae" firstAttribute="leading" secondItem="ZE8-Ix-R5q" secondAttribute="leading" id="PXw-QA-HVA"/>
@@ -187,7 +173,7 @@
                                 </constraints>
                             </customView>
                             <customView autoresizesSubviews="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0GB-1D-CGQ" userLabel="contentView">
-                                <rect key="frame" x="120" y="0.0" width="368" height="301"/>
+                                <rect key="frame" x="120" y="0.0" width="280" height="301"/>
                                 <constraints>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="237" id="VMC-l8-2O9"/>
                                 </constraints>
