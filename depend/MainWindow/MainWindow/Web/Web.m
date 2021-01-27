@@ -8,6 +8,8 @@
 #import "Web.h"
 #import "Masonry.h"
 
+#import "SMTabListView.h"
+
 @interface Web ()<NSWindowDelegate,NSTableViewDelegate,NSTableViewDataSource>
 {
     NSView *titleBarView;
@@ -17,6 +19,7 @@
 @property (weak) NSView *wTitleBarView;
 @property (weak) IBOutlet NSView *wTopView;
 @property (weak) IBOutlet NSView *wContentView;
+
 
 
 @end
@@ -60,9 +63,24 @@ static dispatch_once_t _instance_once;
     
     [self initTableView];
     [self initTitleBarView];
+    
+    
+    
+    SMTabListView *smtv = [[SMTabListView alloc] init];
+    
+    smtv.wantsLayer = YES;
+    smtv.layer.backgroundColor = [NSColor whiteColor].CGColor;
+    [_wContentView addSubview:smtv];
+    
+    [smtv mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.left.equalTo(@5);
+        make.right.equalTo(@5);
+        make.top.equalTo(@5);
+        make.bottom.equalTo(@0);
+    }];
+    
+    
 }
-
-
 
 -(void)windowWillEnterFullScreen:(NSNotification *)notification{
     NSLog(@"ddd");
@@ -114,8 +132,6 @@ static dispatch_once_t _instance_once;
 #pragma mark - NSTableView
 -(void)initTableView{
     
-    NSLog(@"%@", NSStringFromRect(self.window.contentView.bounds));
-        
     self.listTableView.delegate = self;
     self.listTableView.dataSource = self;
     
@@ -123,22 +139,22 @@ static dispatch_once_t _instance_once;
 }
 
 
+
 #pragma mark - NSTableViewDelegate, NSTableViewDataSource
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView{
-//    NSLog(@"numberOfRowsInTableView");
     return 100;
 }
 
 
 -(id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
-//    NSLog(@"objectValueForTableColumn");
     return @"精选";
 }
 
 
 -(CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row{
-    return 28;
+    return 36;
 }
+
 
 
 -(void)tableViewSelectionDidChange:(NSNotification *)notification{

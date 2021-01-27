@@ -37,6 +37,9 @@
 		82C47E1725B97ABF004F8DB2 /* AFURLRequestSerialization.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C47E0025B97ABE004F8DB2 /* AFURLRequestSerialization.m */; };
 		82C47E1825B97ABF004F8DB2 /* AFNetworkReachabilityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C47E0225B97ABE004F8DB2 /* AFNetworkReachabilityManager.m */; };
 		82C47E1925B97ABF004F8DB2 /* AFSecurityPolicy.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C47E0325B97ABE004F8DB2 /* AFSecurityPolicy.m */; };
+		82D2DA1A25C17D4600DF3078 /* TabWC.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D2DA1825C17D4600DF3078 /* TabWC.m */; };
+		82D2DA1B25C17D4600DF3078 /* TabWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82D2DA1925C17D4600DF3078 /* TabWC.xib */; };
+		82D2DA2825C1FCF300DF3078 /* SMTabListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D2DA2725C1FCF300DF3078 /* SMTabListView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +123,11 @@
 		82C47E0325B97ABE004F8DB2 /* AFSecurityPolicy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFSecurityPolicy.m; sourceTree = "<group>"; };
 		82C47E0425B97ABE004F8DB2 /* AFCompatibilityMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFCompatibilityMacros.h; sourceTree = "<group>"; };
 		82C47E0525B97ABE004F8DB2 /* AFHTTPSessionManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFHTTPSessionManager.h; sourceTree = "<group>"; };
+		82D2DA1725C17D4600DF3078 /* TabWC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TabWC.h; sourceTree = "<group>"; };
+		82D2DA1825C17D4600DF3078 /* TabWC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TabWC.m; sourceTree = "<group>"; };
+		82D2DA1925C17D4600DF3078 /* TabWC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabWC.xib; sourceTree = "<group>"; };
+		82D2DA2625C1FCF300DF3078 /* SMTabListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMTabListView.h; sourceTree = "<group>"; };
+		82D2DA2725C1FCF300DF3078 /* SMTabListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMTabListView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +158,9 @@
 		8256D0C925BB529F007009AA /* Style */ = {
 			isa = PBXGroup;
 			children = (
+				82D2DA1725C17D4600DF3078 /* TabWC.h */,
+				82D2DA1825C17D4600DF3078 /* TabWC.m */,
+				82D2DA1925C17D4600DF3078 /* TabWC.xib */,
 			);
 			path = Style;
 			sourceTree = "<group>";
@@ -211,6 +222,7 @@
 		82C47DAB25B96F69004F8DB2 /* Web */ = {
 			isa = PBXGroup;
 			children = (
+				82D2DA1F25C1D60400DF3078 /* Class */,
 				8256D0C925BB529F007009AA /* Style */,
 				82C47DC725B97127004F8DB2 /* Web.xib */,
 				82C47DC525B97127004F8DB2 /* Web.h */,
@@ -302,6 +314,15 @@
 				82C47E0525B97ABE004F8DB2 /* AFHTTPSessionManager.h */,
 			);
 			path = AFNetworking;
+			sourceTree = "<group>";
+		};
+		82D2DA1F25C1D60400DF3078 /* Class */ = {
+			isa = PBXGroup;
+			children = (
+				82D2DA2625C1FCF300DF3078 /* SMTabListView.h */,
+				82D2DA2725C1FCF300DF3078 /* SMTabListView.m */,
+			);
+			path = Class;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -409,6 +430,7 @@
 				82C47E0925B97ABF004F8DB2 /* README.md in Resources */,
 				82C47E0625B97ABE004F8DB2 /* LICENSE.md in Resources */,
 				82C47DCA25B97127004F8DB2 /* Web.xib in Resources */,
+				82D2DA1B25C17D4600DF3078 /* TabWC.xib in Resources */,
 				82C47E0725B97ABF004F8DB2 /* MASPreferencesWindow.xib in Resources */,
 				82C47D7F25B96F2B004F8DB2 /* Assets.xcassets in Resources */,
 				82C47D8225B96F2B004F8DB2 /* MainMenu.xib in Resources */,
@@ -454,7 +476,9 @@
 				82C47E0D25B97ABF004F8DB2 /* MASConstraintMaker.m in Sources */,
 				82C47E1125B97ABF004F8DB2 /* MASConstraint.m in Sources */,
 				82C47E1925B97ABF004F8DB2 /* AFSecurityPolicy.m in Sources */,
+				82D2DA2825C1FCF300DF3078 /* SMTabListView.m in Sources */,
 				82C47E0A25B97ABF004F8DB2 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
+				82D2DA1A25C17D4600DF3078 /* TabWC.m in Sources */,
 				82C47E0E25B97ABF004F8DB2 /* MASLayoutConstraint.m in Sources */,
 				82C47D7D25B96F22004F8DB2 /* AppDelegate.m in Sources */,
 			);
