@@ -56,30 +56,30 @@ static dispatch_once_t _instance_once;
     
     [self.window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenAuxiliary];
     
+    self.listTableView.delegate = self;
+    self.listTableView.dataSource = self;
+    
     NSButton *zoomBtn = [self.window standardWindowButton:NSWindowZoomButton];
     NSView *s = [zoomBtn superview];
     titleBarView = [s superview];
     [self setTitleBarBtnView:self.window.frame.size];
     
-    [self initTableView];
+ 
     [self initTitleBarView];
     
-    
-    
-    SMTabListView *smtv = [[SMTabListView alloc] init];
+    NSLog(@"contentViewController:%@",NSStringFromRect(self.contentViewController.view.bounds));
+    SMTabListView *smtv = [[SMTabListView alloc] initWithFrame:self.contentViewController.view.bounds];
     
     smtv.wantsLayer = YES;
-    smtv.layer.backgroundColor = [NSColor whiteColor].CGColor;
+//    smtv.layer.backgroundColor = [NSColor grayColor].CGColor;
     [_wContentView addSubview:smtv];
     
     [smtv mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(@5);
-        make.right.equalTo(@5);
+        make.right.equalTo(@150);
         make.top.equalTo(@5);
-        make.bottom.equalTo(@0);
+        make.bottom.equalTo(@10);
     }];
-    
-    
 }
 
 -(void)windowWillEnterFullScreen:(NSNotification *)notification{
@@ -128,26 +128,9 @@ static dispatch_once_t _instance_once;
 
 }
 
-
-#pragma mark - NSTableView
--(void)initTableView{
-    
-    self.listTableView.delegate = self;
-    self.listTableView.dataSource = self;
-    
-    NSLog(@"initTableView");
-}
-
-
-
 #pragma mark - NSTableViewDelegate, NSTableViewDataSource
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView{
-    return 100;
-}
-
-
--(id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
-    return @"精选";
+    return 40;
 }
 
 
@@ -155,7 +138,26 @@ static dispatch_once_t _instance_once;
     return 36;
 }
 
+- (NSView*)tableView:(NSTableView*)tableView viewForTableColumn:(NSTableColumn*)tableColumn row:(NSInteger)row
+{
+    NSTextField * view = [tableView makeViewWithIdentifier:@"NSTableCellView_Sign" owner:self];
+    view.layer.backgroundColor= [NSColor redColor].CGColor;
+    view.identifier = @"cellId";
+    view.stringValue = @"dd..";
+    return view;
+}
 
+- (NSDragOperation)tableView:(NSTableView *)tableView validateDrop:(id<NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation
+{
+    if (dropOperation == NSTableViewDropAbove) {
+        return NSDragOperationNone;
+    }
+    return NSDragOperationMove;
+}
+
+- (NSString *)tableView:(NSTableView *)tableView toolTipForCell:(NSCell *)cell rect:(NSRectPointer)rect tableColumn:(nullable NSTableColumn *)tableColumn row:(NSInteger)row mouseLocation:(NSPoint)mouseLocation{
+    return @"tip";
+}
 
 -(void)tableViewSelectionDidChange:(NSNotification *)notification{
     NSLog(@"demo");
