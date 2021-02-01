@@ -12,7 +12,7 @@
 @interface SMTabListView()<NSWindowDelegate,NSTableViewDelegate,NSTableViewDataSource>
 
 @property  NSView *bList;
-@property  NSTableView *tabList;
+@property  NSTableView *tableView;
 
 @end
 
@@ -53,21 +53,37 @@
         [self addItem:title width:width pos:(i-1)*width];
     }
     
-    _tabList = [[NSTableView alloc] initWithFrame:NSMakeRect(0, 0, 200, 100)];
-    _tabList.wantsLayer = YES;
-    _tabList.backgroundColor = [NSColor blueColor];
-    _tabList.delegate = self;
-    _tabList.dataSource = self;
-    [self addSubview:_tabList];
+    _tableView = [[NSTableView alloc] initWithFrame:NSMakeRect(0, 0, 0, 0)];
+
+    _tableView.wantsLayer = YES;
+//    _tableView.backgroundColor = [NSColor blueColor];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+//    _tableView.
+//    [_tableView setGridColor:[NSColor blackColor]];
+    [_tableView setRowSizeStyle:NSTableViewRowSizeStyleLarge];
+    [_tableView setGridStyleMask:(NSTableViewSolidHorizontalGridLineMask | NSTableViewSolidVerticalGridLineMask)];
+    [[_tableView cell] setLineBreakMode:NSLineBreakByTruncatingTail];
+//    [[_tableView cell] setTruncatesLastVisibleLine:YES];
+//    [_tableView setColumnAutoresizingStyle:NSTableViewSequentialColumnAutoresizingStyle];
+    [_tableView setUsesAlternatingRowBackgroundColors:NO];
+    [_tableView.headerView setHidden:YES];
     
-    [_tabList mas_remakeConstraints:^(MASConstraintMaker *make) {
+    [_tableView setUsesAlternatingRowBackgroundColors:NO];
+    
+    NSTableColumn *column = [[NSTableColumn alloc] initWithIdentifier:@"field1"];
+    [_tableView addTableColumn:column];
+    
+    [self addSubview:_tableView];
+    
+    [_tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(@0);
         make.right.equalTo(@0);
         make.top.equalTo(@31);
         make.height.mas_equalTo(100);
     }];
     
-    [_tabList reloadData];
+    [_tableView reloadData];
     
     return self;
 }
@@ -91,10 +107,10 @@
     return 30;
 }
 
--(id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
-    NSLog(@"tableView");
-    return @"精选";
-}
+//-(id)tableView:(NSTableView *)tableView objectValueForTableColumn:(NSTableColumn *)tableColumn row:(NSInteger)row{
+//    NSLog(@"tableView");
+//    return @"精选";
+//}
 
 -(CGFloat)tableView:(NSTableView *)tableView heightOfRow:(NSInteger)row{
     return 36;
@@ -102,15 +118,22 @@
 
 - (NSView*)tableView:(NSTableView*)tableView viewForTableColumn:(NSTableColumn*)tableColumn row:(NSInteger)row
 {
-    NSLog(@".....");
-    NSTableCellView *cell = [tableView makeViewWithIdentifier:@"NSTableCellView_Sign" owner:self];
-    cell.textField.stringValue = @"ddd";
-    cell.layer.backgroundColor= [NSColor redColor].CGColor;
+    NSString *title = @"电影";
+    NSTableCellView *cell = [tableView makeViewWithIdentifier:tableColumn.identifier owner:self];
+    [cell.textField setStringValue:title];
+    [cell.textField setFont:[NSFont boldSystemFontOfSize:14]];
+    [cell.textField setEditable:NO];
+    [cell.textField setDrawsBackground:NO];
     return cell;
 }
 //
 - (NSString *)tableView:(NSTableView *)tableView toolTipForCell:(NSCell *)cell rect:(NSRectPointer)rect tableColumn:(nullable NSTableColumn *)tableColumn row:(NSInteger)row mouseLocation:(NSPoint)mouseLocation{
-    NSLog(@".....");
+    NSLog(@".....??");
     return @"tip";
+}
+
+-(void)tableViewSelectionDidChange:(NSNotification *)notification{
+    NSLog(@"demo");
+    [_tableView deselectAll:NULL];
 }
 @end

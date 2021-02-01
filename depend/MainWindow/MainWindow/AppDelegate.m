@@ -8,6 +8,7 @@
 #import "AppDelegate.h"
 
 #import "Web.h"
+#import "MainCore.h"
 
 @interface AppDelegate ()
 
@@ -18,8 +19,7 @@
 
 - (void)applicationDidFinishLaunching:(NSNotification *)aNotification {
     // Insert code here to initialize your application
-    NSLog(@"123123");
-    [[Web Instance] showWindow: self.window];
+    [[[MainCore Instance] web] showWindow: self];
 }
 
 
@@ -29,7 +29,7 @@
 
 -(IBAction)d:(id)sender{
     NSLog(@"123123");
-    [[Web Instance] showWindow: self.window];
+    [[[MainCore Instance] web] showWindow: self];
 }
 
 

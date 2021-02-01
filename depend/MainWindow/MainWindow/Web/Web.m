@@ -15,13 +15,13 @@
     NSView *titleBarView;
 }
 
-@property (weak) IBOutlet  NSTableView *listTableView;
+@property (strong, nonatomic) IBOutlet  NSTableView *listTableView;
 @property (weak) NSView *wTitleBarView;
 @property (weak) IBOutlet NSView *wTopView;
 @property (weak) IBOutlet NSView *wContentView;
 
 
-
+@property (strong,nonatomic) SMTabListView *selectList;
 @end
 
 @implementation Web
@@ -44,6 +44,7 @@ static dispatch_once_t _instance_once;
     if (self = [super initWithWindow:window]) {
         [self loadWindow];
     }
+
     return self;
 }
 
@@ -56,8 +57,7 @@ static dispatch_once_t _instance_once;
     
     [self.window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenAuxiliary];
     
-    self.listTableView.delegate = self;
-    self.listTableView.dataSource = self;
+    
     
     NSButton *zoomBtn = [self.window standardWindowButton:NSWindowZoomButton];
     NSView *s = [zoomBtn superview];
@@ -67,14 +67,13 @@ static dispatch_once_t _instance_once;
  
     [self initTitleBarView];
     
-    NSLog(@"contentViewController:%@",NSStringFromRect(self.contentViewController.view.bounds));
-    SMTabListView *smtv = [[SMTabListView alloc] initWithFrame:self.contentViewController.view.bounds];
+    _selectList = [[SMTabListView alloc] initWithFrame:self.contentViewController.view.bounds];
     
-    smtv.wantsLayer = YES;
+    _selectList.wantsLayer = YES;
 //    smtv.layer.backgroundColor = [NSColor grayColor].CGColor;
-    [_wContentView addSubview:smtv];
+    [_wContentView addSubview:_selectList];
     
-    [smtv mas_remakeConstraints:^(MASConstraintMaker *make) {
+    [_selectList mas_remakeConstraints:^(MASConstraintMaker *make) {
         make.left.equalTo(@5);
         make.right.equalTo(@150);
         make.top.equalTo(@5);
@@ -125,6 +124,11 @@ static dispatch_once_t _instance_once;
 -(void)initTitleBarView{
     _wTitleBarView.wantsLayer = YES;
     _wTitleBarView.layer.backgroundColor = [NSColor whiteColor].CGColor;
+    
+    self.listTableView.delegate = self;
+    self.listTableView.dataSource = self;
+    
+    [self.listTableView reloadData];
 
 }
 
@@ -140,11 +144,15 @@ static dispatch_once_t _instance_once;
 
 - (NSView*)tableView:(NSTableView*)tableView viewForTableColumn:(NSTableColumn*)tableColumn row:(NSInteger)row
 {
-    NSTextField * view = [tableView makeViewWithIdentifier:@"NSTableCellView_Sign" owner:self];
-    view.layer.backgroundColor= [NSColor redColor].CGColor;
-    view.identifier = @"cellId";
-    view.stringValue = @"dd..";
-    return view;
+    
+    NSString *title = @"电影";
+    NSTableCellView *cell = [tableView makeViewWithIdentifier:tableColumn.identifier owner:self];
+    [cell.textField setStringValue:title];
+    [cell.textField setFont:[NSFont boldSystemFontOfSize:14]];
+    NSRect _frame = cell.textField.frame;
+    cell.textField.frame = NSMakeRect(20, 0, _frame.size.width, _frame.size.height);
+    
+    return cell;
 }
 
 - (NSDragOperation)tableView:(NSTableView *)tableView validateDrop:(id<NSDraggingInfo>)info proposedRow:(NSInteger)row proposedDropOperation:(NSTableViewDropOperation)dropOperation

@@ -40,6 +40,7 @@
 		82D2DA1A25C17D4600DF3078 /* TabWC.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D2DA1825C17D4600DF3078 /* TabWC.m */; };
 		82D2DA1B25C17D4600DF3078 /* TabWC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82D2DA1925C17D4600DF3078 /* TabWC.xib */; };
 		82D2DA2825C1FCF300DF3078 /* SMTabListView.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D2DA2725C1FCF300DF3078 /* SMTabListView.m */; };
+		82D2DA3F25C770BF00DF3078 /* MainCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 82D2DA3E25C770BF00DF3078 /* MainCore.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -128,6 +129,8 @@
 		82D2DA1925C17D4600DF3078 /* TabWC.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TabWC.xib; sourceTree = "<group>"; };
 		82D2DA2625C1FCF300DF3078 /* SMTabListView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMTabListView.h; sourceTree = "<group>"; };
 		82D2DA2725C1FCF300DF3078 /* SMTabListView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMTabListView.m; sourceTree = "<group>"; };
+		82D2DA3D25C770BF00DF3078 /* MainCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainCore.h; sourceTree = "<group>"; };
+		82D2DA3E25C770BF00DF3078 /* MainCore.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainCore.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +200,8 @@
 				82C47D8325B96F2B004F8DB2 /* Info.plist */,
 				82C47D8425B96F2B004F8DB2 /* main.m */,
 				82C47D8625B96F2B004F8DB2 /* MainWindow.entitlements */,
+				82D2DA3D25C770BF00DF3078 /* MainCore.h */,
+				82D2DA3E25C770BF00DF3078 /* MainCore.m */,
 			);
 			path = MainWindow;
 			sourceTree = "<group>";
@@ -470,6 +475,7 @@
 				82C47E0B25B97ABF004F8DB2 /* ViewController+MASAdditions.m in Sources */,
 				82C47E1525B97ABF004F8DB2 /* AFHTTPSessionManager.m in Sources */,
 				82C47E1725B97ABF004F8DB2 /* AFURLRequestSerialization.m in Sources */,
+				82D2DA3F25C770BF00DF3078 /* MainCore.m in Sources */,
 				82C47E0C25B97ABF004F8DB2 /* MASCompositeConstraint.m in Sources */,
 				82C47D8525B96F2B004F8DB2 /* main.m in Sources */,
 				82C47E1025B97ABF004F8DB2 /* View+MASAdditions.m in Sources */,
