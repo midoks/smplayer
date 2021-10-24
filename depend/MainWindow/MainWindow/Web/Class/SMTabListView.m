@@ -53,37 +53,37 @@
         [self addItem:title width:width pos:(i-1)*width];
     }
     
-    _tableView = [[NSTableView alloc] initWithFrame:NSMakeRect(0, 0, 0, 0)];
+//    _tableView = [[NSTableView alloc] initWithFrame:NSMakeRect(0, 0, 0, 0)];
 
-    _tableView.wantsLayer = YES;
+//    _tableView.wantsLayer = YES;
 //    _tableView.backgroundColor = [NSColor blueColor];
-    _tableView.delegate = self;
-    _tableView.dataSource = self;
+//    _tableView.delegate = self;
+//    _tableView.dataSource = self;
 //    _tableView.
 //    [_tableView setGridColor:[NSColor blackColor]];
-    [_tableView setRowSizeStyle:NSTableViewRowSizeStyleLarge];
-    [_tableView setGridStyleMask:(NSTableViewSolidHorizontalGridLineMask | NSTableViewSolidVerticalGridLineMask)];
-    [[_tableView cell] setLineBreakMode:NSLineBreakByTruncatingTail];
+//    [_tableView setRowSizeStyle:NSTableViewRowSizeStyleLarge];
+//    [_tableView setGridStyleMask:(NSTableViewSolidHorizontalGridLineMask | NSTableViewSolidVerticalGridLineMask)];
+//    [[_tableView cell] setLineBreakMode:NSLineBreakByTruncatingTail];
 //    [[_tableView cell] setTruncatesLastVisibleLine:YES];
 //    [_tableView setColumnAutoresizingStyle:NSTableViewSequentialColumnAutoresizingStyle];
-    [_tableView setUsesAlternatingRowBackgroundColors:NO];
-    [_tableView.headerView setHidden:YES];
+//    [_tableView setUsesAlternatingRowBackgroundColors:NO];
+//    [_tableView.headerView setHidden:YES];
     
-    [_tableView setUsesAlternatingRowBackgroundColors:NO];
+//    [_tableView setUsesAlternatingRowBackgroundColors:NO];
     
-    NSTableColumn *column = [[NSTableColumn alloc] initWithIdentifier:@"field1"];
-    [_tableView addTableColumn:column];
+//    NSTableColumn *column = [[NSTableColumn alloc] initWithIdentifier:@"field1"];
+//    [_tableView addTableColumn:column];
     
-    [self addSubview:_tableView];
+//    [self addSubview:_tableView];
     
-    [_tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(@0);
-        make.right.equalTo(@0);
-        make.top.equalTo(@31);
-        make.height.mas_equalTo(100);
-    }];
-    
-    [_tableView reloadData];
+//    [_tableView mas_remakeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(@0);
+//        make.right.equalTo(@0);
+//        make.top.equalTo(@31);
+//        make.height.mas_equalTo(100);
+//    }];
+//
+//    [_tableView reloadData];
     
     return self;
 }

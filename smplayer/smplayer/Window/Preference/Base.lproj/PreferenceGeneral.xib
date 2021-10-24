@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="16096" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="19162" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="16096"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="19162"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -13,14 +13,14 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <customView translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
-            <rect key="frame" x="0.0" y="0.0" width="500" height="311"/>
+        <customView misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="500" height="326"/>
             <subviews>
                 <customView translatesAutoresizingMaskIntoConstraints="NO" id="FFh-8K-kcT" userLabel="Behavior">
-                    <rect key="frame" x="20" y="151" width="460" height="150"/>
+                    <rect key="frame" x="20" y="156" width="460" height="170"/>
                     <subviews>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CQ9-Jr-9dt">
-                            <rect key="frame" x="1" y="124" width="61" height="16"/>
+                            <rect key="frame" x="1" y="144" width="61" height="16"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Behavior:" id="QsS-fX-GWZ">
                                 <font key="font" usesAppearanceFont="YES"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -28,7 +28,7 @@
                             </textFieldCell>
                         </textField>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zLn-fb-uYY">
-                            <rect key="frame" x="118" y="124" width="102" height="16"/>
+                            <rect key="frame" x="118" y="144" width="102" height="16"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="When launched:" id="DTJ-Xr-xuc">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -36,10 +36,10 @@
                             </textFieldCell>
                         </textField>
                         <popUpButton verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="YN3-XI-4Ax">
-                            <rect key="frame" x="226" y="119" width="178" height="25"/>
+                            <rect key="frame" x="225" y="138" width="179" height="25"/>
                             <popUpButtonCell key="cell" type="push" title="Show welcome window" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="D6l-6z-0Z3" id="6PT-Bu-kJ4">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="menu"/>
                                 <menu key="menu" id="Bx4-G1-rJg">
                                     <items>
                                         <menuItem title="Show welcome window" state="on" id="D6l-6z-0Z3"/>
@@ -53,7 +53,7 @@
                             </connections>
                         </popUpButton>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Y9S-Rg-IaK">
-                            <rect key="frame" x="118" y="98" width="231" height="18"/>
+                            <rect key="frame" x="118" y="117" width="235" height="18"/>
                             <buttonCell key="cell" type="check" title="Always open media in new window" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="ulH-Ye-OeU">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -63,7 +63,7 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fk7-TI-G63">
-                            <rect key="frame" x="118" y="76" width="219" height="18"/>
+                            <rect key="frame" x="118" y="93" width="223" height="18"/>
                             <buttonCell key="cell" type="check" title="Quit after all windows are closed" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="eup-qz-zs5">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -73,7 +73,7 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="da2-Kl-cur">
-                            <rect key="frame" x="118" y="54" width="277" height="18"/>
+                            <rect key="frame" x="118" y="69" width="281" height="18"/>
                             <buttonCell key="cell" type="check" title="Keep window open after playback finishes" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="56n-3c-RpW">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -83,7 +83,7 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wlY-Ka-vph">
-                            <rect key="frame" x="118" y="32" width="206" height="18"/>
+                            <rect key="frame" x="118" y="45" width="210" height="18"/>
                             <buttonCell key="cell" type="check" title="Resume last playback position" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="6aZ-rU-fRe">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -93,7 +93,7 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Kfn-ZX-ty8">
-                            <rect key="frame" x="118" y="10" width="134" height="18"/>
+                            <rect key="frame" x="118" y="21" width="138" height="18"/>
                             <buttonCell key="cell" type="check" title="Check for updates" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="SaJ-1d-yWy">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -103,10 +103,10 @@
                             </connections>
                         </button>
                         <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="qJR-Ng-Fk9">
-                            <rect key="frame" x="258" y="4" width="87" height="25"/>
+                            <rect key="frame" x="263" y="15" width="88" height="25"/>
                             <popUpButtonCell key="cell" type="push" title="Hourly" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="Cn1-zs-gzs" id="eZJ-2v-e82">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="menu"/>
                                 <menu key="menu" id="nrE-Cp-neg">
                                     <items>
                                         <menuItem title="Hourly" state="on" id="Cn1-zs-gzs"/>
@@ -140,7 +140,7 @@
                         <constraint firstItem="qJR-Ng-Fk9" firstAttribute="leading" secondItem="Kfn-ZX-ty8" secondAttribute="trailing" constant="10" id="eDg-2U-uzw"/>
                         <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="YN3-XI-4Ax" secondAttribute="trailing" constant="20" symbolic="YES" id="fE0-d1-lhc"/>
                         <constraint firstItem="Y9S-Rg-IaK" firstAttribute="leading" secondItem="FFh-8K-kcT" secondAttribute="leading" constant="120" id="hZh-QG-Zr4"/>
-                        <constraint firstAttribute="height" constant="150" id="kLo-Pc-xE8"/>
+                        <constraint firstAttribute="height" constant="170" id="kLo-Pc-xE8"/>
                         <constraint firstItem="zLn-fb-uYY" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="CQ9-Jr-9dt" secondAttribute="trailing" constant="8" symbolic="YES" id="l8Y-du-wAk"/>
                         <constraint firstItem="CQ9-Jr-9dt" firstAttribute="top" secondItem="FFh-8K-kcT" secondAttribute="top" constant="10" id="mFb-rN-wh3"/>
                         <constraint firstItem="YN3-XI-4Ax" firstAttribute="centerY" secondItem="zLn-fb-uYY" secondAttribute="centerY" id="mcl-31-3Fa"/>
@@ -173,7 +173,7 @@
                             </textFieldCell>
                         </textField>
                         <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="xMQ-NR-jra">
-                            <rect key="frame" x="118" y="80" width="69" height="18"/>
+                            <rect key="frame" x="118" y="79" width="71" height="18"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="65" id="AKC-zw-dFQ"/>
                             </constraints>
@@ -186,7 +186,7 @@
                             </connections>
                         </button>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="lXd-mh-FMJ">
-                            <rect key="frame" x="188" y="81" width="164" height="16"/>
+                            <rect key="frame" x="192" y="80" width="164" height="16"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="160" id="Owc-4N-B4b"/>
                             </constraints>
@@ -200,7 +200,7 @@
                             </connections>
                         </textField>
                         <button horizontalHuggingPriority="252" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="nrQ-1Z-Zyv">
-                            <rect key="frame" x="358" y="82" width="14" height="14"/>
+                            <rect key="frame" x="362" y="81" width="15" height="15"/>
                             <buttonCell key="cell" type="smallSquare" bezelStyle="smallSquare" image="NSRevealFreestandingTemplate" imagePosition="overlaps" alignment="center" lineBreakMode="truncatingTail" state="on" imageScaling="proportionallyDown" inset="2" id="y8d-ry-Er7">
                                 <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -210,7 +210,7 @@
                             </connections>
                         </button>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="I4g-jB-4tB">
-                            <rect key="frame" x="136" y="58" width="51" height="16"/>
+                            <rect key="frame" x="136" y="56" width="51" height="16"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Format:" id="BHj-xV-hgL">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -218,10 +218,10 @@
                             </textFieldCell>
                         </textField>
                         <popUpButton verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="NqT-Ap-1Fq">
-                            <rect key="frame" x="191" y="51" width="107" height="25"/>
+                            <rect key="frame" x="190" y="48" width="109" height="25"/>
                             <popUpButtonCell key="cell" type="push" title="PNG" bezelStyle="rounded" alignment="left" lineBreakMode="truncatingTail" state="on" borderStyle="borderAndBezel" imageScaling="proportionallyDown" inset="2" selectedItem="ymx-Ju-s06" id="cwx-qa-0vs">
                                 <behavior key="behavior" lightByBackground="YES" lightByGray="YES"/>
-                                <font key="font" metaFont="system"/>
+                                <font key="font" metaFont="menu"/>
                                 <menu key="menu" id="E3P-5P-yDP">
                                     <items>
                                         <menuItem title="PNG" state="on" id="ymx-Ju-s06"/>
@@ -235,7 +235,7 @@
                             </connections>
                         </popUpButton>
                         <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="zgV-Bv-gAw">
-                            <rect key="frame" x="118" y="34" width="56" height="16"/>
+                            <rect key="frame" x="118" y="32" width="56" height="16"/>
                             <textFieldCell key="cell" lineBreakMode="clipping" title="Options:" id="0cZ-GS-kMY">
                                 <font key="font" metaFont="system"/>
                                 <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -243,7 +243,7 @@
                             </textFieldCell>
                         </textField>
                         <button horizontalHuggingPriority="249" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yVm-b4-oXT">
-                            <rect key="frame" x="118" y="10" width="119" height="18"/>
+                            <rect key="frame" x="118" y="7" width="105" height="18"/>
                             <constraints>
                                 <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="60" id="Wy6-dn-Qmu"/>
                             </constraints>
@@ -256,7 +256,7 @@
                             </connections>
                         </button>
                         <button verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="cpk-RC-NAb">
-                            <rect key="frame" x="370" y="10" width="91" height="18"/>
+                            <rect key="frame" x="364" y="7" width="95" height="18"/>
                             <buttonCell key="cell" type="check" title="Ok to Open" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Z8S-ZH-RG2">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -266,7 +266,7 @@
                             </connections>
                         </button>
                         <button horizontalHuggingPriority="251" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" translatesAutoresizingMaskIntoConstraints="NO" id="eLg-mQ-mR1">
-                            <rect key="frame" x="239" y="10" width="130" height="18"/>
+                            <rect key="frame" x="227" y="7" width="134" height="18"/>
                             <buttonCell key="cell" type="check" title="Copy to clipboard" bezelStyle="regularSquare" imagePosition="left" state="on" inset="2" id="Ux0-WC-xee">
                                 <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                 <font key="font" metaFont="system"/>
@@ -310,7 +310,7 @@
                 </customView>
             </subviews>
             <constraints>
-                <constraint firstItem="3Rf-mu-a2w" firstAttribute="top" secondItem="FFh-8K-kcT" secondAttribute="bottom" constant="5" id="GXv-aT-gQX"/>
+                <constraint firstItem="3Rf-mu-a2w" firstAttribute="top" secondItem="FFh-8K-kcT" secondAttribute="bottom" constant="10" id="GXv-aT-gQX"/>
                 <constraint firstAttribute="bottom" secondItem="9cW-8a-C85" secondAttribute="bottom" constant="10" id="MmQ-E6-ud8"/>
                 <constraint firstAttribute="trailing" secondItem="3Rf-mu-a2w" secondAttribute="trailing" constant="20" id="OqA-rl-GdD"/>
                 <constraint firstItem="9cW-8a-C85" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="20" id="Szp-id-EZT"/>
@@ -327,6 +327,6 @@
         <userDefaultsController representsSharedInstance="YES" id="6po-mG-7ON"/>
     </objects>
     <resources>
-        <image name="NSRevealFreestandingTemplate" width="14" height="14"/>
+        <image name="NSRevealFreestandingTemplate" width="15" height="15"/>
     </resources>
 </document>

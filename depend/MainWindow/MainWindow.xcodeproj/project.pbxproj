@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82041A8F25CE8F2400704BEC /* SMTabList.m in Sources */ = {isa = PBXBuildFile; fileRef = 82041A8E25CE8F2400704BEC /* SMTabList.m */; };
 		82C47D7D25B96F22004F8DB2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C47D7C25B96F22004F8DB2 /* AppDelegate.m */; };
 		82C47D7F25B96F2B004F8DB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82C47D7E25B96F2B004F8DB2 /* Assets.xcassets */; };
 		82C47D8225B96F2B004F8DB2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82C47D8025B96F2B004F8DB2 /* MainMenu.xib */; };
@@ -61,6 +62,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		82041A8D25CE8F2400704BEC /* SMTabList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMTabList.h; sourceTree = "<group>"; };
+		82041A8E25CE8F2400704BEC /* SMTabList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMTabList.m; sourceTree = "<group>"; };
 		82C47D7825B96F22004F8DB2 /* MainWindow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MainWindow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82C47D7B25B96F22004F8DB2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		82C47D7C25B96F22004F8DB2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -326,6 +329,8 @@
 			children = (
 				82D2DA2625C1FCF300DF3078 /* SMTabListView.h */,
 				82D2DA2725C1FCF300DF3078 /* SMTabListView.m */,
+				82041A8D25CE8F2400704BEC /* SMTabList.h */,
+				82041A8E25CE8F2400704BEC /* SMTabList.m */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -481,6 +486,7 @@
 				82C47E1025B97ABF004F8DB2 /* View+MASAdditions.m in Sources */,
 				82C47E0D25B97ABF004F8DB2 /* MASConstraintMaker.m in Sources */,
 				82C47E1125B97ABF004F8DB2 /* MASConstraint.m in Sources */,
+				82041A8F25CE8F2400704BEC /* SMTabList.m in Sources */,
 				82C47E1925B97ABF004F8DB2 /* AFSecurityPolicy.m in Sources */,
 				82D2DA2825C1FCF300DF3078 /* SMTabListView.m in Sources */,
 				82C47E0A25B97ABF004F8DB2 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,

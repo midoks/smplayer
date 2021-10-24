@@ -20,6 +20,7 @@
 @property (weak) IBOutlet NSView *wTopView;
 @property (weak) IBOutlet NSView *wContentView;
 
+@property (strong, nonatomic) NSCollectionView *collectView;
 
 @property (strong,nonatomic) SMTabListView *selectList;
 @end
@@ -54,7 +55,6 @@ static dispatch_once_t _instance_once;
     self.window.movableByWindowBackground = YES;
     self.window.titleVisibility = NSWindowTitleHidden;
     self.window.titlebarAppearsTransparent = YES;
-    
     [self.window setCollectionBehavior:NSWindowCollectionBehaviorFullScreenAuxiliary];
     
     
@@ -67,18 +67,20 @@ static dispatch_once_t _instance_once;
  
     [self initTitleBarView];
     
-    _selectList = [[SMTabListView alloc] initWithFrame:self.contentViewController.view.bounds];
+//    _selectList = [[SMTabListView alloc] initWithFrame:self.contentViewController.view.bounds];
+//    _selectList.wantsLayer = YES;
+//    [_wContentView addSubview:_selectList];
+//
+//    [_selectList mas_remakeConstraints:^(MASConstraintMaker *make) {
+//        make.left.equalTo(@5);
+//        make.right.equalTo(@150);
+//        make.top.equalTo(@5);
+//        make.bottom.equalTo(@10);
+//    }];
     
-    _selectList.wantsLayer = YES;
-//    smtv.layer.backgroundColor = [NSColor grayColor].CGColor;
-    [_wContentView addSubview:_selectList];
     
-    [_selectList mas_remakeConstraints:^(MASConstraintMaker *make) {
-        make.left.equalTo(@5);
-        make.right.equalTo(@150);
-        make.top.equalTo(@5);
-        make.bottom.equalTo(@10);
-    }];
+    _collectView = [[NSCollectionView alloc] initWithFrame:self.contentViewController.view.bounds];
+    [_wContentView addSubview:_collectView];
 }
 
 -(void)windowWillEnterFullScreen:(NSNotification *)notification{
