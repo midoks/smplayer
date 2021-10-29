@@ -136,7 +136,7 @@ static dispatch_once_t _instance_once;
 
 #pragma mark - NSTableViewDelegate, NSTableViewDataSource
 -(NSInteger)numberOfRowsInTableView:(NSTableView *)tableView{
-    return 40;
+    return 10;
 }
 
 
@@ -153,6 +153,7 @@ static dispatch_once_t _instance_once;
     [cell.textField setFont:[NSFont boldSystemFontOfSize:14]];
     NSRect _frame = cell.textField.frame;
     cell.textField.frame = NSMakeRect(20, 0, _frame.size.width, _frame.size.height);
+    cell.textField.alignment =NSTextAlignmentCenter;
     
     return cell;
 }

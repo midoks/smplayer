@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		82041A8F25CE8F2400704BEC /* SMTabList.m in Sources */ = {isa = PBXBuildFile; fileRef = 82041A8E25CE8F2400704BEC /* SMTabList.m */; };
+		823F6DFD272C6DBC00731011 /* PopViewWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = 823F6DFB272C6DBC00731011 /* PopViewWindow.m */; };
+		823F6DFE272C6DBC00731011 /* PopViewWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 823F6DFC272C6DBC00731011 /* PopViewWindow.xib */; };
 		82C47D7D25B96F22004F8DB2 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 82C47D7C25B96F22004F8DB2 /* AppDelegate.m */; };
 		82C47D7F25B96F2B004F8DB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 82C47D7E25B96F2B004F8DB2 /* Assets.xcassets */; };
 		82C47D8225B96F2B004F8DB2 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82C47D8025B96F2B004F8DB2 /* MainMenu.xib */; };
@@ -64,6 +66,9 @@
 /* Begin PBXFileReference section */
 		82041A8D25CE8F2400704BEC /* SMTabList.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SMTabList.h; sourceTree = "<group>"; };
 		82041A8E25CE8F2400704BEC /* SMTabList.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMTabList.m; sourceTree = "<group>"; };
+		823F6DFA272C6DBB00731011 /* PopViewWindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PopViewWindow.h; sourceTree = "<group>"; };
+		823F6DFB272C6DBC00731011 /* PopViewWindow.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PopViewWindow.m; sourceTree = "<group>"; };
+		823F6DFC272C6DBC00731011 /* PopViewWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PopViewWindow.xib; sourceTree = "<group>"; };
 		82C47D7825B96F22004F8DB2 /* MainWindow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MainWindow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		82C47D7B25B96F22004F8DB2 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		82C47D7C25B96F22004F8DB2 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -331,6 +336,9 @@
 				82D2DA2725C1FCF300DF3078 /* SMTabListView.m */,
 				82041A8D25CE8F2400704BEC /* SMTabList.h */,
 				82041A8E25CE8F2400704BEC /* SMTabList.m */,
+				823F6DFA272C6DBB00731011 /* PopViewWindow.h */,
+				823F6DFB272C6DBC00731011 /* PopViewWindow.m */,
+				823F6DFC272C6DBC00731011 /* PopViewWindow.xib */,
 			);
 			path = Class;
 			sourceTree = "<group>";
@@ -397,7 +405,7 @@
 		82C47D7025B96F22004F8DB2 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1230;
+				LastUpgradeCheck = 1310;
 				TargetAttributes = {
 					82C47D7725B96F22004F8DB2 = {
 						CreatedOnToolsVersion = 12.3;
@@ -441,6 +449,7 @@
 				82C47E0625B97ABE004F8DB2 /* LICENSE.md in Resources */,
 				82C47DCA25B97127004F8DB2 /* Web.xib in Resources */,
 				82D2DA1B25C17D4600DF3078 /* TabWC.xib in Resources */,
+				823F6DFE272C6DBC00731011 /* PopViewWindow.xib in Resources */,
 				82C47E0725B97ABF004F8DB2 /* MASPreferencesWindow.xib in Resources */,
 				82C47D7F25B96F2B004F8DB2 /* Assets.xcassets in Resources */,
 				82C47D8225B96F2B004F8DB2 /* MainMenu.xib in Resources */,
@@ -492,6 +501,7 @@
 				82C47E0A25B97ABF004F8DB2 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */,
 				82D2DA1A25C17D4600DF3078 /* TabWC.m in Sources */,
 				82C47E0E25B97ABF004F8DB2 /* MASLayoutConstraint.m in Sources */,
+				823F6DFD272C6DBC00731011 /* PopViewWindow.m in Sources */,
 				82C47D7D25B96F22004F8DB2 /* AppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -665,6 +675,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MainWindow/MainWindow.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = MainWindow/Info.plist;
@@ -683,6 +694,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_ENTITLEMENTS = MainWindow/MainWindow.entitlements;
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = MainWindow/Info.plist;

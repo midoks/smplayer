@@ -9,6 +9,7 @@
 
 #import "Web.h"
 #import "MainCore.h"
+#import "PopViewWindow.h"
 
 @interface AppDelegate ()
 
@@ -30,6 +31,11 @@
 -(IBAction)d:(id)sender{
     NSLog(@"123123");
     [[[MainCore Instance] web] showWindow: self];
+}
+
+-(IBAction)pop:(id)sender{
+    NSLog(@"123123");
+//    [[PopViewWindow alloc] init] showWindow: self];
 }
 
 
