@@ -62,10 +62,7 @@ static dispatch_once_t _instance_once;
     [self setTitleBarBtnView:self.window.frame.size];
     
     [self initTableView];
-    
-    
     [self initTitleBarView];
-    
 }
 
 -(void)windowWillEnterFullScreen:(NSNotification *)notification{
