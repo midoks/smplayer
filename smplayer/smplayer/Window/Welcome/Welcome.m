@@ -8,7 +8,6 @@
 
 #import "Welcome.h"
 #import "SMCore.h"
-#import "Web.h"
 #import "OpenFileView.h"
 #import "SMCommon.h"
 #import "SMVideoTime.h"

@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 #import "Welcome.h"
 #import "Player.h"
-#import "Web.h"
 #import "Preference.h"
 
 NS_ASSUME_NONNULL_BEGIN
@@ -22,7 +21,6 @@ NS_ASSUME_NONNULL_BEGIN
 -(Player *)player;
 -(Player *)newPlayer;
 -(Player *)activePlayer;
--(Web *)web;
 -(Preference *)preference;
 
 @end

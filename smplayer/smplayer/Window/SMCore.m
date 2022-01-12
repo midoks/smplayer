@@ -11,12 +11,10 @@
 
 #import "SMCore.h"
 #import "Preference.h"
-#import "Web.h"
 
 @interface SMCore()
 {
     Welcome *welcome;
-    Web *web;
     Preference *preference;
 }
 
@@ -42,7 +40,6 @@ static dispatch_once_t _instance_once;
     self = [super init];
     if (self){
         self->welcome = [Welcome Instance];
-        self->web = [Web Instance];
         self->preference = [Preference Instance];
         
         _nowPlayer = [Player Instance];
@@ -82,10 +79,6 @@ static dispatch_once_t _instance_once;
 //        return (Player *)[NSApp mainWindow];
 //    }
     return _nowPlayer;
-}
-
--(Web *)web{
-    return self->web;
 }
 
 -(Preference *)preference{

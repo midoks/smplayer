@@ -23,8 +23,6 @@
 		826AB833240416D400B87C63 /* SMControlView.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AB832240416D400B87C63 /* SMControlView.m */; };
 		826AB8372406C12600B87C63 /* SMCommon.m in Sources */ = {isa = PBXBuildFile; fileRef = 826AB8362406C12500B87C63 /* SMCommon.m */; };
 		826AB8392407C0DF00B87C63 /* input.conf in Resources */ = {isa = PBXBuildFile; fileRef = 826AB8382407C0DE00B87C63 /* input.conf */; };
-		828DBD3B2416886E00A89A89 /* Web.m in Sources */ = {isa = PBXBuildFile; fileRef = 828DBD392416886E00A89A89 /* Web.m */; };
-		828DBD3C2416886E00A89A89 /* Web.xib in Resources */ = {isa = PBXBuildFile; fileRef = 828DBD3A2416886E00A89A89 /* Web.xib */; };
 		828DBD40241688D200A89A89 /* Preference.m in Sources */ = {isa = PBXBuildFile; fileRef = 828DBD3E241688D200A89A89 /* Preference.m */; };
 		828DBD462416B12400A89A89 /* OpenURL.m in Sources */ = {isa = PBXBuildFile; fileRef = 828DBD442416B12400A89A89 /* OpenURL.m */; };
 		828DBD7A2418271100A89A89 /* NSLayoutConstraint+MASDebugAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = 828DBD622418271100A89A89 /* NSLayoutConstraint+MASDebugAdditions.m */; };
@@ -154,9 +152,6 @@
 		826AB8362406C12500B87C63 /* SMCommon.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SMCommon.m; sourceTree = "<group>"; };
 		826AB8382407C0DE00B87C63 /* input.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = input.conf; sourceTree = "<group>"; };
 		826AB83B2408229000B87C63 /* CoreAudioKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreAudioKit.framework; path = System/Library/Frameworks/CoreAudioKit.framework; sourceTree = SDKROOT; };
-		828DBD382416886E00A89A89 /* Web.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Web.h; sourceTree = "<group>"; };
-		828DBD392416886E00A89A89 /* Web.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Web.m; sourceTree = "<group>"; };
-		828DBD3A2416886E00A89A89 /* Web.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Web.xib; sourceTree = "<group>"; };
 		828DBD3D241688D200A89A89 /* Preference.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Preference.h; sourceTree = "<group>"; };
 		828DBD3E241688D200A89A89 /* Preference.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Preference.m; sourceTree = "<group>"; };
 		828DBD432416B12400A89A89 /* OpenURL.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenURL.h; sourceTree = "<group>"; };
@@ -251,7 +246,6 @@
 		82E9A46924030AEA000DB7F3 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		82E9A46B24030AEE000DB7F3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		82E9A46E24030AEE000DB7F3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
-		82E9A47024030AEE000DB7F3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		82E9A47124030AEE000DB7F3 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		82E9A47324030AEE000DB7F3 /* smplayer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = smplayer.entitlements; sourceTree = "<group>"; };
 		82E9A47824030AEE000DB7F3 /* smplayerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = smplayerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -517,16 +511,6 @@
 			path = Preference;
 			sourceTree = "<group>";
 		};
-		828DBD372416884100A89A89 /* Web */ = {
-			isa = PBXGroup;
-			children = (
-				828DBD382416886E00A89A89 /* Web.h */,
-				828DBD392416886E00A89A89 /* Web.m */,
-				828DBD3A2416886E00A89A89 /* Web.xib */,
-			);
-			path = Web;
-			sourceTree = "<group>";
-		};
 		828DBD422416B0A100A89A89 /* Common */ = {
 			isa = PBXGroup;
 			children = (
@@ -674,7 +658,6 @@
 				82E9A46924030AEA000DB7F3 /* AppDelegate.m */,
 				82E9A46B24030AEE000DB7F3 /* Assets.xcassets */,
 				82E9A46D24030AEE000DB7F3 /* MainMenu.xib */,
-				82E9A47024030AEE000DB7F3 /* Info.plist */,
 				82E9A47124030AEE000DB7F3 /* main.m */,
 				82E9A47324030AEE000DB7F3 /* smplayer.entitlements */,
 			);
@@ -956,7 +939,6 @@
 				824384F7241D28B300A1A218 /* Menu */,
 				828DBD422416B0A100A89A89 /* Common */,
 				828DBD362416884100A89A89 /* Preference */,
-				828DBD372416884100A89A89 /* Web */,
 				82023C512413AD9600B0B8BC /* Welcome */,
 				82FBC09024120C66002E8ABD /* Player */,
 			);
@@ -1089,7 +1071,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				828DBD3C2416886E00A89A89 /* Web.xib in Resources */,
 				8217ADE12443444300AB4B67 /* RecordScreen.xib in Resources */,
 				82D2EC6B2434CF050046C63F /* PreferenceGeneral.xib in Resources */,
 				82D2EC802434E6220046C63F /* PreferenceSubtitle.xib in Resources */,
@@ -1216,7 +1197,6 @@
 				828DBD7B2418271100A89A89 /* ViewController+MASAdditions.m in Sources */,
 				8217ADE02443444300AB4B67 /* RecordScreen.m in Sources */,
 				82C9B6F02431F6B500B5A314 /* PreferenceSubtitle.m in Sources */,
-				828DBD3B2416886E00A89A89 /* Web.m in Sources */,
 				82394283241BA9EB006B7049 /* SMLastHistoryModel.m in Sources */,
 				82E7AD6124226FFE0033993D /* MenuActionHandler.m in Sources */,
 			);
