@@ -431,7 +431,7 @@
                     </menu>
                 </menuItem>
             </items>
-            <point key="canvasLocation" x="190" y="-17"/>
+            <point key="canvasLocation" x="44" y="11"/>
         </menu>
         <customObject id="hGE-iT-icH" customClass="MenuListController">
             <connections>
